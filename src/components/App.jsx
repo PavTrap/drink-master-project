@@ -7,10 +7,10 @@ export const App = () => {
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 40,
-        color: '#010101'
+        color: '#010881'
       }}
     >
-      React homework template
+      Drink master 
     </div>
   );
 };
