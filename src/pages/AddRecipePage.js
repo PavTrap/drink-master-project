@@ -1,37 +1,27 @@
 // import { Link } from "react-router-dom";
 
-import s from '../style/AddRecipe.module.css'
+import { MainTitle } from '../components/MainTitle/MainTitle';
+import { FollowUs } from '../components/FollowUs/FollowUs';
+import { AddRecipeForm } from '../components/AddRecipeForm/AddRecipeForm';
+import { PopularRecipe } from '../components/PopularRecipe/PopularRecipe';
+
 
 export default function AddRecipePage() {
-    return <div className={s.AddRecipe}>
-    <h1 className={s.home_title}>Add Recipe</h1>
-    <form>
+  return (<>
+    <MainTitle title='Add recipe' />
 
-          <label >
-          Enter item title
-          <input
-            
-          />
-    </label> 
-    
+    <section>
+          <div>
+              <AddRecipeForm/>
+          </div>
 
-    <label >
-          Enter about recipe
-          <input
-        
-          />
-        </label> 
+          <div>
+            <PopularRecipe/>
+            <FollowUs />
+        </div>
+    </section>
 
-        <button type='submit' className={s.LoginForm_btn}>Add</button>
-
-      </form>
-        
-        <ul>
-        
-            <li>Instagram</li>
-            <li>Facebook</li>
-            <li>YouTube</li>
-    </ul>
-    </div>
+    </>
+    )
   
 }
