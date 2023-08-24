@@ -18,23 +18,27 @@ const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage'));
 export const App = () => {
   return (
      <Routes>
-      <Route path="/welcome" element={<WelcomePage />} />
+
       
-      <Route path="/singup" element={<SingupPage />} />
-      <Route path="/singin" element={<SinginPage />} />
-
-
-
-      <Route path="/main" element={<MainPage />} />
-      <Route path="/drinks/:categoryName	" element={<DrinksPage />} />
-
-
-        <Route path="/add" element={<AddRecipePage />} />
-        <Route path="/recipe/:recipeId" element={<RecipePage />} />
-         <Route path="/my	" element={<MyRecipesPage />} /> 
+          <Route path="/welcome" element={<WelcomePage />} />
+          
         
-
-      <Route path="*" element={<WelcomePage />} /> 
+          <Route path="/singup" element={<SingupPage />} />
+          <Route path="/singin" element={<SinginPage />} />
+    
+    
+    
+          <Route path="/main" element={<MainPage />} />
+          <Route path="/drinks/:categoryName	" element={<DrinksPage />} />
+    
+    
+            <Route path="/add" element={<AddRecipePage />} />
+            <Route path="/recipe/:recipeId" element={<RecipePage />} />
+              <Route path="/my	" element={<MyRecipesPage />} /> 
+            
+    
+          <Route path="*" element={<WelcomePage />} /> 
+      
     </Routes>
   );
 };
