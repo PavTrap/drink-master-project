@@ -1,10 +1,8 @@
 // import { Link } from "react-router-dom";
 
-import s from '../components/style/Home.module.css'
+import s from '../style/AddRecipe.module.css'
 
-export default function AddRecipe() {
-  
-    
+export default function AddRecipePage() {
     return <div className={s.AddRecipe}>
     <h1 className={s.home_title}>Add Recipe</h1>
     <form>
