@@ -2,7 +2,7 @@ import React from 'react';
 import css from './Modal.module.css';
 import { IoCloseOutline } from "react-icons/io5";
 import {  MdAdd } from "react-icons/md";
-import { BiSolidUser } from "react-icons/bi";
+
 
 const Modal = ({active, setActive}) => {
 
@@ -47,3 +47,19 @@ const Modal = ({active, setActive}) => {
 }
 
 export default Modal;
+
+
+
+// import React, {useState} from "react";
+// import { Link } from "react-router-dom";
+// import Modal from '../components/Modal/Modal';
+// const WelcomePage = () => {
+//   const [modalActive, setModalActive] = useState(false);
+//     return (
+//         <div>
+//             <button onClick={() => setModalActive(true)}>open modal</button>
+//             <Modal active={modalActive} setActive={setModalActive} />
+//         </div>
+//     )
+// }
+// export default  WelcomePage;
