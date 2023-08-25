@@ -9,6 +9,7 @@
   background-image: url("./img/mob_x1.png");
   background-position: right;
   background-repeat: no-repeat;
+  position: relative;
 
   @media (-webkit-min-device-pixel-ratio: 2) {
     background-image: url("./img/mob_x2.png");
@@ -36,7 +37,11 @@
   }
 
 }
-
+.buttonModal{
+  position: absolute;
+  top:0;
+  left:o
+}
 .mainContainer {
   width: 335px;
   height: 248px;
