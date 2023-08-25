@@ -48,6 +48,14 @@
 	transform: scale(1);
 	transition: 0.5s;
 }
+.closeBtn{
+	width: 32px;
+	height: 32px;
+	color: #F3F3F3;
+	position: absolute;
+	right: 18px;
+	top: 18px;
+}
 .modal__content__colorEffect1{
 	background-color: rgba(188, 230, 210, 0.3);
 	height: 306px;
@@ -76,10 +84,15 @@
 	flex-direction: column;
 	align-items: center;
 }
+.avatarContainer{
+	position: relative;
+	padding: 0;
+	margin: 0;
+}
 .avatar{
 	height: 100px;
 	width: 100px;
-	background: #fff;
+	background: #F3F3F3;
 	border-radius: 50%;
 	margin-bottom: 66px;
 	position: relative;
@@ -100,6 +113,10 @@
 	padding: 0;
 	margin: 0;
 	border: none;
+}
+.addAvatarIcon{
+	width: 20px;
+	height: 20px;
 }
 .input{
 	height: 56px;
