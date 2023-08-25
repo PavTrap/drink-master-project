@@ -1,0 +1,23 @@
+.recipePreparation_title {
+  font-family: Manrope;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 44px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.recipePreparation_textarea {
+  width: 480px;
+  height: 184px;
+  top: 1316px;
+  left: 100px;
+  border-radius: 20px;
+  padding: 14px 24px;
+  border: 1px solid #f3f3f380;
+  resize: none;
+}
+
+.recipePreparation_textarea::placeholder {
+  /* padding: 14px 24px; */
+}
