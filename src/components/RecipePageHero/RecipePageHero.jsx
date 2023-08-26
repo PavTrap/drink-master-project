@@ -1,13 +1,18 @@
 import React from 'react';
+import RecipePageTitle from 'components/RecipePageTitle/RecipePageTitle';
+import AddToFavorite from 'components/AddToFavorite/AddToFavorite';
+import RemoveFromFavorite from 'components/RemoveFromFavorite/RemoveFromFavorite';
 
 const RecipePageHero = () => {
   return (
     <div>
         <div>
             <p>glass</p>
-            <h2>title</h2>
+            <RecipePageTitle></RecipePageTitle>
             <p>description</p>
-            <button type="button">Add to favorite recipe</button>
+            {/* Додати рендер за умовою */}
+            <AddToFavorite></AddToFavorite>
+            <RemoveFromFavorite></RemoveFromFavorite>
         </div>
         <img src="" alt="" />
     </div>
