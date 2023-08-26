@@ -7,13 +7,12 @@ import { fetchMyRecipes } from 'redux/MyRecipe/MyRecipeOperation';
 import { useEffect } from 'react';
 
 export default function MyRecipesPage() {
+  const recipes = useSelector(getMyRecipes);
   const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchMyRecipes());
   }, [dispatch]);
-  const recipes = useSelector(getMyRecipes);
-  console.log(recipes);
   return (
     <>
       <MainTitle title="My recipes" />
