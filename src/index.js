@@ -12,7 +12,7 @@ import { store } from './redux/store'
 import { App } from 'components/App';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-   <React.StrictMode>
+  //  <React.StrictMode></React.StrictMode>
     <Provider store={store}>
       {/* <PersistGate loading={null} persistor={persistor}> */}
         <BrowserRouter basename="drink-master-project">          
@@ -20,5 +20,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         </BrowserRouter>
       {/* </PersistGate> */}
     </Provider>
-  </React.StrictMode>
+  
 );

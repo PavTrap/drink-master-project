@@ -4,7 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const SingupPage = lazy(() => import('../pages/SingupPage'));
 const SinginPage = lazy(() => import('../pages/SinginPage'));
-const MainPage = lazy(() => import('../pages/MainPage'));
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage'));
