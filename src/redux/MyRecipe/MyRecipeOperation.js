@@ -1,44 +1,40 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from "axios";
+import axios from 'axios';
 
-axios.defaults.baseURL = "*";
-
+axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
+axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTc0MTBjNGJhYmJiM2JlM2JjZDRiOSIsImlhdCI6MTY5Mjk3NjMyNCwiZXhwIjoxNjkzMDYyNzI0fQ.p2_6phKaTM2dpOnZQ_ptUVQqNYxdRjxdPLqBIGUJVFw`;
 
 export const fetchMyRecipes = createAsyncThunk(
   'myRecipes/fetch',
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/myRecipes");
+      const response = await axios.get('api/recipes');
+      console.log(response);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-
 
 export const deleteMyRecipes = createAsyncThunk(
   'myRecipes/deleteMyRecipes',
-  async (id, thunkAPI ) => {
+  async (id, thunkAPI) => {
     try {
-       const response = await axios.delete(`/myRecipes/${id}`);
+      const response = await axios.delete(`api/own/${id}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-
-
 
 export const addMyRecipes = createAsyncThunk(
   'myRecipes/addMyRecipes',
   async (recipe, thunkAPI) => {
     try {
-      const response = await axios.post("/MyRecipes", recipe );
+      const response = await axios.post('api/own', recipe);
       return response.data;
-     
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

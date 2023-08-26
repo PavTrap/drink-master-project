@@ -1,19 +1,17 @@
-import { ResipesItem } from 'components/ResipesItem/ResipesItem';
-// import  from './ResipesList.module.css'
+import { RecipesItem } from 'components/RecipesItem/RecipesItem';
+// import  from './RecipesList.module.css'
 
-export const ResipesList = ({ resipes, path, state }) => {
+export const RecipesList = ({ recipes, state }) => {
   return (
     <ul>
-      {resipes.map(({ _id, drinkThumb, drink, instructions, ingredients }) => {
-        const pathToRecipe = `${path}${_id}`;
+      {recipes.map(({ _id, drinkThumb, drink, instructions, ingredients }) => {
         const recipeIngredients = ingredients
           .map(ingredient => ingredient.title)
           .join(', ');
         return (
-          <ResipesItem
+          <RecipesItem
             key={_id}
             state={state}
-            path={pathToRecipe}
             image={drinkThumb}
             title={drink}
             description={instructions}
