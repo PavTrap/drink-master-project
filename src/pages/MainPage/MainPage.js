@@ -21,6 +21,8 @@ const fetchDrinksInstance = axios.create({
 	},
 });
 
+const getAlldrinks = state => state;
+
 // export const setToken = token => {
 // 	fetchDrinksInstance.defaults.headers.common['Authorization'] = token;
 // };
@@ -78,14 +80,19 @@ const MainPage = () => {
 			.catch(err => console.log(err))
 	}, []);
 
-	const findOrdinaryDrinks = drinks => {
-		return drinks.filter(drink => drink.category === "Ordinary Drink");
-	};
+	// const findOrdinaryDrinks = drinks => {
+	// 	const allOrdinaryDrinks = drinks.filter(drink => drink.category === "Ordinary Drink");
+	// 	const items = allOrdinaryDrinks[0].items;
 
-	const ordinaryDrinks = findOrdinaryDrinks(allDrinks);
-	const fistOrdinaryDrink = ordinaryDrinks[0];
+	// 	console.log(allOrdinaryDrinks[0].items)
 
-	console.log(fistOrdinaryDrink);
+	// 	return items;
+	// };
+
+	// const ordinaryDrinks = findOrdinaryDrinks(allDrinks);
+
+	// console.log(ordinaryDrinks);
+
 
 	return (
 		<>
@@ -101,7 +108,7 @@ const MainPage = () => {
 				{/* <Link to="/add">Add recipe</Link> */}
 				<h2>Ordinary Drink</h2>
 				<ul className={css.mainPageList}>
-					{/* {ordinaryDrinks[0].items.map(({ drink, drinkThumb, _id }) => (
+					{/* {allDrinks.map(({ drink, drinkThumb, _id }) => (
 						<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
 					))} */}
 				</ul>
