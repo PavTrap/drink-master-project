@@ -2,8 +2,8 @@ import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-const SingupPage = lazy(() => import('../pages/SingupPage'));
-const SinginPage = lazy(() => import('../pages/SinginPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const SigninPage = lazy(() => import('../pages/SinginPage'));
 const MainPage = lazy(() => import('../pages/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage'));
@@ -15,8 +15,8 @@ export const App = () => {
     <Routes>
       <Route path="/welcome" element={<WelcomePage />} />
 
-      <Route path="/singup" element={<SingupPage />} />
-      <Route path="/singin" element={<SinginPage />} />
+      <Route path="/signup" element={<RegisterPage />} />
+      <Route path="/signin" element={<SigninPage />} />
 
       <Route path="/main" element={<MainPage />} />
       <Route path="/drinks/:categoryName	" element={<DrinksPage />} />
