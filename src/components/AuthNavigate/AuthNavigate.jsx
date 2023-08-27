@@ -12,7 +12,7 @@ export const AuthNavigate = () => {
           Sign In
         </NavLink>
       ) : (
-        <NavLink className={link} to="/register">
+        <NavLink className={link} to="/signup">
           Registration
         </NavLink>
       )}
