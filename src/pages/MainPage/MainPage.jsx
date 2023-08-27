@@ -76,7 +76,7 @@ const MainPage = () => {
 	return (
 		<>
 			<main className={css.main}>
-				<section className={`${css.hero_section} ${css.section}`}>
+				<section className={css.hero_section}>
 					<h1 className={css.hero_title}>Craft Your Perfect<br /> Drink with Drink Master	</h1>
 					<p className={css.main_p}>
 						Unlock your inner mixologist with Drink Master, your one-<br />stop

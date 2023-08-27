@@ -16,10 +16,11 @@ ul {
 }
 
 .section {
-	padding: 0px 100px;
+	padding: 0px 100px 140px;
 }
 
 .hero_section {
+	padding: 0px 100px;
 	margin-bottom: 80px;
 }
 
