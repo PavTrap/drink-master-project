@@ -1,3 +1,8 @@
+p, ul {
+	margin: 0;
+	padding: 0;
+}
+
 .mainPageList {
 	list-style: none;
 
@@ -9,9 +14,15 @@
 	max-height: 522px;
 }
 
-.hero_section {
-	margin: 0;
+.section {
+	padding: 0px 100px;
 }
+
+.hero_section {
+margin-bottom: 80px;
+}
+
+
 
 .main {
 	background-color: #161F37;
@@ -44,9 +55,15 @@ h1 {
 }
 
 .main_p {
-	margin-bottom: 42px;
+	margin-bottom: 40px;
 }
 
 .hero_title {
-	white-space: pre-line
+	margin-bottom: 28px;
+	/* white-space: pre-line; */
+}
+
+.other_drinks_btn {
+	/* position: absolute; */
+	margin-bottom: 40px;
 }

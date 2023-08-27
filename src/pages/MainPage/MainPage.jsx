@@ -74,8 +74,8 @@ const MainPage = () => {
 	return (
 		<>
 			<main className={css.main}>
-				<section className={css.hero_section}>
-					<h1>Craft Your Perfect<br /> Drink with Drink Master	</h1>
+				<section className={`${css.hero_section} ${css.section}`}>
+					<h1 className={css.hero_title}>Craft Your Perfect<br /> Drink with Drink Master	</h1>
 					<p className={css.main_p}>
 						Unlock your inner mixologist with Drink Master, your one-<br />stop
 						destination for exploring, crafting, and mastering the<br /> world's finest
@@ -85,7 +85,7 @@ const MainPage = () => {
 					{/* <img src="../public/main-page-img.png" alt='glass'/> */}
 				</section>
 
-				<section>
+				<section className={css.section}>
 					{allDrinks &&
 						<>
 							<h2>Ordinary Drink</h2>
@@ -110,7 +110,7 @@ const MainPage = () => {
 						<>
 							<h2>Shake</h2>
 							<ul className={css.mainPageList}>
-								{getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
+								{allDrinks[9].items.map(({ drink, drinkThumb, _id }) => (
 									<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
 								))}
 							</ul>
@@ -120,13 +120,13 @@ const MainPage = () => {
 						<>
 							<h2>Other/Unknow</h2>
 							<ul className={css.mainPageList}>
-								{getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
+								{allDrinks[10].items.map(({ drink, drinkThumb, _id }) => (
 									<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
 								))}
 							</ul>
 						</>
 					}
-					{allDrinks && <a className={css.button} href="drinks">Other drinks</a>}
+					{allDrinks && <a className={`${css.button} ${css.other_drinks_btn}`} href="drinks">Other drinks</a>}
 				</section>
 
 			</main>
