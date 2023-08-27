@@ -1,6 +1,6 @@
 // import  from './Paginator.module.css'
 
-export const Paginator = ({}) => {
+export const Paginator = ({pages}) => {
   return (<div>
     <button></button>
     <ul></ul>
@@ -8,3 +8,4 @@ export const Paginator = ({}) => {
   </div>
   )
 };
+
