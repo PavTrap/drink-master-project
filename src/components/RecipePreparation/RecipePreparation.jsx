@@ -1,6 +1,6 @@
 import React from 'react';
 
-const RecipePreparation = (drinkThumb, drink, instructions) => {
+const RecipePreparation = ({ drinkThumb, drink, instructions }) => {
   return (
     <div>
       <h3>Recipe Preparation</h3>

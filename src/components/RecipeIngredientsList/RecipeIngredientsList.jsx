@@ -1,8 +1,6 @@
 import React from 'react';
 
-const RecipeIngredientsList = (ingredients) => {
-  const { ingredientThumb, title, measure} = ingredients;
-
+const RecipeIngredientsList = ({ ingredientThumb, title, measure}) => {
   return (
     <div>
         <p>Ingredients</p>
