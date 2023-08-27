@@ -16,6 +16,7 @@ ul {
 }
 
 .section {
+	position: relative;
 	padding: 0px 100px 140px;
 }
 
@@ -66,8 +67,9 @@ h1 {
 }
 
 .other_drinks_btn {
-	/* position: absolute; */
-	margin-bottom: 40px;
+	position: absolute;
+	left: 50%;
+	margin-top: 80px;
 }
 
 .card_name {
