@@ -5,9 +5,12 @@ import { RecipesList } from 'components/RecipesList/RecipesList';
 import { useLocation } from 'react-router-dom';
 import { fetchMyRecipes } from 'redux/MyRecipe/MyRecipeOperation';
 import { useEffect } from 'react';
+import { Paginator } from 'components/Paginator/Paginator';
 
 export default function MyRecipesPage() {
   const recipes = useSelector(getMyRecipes);
+  const items = recipes.data;
+  const pages = recipes.count;
   const location = useLocation();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -16,8 +19,11 @@ export default function MyRecipesPage() {
   return (
     <>
       <MainTitle title="My recipes" />
-      {recipes.length !== 0 && (
-        <RecipesList recipes={recipes} state={{ from: location }} />
+      {items.length !== 0 && (
+        <>
+          <RecipesList recipes={items} state={{ from: location }} />
+          <Paginator pages={pages}/>
+        </>
       )}
     </>
   );
