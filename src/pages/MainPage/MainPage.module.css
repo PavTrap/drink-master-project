@@ -4,4 +4,49 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 20px;
+
+	max-width: 1240px;
+	max-height: 522px;
+}
+
+.hero_section {
+	margin: 0;
+}
+
+.main {
+	background-color: #161F37;
+}
+
+h1,
+h2,
+p,
+a {
+	color: #F3F3F3;
+}
+
+a {
+	text-decoration: none;
+}
+
+.button {
+	font-size: 18px;
+	height: 54px;
+	border-radius: 42px;
+	color: #161F37;
+	background-color: #F3F3F3;
+
+	padding: 18px 44px;
+}
+
+h1 {
+	font-size: 64px;
+
+}
+
+.main_p {
+	margin-bottom: 42px;
+}
+
+.hero_title {
+	white-space: pre-line
 }
