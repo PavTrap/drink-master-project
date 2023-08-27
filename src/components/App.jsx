@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-const SigninPage = lazy(() => import('../pages/SinginPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const MainPage = lazy(() => import('../pages/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage'));
@@ -16,7 +16,7 @@ export const App = () => {
       <Route path="/welcome" element={<WelcomePage />} />
 
       <Route path="/signup" element={<RegisterPage />} />
-      <Route path="/signin" element={<SigninPage />} />
+      <Route path="/signin" element={<LoginPage />} />
 
       <Route path="/main" element={<MainPage />} />
       <Route path="/drinks/:categoryName	" element={<DrinksPage />} />
