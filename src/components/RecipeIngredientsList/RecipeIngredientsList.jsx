@@ -1,15 +1,17 @@
 import React from 'react';
 
-const RecipeIngredientsList = () => {
+const RecipeIngredientsList = (ingredients) => {
+  const { ingredientThumb, title, measure} = ingredients;
+
   return (
     <div>
-        <p></p>
+        <p>Ingredients</p>
         <ul>
             <li>
-                <img src="" alt="" />
+                <img src={ingredientThumb} alt="ingredient" />
                 <div>
-                    <p></p>
-                    <p></p>
+                    <p>{title}</p>
+                    <p>{measure}</p>
                 </div>
             </li>
         </ul>

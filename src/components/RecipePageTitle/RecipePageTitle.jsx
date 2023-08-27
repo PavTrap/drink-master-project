@@ -1,8 +1,8 @@
 import React from 'react';
 
-const RecipePageTitle = () => {
+const RecipePageTitle = (drink) => {
   return (
-    <h2>RecipePageTitle</h2>
+    <h2>{drink}</h2>
   )
 };
 

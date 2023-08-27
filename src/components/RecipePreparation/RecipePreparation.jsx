@@ -1,13 +1,13 @@
 import React from 'react';
 
-const RecipePreparation = () => {
+const RecipePreparation = (drinkThumb, drink, instructions) => {
   return (
     <div>
       <h3>Recipe Preparation</h3>
       <div>
-        <img src="" alt="" />
+        <img src={drinkThumb} alt={drink} />
           <div>
-              <p></p>
+              <p>{instructions}</p>
               <ul>
                   <li>
                       <p></p>
