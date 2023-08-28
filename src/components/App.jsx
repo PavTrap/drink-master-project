@@ -8,7 +8,7 @@ import OnlyGuest from './Routes/OnlyGuest';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 
-const MainPage = lazy(() => import('../pages/MainPage'));
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage'));
