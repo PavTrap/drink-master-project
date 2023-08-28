@@ -14,11 +14,22 @@ export default function MyRecipesPage() {
     dispatch(fetchMyRecipes());
   }, [dispatch]);
   return (
-    <>
+    <div style={littleStyles}>
       <MainTitle title="My recipes" />
-      {recipes.length !== 0 && (
-        <RecipesList recipes={recipes} state={{ from: location }} />
-      )}
-    </>
+      {recipes.length !== 0 && <RecipesList recipes={recipes} state={{ from: location }} />}
+    </div>
   );
 }
+
+const littleStyles = {
+  height: '70vh',
+  fontSize: '40px',
+  border: '1px solid blue',
+  width: '100%',
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'no-wrap',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
