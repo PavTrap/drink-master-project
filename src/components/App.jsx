@@ -20,7 +20,7 @@ export const App = () => {
         <Route index element={<WelcomePage />} />
         <Route path="signin" element={<RestrictedRoute retirectTo={"/main"} component={<LoginPage />} />} />
         <Route path="signup" element={<RestrictedRoute retirectTo={"/main"} component={<RegisterPage />} />} />
-        <Route path="main" element={<PrivateRoute retirectTo={"/"} component={<MainPage />} />} />
+        <Route path="main" element={<MainPage />} />
         <Route path="drinks/:categoryName" element={<DrinksPage />} />
         <Route path="add" element={<AddRecipePage />} />
         <Route path="recipe/:recipeId" element={<RecipePage />} />

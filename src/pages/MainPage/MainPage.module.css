@@ -1,7 +1,15 @@
 p,
-ul {
+ul,
+h1,
+h2 {
 	margin: 0;
 	padding: 0;
+	color: #F3F3F3;
+}
+
+a {
+	text-decoration: none;
+	color: #F3F3F3;
 }
 
 .mainPageList {
@@ -25,22 +33,11 @@ ul {
 	margin-bottom: 80px;
 }
 
-
-
 .main {
 	background-color: black;
 }
 
-h1,
-h2,
-p,
-a {
-	color: #F3F3F3;
-}
 
-a {
-	text-decoration: none;
-}
 
 .button {
 	font-size: 18px;
@@ -48,13 +45,11 @@ a {
 	border-radius: 42px;
 	color: #161F37;
 	background-color: #F3F3F3;
-
 	padding: 18px 44px;
 }
 
 h1 {
 	font-size: 64px;
-
 }
 
 .main_p {
@@ -63,7 +58,6 @@ h1 {
 
 .hero_title {
 	margin-bottom: 28px;
-	/* white-space: pre-line; */
 }
 
 .other_drinks_btn {
