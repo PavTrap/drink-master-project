@@ -31,7 +31,6 @@ export const DrinkCard = ({ drink, drinkThumb }) =>
 	</div>
 </li>)
 
-
 export const PreviewDrinks = ({ children }) =>
 (
 	<>
@@ -74,12 +73,6 @@ const MainPage = () => {
 
 		const getedDrinks = {
 			"ordinary drink": ordinaryDrinks[0].items,
-
-			// "ordinary drink": {
-			// 	"category": "ordinary drink",
-			// 	"drinks": ordinaryDrinks[0].items,
-			// },
-
 			"coctail": cocktails[0].items,
 			"shake": shakes[0].items,
 			"other/unknown": otherDrinks[0].items,
