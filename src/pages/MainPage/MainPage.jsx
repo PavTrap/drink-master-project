@@ -91,7 +91,7 @@ const MainPage = () => {
 
 	return (
 		<>
-			<main className={css.main}>
+			<div className={css.main}>
 				<section className={css.hero_section}>
 					<h1 className={css.hero_title}>Craft Your Perfect<br /> Drink with Drink Master	</h1>
 					<p className={css.main_p}>
@@ -102,14 +102,14 @@ const MainPage = () => {
 					{/* <a className={css.button} href="add">Add recipe</a> */}
 					<Link className={css.button} to={"/add"}>Add recipe</Link>
 				</section>
-
-
 				<PreviewDrinks>
+
 					<section className={css.section}>
 						{allDrinks &&
 							<>
-								{/* <a href='drinks/ordinary-drinks'><h2>Ordinary Drink</h2></a> */}
-							<Link to={'/drinks/ordinary-drink'}><h2>Ordinary Drink</h2></Link>
+								<div>
+									<Link to={'/drinks/ordinary-drink'}><h2>Ordinary Drink</h2></Link>
+								</div>
 								<ul className={css.mainPageList}>
 									{getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
@@ -119,7 +119,7 @@ const MainPage = () => {
 						}
 						{allDrinks &&
 							<>
-							<Link to={'/drinks/coctail'}><h2>Coctail</h2></Link>
+								<Link to={'/drinks/coctail'}><h2>Coctail</h2></Link>
 								<ul className={css.mainPageList}>
 									{getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
@@ -129,7 +129,7 @@ const MainPage = () => {
 						}
 						{allDrinks &&
 							<>
-							<Link to={'/drinks/shake'}><h2>Shake</h2></Link>
+								<Link to={'/drinks/shake'}><h2>Shake</h2></Link>
 								<ul className={css.mainPageList}>
 									{allDrinks[9].items.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
@@ -139,7 +139,7 @@ const MainPage = () => {
 						}
 						{allDrinks &&
 							<>
-							<Link to={'/drinks/other-unknown'}><h2>Other/Unknown</h2></Link>
+								<Link to={'/drinks/other-unknown'}><h2>Other/Unknown</h2></Link>
 								<ul className={css.mainPageList}>
 									{allDrinks[10].items.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
@@ -149,8 +149,10 @@ const MainPage = () => {
 						}
 						{allDrinks && <a className={`${css.button} ${css.other_drinks_btn}`} href="drinks">Other drinks</a>}
 					</section>
+
 				</PreviewDrinks>
-			</main>
+
+			</div>
 		</>
 	);
 };
