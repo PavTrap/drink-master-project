@@ -1,0 +1,13 @@
+.paginatorContainer {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 32px;
+}
+
+.pagesList {
+  list-style: none;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
