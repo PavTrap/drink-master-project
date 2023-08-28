@@ -1,6 +1,8 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
 import css from './LoginForm.module.css';
+import { useNavigate } from 'react-router-dom';
+
 
 // import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 // import { RiErrorWarningLine } from 'react-icons/ri';
@@ -10,6 +12,7 @@ import { useFormik } from 'formik';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 
 const LoginForm = () => {
+  const navigate = useNavigate()
   const {
     loginForm,
     loginTitle,
@@ -26,6 +29,7 @@ const LoginForm = () => {
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+      navigate('/main')
     },
   });
   return (

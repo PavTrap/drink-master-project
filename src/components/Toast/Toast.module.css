@@ -1,0 +1,29 @@
+.tost {
+    position: absolute;
+    width: 300px;
+    top: 160px;
+    left: 50%;
+    height: 150px;
+    background-color: #fff;
+    border-radius: 10px;
+    text-align: center;
+    transform: translateX(-50%);
+    overflow: hidden;
+    z-index: 9999;
+  }
+  .title {
+    display: block;
+    padding: 10px 0;
+    background-color: teal;
+    color: white;
+    margin: 0;
+  
+  }
+  .text {
+    text-transform: capitalize;
+    width: 80%;
+    margin: 0 auto;
+    line-height: 1.6rem;
+    padding-top: 10px;
+    color: black;
+  }
