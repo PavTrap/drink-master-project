@@ -21,11 +21,7 @@ export const SharedLayout = () => {
   return isAuth ? (
     <>
       <MainContainer>
-        {modalActive && (
-          <Modal active={modalActive} setActive={setModalActive}>
-            <ModalCard />
-          </Modal>
-        )}
+        {modalActive && (<Modal active={modalActive} setActive={setModalActive}><ModalCard /></Modal>)}
         <Header>
           <Logo />
           <NavBar />
