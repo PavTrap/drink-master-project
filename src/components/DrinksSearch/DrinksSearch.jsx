@@ -3,7 +3,6 @@ import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchGlasses } from 'redux/Drinks/DrinksOperation';
 import { DrinkCard } from 'pages/MainPage/MainPage';
-// import { changeFilter } from 'redux/Drinks/DrinksSlice';
 
 export const DrinksSearch = () => {
   // should add filter,
