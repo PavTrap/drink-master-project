@@ -5,9 +5,10 @@ import { PrivateRoute } from './Routes/PrivateRoute';
 import { RestrictedRoute } from './Routes/RestrictedRoute';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-// const SingupPage = lazy(() => import('../pages/SingupPage'));
-// const SinginPage = lazy(() => import('../pages/SinginPage'));
-const MainPage = lazy(() => import('../pages/MainPage'));
+const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
+
+const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage'));
@@ -31,4 +32,10 @@ export const App = () => {
       </Route>
     </Routes>
   );
-};
+}; import { MainTitle } from '../components/MainTitle/MainTitle';
+
+export default function MainPage() {
+	return (<>
+		<MainTitle title='Craft Your Perfect Drink with Drink Master' />
+	</>
+	)

@@ -1,0 +1,93 @@
+p,
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+.mainPageList {
+	list-style: none;
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: 20px;
+
+	max-width: 1240px;
+	max-height: 522px;
+}
+
+.section {
+	position: relative;
+	padding: 0px 100px 140px;
+}
+
+.hero_section {
+	padding: 0px 100px;
+	margin-bottom: 80px;
+}
+
+
+
+.main {
+	background-color: black;
+}
+
+h1,
+h2,
+p,
+a {
+	color: #F3F3F3;
+}
+
+a {
+	text-decoration: none;
+}
+
+.button {
+	font-size: 18px;
+	height: 54px;
+	border-radius: 42px;
+	color: #161F37;
+	background-color: #F3F3F3;
+
+	padding: 18px 44px;
+}
+
+h1 {
+	font-size: 64px;
+
+}
+
+.main_p {
+	margin-bottom: 40px;
+}
+
+.hero_title {
+	margin-bottom: 28px;
+	/* white-space: pre-line; */
+}
+
+.other_drinks_btn {
+	position: absolute;
+	left: 50%;
+	margin-top: 80px;
+}
+
+.card_name {
+	font-size: 18px;
+}
+
+.ingredients_text {
+	font-size: 16px;
+	color: rgba(243, 243, 243, 0.5);
+	;
+}
+
+.card_link {
+	display: inline-block;
+}
+
+.card_text_wrapper {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
