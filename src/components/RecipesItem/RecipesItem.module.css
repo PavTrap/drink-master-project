@@ -1,0 +1,8 @@
+.recipeCard {
+    flex-basis: calc(100%/3 - 30px);
+}
+
+.recipeImage {
+  width: 334px;
+  overflow: hidden;
+}

@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './WelcomePage.module.css';
 import Modal from '../../components/Modal/Modal';
@@ -24,6 +24,7 @@ export default function WelcomePage() {
              <button onClick={() => setModalActiveLogout(true)}>log out</button>
              <ModalLogout active={modalActiveLogout} setActive={setModalActiveLogout} />
          </div>
+
       <div className={mainContainer}>
         <h1 className={mainContainer__title}> Welcome to the app! </h1>
         <p className={mainContainer__text}>
@@ -32,10 +33,10 @@ export default function WelcomePage() {
           retrieve your own recipes at any time.
         </p>
         <div className={linkContainer}>
-          <NavLink className={linkContainer__singup} to={`/singup`}>
+          <NavLink className={linkContainer__singup} to={`/signup`}>
             Registration
           </NavLink>
-          <NavLink className={linkContainer__singin} to={`/singin`}>
+          <NavLink className={linkContainer__singin} to={`/signin`}>
             Sing In
           </NavLink>
         </div>
