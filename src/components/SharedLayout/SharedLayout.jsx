@@ -73,7 +73,7 @@ export const SharedLayout = () => {
       </div>
     </>
   ) : (
-    <main>
+    <main style={{width:'100%', padding:"0 80px"}}>
       <Suspense fallback={<Spinner />}>
         <Outlet />
       </Suspense>

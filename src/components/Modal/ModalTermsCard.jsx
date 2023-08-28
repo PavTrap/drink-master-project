@@ -53,6 +53,7 @@ const ModalTermsCard = () => {
     width: '500px', 
     color: 'white', 
     textAlign: 'justify'
+    //height from figma, overflow-Y: scroll; Scrollbar need to be removed
   }
   
   const downMargin={

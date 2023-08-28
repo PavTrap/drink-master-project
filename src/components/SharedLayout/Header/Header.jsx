@@ -16,7 +16,7 @@ const styles = {
   flexWrap: 'no-wrap',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding:"22.5px 100px",
+  padding:"22.5px 0",
   zIndex: "10",
   boxSizing: 'border-box',
 

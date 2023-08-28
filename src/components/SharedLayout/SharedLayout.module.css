@@ -11,6 +11,10 @@
   background-color: #0a0a11;
   color: #f3f3f3;
   overflow: hidden;
+  padding: 0 100px
+}
+body::-webkit-scrollbar{
+  display: none
 }
 
 .gradient {
