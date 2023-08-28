@@ -1,0 +1,100 @@
+@media screen and (min-width: 320px) {
+  .inputDrinks {
+    padding: 18px 24px;
+    /* border-color: #f3f3f3; */
+    /* background-color: transparent; */
+    border-radius: 200px;
+    border: 1px solid rgba(243, 243, 243, 0.2);
+    opacity: 0.8;
+  }
+  .selsctDrinks {
+    /* appearance: none; Remove default appearance */
+    /* -webkit-appearance: none;
+    -moz-appearance: none; */
+
+    border-radius: 200px;
+
+    position: relative;
+
+    padding: 18px 24px;
+    background-color: #161f37;
+    color: #f3f3f3;
+    /* border-radius: ; */
+  }
+
+  .selsctDrinks:focus {
+    border-radius: 20px;
+  }
+
+  .selsctDrinks option {
+    padding: 18px 24px;
+    color: rgba(243, 243, 243, 0.4);
+    background-color: #161f37;
+    border-radius: 20px;
+    /* background-color: #f8f8f8; */
+    border: none;
+  }
+
+  .selsctDrinks option:checked {
+    color: #f3f3f3;
+  }
+
+  .selsctDrinks::before {
+    content: '\25C0'; /* Unicode character for left-pointing arrow */
+    position: absolute;
+    left: 8px; /* Adjust the position as needed */
+
+    /* top: 50%;
+  transform: translateY(-50%); */
+  }
+  /* .container {
+    margin: 80px 20px;
+  } */
+  .drinkRequestForm {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .mainPageList {
+    list-style: none;
+  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  
+    margin-bottom: 80px;
+  
+    max-width: 1240px;
+    max-height: 522px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    margin: 140px 32px;
+  }
+  .inputDrinks {
+    padding-top: 14px;
+    padding-bottom: 15px;
+    padding-left: 24px;
+  }
+  .selsctDrinks {
+    padding-top: 14px;
+    padding-bottom: 15px;
+    padding-left: 24px;
+  }
+  .drinkRequestForm {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    margin: 160px 100px;
+  }
+  .drinkRequestForm {
+    display: flex;
+  }
+}
