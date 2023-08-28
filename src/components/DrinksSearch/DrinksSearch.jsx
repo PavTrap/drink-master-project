@@ -2,35 +2,45 @@ import { useEffect } from 'react';
 import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchGlasses } from 'redux/Drinks/DrinksOperation';
+import { DrinkCard } from 'pages/MainPage/MainPage';
+// import { changeFilter } from 'redux/Drinks/DrinksSlice';
 
 export const DrinksSearch = () => {
- 
-  // should add entities and filter,
-  const { categoryList, glasses } = useSelector(state => state.drinks);
-  console.log('categories', categoryList)
+  // should add filter,
+  const { categoryList, entities, glasses } = useSelector(state => state.drinks);
   const dispatch = useDispatch();
 
-  
-  
   useEffect(() => {
-    dispatch(fetchDrinks({}))
-    dispatch(fetchCategories())
-    dispatch(fetchGlasses())
-  }, [dispatch])
+    dispatch(fetchDrinks({}));
+    dispatch(fetchCategories());
+    dispatch(fetchGlasses());
+  }, [dispatch]);
 
-  const handleChange = event => {
-    const payload = event.currentTarget.value;
-    console.log('payload from handleChange ==>> ', payload);
-    // dispatch(changeFilter(payload));
+  // const debouncedHandleChange = _.debounce((payload) => {
+  //   dispatch(changeFilter(payload));
+  // }, 2000);
+
+  // const handleChange = (event) => {
+  //   const payload = event.currentTarget.value;
+  //   debouncedHandleChange(payload);
+  // };
+
+  const handleChangeSelect = event => {
+    const item = event.currentTarget;
+    
+    dispatch(fetchDrinks({ [item.name]: item.value }));
   };
 
-  
+  // const handleChangeSelectIngredient = event => {
+  //   console.log('event.currentTarget.name', event.currentTarget.name);
+  //   const payload = event.currentTarget.value;
+  //   dispatch(fetchDrinks({ ingredient: payload }));
+  // };
 
   const SelectList = ({ data }) => {
-    console.log('data', data);
     const arr = [];
-    data.forEach(category => {
-      arr.push(<option key={category._id}>{category.name}</option>);
+    data.forEach(elem => {
+      arr.push(<option key={elem._id}>{elem.name}</option>);
     });
     // console.log("arr.join('')", arr.join(''));
     return arr;
@@ -38,32 +48,35 @@ export const DrinksSearch = () => {
 
   // при выборк конкретной категории
   // const handleCategory = event => {
-  //   const payload = 
+  //   const payload =
   // }
 
   return (
-    <>
-      <div className={css.container}>
-        <form
-          className={css.drinkRequestForm}
-        >
-          <input
-            onChange={handleChange}
-            className={css.inputDrinks}
-            placeholder="Enter the text"
-          />
-          <select className={css.selsctDrinks}>
-            <option value="">All categories</option>
+    <div >
+      <form className={css.drinkRequestForm}>
+        <input className={css.inputDrinks} placeholder="Enter the text" />
+        <select name="category" onChange={handleChangeSelect} className={css.selsctDrinks}>
+          <option value="categoryMain">All categories</option>
 
-            <SelectList data={categoryList} />
-          </select>
+          <SelectList data={categoryList} />
+        </select>
 
-          <select className={css.selsctDrinks}>
-            <option value="">Ingredients</option>
-            <SelectList data={glasses} />
-          </select>
-        </form>
-      </div>
-    </>
+        <select name="ingredient" onChange={handleChangeSelect} className={css.selsctDrinks}>
+          <option value="">Ingredients</option>
+          <SelectList data={glasses} />
+        </select>
+      </form>
+      {entities.data && (
+        <ul className={css.mainPageList}>
+          {entities.data.map(({ _id, drink, drinkThumb }) => (
+            <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
+          ))}
+        </ul>
+      )}
+      {
+        entities.data.length === 0 && <h3>No result</h3>
+      }
+    </div>
   );
 };
+// add some logic with requests of categories

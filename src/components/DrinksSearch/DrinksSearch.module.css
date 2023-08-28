@@ -47,13 +47,26 @@
     /* top: 50%;
   transform: translateY(-50%); */
   }
-  .container {
+  /* .container {
     margin: 80px 20px;
-  }
+  } */
   .drinkRequestForm {
     display: flex;
     flex-direction: column;
     gap: 14px;
+  }
+
+  .mainPageList {
+    list-style: none;
+  
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  
+    margin-bottom: 80px;
+  
+    max-width: 1240px;
+    max-height: 522px;
   }
 }
 @media screen and (min-width: 768px) {
