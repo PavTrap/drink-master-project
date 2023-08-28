@@ -24,7 +24,7 @@ export default function MyRecipesPage() {
 const littleStyles = {
   height: '70vh',
   fontSize: '40px',
-  border: '1px solid blue',
+  // border: '1px solid blue',
   width: '100%',
   textAlign: 'center',
   display: 'flex',
