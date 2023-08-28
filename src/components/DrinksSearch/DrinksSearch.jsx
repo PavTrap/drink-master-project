@@ -1,25 +1,17 @@
-import { useEffect, useState } from 'react';
-// import { useForm } from 'react-hook-form';
+import { useEffect } from 'react';
 import css from './DrinksSearch.module.css';
-import categoryList from '../../data/categoryList.json';
-import glass from '../../data/glass.json';
 import { MainTitle } from 'components/MainTitle/MainTitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchGlasses } from 'redux/Drinks/DrinksOperation';
 
 export const DrinksSearch = () => {
  
-  
-  const { categoryList, entities, filter, glasses } = useSelector(state => state.drinks);
+  // should add entities and filter,
+  const { categoryList, glasses } = useSelector(state => state.drinks);
   console.log('categories', categoryList)
   const dispatch = useDispatch();
 
-  // отвечает за загрузку первых коктейлей
   
-  // word = null,
-  //       category = 'cocktail',
-  //       ingredient = null,
-  //       page = 1,
   
   useEffect(() => {
     dispatch(fetchDrinks({}))
@@ -33,7 +25,7 @@ export const DrinksSearch = () => {
     // dispatch(changeFilter(payload));
   };
 
-  // const recipes = async
+  
 
   const SelectList = ({ data }) => {
     console.log('data', data);
@@ -56,7 +48,6 @@ export const DrinksSearch = () => {
         <MainTitle title="Drinks" />
         <form
           className={css.drinkRequestForm}
-          //   onSubmit={handleSubmit(data => setData(JSON.stringify(data)))}
         >
           <input
             onChange={handleChange}
@@ -74,7 +65,6 @@ export const DrinksSearch = () => {
             <SelectList data={glasses} />
           </select>
         </form>
-        {/* <RecipesList recipes={ } state={ } /> */}
       </div>
     </>
   );
