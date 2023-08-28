@@ -31,13 +31,25 @@ a {
 
 .section {
   position: relative;
-  padding: 0px 100px 140px;
+  padding: 0px 100px 270px;
 }
 
 .hero_section {
   padding: 160px 100px 100px;
   margin-bottom: 80px;
-  /* margin-top: 160px; */
+}
+
+/* .section_wrapper {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.hero_section_wrapper {
+	display: flex;
+} */
+
+.main_div {
+	margin: 0 auto;
 }
 
 .main {
