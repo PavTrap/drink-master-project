@@ -19,6 +19,11 @@ const LoginPage = lazy(() => import('../pages/LogInPage/LoginPage'));
 export const App = () => {
   return (
     <Routes>
+      <Route path="/" element={<OnlyGuest component={<SharedLayout />} />}>
+        <Route path="/welcome" element={<OnlyGuest component={<WelcomePage />} />} />
+        <Route path="signin" element={<OnlyGuest component={<LoginPage />} />} />
+        <Route path="signup" element={<OnlyGuest component={<RegisterPage />} />} />
+      </Route>
       <Route path="/" element={<Private component={<SharedLayout />} />}>
         <Route path="main" element={<Private component={<MainPage />} />} />
         <Route path="drinks" element={<Private component={<DrinksPage />} />} />
@@ -27,11 +32,6 @@ export const App = () => {
         <Route path="recipe" element={<Private component={<RecipePage />} />} />
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />
-      </Route>
-      <Route path="/" element={<OnlyGuest component={<SharedLayout />} />}>
-        <Route path="/welcome" element={<OnlyGuest component={<WelcomePage />} />} />
-        <Route path="signin" element={<OnlyGuest component={<LoginPage />} />} />
-        <Route path="signup" element={<OnlyGuest component={<RegisterPage />} />} />
       </Route>
       <Route path="*" element={<NotFoundPage />} />
       <Route path="spinner" element={<Spinner />} />
