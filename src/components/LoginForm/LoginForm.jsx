@@ -1,37 +1,30 @@
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
-import css from './LoginForm.module.css';
-import { useNavigate } from 'react-router-dom';
-
-
-// import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
-// import { RiErrorWarningLine } from 'react-icons/ri';
-// import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-
+import { useDispatch } from 'react-redux';
+import { login } from '../../redux/Auth/authOperation';
 import { useFormik } from 'formik';
+import css from './LoginForm.module.css';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 
 const LoginForm = () => {
-  const navigate = useNavigate()
-  const {
-    loginForm,
-    loginTitle,
-    inputWrapper,
-    loginInput,
-    loginButton,
-    wrapper,
-  } = css;
+  const dispatch = useDispatch();
+  const { loginForm, loginTitle, inputWrapper, loginInput, loginButton, wrapper } = css;
 
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-      navigate('/main')
+    onSubmit: (values, { resetForm }) => {
+      const user = {
+        email: values.email,
+        password: values.password,
+      };
+
+      dispatch(login(user));
+      resetForm();
     },
   });
+
   return (
     <form className={loginForm} onSubmit={formik.handleSubmit}>
       <h1 className={loginTitle}> Sign In </h1>
@@ -52,7 +45,7 @@ const LoginForm = () => {
             className={loginInput}
             id="password"
             name="password"
-            type="text"
+            type="password"
             placeholder="Password"
             onChange={formik.handleChange}
             value={formik.values.password}
