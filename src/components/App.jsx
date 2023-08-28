@@ -6,7 +6,7 @@ const SingupPage = lazy(() => import('../pages/SingupPage'));
 const SinginPage = lazy(() => import('../pages/SinginPage'));
 const MainPage = lazy(() => import('../pages/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
-const AddRecipePage = lazy(() => import('../pages/AddRecipePage'));
+const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage'));
 

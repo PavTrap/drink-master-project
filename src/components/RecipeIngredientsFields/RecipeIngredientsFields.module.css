@@ -10,3 +10,15 @@
 .recipeIngredients_label {
   display: flex;
 }
+
+.addIngredients_fields {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center;
+  align-items: center; */
+}
+
+.addIngredients_box {
+  display: flex;
+  margin-bottom: 12px;
+}
