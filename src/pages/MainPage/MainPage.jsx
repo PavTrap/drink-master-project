@@ -1,9 +1,7 @@
 import { useEffect, useState } from 'react';
-// import { MainTitle } from 'components/MainTitle/MainTitle';
 import css from './MainPage.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-// const HERO_TITLE = 'Craft Your Perfect \n Drink with Drink Master';
 const BASE_URL = 'https://drink-master-back-end.onrender.com';
 const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTg4ZmIyMjQ0Nzc2MjQ3ZmRjOTFmMiIsImlhdCI6MTY5MzIxMzQ3NiwiZXhwIjoxNzI0NzQ5NDc2fQ.9pXsJ0oGndHLljJkph9dB5c_GAvE82inXsGfs8UHmlc'
 
@@ -35,6 +33,13 @@ export const DrinkCard = ({ drink, drinkThumb }) =>
 
 
 export const PreviewDrinks = ({ children }) =>
+(
+	<>
+		{children}
+	</>
+);
+
+export const addYourCoctail = ({ children }) =>
 (
 	<>
 		{children}
@@ -103,7 +108,6 @@ const MainPage = () => {
 					<Link className={css.button} to={"/add"}>Add recipe</Link>
 				</section>
 				<PreviewDrinks>
-
 					<section className={css.section}>
 						{allDrinks &&
 							<>
