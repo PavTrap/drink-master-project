@@ -52,7 +52,6 @@ export const App = () => {
         <Route path="signup" element={<OnlyGuest component={<RegisterPage />} />} />
         <Route path="/favorite" element={<FavoritePage/>} />
       </Route>
-
       <Route path="*" element={<NotFoundPage />} />
       <Route path="spinner" element={<Spinner />} />
     </Routes>
