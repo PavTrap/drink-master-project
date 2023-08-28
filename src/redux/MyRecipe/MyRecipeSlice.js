@@ -17,11 +17,16 @@ const handleRejected = (state, { payload }) => {
 const myRecipesSlice = createSlice({
   name: 'myRecipes',
   initialState: {
+    page: 1,
     recipes: [],
     isLoading: false,
     error: null,
   },
-
+  reducers: {
+    changePage(state, action) {
+      state.page = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       // FETCH
@@ -69,4 +74,6 @@ const myRecipesSlice = createSlice({
   },
 });
 
+export const { changePage, incrementPage, decrementPage } =
+  myRecipesSlice.actions;
 export const myRecipesReducer = myRecipesSlice.reducer;
