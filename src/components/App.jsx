@@ -1,7 +1,7 @@
 import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
-import { PrivateRoute } from './Routes/PrivateRoute';
+// import { PrivateRoute } from './Routes/PrivateRoute';
 import { RestrictedRoute } from './Routes/RestrictedRoute';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
@@ -13,6 +13,8 @@ const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LogInPage/LoginPage'));
+const FavoritePage = lazy(()=>import('../pages/FavoritePage'))
+
 export const App = () => {
   return (
     <Routes>
@@ -25,6 +27,7 @@ export const App = () => {
         <Route path="add" element={<AddRecipePage />} />
         <Route path="recipe/:recipeId" element={<RecipePage />} />
         <Route path="my" element={<MyRecipesPage />} />
+        <Route path="/favorite" element={<FavoritePage/>} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
