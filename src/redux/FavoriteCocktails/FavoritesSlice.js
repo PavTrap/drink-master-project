@@ -8,7 +8,7 @@ const handlePending = (state) => {
 
 const handleRejected = (state, {payload}) => {
     state.isLoading = false;
-    state.entities = payload;
+    state.error = payload;
 }
 
 
@@ -23,8 +23,9 @@ const favoritesSlice =  createSlice({
     extraReducers: builder => { 
         builder
         // FETCH
-        .addCase(fetchFavorites.fulfilled, (state, { payload: favorites }) => {
-            state.entities = favorites;
+        .addCase(fetchFavorites.fulfilled, (state, { payload }) => {
+            state.entities = payload;
+            state.error = null;
             state.isLoading = false;
         })
             

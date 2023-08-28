@@ -1,6 +1,7 @@
 import React from 'react';
 // import { NavLink } from 'react-router-dom';
 import css from './RegisterForm.module.css';
+import { useNavigate } from 'react-router-dom';
 
 // import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 // import { RiErrorWarningLine } from 'react-icons/ri';
@@ -10,6 +11,7 @@ import { useFormik } from 'formik';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 
 const RegisterForm = () => {
+  const navigate=useNavigate()
   const {
     registerForm,
     registerTitle,
@@ -27,6 +29,7 @@ const RegisterForm = () => {
     },
     onSubmit: values => {
       alert(JSON.stringify(values, null, 2));
+      navigate('/signin')
     },
   });
   return (
