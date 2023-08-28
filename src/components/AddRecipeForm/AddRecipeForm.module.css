@@ -1,0 +1,17 @@
+.add_btn {
+  width: 118px;
+  height: 54px;
+  padding: 18px 44px 18px 44px;
+  border-radius: 42px;
+  gap: 10px;
+
+  font-family: Manrope;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 0em;
+  text-align: left;
+
+  background-color: #f3f3f3;
+  color: #161f37;
+}
