@@ -1,8 +1,11 @@
 import { MainTitle } from "components/MainTitle/MainTitle";
 
 export default function RecipePage() {
-    return (<>
+    return (
+    <>
       <MainTitle title='RecipePage' />
-      </>
-      )
+      {/* <MainTitle title='Coctail' />? */}
+    </>
+    )
   }
+

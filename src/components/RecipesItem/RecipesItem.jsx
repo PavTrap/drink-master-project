@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-// import  from './RecipesItem.module.css'
+import css from './RecipesItem.module.css'
 
 export const RecipesItem = ({
   image,
@@ -9,10 +9,10 @@ export const RecipesItem = ({
   id,
   state,
 }) => {
-  const path = `/recipes/${id}`;
+  const path = `/recipe/${id}`;
   return (
-    <li>
-      <img src={image} alt={title} />
+    <li className={css.recipeCard}>
+      <img src={image} alt={title} className={css.recipeImage}/>
       <p>{title}</p>
       <p title={ingredients}>Ingredients</p>
       <p>{description}</p>
