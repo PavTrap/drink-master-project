@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import css from './WelcomePage.module.css';
 import Modal from '../../components/Modal/Modal';
+import ModalLogout from '../../components/Modal/ModalLogout';
 
 export default function WelcomePage() {
   const [modalActive, setModalActive] = useState(false);
+  const [modalActiveLogout, setModalActiveLogout] = useState(false);
   const {
     section,
     mainContainer,
@@ -16,10 +18,13 @@ export default function WelcomePage() {
   } = css;
   return (
     <div className={section}>
-      <div className={css.buttonModal}>
-        <button onClick={() => setModalActive(true)}>open modal</button>
-        <Modal active={modalActive} setActive={setModalActive} />
-      </div>
+          <div className={css.buttonModal}>
+             <button onClick={() => setModalActive(true)}>open modal</button>
+             <Modal active={modalActive} setActive={setModalActive} />
+             <button onClick={() => setModalActiveLogout(true)}>log out</button>
+             <ModalLogout active={modalActiveLogout} setActive={setModalActiveLogout} />
+         </div>
+
       <div className={mainContainer}>
         <h1 className={mainContainer__title}> Welcome to the app! </h1>
         <p className={mainContainer__text}>
