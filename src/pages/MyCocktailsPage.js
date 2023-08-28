@@ -1,7 +1,6 @@
 import { MainTitle } from '../components/MainTitle/MainTitle';
-
-export default function DrinksPage() {
-   return <div style={littleStyles}><MainTitle title="THIS IS DRINKS PAGE"/></div>;
+export default function MyCocktailsPage() {
+    return <div style={littleStyles}><MainTitle title="THIS IS RECIPE PAGE"/></div>;
   }
   
   const littleStyles = {

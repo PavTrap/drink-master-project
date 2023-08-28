@@ -17,17 +17,34 @@ export default function MyRecipesPage() {
     dispatch(fetchMyRecipes(page));
   }, [dispatch, page]);
   return (
-    <>
-      <MainTitle title="My recipes" />
-      {recipes.length !== 0 && (
-        <>
-          <RecipesList recipes={recipes.data} state={{ from: location }} />
-          <Paginator
-            pages={recipes.count}
-            onChangePage={changePage}
-          />
-        </>
-      )}
-    </>
-  );
+      <div style={littleStyles}>
+        <MainTitle title="My recipes" />
+        {recipes.length !== 0 && (
+          <>
+            <RecipesList recipes={recipes.data} state={{ from: location }} />
+            <Paginator
+              pages={recipes.count}
+              onChangePage={changePage}
+            />
+          </>
+        )}
+      </div>
+    );
 }
+
+const littleStyles = {
+  height: '70vh',
+  fontSize: '40px',
+  // border: '1px solid blue',
+  width: '100%',
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'no-wrap',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
+
+
+
+
