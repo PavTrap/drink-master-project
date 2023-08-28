@@ -4,16 +4,16 @@ import { Outlet, Link } from 'react-router-dom';
 import isAuth from '../Routes/isAuth';
 
 import { Spinner } from 'components/Spinner/Spinner'; //components
-import NavBar from './NavBar/NavBar'; //components
-import NavBarFooter from './NavBar/NavBarFooter'; //components
-import Footer from 'components/SharedLayout/Footer/Footer'; // Component
-import Header from 'components/SharedLayout/Header/Header'; // Component
-import Socials from './Socials'; //components
 import MainContainer from './MainContainer'; //components
-import UserBar from './UserBar/UserBar'; //components
+import Header from 'components/SharedLayout/Header/Header'; // Component
 import Logo from './Logo'; //components
+import NavBar from './NavBar/NavBar'; //components
+import UserBar from './UserBar/UserBar'; //components
+import Footer from 'components/SharedLayout/Footer/Footer'; // Component
+import NavBarFooter from './NavBar/NavBarFooter'; //components
+import Socials from './Socials'; //components
 import Modal from '../Modal/Modal'; //component
-import ModalCard from 'components/Modal/ModalCard';
+import ModalCard from 'components/Modal/ModalCard';//component
 
 export const SharedLayout = () => {
   const [modalActive, setModalActive] = useState(false);

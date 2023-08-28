@@ -83,7 +83,6 @@ export const App = () => {
         <Route path="signin" element={<OnlyGuest component={<LoginPage />} />} />
         <Route path="signup" element={<OnlyGuest component={<RegisterPage />} />} />
       </Route>
-
       <Route path="*" element={<NotFoundPage />} />
       <Route path="spinner" element={<Spinner />} />
     </Routes>

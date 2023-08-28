@@ -10,8 +10,7 @@
   box-sizing: border-box;
   background-color: #0a0a11;
   color: #f3f3f3;
-  overflow: hidden
-
+  overflow: hidden;
 }
 
 .gradient {
@@ -22,7 +21,7 @@
   height: 381px;
   flex-shrink: 0;
   border-radius: 387px;
-  background: rgba(188, 230, 210, 0.40);
+  background: rgba(188, 230, 210, 0.4);
   filter: blur(104.8543701171875px);
   animation: 3s pulse ease-out alternate running infinite;
   animation-delay: 0;
@@ -102,25 +101,37 @@
   }
 }
 
-
 @keyframes pulse {
   0% {
-      transform: scale(1);
-
+    transform: scale(1);
   }
   100% {
-      transform: scale(1.1);
-
+    transform: scale(1.1);
   }
 }
 
 @keyframes firework {
   0% {
-      transform: scale(1);
-
+    transform: scale(1);
   }
   100% {
-      transform: scale(1.5);
-
+    transform: scale(1.5);
   }
+}
+
+.icons {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: block;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  padding: 8px;
+ 
+}
+.icons > svg {
+  transition: all 200ms ease-out;;
+}
+
+.icons:hover > svg {
+  scale: 1.2;
 }
