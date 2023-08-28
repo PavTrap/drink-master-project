@@ -1,18 +1,10 @@
 import React from 'react';
 
-const RecipeIngredientsList = ({ ingredientThumb, title, measure}) => {
+const RecipeIngredientsList = ({ children }) => {
   return (
     <div>
         <p>Ingredients</p>
-        <ul>
-            <li>
-                <img src={ingredientThumb} alt="ingredient" />
-                <div>
-                    <p>{title}</p>
-                    <p>{measure}</p>
-                </div>
-            </li>
-        </ul>
+        <ul>{children}</ul>
     </div>
   )
 };

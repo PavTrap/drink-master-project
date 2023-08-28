@@ -3,7 +3,8 @@ import RecipePageTitle from 'components/RecipePageTitle/RecipePageTitle';
 import AddToFavorite from 'components/AddToFavorite/AddToFavorite';
 import RemoveFromFavorite from 'components/RemoveFromFavorite/RemoveFromFavorite';
 
-const RecipePageHero = ({ glass, drinkThumb, drink }) => {
+const RecipePageHero = ({ data }) => {
+const { glass, drinkThumb, drink } = data;
   return (
     <div>
         <div>
@@ -14,7 +15,7 @@ const RecipePageHero = ({ glass, drinkThumb, drink }) => {
             <AddToFavorite></AddToFavorite>
             <RemoveFromFavorite></RemoveFromFavorite>
         </div>
-        <img src={drinkThumb} alt={drink} />
+        <img src={drinkThumb} alt={drink} width='250px' />
     </div>
   )
 };
