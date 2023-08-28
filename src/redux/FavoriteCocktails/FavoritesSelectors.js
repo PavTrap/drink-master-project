@@ -1,0 +1,1 @@
+export const getFavoriteRecipes =  state => state.favorites.entities;
