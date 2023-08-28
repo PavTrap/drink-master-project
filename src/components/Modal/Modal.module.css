@@ -11,6 +11,8 @@
 	opacity: 0;
 	transition: 0.5s;
 	pointer-events: none;
+	z-index: 20;
+
 }
 .modalActive{
 	height: 100vh;
@@ -24,6 +26,7 @@
 	justify-content: center;
 	opacity: 1;
 	transition: 0.5s;
+	z-index: 100000000;
 
 }
 .modal__content{
@@ -55,6 +58,7 @@
 	position: absolute;
 	right: 18px;
 	top: 18px;
+	cursor:pointer;
 }
 .modal__content__colorEffect1{
 	background-color: rgba(188, 230, 210, 0.3);

@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import css from './DrinksSearch.module.css';
-import { MainTitle } from 'components/MainTitle/MainTitle';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchGlasses } from 'redux/Drinks/DrinksOperation';
 
@@ -45,7 +44,6 @@ export const DrinksSearch = () => {
   return (
     <>
       <div className={css.container}>
-        <MainTitle title="Drinks" />
         <form
           className={css.drinkRequestForm}
         >

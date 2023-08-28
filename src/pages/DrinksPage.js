@@ -1,16 +1,24 @@
-import { MainTitle } from 'components/MainTitle/MainTitle';
 import { DrinksSearch } from 'components/DrinksSearch/DrinksSearch';
-import { Header } from 'components/Header/Header';
+import { MainTitle } from '../components/MainTitle/MainTitle';
+
 export default function DrinksPage() {
   return (
-    <>
-      {/* <MainTitle /> */}
-      {/* <section>
-        
-      </section> */}
-  
+    <div style={littleStyles}>
+      <MainTitle title="Drinks" />
       <DrinksSearch />
-    
-    </>
+    </div>
   );
 }
+
+const littleStyles = {
+  height: '70vh',
+  fontSize: '40px',
+  // border: '1px solid blue',
+  width: '100%',
+  textAlign: 'center',
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'no-wrap',
+  alignItems: 'center',
+  justifyContent: 'center',
+};
