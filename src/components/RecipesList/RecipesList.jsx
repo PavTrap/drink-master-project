@@ -1,9 +1,9 @@
 import { RecipesItem } from 'components/RecipesItem/RecipesItem';
-// import  from './RecipesList.module.css'
+import css from './RecipesList.module.css'
 
 export const RecipesList = ({ recipes, state }) => {
   return (
-    <ul>
+    <ul className={css.recipeList}>
       {recipes.map(({ _id, drinkThumb, drink, instructions, ingredients }) => {
         const recipeIngredients = ingredients
           .map(ingredient => ingredient.title)

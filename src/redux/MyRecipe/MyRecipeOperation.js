@@ -2,13 +2,13 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
-axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTc0MTBjNGJhYmJiM2JlM2JjZDRiOSIsImlhdCI6MTY5MzA1MDU5OCwiZXhwIjoxNzI0NTg2NTk4fQ.EruneUfQbTsZkYOgBC4h3vLtqzylMjwDzVmkBiyAZG4`;
+axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZWJlYjcwNzZlZWQ0NDBkZTBhNzY5ZSIsImlhdCI6MTY5MzE4MjkwNiwiZXhwIjoxNzI0NzE4OTA2fQ.aKHMUKz4HfM81w-3X4iIJbmaKXpJXR69mEId8E2zVs8`;
 
 export const fetchMyRecipes = createAsyncThunk(
   'myRecipes/fetch',
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-      const response = await axios.get('api/recipes');
+      const response = await axios.get(`api/recipes?page=${page}`);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
