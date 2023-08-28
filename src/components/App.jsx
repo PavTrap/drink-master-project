@@ -7,7 +7,7 @@ import { RestrictedRoute } from './Routes/RestrictedRoute';
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
-const AddRecipePage = lazy(() => import('../pages/AddRecipePage'));
+const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
