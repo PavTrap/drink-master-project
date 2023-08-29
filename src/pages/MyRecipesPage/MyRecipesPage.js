@@ -11,6 +11,7 @@ import { changePage } from 'redux/MyRecipe/MyRecipeSlice';
 export default function MyRecipesPage() {
   const dispatch = useDispatch();
   const recipes = useSelector(getMyRecipes);
+  console.log(recipes);
   const page = useSelector(getPage);
   const location = useLocation();
   useEffect(() => {
