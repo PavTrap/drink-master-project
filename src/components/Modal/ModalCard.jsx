@@ -2,13 +2,36 @@ import css from './Modal.module.css';
 
 import { MdAdd } from 'react-icons/md';
 import isAuth from '../../hooks/useAuth';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 const ModalCard = ({ active, onClickClose }) => {
   const { userData } = isAuth();
   const { name, avatarURL } = userData;
-  const { userPhoto, setUserPhoto } = useState(avatarURL);
-  const { userName, setUserName } = useState(null);
+
+  const [userPhoto, setUserPhoto] = useState(avatarURL);
+  const [userName, setUserName] = useState(null);
+
+  // useEffect(() => {
+  //   setUserPhoto(avatarURL);
+  // }, [avatarURL]);
+
+  const hiddenFileInput = useRef(null);
+
+  const handleClick = event => {
+    hiddenFileInput.current.click();
+  };
+
+  const handleChange = event => {
+    const fileUploaded = event.target.files[0];
+    console.log(fileUploaded);
+    // handleFile(fileUploaded);
+  };
+
+const handleSubmit = event =>{
+  // const formData = new FormData()
+}
+
+
 
 
   return (
@@ -17,12 +40,13 @@ const ModalCard = ({ active, onClickClose }) => {
       <div className={css.modal__content__colorEffect2}></div>
       <div className={css.loginContainer}>
         <div className={css.avatar}>
-        <div style={UserIconContainer}>
-        <img style={Avatar} src={avatarURL} alt="User Avatar" />
-      </div>
-          <button className={css.addAvatar}>
+          <div style={UserIconContainer}>
+            <img style={Avatar} src={userPhoto} alt="User Avatar" />
+          </div>
+          <button className={css.addAvatar} onClick={handleClick}>
             <MdAdd className={css.addAvatarIcon} />
           </button>
+          <input type="file" onChange={handleChange} ref={hiddenFileInput} style={{ display: 'none' }} name='avatarURL'/>
         </div>
         <input
           type="text"
@@ -35,14 +59,13 @@ const ModalCard = ({ active, onClickClose }) => {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <button className={css.loginBtn}>Save changes</button>
+        <button className={css.loginBtn} onClick={handleSubmit}>Save changes</button>
       </div>
     </div>
   );
 };
 
 export default ModalCard;
-
 
 const Avatar = {
   display: 'block',

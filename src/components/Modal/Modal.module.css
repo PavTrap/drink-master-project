@@ -114,7 +114,7 @@
 	color: white;
 	display: flex;
 	align-items: center;
-	cursor:pointer;
+	cursor: pointer;
 	justify-content: center;
 	font-size: 30px;
 	padding: 0;
@@ -143,4 +143,5 @@
 	background-color: rgba(243, 243, 243, 1);
 	border-radius: 200px;
 	color: black;
+	cursor: pointer
 }
