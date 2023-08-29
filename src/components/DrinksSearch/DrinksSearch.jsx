@@ -3,11 +3,9 @@ import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
 import { DrinkCard } from 'pages/MainPage/MainPage';
-// import Select from 'react-select';
 import debounce from 'lodash.debounce';
 
 export const DrinksSearch = () => {
-  // should add filter,
   const { categoryList, entities, ingredientList } = useSelector(state => state.drinks);
   const dispatch = useDispatch();
 
@@ -18,8 +16,7 @@ export const DrinksSearch = () => {
   }, [dispatch]);
 
   const debouncedHandleChange = debounce(payload => {
-    console.log('payload (ТОЕСТЬ ЧТО Я ОТПРАВЛЯЮ В FETCH уже в DEBOUNCE)', payload)
-    dispatch(fetchDrinks({word: payload}));
+    dispatch(fetchDrinks({ word: payload }));
   }, 1000);
 
   const handleChange = event => {
@@ -31,7 +28,7 @@ export const DrinksSearch = () => {
     const item = event.currentTarget;
 
     dispatch(fetchDrinks({ [item.name]: item.value }));
-  }; 
+  };
 
   const SelectList = ({ data }) => {
     const arr = [];
@@ -40,10 +37,6 @@ export const DrinksSearch = () => {
     });
     return arr;
   };
-
-
-
- 
 
   // styles for select-react
   // const colourStyles = {
@@ -99,4 +92,3 @@ export const DrinksSearch = () => {
     </>
   );
 };
-// add some logic with requests of categories
