@@ -16,7 +16,7 @@
   text-align: center;
   text-transform: uppercase;
   text-decoration: underline;
-  text-underline-offset: 4px
+  text-underline-offset: 4px;
 }
 
 .headding {
@@ -29,4 +29,9 @@
 }
 .text {
   margin-bottom: 8px;
+}
+
+.contentComponent {
+  overflow: hidden;
+  box-sizing: content-box;
 }
