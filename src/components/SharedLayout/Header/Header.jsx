@@ -19,5 +19,5 @@ const styles = {
   padding:"22.5px 100px",
   zIndex: "10",
   boxSizing: 'border-box',
-
+  position: 'relative',
 };

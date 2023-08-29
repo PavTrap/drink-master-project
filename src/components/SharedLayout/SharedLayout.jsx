@@ -12,20 +12,24 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import Modal from '../Modal/Modal'; //component
-import ModalCard from 'components/Modal/ModalCard';//component
+// import Modal from '../Modal/Modal'; //component
+// import ModalCard from 'components/Modal/ModalCard';//component
+import ModalAuth from 'components/Modal/ModalAuth';//component
 
 export const SharedLayout = () => {
-  const [modalActive, setModalActive] = useState(false);
+  // const [modalActive, setModalActive] = useState(false);
+  const [modalAuthActive, setModalauthActive] = useState(false);
 
   return isAuth ? (
     <>
       <MainContainer>
-        {modalActive && (<Modal active={modalActive} setActive={setModalActive}><ModalCard /></Modal>)}
+        {/* {modalActive && (<Modal active={modalActive} setActive={setModalActive}><ModalCard /></Modal>)} */}
+        {modalAuthActive && (<ModalAuth active={modalAuthActive} setActive={setModalauthActive} />)}
         <Header>
           <Logo />
           <NavBar />
-          <UserBar toggleModal={setModalActive} />
+          {/* <UserBar toggleModal={setModalActive} /> */}
+          <UserBar toggleModal={setModalauthActive} />
         </Header>
         <main style={{ zIndex: '10' }}>
           <Suspense fallback={<Spinner />}>
