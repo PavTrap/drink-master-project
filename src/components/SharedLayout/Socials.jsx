@@ -1,6 +1,5 @@
-import css from "./SharedLayout.module.css"
+import css from './SharedLayout.module.css';
 const { Link } = require('react-router-dom');
-
 
 const Socials = () => {
   return (
@@ -43,5 +42,3 @@ const Socials = () => {
   );
 };
 export default Socials;
-
-

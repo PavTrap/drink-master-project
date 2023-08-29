@@ -118,3 +118,7 @@
     margin-bottom: 40px;
   }
 }
+
+.error {
+  color: #f3f3f3;
+}

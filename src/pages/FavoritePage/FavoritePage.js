@@ -5,7 +5,7 @@ import { MainTitle } from 'components/MainTitle/MainTitle';
 import { RecipesList } from 'components/RecipesList/RecipesList';
 import { Paginator } from 'components/Paginator/Paginator';
 import { getFavoriteRecipes } from 'redux/FavoriteCocktails/FavoritesSelectors';
-import { fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
+import { deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 
 export default function FavoritePage() {
   const favorites = useSelector(getFavoriteRecipes);
@@ -19,8 +19,8 @@ export default function FavoritePage() {
       <MainTitle title="Favorites" />
       {favorites.length !== 0 && (
         <>
-          <RecipesList recipes={favorites.data} state={{ from: location }} />
-          <Paginator pages={favorites.count}/>
+          <RecipesList recipes={favorites.data} state={{ from: location }} onDelete={deleteFavorites}/>
+          <Paginator pages={favorites.count} />
         </>
       )}
     </>
