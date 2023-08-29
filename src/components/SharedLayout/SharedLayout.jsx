@@ -12,19 +12,33 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import Modal from '../Modal/Modal'; //component
-import ModalCard from 'components/Modal/ModalCard';//component
-import ModalTermsCard from 'components/Modal/ModalTermsCard'
-import ModalPolicyCard from 'components/Modal/ModalPolicyCard'
+
+// import Modal from '../Modal/Modal'; //component
+// import ModalCard from 'components/Modal/ModalCard';//component
+import ModalAuth from 'components/Modal/ModalAuth';//component
 
 export const SharedLayout = () => {
-  const [modalActive, setModalActive] = useState(false);
-  const [policyModal, setPolicyModal] = useState(false);
-  const [termsModal, setTermsModal] = useState(false);
+  // const [modalActive, setModalActive] = useState(false);
+  const [modalAuthActive, setModalauthActive] = useState(false);
+
+// import Modal from '../Modal/Modal'; //component
+// import ModalCard from 'components/Modal/ModalCard';//component
+// import ModalTermsCard from 'components/Modal/ModalTermsCard'
+// import ModalPolicyCard from 'components/Modal/ModalPolicyCard'
+
+// export const SharedLayout = () => {
+//   const [modalActive, setModalActive] = useState(false);
+//   const [policyModal, setPolicyModal] = useState(false);
+//   const [termsModal, setTermsModal] = useState(false);
+
 
   return isAuth ? (
     <>
       <MainContainer>
+
+        {/* {modalActive && (<Modal active={modalActive} setActive={setModalActive}><ModalCard /></Modal>)} */}
+        {modalAuthActive && (<ModalAuth active={modalAuthActive} setActive={setModalauthActive} />)}
+
         {modalActive && (
           <Modal active={modalActive} setActive={setModalActive}>
             <ModalCard />
@@ -41,10 +55,12 @@ export const SharedLayout = () => {
           </Modal>
         )}
 
+
         <Header>
           <Logo />
           <NavBar />
-          <UserBar toggleModal={setModalActive} />
+          {/* <UserBar toggleModal={setModalActive} /> */}
+          <UserBar toggleModal={setModalauthActive} />
         </Header>
         <main style={{ zIndex: '10' }}>
           <Suspense fallback={<Spinner />}>

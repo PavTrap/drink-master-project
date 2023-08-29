@@ -45,4 +45,4 @@ const ModalCard = ({ active, onClickClose }) => {
   );
 };
 
-export default ModalCard
+export default ModalCard;
