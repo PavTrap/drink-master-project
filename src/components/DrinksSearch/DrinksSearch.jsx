@@ -3,6 +3,7 @@ import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
 import { DrinkCard } from 'pages/MainPage/MainPage';
+// import Select from "react-select"
 import debounce from 'lodash.debounce';
 
 export const DrinksSearch = () => {
@@ -39,11 +40,12 @@ export const DrinksSearch = () => {
   };
 
   // styles for select-react
-  // const colourStyles = {
+  // const styles = {
   //   // control: () => ({ ...css.selsctDrinks}),
 
   //   control: styles => ({
   //     // ...css.selsctDrinks,
+  //     display: "flex",
   //     backgroundColor: '#161f37',
   //     width: '199px',
   //     borderRadius: '200px',
@@ -52,23 +54,40 @@ export const DrinksSearch = () => {
   //     paddingLeft: '24px',
   //     paddingRight: '24px',
   //   }),
-  //   // option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+  //   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
 
-  //   //   return {
-  //   //     ...styles,
-  //   //     backgroundColor: isDisabled ? 'red' : blue,
-  //   //     color: '#FFF',
-  //   //     cursor: isDisabled ? 'not-allowed' : 'default',
-  //   //     ...
-  //   //   };
-  //   // },
+  //     return {
+  //       backgroundColor: isDisabled ? 'red' : "#161f37",
+  //       color: '#FFF',
+        
+
+  //       cursor: isDisabled ? 'not-allowed' : 'default',
+  //       // borderRadius: "20px"
+  //     };
+  //   },
+  //   options: (styles) => {
+  //     return {
+  //       ...styles,
+  //       borderRadius: "20px",
+  //       display: 'flex'
+  //     }
+  //   }
   // };
+
+  // const selectListWithSelectReact = (data) => {
+  //   const arr = [];
+  //   data.forEach(elem => {
+  //     arr.push({ value: 'chocolate', label: 'Chocolate' },);
+  //   });
+  //   return arr;
+  // }
   // const options = selectListWithSelectReact(categoryList);
 
   return (
     <>
       <form className={css.drinkRequestForm}>
-        <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" />
+        <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" /> 
+
         <select name="category" onChange={handleChangeSelect} className={css.selsctDrinks}>
           <option value="categoryMain">All categories</option>
 
@@ -79,7 +98,8 @@ export const DrinksSearch = () => {
           <option value="">Ingredients</option>
           <SelectList data={ingredientList} />
         </select>
-        {/* <Select options={options} styles={colourStyles} /> */}
+
+        {/* <Select options={options} styles={styles} /> */}
       </form>
       {entities.data && (
         <ul className={css.mainPageList}>
@@ -88,7 +108,7 @@ export const DrinksSearch = () => {
           ))}
         </ul>
       )}
-      {entities.data.length === 0 && <h3>No result</h3>}
+      {entities?.data?.length === 0 && <h3>No result</h3>}
     </>
   );
 };
