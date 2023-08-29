@@ -15,7 +15,7 @@ const fetchDrinksInstance = axios.create({
 export const fetchDrinks = async () => {
 	try {
 		const { data } = await fetchDrinksInstance('/api/recipes/main-page');
-		console.log(data);
+		// console.log(data);
 		return data;
 	} catch (e) {
 		console.log(e);
@@ -88,7 +88,7 @@ const MainPage = () => {
 		// const categoriesDrinks = Object.keys(getedDrinks);
 		// console.log(categoriesDrinks);
 
-		console.log(getedDrinks);
+		// console.log(getedDrinks);
 		return getedDrinks;
 	};
 

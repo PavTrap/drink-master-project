@@ -4,9 +4,12 @@ import { login } from '../../redux/Auth/authOperation';
 import { useFormik } from 'formik';
 import css from './LoginForm.module.css';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
+import { useNavigate } from 'react-router-dom';
+
 
 const LoginForm = () => {
   const dispatch = useDispatch();
+  const navigate=useNavigate()
   const { loginForm, loginTitle, inputWrapper, loginInput, loginButton, wrapper } = css;
 
   const formik = useFormik({
@@ -21,6 +24,7 @@ const LoginForm = () => {
       };
 
       dispatch(login(user));
+      navigate("/")
       resetForm();
     },
   });
@@ -47,6 +51,7 @@ const LoginForm = () => {
             name="password"
             type="password"
             placeholder="Password"
+            autoComplete="off"
             onChange={formik.handleChange}
             value={formik.values.password}
           />
