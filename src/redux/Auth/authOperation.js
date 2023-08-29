@@ -2,6 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 
+
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
 
 const { token } = JSON.parse(localStorage.getItem('persist:auth'));
@@ -10,15 +11,7 @@ const config = {
   headers: { Authorization: `Bearer ${normatizedToken}` },
 };
 
-// Register
-export const register = createAsyncThunk('/users/register', async (user, { rejectWithValue }) => {
-  try {
-    const response = await axios.post('/users/register', user);
-    return response.data;
-  } catch (e) {
-    return rejectWithValue(e.message);
-  }
-});
+
 // Register
 export const register = createAsyncThunk('/users/register', async (user, { rejectWithValue }) => {
   try {
@@ -48,7 +41,7 @@ export const refreshUser = createAsyncThunk('/users/current', async (user, { rej
     return rejectWithValue(e.message);
   }
 });
-});
+
 
 //  logOut
 export const logOut = createAsyncThunk('/users/logout', async (user, { rejectWithValue }) => {
