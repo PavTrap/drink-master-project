@@ -15,11 +15,12 @@
   padding: 0 100px
 }
 body::-webkit-scrollbar{
-  display: none
+  display: none;
 
   @media screen and (min-width: 768px){
     padding: 0 32px;
   }
+
   @media screen and (min-width: 1440px){
     padding: 0 100px;
   }
