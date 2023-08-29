@@ -16,6 +16,8 @@ const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'))
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
 const LoginPage = lazy(() => import('../pages/LogInPage/LoginPage'));
+const FavoritePage = lazy(()=>import('../pages/FavoritePage/FavoritePage'));
+
 export const App = () => {
   return (
     <Routes>
@@ -32,6 +34,7 @@ export const App = () => {
         <Route path="recipe" element={<Private component={<RecipePage />} />} />
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />
+        <Route path='favorite' element={<Private component={<FavoritePage />}/>}/>
       </Route>
       <Route path="*" element={<NotFoundPage />} />
       <Route path="spinner" element={<Spinner />} />
