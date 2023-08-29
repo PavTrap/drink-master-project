@@ -1,5 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { fetchCategories, fetchDrinks, fetchGlasses } from './DrinksOperation';
+import { fetchCategories, fetchDrinks, fetchIngredients } from './DrinksOperation';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -17,7 +17,7 @@ const drinksSlice = createSlice({
     isLoading: false,
     error: null,
     categoryList: [],
-    glasses: [],
+    ingredientList: [],
     filter: '',
   },
   reducers: {
@@ -35,15 +35,15 @@ const drinksSlice = createSlice({
         state.categoryList = categoryList;
         state.isLoading = false;
       })
-      .addCase(fetchGlasses.fulfilled, (state, { payload: glasses }) => {
-        state.glasses = glasses;
+      .addCase(fetchIngredients.fulfilled, (state, { payload: ingredientList }) => {
+        state.ingredientList = ingredientList;
         state.isLoading = false;
       })
       .addMatcher(
         isAnyOf(
           fetchDrinks.pending,
           fetchCategories.pending,
-          fetchGlasses.pending
+          fetchIngredients.pending
         ),
         handlePending
       )
@@ -51,7 +51,7 @@ const drinksSlice = createSlice({
         isAnyOf(
           fetchDrinks.rejected,
           fetchCategories.rejected,
-          fetchGlasses.rejected
+          fetchIngredients.rejected
         ),
         handleRejected
       );

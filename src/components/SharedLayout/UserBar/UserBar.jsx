@@ -1,6 +1,6 @@
 const UserBar = ({ name = 'Victoria', avatarUrl, toggleModal }) => {
   return (
-    <div style={littleStyles} onClick={() => toggleModal(true)}>
+    <div style={littleStyles} onClick={() => toggleModal(prev => !prev)}>
       <div style={UserIcon} />
       <span style={userName}>{name}</span>
     </div>
