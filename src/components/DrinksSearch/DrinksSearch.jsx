@@ -1,59 +1,81 @@
 import { useEffect } from 'react';
 import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchCategories, fetchDrinks, fetchGlasses } from 'redux/Drinks/DrinksOperation';
+import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
 import { DrinkCard } from 'pages/MainPage/MainPage';
+// import Select from 'react-select';
+import debounce from 'lodash.debounce';
 
 export const DrinksSearch = () => {
   // should add filter,
-  const { categoryList, entities, glasses } = useSelector(state => state.drinks);
+  const { categoryList, entities, ingredientList } = useSelector(state => state.drinks);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchDrinks({}));
     dispatch(fetchCategories());
-    dispatch(fetchGlasses());
+    dispatch(fetchIngredients());
   }, [dispatch]);
 
-  // const debouncedHandleChange = _.debounce((payload) => {
-  //   dispatch(changeFilter(payload));
-  // }, 2000);
+  const debouncedHandleChange = debounce(payload => {
+    console.log('payload (ТОЕСТЬ ЧТО Я ОТПРАВЛЯЮ В FETCH уже в DEBOUNCE)', payload)
+    dispatch(fetchDrinks({word: payload}));
+  }, 1000);
 
-  // const handleChange = (event) => {
-  //   const payload = event.currentTarget.value;
-  //   debouncedHandleChange(payload);
-  // };
+  const handleChange = event => {
+    const payload = event.currentTarget.value;
+    debouncedHandleChange(payload);
+  };
 
   const handleChangeSelect = event => {
     const item = event.currentTarget;
-    
-    dispatch(fetchDrinks({ [item.name]: item.value }));
-  };
 
-  // const handleChangeSelectIngredient = event => {
-  //   console.log('event.currentTarget.name', event.currentTarget.name);
-  //   const payload = event.currentTarget.value;
-  //   dispatch(fetchDrinks({ ingredient: payload }));
-  // };
+    dispatch(fetchDrinks({ [item.name]: item.value }));
+  }; 
 
   const SelectList = ({ data }) => {
     const arr = [];
     data.forEach(elem => {
-      arr.push(<option key={elem._id}>{elem.name}</option>);
+      arr.push(<option key={elem._id}>{elem.name || elem.title}</option>);
     });
-    // console.log("arr.join('')", arr.join(''));
     return arr;
   };
 
-  // при выборк конкретной категории
-  // const handleCategory = event => {
-  //   const payload =
-  // }
+
+
+ 
+
+  // styles for select-react
+  // const colourStyles = {
+  //   // control: () => ({ ...css.selsctDrinks}),
+
+  //   control: styles => ({
+  //     // ...css.selsctDrinks,
+  //     backgroundColor: '#161f37',
+  //     width: '199px',
+  //     borderRadius: '200px',
+  //     paddingTop: '14px',
+  //     paddingBottom: '15px',
+  //     paddingLeft: '24px',
+  //     paddingRight: '24px',
+  //   }),
+  //   // option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+
+  //   //   return {
+  //   //     ...styles,
+  //   //     backgroundColor: isDisabled ? 'red' : blue,
+  //   //     color: '#FFF',
+  //   //     cursor: isDisabled ? 'not-allowed' : 'default',
+  //   //     ...
+  //   //   };
+  //   // },
+  // };
+  // const options = selectListWithSelectReact(categoryList);
 
   return (
-    <div >
+    <>
       <form className={css.drinkRequestForm}>
-        <input className={css.inputDrinks} placeholder="Enter the text" />
+        <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" />
         <select name="category" onChange={handleChangeSelect} className={css.selsctDrinks}>
           <option value="categoryMain">All categories</option>
 
@@ -62,8 +84,9 @@ export const DrinksSearch = () => {
 
         <select name="ingredient" onChange={handleChangeSelect} className={css.selsctDrinks}>
           <option value="">Ingredients</option>
-          <SelectList data={glasses} />
+          <SelectList data={ingredientList} />
         </select>
+        {/* <Select options={options} styles={colourStyles} /> */}
       </form>
       {entities.data && (
         <ul className={css.mainPageList}>
@@ -72,10 +95,8 @@ export const DrinksSearch = () => {
           ))}
         </ul>
       )}
-      {
-        entities.data.length === 0 && <h3>No result</h3>
-      }
-    </div>
+      {entities.data.length === 0 && <h3>No result</h3>}
+    </>
   );
 };
 // add some logic with requests of categories

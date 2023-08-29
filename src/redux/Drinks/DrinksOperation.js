@@ -9,8 +9,9 @@ export const fetchDrinks = createAsyncThunk('drinks/fetchDrinks', async (data, t
     const { word = '', category = 'cocktail', ingredient = '', page = 1 } = data;
     // по айдишнику категории
     let addUrl = '';
-    console.log('category in FETCHDRINKS', category);
+    // console.log('category in FETCHDRINKS', category);
     console.log('data', data);
+    console.log('word', word)
 
     if (ingredient !== '') addUrl = `api/search?ingredient=${ingredient}&page=${page}&limit=9`;
     else if (word !== '') addUrl = `api/search?q=${word}&page=${page}&limit=9`;
@@ -32,9 +33,9 @@ export const fetchCategories = createAsyncThunk('drinks/fetchCategories', async 
   }
 });
 
-export const fetchGlasses = createAsyncThunk('drinks/fetchGlasses', async (_, thunkAPI) => {
+export const fetchIngredients = createAsyncThunk('drinks/fetchGlasses', async (_, thunkAPI) => {
   try {
-    const response = await axios.get('api/glasses');
+    const response = await axios.get('api/ingredients/list');
     return response.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
