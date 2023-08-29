@@ -37,9 +37,7 @@ export const login = createAsyncThunk('/users/login', async (user, { rejectWithV
 export const refreshUser = createAsyncThunk('/users/current', async (user, { rejectWithValue }) => {
 
   try {
-
-    const response = await axios.get('/users/current',config);
-
+    const response = await axios.get('/users/current', config);
     return response.data;
   } catch (e) {
     return rejectWithValue(e.message);
@@ -50,7 +48,7 @@ export const refreshUser = createAsyncThunk('/users/current', async (user, { rej
 export const logOut = createAsyncThunk('/users/logout', async (user, { rejectWithValue }) => {
 
   try {
-    await axios.post('/users/logout', user, config);
+    await axios.post('/users/logout', config);
 
   } catch (e) {
     return rejectWithValue(e.message);

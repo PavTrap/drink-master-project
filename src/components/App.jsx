@@ -26,7 +26,7 @@ export const App = () => {
 
   useEffect(() => {
   dispatch(refreshUser());
-  },[dispatch],);
+  },[dispatch]);
 
 
 

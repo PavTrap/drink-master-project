@@ -8,7 +8,7 @@ const ModalCard = ({ active, onClickClose }) => {
   const { userData } = isAuth();
   const { name, avatarURL } = userData;
 
-  const [userPhoto, setUserPhoto] = useState(avatarURL);
+  // const [userPhoto, setUserPhoto] = useState(avatarURL);
   const [userName, setUserName] = useState(null);
 
   // useEffect(() => {
@@ -41,7 +41,7 @@ const handleSubmit = event =>{
       <div className={css.loginContainer}>
         <div className={css.avatar}>
           <div style={UserIconContainer}>
-            <img style={Avatar} src={userPhoto} alt="User Avatar" />
+            <img style={Avatar} src={avatarURL} alt="User Avatar" />
           </div>
           <button className={css.addAvatar} onClick={handleClick}>
             <MdAdd className={css.addAvatarIcon} />
