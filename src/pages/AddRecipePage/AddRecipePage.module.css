@@ -1,4 +1,9 @@
-.AddRecipePage_section {
+.addRecipeForm_section {
+  margin-top: 140px;
+  margin-bottom: 140px;
+}
+
+.AddRecipePage {
   display: flex;
   justify-items: center;
 }
