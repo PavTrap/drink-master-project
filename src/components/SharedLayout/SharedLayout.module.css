@@ -12,7 +12,9 @@
   color: #f3f3f3;
   overflow: hidden;
 }
-
+body::-webkit-scrollbar{
+  display:none
+}
 .gradient {
   position: absolute;
   top: 5.5em;
