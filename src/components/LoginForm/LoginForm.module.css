@@ -39,6 +39,7 @@
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.800000011920929;
   background-color: transparent;
+  box-sizing: border-box;
   padding: 18px 24px;
   padding-right: 50px;
   color: #f3f3f3;
@@ -116,4 +117,8 @@
   @media (min-width: 768px) {
     margin-bottom: 40px;
   }
+}
+
+.error {
+  color: #f3f3f3;
 }

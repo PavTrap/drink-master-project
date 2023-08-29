@@ -1,7 +1,7 @@
 import { RecipesItem } from 'components/RecipesItem/RecipesItem';
 import css from './RecipesList.module.css'
 
-export const RecipesList = ({ recipes, state }) => {
+export const RecipesList = ({ recipes, state, onDelete }) => {
   return (
     <ul className={css.recipeList}>
       {recipes.map(({ _id, drinkThumb, drink, instructions, ingredients }) => {
@@ -17,6 +17,7 @@ export const RecipesList = ({ recipes, state }) => {
             description={instructions}
             ingredients={recipeIngredients}
             id={_id}
+            onDelete={onDelete}
           />
         );
       })}

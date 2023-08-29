@@ -1,5 +1,22 @@
 .recipeList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: minmax(min(200px, 100%), 335px);
+  row-gap: 40px;
+  padding: 0;
+  margin: 40px auto;
+  list-style: none;
+
+  @media screen and (min-width: 375px) {
+    grid-template-columns: 335px;
+  }
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 342px);
+    column-gap: 20px;
+    row-gap: 80px;
+  }
+  @media screen and (min-width: 1440px) {
+    grid-template-columns: repeat(3, 400px);
+    column-gap: 20px;
+    row-gap: 40px;
+  }
 }
