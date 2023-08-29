@@ -1,7 +1,7 @@
 import { Suspense, useState } from 'react';
 import { Outlet, Link } from 'react-router-dom';
 
-import isAuth from '../Routes/isAuth';
+// import isAuth from '../Routes/isAuth';
 
 import { Spinner } from 'components/Spinner/Spinner'; //components
 import MainContainer from './MainContainer'; //components
@@ -12,12 +12,14 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-
+import useAuth from 'hooks/useAuth';
 // import Modal from '../Modal/Modal'; //component
 // import ModalCard from 'components/Modal/ModalCard';//component
 import ModalAuth from 'components/Modal/ModalAuth';//component
 import Modal from '../Modal/Modal'; //component
 import ModalCard from 'components/Modal/ModalCard';//component
+
+
 import ModalTermsCard from 'components/Modal/ModalTermsCard';
 import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
@@ -28,9 +30,9 @@ export const SharedLayout = () => {
   const [policyModal, setPolicyModal] = useState(false);
   const [termsModal, setTermsModal] = useState(false);
 
+  const { isLoggedIn} = useAuth();
 
-
-  return isAuth ? (
+  return isLoggedIn ? (
     <>
       <MainContainer>
 

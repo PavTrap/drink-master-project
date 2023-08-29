@@ -1,12 +1,19 @@
-const UserBar = ({ name = 'Victoria', avatarUrl, toggleModal }) => {
+import useAuth from 'hooks/useAuth';
+
+const UserBar = ({ toggleModal }) => {
+  const { userData } = useAuth();
+  const { avatarURL, name } = userData;
   return (
-    <div style={littleStyles} onClick={() => toggleModal(prev => !prev)}>
-      <div style={UserIcon} />
+    <div style={littleStyles} onClick={() => toggleModal(true)}>
+      <div style={UserIconContainer}>
+        <img style={Avatar} src={avatarURL} alt="User Avatar" />
+      </div>
       <span style={userName}>{name}</span>
     </div>
   );
 };
 export default UserBar;
+// style={UserIcon}
 
 const littleStyles = {
   height: '100%',
@@ -21,13 +28,17 @@ const littleStyles = {
   textDecoration: 'none',
   gap: '14px',
 };
-
-const UserIcon = {
+const Avatar = {
   display: 'block',
+  height: '100%',
+  width: '100%',
+};
+
+const UserIconContainer = {
   width: '44px',
   height: '44px',
+  overflow: 'hidden',
   borderRadius: '50%',
-  backgroundColor: 'white',
 };
 
 const userName = {
