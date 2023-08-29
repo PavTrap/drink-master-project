@@ -1,20 +1,11 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import { useSelector } from 'react-redux';
 
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
 
-
-const { token } = JSON.parse(localStorage.getItem('persist:auth'))
-const normatizedToken = JSON.parse(token)
-const config = {
-  headers: { Authorization: `Bearer ${normatizedToken}` }
-};
-
-
-
 // Register
 export const register = createAsyncThunk('/users/register', async (user, { rejectWithValue }) => {
-
   try {
     const response = await axios.post('/users/register', user);
     return response.data;
@@ -35,6 +26,11 @@ export const login = createAsyncThunk('/users/login', async (user, { rejectWithV
 
 //  refresh
 export const refreshUser = createAsyncThunk('/users/current', async (user, { rejectWithValue }) => {
+  const token = useSelector(state => state.auth.token);
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
 
   try {
     const response = await axios.get('/users/current', config);
@@ -46,10 +42,15 @@ export const refreshUser = createAsyncThunk('/users/current', async (user, { rej
 
 //  logOut
 export const logOut = createAsyncThunk('/users/logout', async (user, { rejectWithValue }) => {
+  const token = useSelector(state => state.auth.token);
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  console.log(config)
 
   try {
-    await axios.post('/users/logout', config);
-
+    // await axios.post('/users/logout', config);
   } catch (e) {
     return rejectWithValue(e.message);
   }

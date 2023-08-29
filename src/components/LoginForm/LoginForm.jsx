@@ -51,7 +51,7 @@ const LoginForm = () => {
             name="password"
             type="password"
             placeholder="Password"
-            autocomlite="off"
+            autoComplete="off"
             onChange={formik.handleChange}
             value={formik.values.password}
           />

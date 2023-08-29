@@ -41,9 +41,9 @@ const authSlice = createSlice({
 
       // LogOut
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null, avatarURL: null };
-        state.token = null;
-        state.isLoggedIn = false;
+        // state.user = { name: null, email: null, avatarURL: null };
+        // state.token = null;
+        // state.isLoggedIn = false;
       })
       .addMatcher(({ type }) => type.endsWith('/pending'), handlePending)
       .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected);
