@@ -1,11 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logOut } from './authOperation';
+import { register, login, logOut, refreshUser } from './authOperation';
+import INITIAL_STATE from './InitialState';
 
-const INITIAL_STATE = {
-  user: { name: null, email: null, password: null, avatarUrl: null },
-  token: null,
-  isLogin: true,
-  isRefreshing: false,
+const handlePending = state => {
+  state.isRefreshing = true;
+  state.error = null;
+};
+
+const handleRejected = (state, { error, payload }) => {
+  state.isRefreshing = false;
+  state.error = payload ?? error.message;
 };
 
 const authSlice = createSlice({
@@ -14,25 +18,35 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       // REGISTER
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLogin = true;
+      .addCase(register.fulfilled, (state, _) => {
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
       })
 
       // LOGIN
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLogin = true;
+      .addCase(login.fulfilled, (state, { payload }) => {
+        const { _id, name, avatarURL } = payload.user;
+        state.user = { _id, name, avatarURL };
+        state.token = payload.token;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+
+      // Refresh  User
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
       })
 
       // LogOut
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
-        state.token = null;
-        state.isLogin = false;
-      });
+        // state.user = { name: null, email: null, avatarURL: null };
+        // state.token = null;
+        // state.isLoggedIn = false;
+      })
+      .addMatcher(({ type }) => type.endsWith('/pending'), handlePending)
+      .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected);
   },
 });
 

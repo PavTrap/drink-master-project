@@ -19,6 +19,15 @@ export const register = createAsyncThunk('/users/register', async (user, { rejec
     return rejectWithValue(e.message);
   }
 });
+// Register
+export const register = createAsyncThunk('/users/register', async (user, { rejectWithValue }) => {
+  try {
+    const response = await axios.post('/users/register', user);
+    return response.data;
+  } catch (e) {
+    return rejectWithValue(e.message);
+  }
+});
 
 //  login
 export const login = createAsyncThunk('/users/login', async (user, { rejectWithValue }) => {
@@ -38,6 +47,7 @@ export const refreshUser = createAsyncThunk('/users/current', async (user, { rej
   } catch (e) {
     return rejectWithValue(e.message);
   }
+});
 });
 
 //  logOut

@@ -8,19 +8,18 @@ import { useNavigate } from 'react-router-dom';
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  const [passwordError, setPasswordError] = useState('');
+  const [passwordError, setPasswordError] = useState(null);
   const { registerForm, registerTitle, inputWrapper, registerInput, registerButton, wrapper, error } = css;
   const navigate = useNavigate();
+
   const handlePasswordChange = event => {
     const { value } = event.target;
-    const pattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{9,}/;
-    if (!pattern.test(value)) {
-      setPasswordError(
-        'Password must contain at least 9 characters, including uppercase letters, lowercase letters, numbers, and special characters.'
-      );
-    } else {
-      setPasswordError('');
-    }
+    const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[\d])(?=.*?[^\sa-zA-Z0-9]).{8,}/;
+    !pattern.test(value)
+      ? setPasswordError(
+          'Password must contain at least 8 characters, including uppercase letters, lowercase letters, numbers, and special characters.'
+        )
+      : setPasswordError(null);
   };
 
   const formik = useFormik({
@@ -79,11 +78,12 @@ const RegisterForm = () => {
             name="password"
             type="password"
             placeholder="Password"
+            autoComplete="off"
             onChange={e => {
               formik.handleChange(e);
               handlePasswordChange(e);
             }}
-            error={!!passwordError}
+            // error={passwordError}
             value={formik.values.password}
           />
           {passwordError && <p className={error}>{passwordError}</p>}
