@@ -17,24 +17,21 @@ const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-const LoginPage = lazy(() => import('../pages/LogInPage/LoginPage'));
+const LoginPage = lazy(() => import('../pages/LoginPage/LoginPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 export const App = () => {
   const dispatch = useDispatch();
 
-  const { isRefreshing} = useAuth();
+  const { isRefreshing } = useAuth();
 
   useEffect(() => {
-  dispatch(refreshUser());
-  },[dispatch]);
-
-
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   return isRefreshing ? (
     <Spinner />
   ) : (
     <Routes>
-
       <Route path="/" element={<OnlyGuest component={<SharedLayout />} />}>
         <Route path="welcome" element={<OnlyGuest component={<WelcomePage />} />} />
         <Route path="signin" element={<OnlyGuest component={<LoginPage />} />} />
@@ -48,9 +45,7 @@ export const App = () => {
         <Route path="recipe" element={<Private component={<RecipePage />} />} />
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />
-
-
-        <Route path='favorite' element={<Private component={<FavoritePage />}/>}/>
+        <Route path="favorite" element={<Private component={<FavoritePage />} />} />
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
