@@ -3,7 +3,7 @@ import { getMyRecipes, getPage } from 'redux/MyRecipe/MyRecipeSelector';
 import { MainTitle } from '../../components/MainTitle/MainTitle';
 import { RecipesList } from 'components/RecipesList/RecipesList';
 import { useLocation } from 'react-router-dom';
-import { fetchMyRecipes } from 'redux/MyRecipe/MyRecipeOperation';
+import { fetchMyRecipes, deleteMyRecipes} from 'redux/MyRecipe/MyRecipeOperation';
 import { useEffect } from 'react';
 import { Paginator } from 'components/Paginator/Paginator';
 import { changePage } from 'redux/MyRecipe/MyRecipeSlice';
@@ -21,7 +21,7 @@ export default function MyRecipesPage() {
       <MainTitle title="My recipes" />
       {recipes.length !== 0 && (
         <>
-          <RecipesList recipes={recipes.data} state={{ from: location }} />
+          <RecipesList recipes={recipes.data} state={{ from: location }} onDelete={deleteMyRecipes}/>
           <Paginator pages={recipes.count} onChangePage={changePage} />
         </>
       )}

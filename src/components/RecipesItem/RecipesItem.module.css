@@ -1,16 +1,24 @@
 .imageContainer {
   position: relative;
-  max-width: 335px;
+  width: 100%;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  overflow: hidden;
 
   @media screen and (min-width: 375px) {
-  width: 335px;
-  height: 392px;}
+    width: 335px;
+    height: 392px;
+    margin-bottom: 24px;
+  }
 
   @media screen and (min-width: 768px) {
     width: 342px;
     height: 360px;
   }
-
+  @media screen and (min-width: 1440px) {
+    width: 400px;
+    height: 400px;
+  }
 }
 
 .imageContainer::after {
@@ -29,5 +37,98 @@
   height: 100%;
   display: block;
   object-fit: cover;
+}
+
+.recipeTitle {
+  margin-bottom: 4px;
+  font-size: 18px;
+  line-height: calc(24 / 18);
+  font-weight: 500;
+  color: rgba(243, 243, 243, 1);
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+    line-height: calc(32 / 24);
+  }
+}
+.recipeIngredients {
+  margin-bottom: 18px;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  font-weight: 500;
+  color: rgba(243, 243, 243, 0.5);
+  @media screen and (min-width: 768px) {
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: calc(18 / 16);
+  }
+}
+
+.recipeDescription {
+  margin-bottom: 18px;
+  height: 75px;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  font-weight: 400;
+  color: rgba(243, 243, 243, 1);
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @media screen and (min-width: 768px) {
+    height: 110px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    line-height: calc(22 / 16);
+  }
+  @media screen and (min-width: 1440px) {
+    height: 96px;
+  }
+}
+
+.recipeButtons {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+}
+
+.seeRecipeButton {
+  width: 151px;
+  padding: 14px 40px;
+  text-align: center;
+  align-items: center;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+  font-weight: 600;
+  border-radius: 42px;
+  text-decoration: none;
+  color: rgba(243, 243, 243, 1);
+  background-color: rgba(22, 31, 55, 1);
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    width: 169px;
+    padding: 18px 44px;
+    font-size: 16px;
+    line-height: calc(18 / 16);
+  }
+}
+.trashIcon {
+  width: 24px;
+  height: 24px;
+  color: rgba(243, 243, 243, 1);
+}
+
+.deleteButton {
+  width: 46px;
+  height: 46px;
+  text-align: center;
+  border-radius: 40px;
+  background-color: rgba(22, 31, 55, 1);
+  border-color: transparent;
+  cursor: pointer;
+  @media screen and (min-width: 768px) {
+    width: 56px;
+    height: 54px;
+  }
 }
