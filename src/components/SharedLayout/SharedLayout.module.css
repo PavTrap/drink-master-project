@@ -24,11 +24,10 @@ body::-webkit-scrollbar{
   @media screen and (min-width: 1440px){
     padding: 0 100px;
   }
-
 }
-body::-webkit-scrollbar{
+/* body::-webkit-scrollbar{
   display:none
-}
+} */
 .gradient {
   position: absolute;
   top: 5.5em;
