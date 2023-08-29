@@ -1,72 +1,69 @@
-const ModalTermsCard = () => {
+import css from './ModalPrivacyStyles.module.css';
 
-    return (
-      <div style={body}>
-  <h3 style={headding}>This "User Agreement" (the "Agreement")  sets forth the terms and conditions governing the use of the Drink Master application ("App") <br/>
-        and its services.</h3>
-        <p style={downMargin}>Acceptance of Terms:</p>
-        <p> &nbsp;      By accessing or using the Drink Master app, you agree to comply with and be bound by the terms and conditions of this Agreement. If
-        you do not agree with any part of this Agreement, you should immediately discontinue the use of the App.</p>
-  
-        <p style={downMargin}>App Features and Services:</p>
-        <p> &nbsp;     The Drink Master app provides users with access to a collection of cocktail recipes, both curated and user-generated. Users can
-        explore, search, and create their own cocktail recipes using the provided tools.</p>
-  
-        <p style={downMargin}>User Accounts and Content:</p>
-        <p> &nbsp;     To fully utilize the App's features, you may be required to create a user account. You are responsible for maintaining the
+const ModalTermsCard = () => {
+  return (
+    <div className={css.body}>
+      <h3 className={css.headding}>
+        This "User Agreement" (the "Agreement") sets forth the terms and conditions governing the use of the Drink Master application
+        ("App") <br />
+        and its services.
+      </h3>
+      <p className={css.downMargin}>Acceptance of Terms:</p>
+      <p className={css.text}>
+        &nbsp; By accessing or using the Drink Master app, you agree to comply with and be bound by the terms and conditions of this
+        Agreement. If you do not agree with any part of this Agreement, you should immediately discontinue the use of the App.
+      </p>
+
+      <p className={css.downMargin}>App Features and Services:</p>
+      <p className={css.text}>
+        &nbsp; The Drink Master app provides users with access to a collection of cocktail recipes, both curated and user-generated. Users
+        can explore, search, and create their own cocktail recipes using the provided tools.
+      </p>
+
+      <p className={css.downMargin}>User Accounts and Content:</p>
+      <p className={css.text}>
+        &nbsp; To fully utilize the App's features, you may be required to create a user account. You are responsible for maintaining the
         confidentiality of your account credentials and any content you submit, including your own cocktail recipes. You retain ownership of
         your content, but by submitting, you grant the App a non-exclusive, royalty-free license to use, modify, and distribute your content
-        within the App.</p>
-  
-        <p style={downMargin}>Intellectual Property:</p>
-        <p> &nbsp;    All content provided by the Cocktail Creations app, including cocktail recipes, images, and text, are protected by copyright and other
-        intellectual property laws. Users may not reproduce, distribute, or use these materials for commercial purposes without explicit
-        permission from the App's operators.</p>
-   
-        <p style={downMargin}>User-Generated Content Guidelines:</p>
-        <p> &nbsp;  When creating and sharing user-generated cocktail recipes, you agree not to submit content that is offensive, unlawful, infringing, or
-        harmful. The App reserves the right to remove or moderate user-generated content that violates these guidelines.</p>
-    
-        <p style={downMargin}>App Updates and Changes:</p>
-        <p> &nbsp;    The features and functionality of the Drink Master app may evolve over time. The App reserves the right to modify, update, or
-        discontinue any aspect of the App without prior notice.</p>
-  
-        <p style={downMargin}>Disclaimer of Liability:</p>
-        <p> &nbsp;     While we strive to provide accurate and reliable information, the Drink Master app does not warrant the accuracy, completeness, or
-        reliability of the content provided. Users acknowledge that cocktail recipes involve the use of alcohol and potentially hazardous
-        ingredients and should exercise caution when using the recipes. The App's liability is limited to the extent permitted by applicable
-        law.</p>
-  
-        <p style={downMargin}>Governing Law and Dispute Resolution:</p>
-        <p> &nbsp;  This Agreement shall be governed by the laws of [Country/State]. Any disputes arising from or related to this Agreement or the use of
-        the App shall be subject to the exclusive jurisdiction of the courts in [City, Country/State]. By accessing or using the Drink Master
-        app, you acknowledge that you have read, understood, and agreed to be bound by this User Agreement. If you do not agree to these
-        terms, you must cease using the App immediately."</p>
-    
-      </div>
-    );
-  };
-  
-  export default ModalTermsCard
-  
-  const body={ 
-    width: '500px', 
-    color: 'white', 
-    textAlign: 'justify'
-    //height from figma, overflow-Y: scroll; Scrollbar need to be removed
-  }
-  
-  const downMargin={
-    marginBottom: '8px',
-    textAlign:"center",
-  }
-  const headding={
-    textAlign: 'center', 
-    marginBottom:"20px", 
-    width: "90%", 
-    marginLeft:"auto", 
-    marginRight: "auto", 
-    letterSpacing: "0.1em"
-  }
-  
-  
+        within the App.
+      </p>
+
+      <p className={css.downMargin}>Intellectual Property:</p>
+      <p className={css.text}>
+        &nbsp; All content provided by the Cocktail Creations app, including cocktail recipes, images, and text, are protected by copyright
+        and other intellectual property laws. Users may not reproduce, distribute, or use these materials for commercial purposes without
+        explicit permission from the App's operators.
+      </p>
+
+      <p className={css.downMargin}>User-Generated Content Guidelines:</p>
+      <p className={css.text}>
+        &nbsp; When creating and sharing user-generated cocktail recipes, you agree not to submit content that is offensive, unlawful,
+        infringing, or harmful. The App reserves the right to remove or moderate user-generated content that violates these guidelines.
+      </p>
+
+      <p className={css.downMargin}>App Updates and Changes:</p>
+      <p className={css.text}>
+        &nbsp; The features and functionality of the Drink Master app may evolve over time. The App reserves the right to modify, update, or
+        discontinue any aspect of the App without prior notice.
+      </p>
+
+      <p className={css.downMargin}>Disclaimer of Liability:</p>
+      <p className={css.text}>
+        &nbsp; While we strive to provide accurate and reliable information, the Drink Master app does not warrant the accuracy,
+        completeness, or reliability of the content provided. Users acknowledge that cocktail recipes involve the use of alcohol and
+        potentially hazardous ingredients and should exercise caution when using the recipes. The App's liability is limited to the extent
+        permitted by applicable law.
+      </p>
+
+      <p className={css.downMargin}>Governing Law and Dispute Resolution:</p>
+      <p className={css.text}>
+        &nbsp; This Agreement shall be governed by the laws of [Country/State]. Any disputes arising from or related to this Agreement or
+        the use of the App shall be subject to the exclusive jurisdiction of the courts in [City, Country/State]. By accessing or using the
+        Drink Master app, you acknowledge that you have read, understood, and agreed to be bound by this User Agreement. If you do not agree
+        to these terms, you must cease using the App immediately."
+      </p>
+    </div>
+  );
+};
+
+export default ModalTermsCard;

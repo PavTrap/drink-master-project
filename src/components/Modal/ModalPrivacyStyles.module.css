@@ -1,0 +1,32 @@
+.body {
+  max-width: 500px;
+  color: white;
+  text-align: justify;
+  overflow-y: scroll;
+  height: 426px;
+}
+
+.body::-webkit-scrollbar {
+  display: none;
+}
+.downMargin {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 16px 0;
+  text-align: center;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 4px
+}
+
+.headding {
+  text-align: center;
+  margin-bottom: 20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  letter-spacing: 0.1em;
+}
+.text {
+  margin-bottom: 8px;
+}
