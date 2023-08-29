@@ -16,20 +16,18 @@ import Socials from './Socials'; //components
 // import Modal from '../Modal/Modal'; //component
 // import ModalCard from 'components/Modal/ModalCard';//component
 import ModalAuth from 'components/Modal/ModalAuth';//component
+import Modal from '../Modal/Modal'; //component
+import ModalCard from 'components/Modal/ModalCard';//component
+import ModalTermsCard from 'components/Modal/ModalTermsCard';
+import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
 export const SharedLayout = () => {
   // const [modalActive, setModalActive] = useState(false);
   const [modalAuthActive, setModalauthActive] = useState(false);
+  const [modalActive, setModalActive] = useState(false);
+  const [policyModal, setPolicyModal] = useState(false);
+  const [termsModal, setTermsModal] = useState(false);
 
-// import Modal from '../Modal/Modal'; //component
-// import ModalCard from 'components/Modal/ModalCard';//component
-// import ModalTermsCard from 'components/Modal/ModalTermsCard'
-// import ModalPolicyCard from 'components/Modal/ModalPolicyCard'
-
-// export const SharedLayout = () => {
-//   const [modalActive, setModalActive] = useState(false);
-//   const [policyModal, setPolicyModal] = useState(false);
-//   const [termsModal, setTermsModal] = useState(false);
 
 
   return isAuth ? (
