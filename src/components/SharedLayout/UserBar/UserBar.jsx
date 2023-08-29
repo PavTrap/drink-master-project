@@ -13,7 +13,7 @@ const UserBar = ({ toggleModal }) => {
   );
 };
 export default UserBar;
-// style={UserIcon}
+
 
 const littleStyles = {
   height: '100%',
