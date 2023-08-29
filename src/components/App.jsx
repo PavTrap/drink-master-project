@@ -5,6 +5,7 @@ import { Spinner } from './Spinner/Spinner';
 import Private from './Routes/Privat';
 import OnlyGuest from './Routes/OnlyGuest';
 
+
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
@@ -14,14 +15,10 @@ const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-
-
 const LoginPage = lazy(() => import('../pages/LogInPage/LoginPage'));
-const FavoritePage = lazy(()=>import('../pages/FavoritePage/FavoritePage'));
-
-
-
 export const App = () => {
+  const { isLoggedIn, isRefreshing, userData } = useAuth();
+
   return (
     <Routes>
 
