@@ -18,6 +18,9 @@ const NavBar = () => {
       <NavLink to="/spinner" style={linksStyles}>
         Spinner
       </NavLink>
+      <NavLink to="/favorite" style={linksStyles}>
+        Favorites
+      </NavLink>
     </nav>
   );
 };
@@ -42,7 +45,7 @@ const linksStyles = {
   color: '#F3F3F3',
 };
 const navBarStyles = {
-  width: '530px',
+  // width: '530px',
   display: 'flex',
   gap: '16px',
   flexDirection: 'row',
