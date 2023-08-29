@@ -1,8 +1,33 @@
-.recipeCard {
-    flex-basis: calc(100%/3 - 30px);
+.imageContainer {
+  position: relative;
+  max-width: 335px;
+
+  @media screen and (min-width: 375px) {
+  width: 335px;
+  height: 392px;}
+
+  @media screen and (min-width: 768px) {
+    width: 342px;
+    height: 360px;
+  }
+
+}
+
+.imageContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  background-image: linear-gradient(rgba(10, 10, 17, 0.02), rgba(10, 10, 17, 0.77));
 }
 
 .recipeImage {
-  width: 334px;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
   overflow: hidden;
 }

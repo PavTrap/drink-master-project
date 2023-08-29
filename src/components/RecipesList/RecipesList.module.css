@@ -1,5 +1,14 @@
 .recipeList {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(335px, 370px));
+  column-gap: 40px;
+  row-gap: 40px;
+  padding: 0;;
+  list-style: none;
+  justify-content: center;
+
+  @media screen and (min-width: 768x) {
+    column-gap: 20px;
+    row-gap: 80px;
+  }
 }

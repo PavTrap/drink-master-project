@@ -1,18 +1,13 @@
 import { Link } from 'react-router-dom';
-import css from './RecipesItem.module.css'
+import css from './RecipesItem.module.css';
 
-export const RecipesItem = ({
-  image,
-  title,
-  description,
-  ingredients,
-  id,
-  state,
-}) => {
+export const RecipesItem = ({ image, title, description, ingredients, id, state }) => {
   const path = `/recipe/${id}`;
   return (
     <li className={css.recipeCard}>
-      <img src={image} alt={title} className={css.recipeImage}/>
+      <div className={css.imageContainer}>
+        <img src={image} alt={title} title={title} className={css.recipeImage} />
+      </div>
       <p>{title}</p>
       <p title={ingredients}>Ingredients</p>
       <p>{description}</p>

@@ -20,7 +20,7 @@ export default function FavoritePage() {
       {favorites.length !== 0 && (
         <>
           <RecipesList recipes={favorites.data} state={{ from: location }} />
-          <Paginator pages={favorites.count}/>
+          <Paginator pages={favorites.count} />
         </>
       )}
     </>
