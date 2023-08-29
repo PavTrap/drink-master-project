@@ -65,6 +65,8 @@ const MainPage = () => {
 		const otherDrinks = [];
 
 		for (const drink of drinks) {
+			// console.log(drink)
+
 			if (drink.category === "Ordinary Drink") ordinaryDrinks.push(drink);
 			if (drink.category === "Cocktail") cocktails.push(drink);
 			if (drink.category === "Snake") shakes.push(drink);
@@ -78,14 +80,13 @@ const MainPage = () => {
 			"other/unknown": otherDrinks[0].items,
 		};
 
-		// const categoriesDrinks = Object.keys(getedDrinks);
-		// console.log(categoriesDrinks);
-
 		console.log(getedDrinks);
+
 		return getedDrinks;
 	};
 
 	const getedDrinks = separateDrinks(allDrinks);
+
 
 	return (
 		<>
