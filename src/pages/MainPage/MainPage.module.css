@@ -31,11 +31,11 @@ a {
 
 .section {
   position: relative;
-  padding: 0px 100px 270px;
+  padding: 0px 0px 270px;
 }
 
 .hero_section {
-  padding: 160px 100px 100px;
+  padding: 160px 0px 100px;
   margin-bottom: 80px;
 }
 
