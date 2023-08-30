@@ -8,14 +8,14 @@ import Select from 'react-select';
 import {fetchIngredients} from '../../fetchAPI/fetchAPI'
 import measure from '../../data/measure'
 import { nanoid } from 'nanoid';
-import { refreshUser } from 'redux/Auth/authOperation';
+// import { refreshUser } from 'redux/Auth/authOperation';
 
 
 export const RecipeIngredientsFields = () => {
 const [countIngredients, setCountIngredients] = useState(1);
 const [isBtnDisabled, setIsBtnDisabled] = useState(false);
 const [allIngredients, setIngredients] = useState([]);
-const [addedIngredients, setAddedIngredients] = useState([]);
+// const [addedIngredients, setAddedIngredients] = useState([]);
 const InselectRef = useRef(null)
 const selectRef = useRef(null)
   useEffect(() => {
