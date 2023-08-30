@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import css from './Tost.module.css';
+import css from './Toast.module.css';
 
 
 const Tost = ({ message, tittle = "Info" }) => {

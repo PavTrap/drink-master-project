@@ -17,7 +17,7 @@ export const register = createAsyncThunk('/users/register', async (user, { rejec
     const response = await axios.post('/users/register', user);
     return response.data;
   } catch (e) {
-    return rejectWithValue(e.message);
+    return rejectWithValue(e.response.data.message);
   }
 });
 
@@ -27,7 +27,7 @@ export const login = createAsyncThunk('/users/login', async (user, { rejectWithV
     const response = await axios.post('/users/login', user);
     return response.data;
   } catch (e) {
-    return rejectWithValue(e.message);
+    return rejectWithValue(e.response.data.message);
   }
 });
 
@@ -37,7 +37,7 @@ export const refreshUser = createAsyncThunk('/users/current', async (user, { rej
     const response = await axios.get('/users/current');
     return response.data;
   } catch (e) {
-    return rejectWithValue(e.message);
+    return rejectWithValue(e.response.data.message);
   }
 });
 
@@ -47,6 +47,6 @@ export const logOut = createAsyncThunk('/users/logout', async (user, { rejectWit
   try {
     await axios.post('/users/logout');
   } catch (e) {
-    return rejectWithValue(e.message);
+    return rejectWithValue(e.response.data.message);
   }
 });

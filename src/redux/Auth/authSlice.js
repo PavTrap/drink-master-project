@@ -2,10 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 import { register, login, logOut, refreshUser } from './authOperation';
 import INITIAL_STATE from './InitialState';
 
-const handlePending = state => {
-  state.isRefreshing = true;
-  state.error = null;
-};
 
 const handleRejected = (state, { error, payload }) => {
   state.isRefreshing = false;
@@ -22,6 +18,10 @@ const authSlice = createSlice({
         state.isLoggedIn = false;
         state.isRefreshing = false;
       })
+      .addCase(register.pending, (state, _) => {
+        state.isRefreshing = false;
+        state.error = null;
+      })
 
       // LOGIN
       .addCase(login.fulfilled, (state, { payload }) => {
@@ -31,12 +31,20 @@ const authSlice = createSlice({
         state.isLoggedIn = true;
         state.isRefreshing = false;
       })
+      .addCase(login.pending, (state, _) => {
+        state.isRefreshing = false;
+        state.error = null;
+      })
 
       // Refresh  User
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
         state.isLoggedIn = true;
         state.isRefreshing = false;
+      })
+      .addCase(refreshUser.pending, (state, _) => {
+        state.isRefreshing = true;
+        state.error = null;
       })
 
       // LogOut
@@ -45,9 +53,11 @@ const authSlice = createSlice({
         state.token = null;
         state.isLoggedIn = false;
         state.isRefreshing = false;
-
       })
-      .addMatcher(({ type }) => type.endsWith('/pending'), handlePending)
+      .addCase(logOut.pending, (state, _) => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
       .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected);
   },
 });

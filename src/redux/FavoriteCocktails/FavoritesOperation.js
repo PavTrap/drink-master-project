@@ -6,7 +6,6 @@ const normatizedToken = JSON.parse(token);
 
 
 axios.defaults.baseURL = "https://drink-master-back-end.onrender.com/";
-// axios.defaults.headers.common.Authorization = `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTc0MTBjNGJhYmJiM2JlM2JjZDRiOSIsImlhdCI6MTY5MzA1MDU5OCwiZXhwIjoxNzI0NTg2NTk4fQ.EruneUfQbTsZkYOgBC4h3vLtqzylMjwDzVmkBiyAZG4`;
 axios.defaults.headers.common.Authorization = `Bearer ${normatizedToken}`
 export const fetchFavorites = createAsyncThunk(
   'favorites/fetch',

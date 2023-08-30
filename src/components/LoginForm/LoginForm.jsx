@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/Auth/authOperation';
 import { useFormik } from 'formik';
@@ -6,26 +6,41 @@ import css from './LoginForm.module.css';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 import { useNavigate } from 'react-router-dom';
 
+import useAuth from 'hooks/useAuth';
 
 const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate=useNavigate()
-  const { loginForm, loginTitle, inputWrapper, loginInput, loginButton, wrapper } = css;
+  const navigate = useNavigate();
+  const { loginForm, loginTitle, inputWrapper, loginInput, loginButton, wrapper, error } = css;
+  const [erorMessage, setErrorMessage] = useState(null);
+
+  const { BackEndError } = useAuth();
+
+  useEffect(() => {
+    if (BackEndError) setErrorMessage(BackEndError);
+    setTimeout(() => setErrorMessage(null), 3000);
+  }, [BackEndError]);
 
   const formik = useFormik({
     initialValues: {
       email: '',
       password: '',
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       const user = {
         email: values.email,
         password: values.password,
       };
-
-      dispatch(login(user));
-      navigate("/")
-      resetForm();
+      if (user.email !== '' && user.password !== '') {
+        dispatch(login(user));
+        if (!BackEndError) {
+          navigate('/');
+          resetForm();
+        }
+      } else {
+        setErrorMessage('Please enter email and password');
+        setTimeout(() => setErrorMessage(null), 3000);
+      }
     },
   });
 
@@ -55,6 +70,11 @@ const LoginForm = () => {
             onChange={formik.handleChange}
             value={formik.values.password}
           />
+          {erorMessage && (
+            <p className={error} style={erorMessage && { color: 'red' }}>
+              {erorMessage}
+            </p>
+          )}
         </div>
       </div>
       <button className={loginButton} type="submit">
