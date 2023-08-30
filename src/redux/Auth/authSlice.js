@@ -1,11 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logOut } from './authOperation';
+import { register, login, logOut, refreshUser } from './authOperation';
+import INITIAL_STATE from './InitialState';
 
-const INITIAL_STATE = {
-  user: { name: null, email: null, password: null, avatarUrl: null },
-  token: null,
-  isLogin: true,
-  isRefreshing: false,
+const handleRejected = (state, { error, payload }) => {
+  state.isRefreshing = false;
+  state.error = payload ?? error.message;
 };
 
 const authSlice = createSlice({
@@ -14,25 +13,50 @@ const authSlice = createSlice({
   extraReducers: builder => {
     builder
       // REGISTER
-      .addCase(register.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLogin = true;
+      .addCase(register.fulfilled, (state, _) => {
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+      })
+      .addCase(register.pending, (state, _) => {
+        state.isRefreshing = false;
+        state.error = null;
       })
 
       // LOGIN
-      .addCase(login.fulfilled, (state, action) => {
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLogin = true;
+      .addCase(login.fulfilled, (state, { payload }) => {
+        state.user = payload.user;
+        state.token = payload.token;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(login.pending, (state, _) => {
+        state.isRefreshing = false;
+        state.error = null;
+      })
+
+      // Refresh  User
+      .addCase(refreshUser.fulfilled, (state, { payload }) => {
+        state.user = payload;
+        state.isLoggedIn = true;
+        state.isRefreshing = false;
+      })
+      .addCase(refreshUser.pending, (state, _) => {
+        state.isRefreshing = true;
+        state.error = null;
       })
 
       // LogOut
       .addCase(logOut.fulfilled, state => {
-        state.user = { name: null, email: null };
+        state.user = { name: null, email: null, avatarURL: null };
         state.token = null;
-        state.isLogin = false;
-      });
+        state.isLoggedIn = false;
+        state.isRefreshing = false;
+      })
+      .addCase(logOut.pending, (state, _) => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected);
   },
 });
 

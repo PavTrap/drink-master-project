@@ -22,3 +22,56 @@
   display: flex;
   margin-bottom: 12px;
 }
+
+.addIngredients_titleBtnBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  justify-content: flex-start;
+  gap: 205px;
+}
+
+.addIngredients_btnBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 10px 18px;
+
+  border: 1px solid #f3f3f380;
+  border-radius: 70px;
+  font-size: 17px;
+}
+
+.addIngredients_btn {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.addIngredients_btn:disabled > .addIngredients_btnIcon {
+  color: #5f5f5f;
+}
+
+.addIngredients_btnIcon {
+  width: 16px;
+  height: 16px;
+  color: #fff;
+}
+
+.addIngredients_btnDelete {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.addIngredients_btnDeleteIcon {
+  width: 25px;
+  height: 25px;
+}

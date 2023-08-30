@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/Auth/authOperation';
 import { useFormik } from 'formik';
@@ -6,21 +6,28 @@ import css from './RegisterForm.module.css';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 import { useNavigate } from 'react-router-dom';
 
+import useAuth from 'hooks/useAuth';
+
 const RegisterForm = () => {
   const dispatch = useDispatch();
-  const [passwordError, setPasswordError] = useState('');
+  const [passwordError, setPasswordError] = useState(null);
   const { registerForm, registerTitle, inputWrapper, registerInput, registerButton, wrapper, error } = css;
   const navigate = useNavigate();
+  const { BackEndError } = useAuth();
+
+  useEffect(() => {
+    if (BackEndError) setPasswordError(BackEndError);
+    setTimeout(() => setPasswordError(null), 3000);
+  }, [BackEndError]);
+
   const handlePasswordChange = event => {
     const { value } = event.target;
-    const pattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{9,}/;
-    if (!pattern.test(value)) {
-      setPasswordError(
-        'Password must contain at least 9 characters, including uppercase letters, lowercase letters, numbers, and special characters.'
-      );
-    } else {
-      setPasswordError('');
-    }
+    const pattern = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[\d])(?=.*?[^\sa-zA-Z0-9]).{8,}/;
+    !pattern.test(value)
+      ? setPasswordError(
+          'Password must contain at least 8 characters, including uppercase letters, lowercase letters, numbers, and special characters.'
+        )
+      : setPasswordError(null);
   };
 
   const formik = useFormik({
@@ -29,20 +36,34 @@ const RegisterForm = () => {
       email: '',
       password: '',
     },
-    onSubmit: (values, { resetForm }) => {
+    onSubmit: async (values, { resetForm }) => {
       const user = {
         name: values.name,
         email: values.email,
         password: values.password,
       };
-
       if (passwordError) {
         return;
       }
+      if (BackEndError) {
+        setPasswordError(`${BackEndError}`);
+        setTimeout(() => setPasswordError(null), 2000);
+      }
 
-      dispatch(register(user));
-      resetForm();
-      navigate('/signin');
+      if (user.name !== '' || user.email !== '') {
+        setPasswordError(null);
+      }
+
+      if (user.name !== '' && user.email !== '' && user.password !== '') {
+        dispatch(register(user));
+        if (!BackEndError) {
+          resetForm();
+          navigate('/signin');
+        }
+      } else {
+        setPasswordError('Values required');
+        setTimeout(() => setPasswordError(null), 2000);
+      }
     },
   });
 
@@ -79,14 +100,19 @@ const RegisterForm = () => {
             name="password"
             type="password"
             placeholder="Password"
+            autoComplete="off"
             onChange={e => {
               formik.handleChange(e);
               handlePasswordChange(e);
             }}
-            error={!!passwordError}
+            // error={passwordError}
             value={formik.values.password}
           />
-          {passwordError && <p className={error}>{passwordError}</p>}
+          {passwordError && (
+            <p className={error} style={passwordError && { color: 'red' }}>
+              {passwordError}
+            </p>
+          )}
         </div>
       </div>
       <button className={registerButton} type="submit">

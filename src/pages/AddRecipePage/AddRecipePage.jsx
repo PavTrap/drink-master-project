@@ -8,10 +8,10 @@ import { PopularRecipe } from '../../components/PopularRecipe/PopularRecipe';
 import s from './AddRecipePage.module.css'
 
 export default function AddRecipePage() {
-  return (<>
+  return (<section className={s.addRecipeForm_section}>
     <MainTitle title='Add recipe' />
 
-    <section className={s.AddRecipePage_section}>
+    <div className={s.AddRecipePage}>
           <div>
             <AddRecipeForm/>
           </div>
@@ -21,9 +21,9 @@ export default function AddRecipePage() {
         <PopularRecipe/>
           
         </div>
-    </section>
+    </div>
 
-    </>
+    </section>
     )
   
 }

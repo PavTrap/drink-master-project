@@ -22,7 +22,7 @@ const ModalAuth = ({ active }) => {
       )}
       {modalLogoutActive && (
         <Modal active={modalLogoutActive} setActive={setModalLogoutActive}>
-          <ModalCardLogout />
+          <ModalCardLogout onClickClose={setModalLogoutActive}/>
         </Modal>
       )}
       {(hasTransitionedIn || active) && (
