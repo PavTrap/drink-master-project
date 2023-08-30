@@ -1,13 +1,13 @@
 import css from './ModalLogout.module.css';
-// import { useDispatch } from 'react-redux';
-// import { logOut } from 'redux/Auth/authOperation';
+import { useDispatch } from 'react-redux';
+import { logOut } from 'redux/Auth/authOperation';
 
 const ModalCardLogout = ({ active, onClickClose }) => {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const handleLogout = () => {
-    // dispatch(logOut());
-    onClickClose(false);
+    dispatch(logOut());
+    // onClickClose(false);
   };
 
   return (

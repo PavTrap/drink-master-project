@@ -1,15 +1,14 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
+const { token } = JSON.parse(localStorage.getItem('persist:auth'));
+const normatizedToken = JSON.parse(token);
+
 
 
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
+axios.defaults.headers.common.Authorization = `Bearer ${normatizedToken}`
 
-const { token } = JSON.parse(localStorage.getItem('persist:auth'));
-const normatizedToken = JSON.parse(token);
-const config = {
-  headers: { Authorization: `Bearer ${normatizedToken}` },
-};
 
 
 // Register
@@ -35,7 +34,7 @@ export const login = createAsyncThunk('/users/login', async (user, { rejectWithV
 //  refresh
 export const refreshUser = createAsyncThunk('/users/current', async (user, { rejectWithValue }) => {
   try {
-    const response = await axios.get('/users/current', config);
+    const response = await axios.get('/users/current');
     return response.data;
   } catch (e) {
     return rejectWithValue(e.message);
@@ -46,7 +45,7 @@ export const refreshUser = createAsyncThunk('/users/current', async (user, { rej
 //  logOut
 export const logOut = createAsyncThunk('/users/logout', async (user, { rejectWithValue }) => {
   try {
-    await axios.post('/users/logout', config);
+    await axios.post('/users/logout');
   } catch (e) {
     return rejectWithValue(e.message);
   }
