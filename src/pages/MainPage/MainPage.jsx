@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import css from './MainPage.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-const { token } = JSON.parse(localStorage.getItem('persist:auth'));
-const normatizedToken = JSON.parse(token);
+import setAuthHeader from 'helpers/axiosHedder';
+import useAuth from 'hooks/useAuth';
 
-
-export const fetchDrinks = async () => {
+export const fetchDrinks = async token => {
   try {
+    setAuthHeader(token);
     const { data } = await axios.get('/api/recipes/main-page');
     // console.log(data);
     return data;
@@ -34,14 +34,15 @@ export const addYourCoctail = ({ children }) => <>{children}</>;
 
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
+  const { ReduxToken } = useAuth();
 
   useEffect(() => {
-    fetchDrinks()
+    fetchDrinks(ReduxToken)
       .then(res => {
         setAllDrinks(res);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [ReduxToken]);
 
   const separateDrinks = drinks => {
     if (!allDrinks) return;

@@ -1,15 +1,8 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+import setAuthHeader, { clearAuthHeader } from 'helpers/axiosHedder';
 
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
-
-const setAuthHeader = token => {
-  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-};
-
-const clearAuthHeader = () => {
-  axios.defaults.headers.common.Authorization = '';
-};
 
 // Register
 export const register = createAsyncThunk('/auth/register', async (user, { rejectWithValue }) => {
