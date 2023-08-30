@@ -8,6 +8,8 @@ import useAuth from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/Auth/authOperation';
 import NotFoundPage from '../pages/NotFoundPage';
+import LoginPage from '../pages/LogInPage/LoginPage';
+import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 
@@ -16,18 +18,19 @@ const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
-
-const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
-const LoginPage = lazy(() => import('../pages/LogInPage/LoginPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 export const App = () => {
+
+
+
+
+
   const dispatch = useDispatch();
-
-  const { isRefreshing, ReduxToken } = useAuth();
-
+  const { isRefreshing } = useAuth();
   useEffect(() => {
-    if (ReduxToken) dispatch(refreshUser());
-  }, [dispatch, ReduxToken]);
+    dispatch(refreshUser());
+  }, [dispatch]);
+
 
   return isRefreshing ? (
     <Spinner />

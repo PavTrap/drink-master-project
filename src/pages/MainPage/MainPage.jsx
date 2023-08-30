@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 const { token } = JSON.parse(localStorage.getItem('persist:auth'));
 const normatizedToken = JSON.parse(token);
 
-axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
-axios.defaults.headers.common.Authorization = `Bearer ${normatizedToken}`;
 
 export const fetchDrinks = async () => {
   try {
