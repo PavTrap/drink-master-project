@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import css from './MainPage.module.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import imgSrc from './plug-glass-400x400.png'
+// import { nanoid } from 'nanoid';
+
 const BASE_URL = 'https://drink-master-back-end.onrender.com';
 const TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZTg4ZmIyMjQ0Nzc2MjQ3ZmRjOTFmMiIsImlhdCI6MTY5MzIxMzQ3NiwiZXhwIjoxNzI0NzQ5NDc2fQ.9pXsJ0oGndHLljJkph9dB5c_GAvE82inXsGfs8UHmlc'
-
 const fetchDrinksInstance = axios.create({
 	baseURL: BASE_URL,
 	headers: {
@@ -45,6 +47,7 @@ export const addYourCoctail = ({ children }) =>
 	</>
 );
 
+
 const MainPage = () => {
 	const [allDrinks, setAllDrinks] = useState(null);
 
@@ -66,7 +69,6 @@ const MainPage = () => {
 
 		for (const drink of drinks) {
 			// console.log(drink)
-
 			if (drink.category === "Ordinary Drink") ordinaryDrinks.push(drink);
 			if (drink.category === "Cocktail") cocktails.push(drink);
 			if (drink.category === "Snake") shakes.push(drink);
@@ -86,7 +88,6 @@ const MainPage = () => {
 	};
 
 	const getedDrinks = separateDrinks(allDrinks);
-
 
 	return (
 		<>
@@ -109,9 +110,9 @@ const MainPage = () => {
 									<Link to={'/drinks/ordinary-drink'}><h2>Ordinary Drink</h2></Link>
 								</div>
 								<ul className={css.mainPageList}>
-									{getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
+									{ getedDrinks['ordinary drink'].length !== 0 ? getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
@@ -119,9 +120,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/coctail'}><h2>Coctail</h2></Link>
 								<ul className={css.mainPageList}>
-									{getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
+									{getedDrinks.coctail.length !== 0 ? getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
@@ -129,9 +130,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/shake'}><h2>Shake</h2></Link>
 								<ul className={css.mainPageList}>
-									{allDrinks[9].items.map(({ drink, drinkThumb, _id }) => (
+									{getedDrinks.shake.length !== 0 ? getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
@@ -139,9 +140,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/other-unknown'}><h2>Other/Unknown</h2></Link>
 								<ul className={css.mainPageList}>
-									{allDrinks[10].items.map(({ drink, drinkThumb, _id }) => (
+									{getedDrinks['other/unknown'].length !== 0 ? getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
