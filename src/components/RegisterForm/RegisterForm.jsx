@@ -1,25 +1,27 @@
-import React from 'react';
-// import { NavLink } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/Auth/authOperation';
+import { useFormik } from 'formik';
 import css from './RegisterForm.module.css';
+import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 import { useNavigate } from 'react-router-dom';
 
-// import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
-// import { RiErrorWarningLine } from 'react-icons/ri';
-// import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-
-import { useFormik } from 'formik';
-import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
-
 const RegisterForm = () => {
-  const navigate=useNavigate()
-  const {
-    registerForm,
-    registerTitle,
-    inputWrapper,
-    registerInput,
-    registerButton,
-    wrapper,
-  } = css;
+  const dispatch = useDispatch();
+  const [passwordError, setPasswordError] = useState('');
+  const { registerForm, registerTitle, inputWrapper, registerInput, registerButton, wrapper, error } = css;
+  const navigate = useNavigate();
+  const handlePasswordChange = event => {
+    const { value } = event.target;
+    const pattern = /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{9,}/;
+    if (!pattern.test(value)) {
+      setPasswordError(
+        'Password must contain at least 9 characters, including uppercase letters, lowercase letters, numbers, and special characters.'
+      );
+    } else {
+      setPasswordError('');
+    }
+  };
 
   const formik = useFormik({
     initialValues: {
@@ -27,11 +29,23 @@ const RegisterForm = () => {
       email: '',
       password: '',
     },
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-      navigate('/signin')
+    onSubmit: (values, { resetForm }) => {
+      const user = {
+        name: values.name,
+        email: values.email,
+        password: values.password,
+      };
+
+      if (passwordError) {
+        return;
+      }
+
+      dispatch(register(user));
+      resetForm();
+      navigate('/signin');
     },
   });
+
   return (
     <form className={registerForm} onSubmit={formik.handleSubmit}>
       <h1 className={registerTitle}> Registration </h1>
@@ -63,11 +77,16 @@ const RegisterForm = () => {
             className={registerInput}
             id="password"
             name="password"
-            type="text"
+            type="password"
             placeholder="Password"
-            onChange={formik.handleChange}
+            onChange={e => {
+              formik.handleChange(e);
+              handlePasswordChange(e);
+            }}
+            error={!!passwordError}
             value={formik.values.password}
           />
+          {passwordError && <p className={error}>{passwordError}</p>}
         </div>
       </div>
       <button className={registerButton} type="submit">

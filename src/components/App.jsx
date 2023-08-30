@@ -5,7 +5,6 @@ import { Spinner } from './Spinner/Spinner';
 import Private from './Routes/Privat';
 import OnlyGuest from './Routes/OnlyGuest';
 
-
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
@@ -15,12 +14,20 @@ const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 const RegisterPage = lazy(() => import('../pages/RegisterPage/RegisterPage'));
+
+
 const LoginPage = lazy(() => import('../pages/LogInPage/LoginPage'));
+const FavoritePage = lazy(()=>import('../pages/FavoritePage/FavoritePage'));
+
+
+
 export const App = () => {
   return (
     <Routes>
+
       <Route path="/" element={<OnlyGuest component={<SharedLayout />} />}>
         <Route path="/welcome" element={<OnlyGuest component={<WelcomePage />} />} />
+
         <Route path="signin" element={<OnlyGuest component={<LoginPage />} />} />
         <Route path="signup" element={<OnlyGuest component={<RegisterPage />} />} />
       </Route>
@@ -32,7 +39,11 @@ export const App = () => {
         <Route path="recipe" element={<Private component={<RecipePage />} />} />
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />
+
+
+        <Route path='favorite' element={<Private component={<FavoritePage />}/>}/>
       </Route>
+
       <Route path="*" element={<NotFoundPage />} />
       <Route path="spinner" element={<Spinner />} />
     </Routes>

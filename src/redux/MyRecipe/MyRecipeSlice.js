@@ -44,11 +44,11 @@ const myRecipesSlice = createSlice({
 
       // DELETE
       .addCase(deleteMyRecipes.fulfilled, (state, action) => {
-        const index = state.recipes.findIndex(
-          recipe => recipe.id === action.payload.id
+        const index = state.recipes.data.findIndex(
+          recipe => recipe.id === action.payload.cocktailId
         );
 
-        state.recipes.splice(index, 1);
+        state.recipes.data.splice(index, 1);
         state.isLoading = false;
       })
 

@@ -18,6 +18,9 @@ const NavBarFooter = () => {
       <NavLink to="/spinner" style={linksStyles}>
         Spinner
       </NavLink>
+      <NavLink to="/favorite" style={linksStyles}>
+        Favorites
+      </NavLink>
     </nav>
   );
 };
