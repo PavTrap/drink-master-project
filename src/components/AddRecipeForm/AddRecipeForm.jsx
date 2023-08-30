@@ -8,27 +8,27 @@ import { RecipePreparationFields } from '../RecipePreparationFields/RecipePrepar
 
  
 export const AddRecipeForm = () => {
-const [cocktailImg, setCocktailImg] = useState("");
-const [itemTitle, setItemTitle] = useState("");
-const [about, setAbout] = useState("");
+const [drinkThumb, setDrinkThumb] = useState("");
+const [drink, setDrink] = useState("");
+// const [about, setAbout] = useState("");
 const [category, setCategory] = useState("");
 const [glass, setGlass] = useState("");
 const [ingredients, setIngredients] = useState([]);
-const [recipePreparation, setRecipePreparation] = useState("");
+const [instructions, setInstructions] = useState("");
 
 
-      const formSubmit = (cocktailImg, itemTitle, about, category, glass, recipePreparation ) => {
+      const formSubmit = (drinkThumb, drink, category, glass, instructions, ingredients ) => {
        const recipe = {
       id: nanoid(),
-      cocktailImg,
-      itemTitle,
-      about,
+      drinkThumb,
+      drink,
       category,
       glass,
-      recipePreparation
+      instructions,
+      ingredients
     };
 
-             console.log(recipe, ingredients)
+             console.log(recipe)
     }
 
 //     dispatch(addRecipe(contact))  
@@ -36,21 +36,21 @@ const [recipePreparation, setRecipePreparation] = useState("");
         const handleSubmit = (e) => {
       e.preventDefault()
       // e.currentTarget.reset()
-              setIngredients(["lemon", "50 ml"])
-       formSubmit(cocktailImg, itemTitle, about, category, glass, recipePreparation)
+            //   setIngredients({title: "lemon", measure: "50 ml"})
+       formSubmit(category, drink, drinkThumb, glass, ingredients, instructions)
   }
       return (
            
-            <>
+            <div >
                   <form  onSubmit={handleSubmit}>
-                  <RecipeDescriptionFields cocktailImg={setCocktailImg} itemTitle={setItemTitle} about={setAbout} category={setCategory} glass={setGlass}/>
-                  <RecipeIngredientsFields />
-                  <RecipePreparationFields textarea={setRecipePreparation} />
+                  <RecipeDescriptionFields cocktailImg={setDrinkThumb} itemTitle={setDrink} category={setCategory} glass={setGlass}/>
+                  <RecipeIngredientsFields addIngredients={setIngredients} />
+                  <RecipePreparationFields textarea={setInstructions} />
                         
                   <button type='submit' className={s.add_btn}>Add</button>
                   
                   </form>
-            </>
+            </div >
            
             )
 }

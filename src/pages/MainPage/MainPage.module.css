@@ -18,6 +18,7 @@ a {
 
 .mainPageList {
   list-style: none;
+  justify-content: center;
 
   display: flex;
   flex-wrap: wrap;
@@ -25,24 +26,26 @@ a {
 
   margin-bottom: 80px;
 
-  max-width: 1240px;
+  /* max-width: 1240px; */
   max-height: 522px;
 }
 
 .section {
   position: relative;
-  padding: 0px 100px 270px;
+
+  /* padding: 0px 100px 270px; */
 }
 
 .hero_section {
-  padding: 160px 100px 100px;
+  padding: 160px 0;
   margin-bottom: 80px;
 }
 
 
-/* .main {
-  background-color: black;
-} */
+.main {
+  padding: 0 100px;
+
+}
 
 /* .section_wrapper {
 	margin-left: auto;

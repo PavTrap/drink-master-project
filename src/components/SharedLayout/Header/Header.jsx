@@ -16,8 +16,9 @@ const styles = {
   flexWrap: 'no-wrap',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding:"22.5px 0",
+  padding:"22.5px 100px",
   zIndex: "10",
   boxSizing: 'border-box',
   position: 'relative',
+  borderBottom: "1px solid rgba(243, 243, 243, 0.20)",
 };

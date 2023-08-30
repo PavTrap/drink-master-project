@@ -1,8 +1,10 @@
 .recipeDescriptionSection {
   display: flex;
+  align-items: flex-start;
 }
 
 .recipeDescriptionFields {
+  margin-left: 40px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -15,6 +17,21 @@
   overflow: hidden;
   position: absolute;
   z-index: -1;
+}
+
+.recipeDescription_addImgIcon {
+  width: 40px;
+  height: 40px;
+  color: #ffffff;
+  margin-top: 45%;
+}
+
+.recipeDescription_addImgDescr {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+
+  color: white;
 }
 
 .label_img {
@@ -33,4 +50,23 @@
 
 .label_img:hover {
   border: 1px solid #ffffff;
+}
+
+.recipeDescriptionFields_input {
+  width: 343px;
+  background-color: rgba(rgb(80, 35, 35), rgb(34, 79, 34), rgb(28, 28, 69), 0.5);
+  background-color: #161f3700;
+  border: none;
+  border-bottom: 1px solid #f3f3f380;
+  color: #f3f3f3e0;
+  font-size: 16px;
+}
+
+.recipeDescriptionFields_input:focus .recipeDescriptionFields_label {
+  color: f3f3f380;
+}
+
+.recipeDescriptionFields_label {
+  color: #f3f3f380;
+  font-size: 16px;
 }

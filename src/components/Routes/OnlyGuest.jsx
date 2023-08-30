@@ -1,7 +1,11 @@
 import React from 'react';
-import { Navigate} from 'react-router-dom';
-import isAuth from './isAuth';
+import { Navigate } from 'react-router-dom';
 
-const OnlyGuest = ({  component: Component }) => (!isAuth ? Component : <Navigate to="/main" />);
+import useAuth from '../../hooks/useAuth';
+
+export const OnlyGuest = ({ component: Component }) => {
+  const { isLoggedIn } = useAuth();
+  return isLoggedIn ? <Navigate to="/main" /> : Component;
+};
 
 export default OnlyGuest;
