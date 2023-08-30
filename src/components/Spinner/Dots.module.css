@@ -1,0 +1,15 @@
+.container {
+  margin-top: 5em;
+  width: 30%;
+}
+@media screen and (min-width: 748px) {
+  .container {
+    width: 5vw;
+  }
+}
+.image {
+  filter: grayscale(1) invert(1) brightness(4) contrast(2) blur(0.5px);
+  mix-blend-mode: lighten;
+  width: 100%;
+  height: 100%;
+}

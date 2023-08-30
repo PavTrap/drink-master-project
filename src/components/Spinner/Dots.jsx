@@ -1,4 +1,10 @@
-/**
- * filter: grayscale(1) invert(1) brightness(4) contrast(2) blur(0.5px);
-    mix-blend-mode: lighten;
- */
+import img from '../../assets/dots.gif';
+import css from"./Dots.module.css"
+
+export default function Dots() {
+  return (
+    <div  className={css.container}>
+      <img className={css.image} src={img} alt="loding Indicator" />
+    </div>
+  );
+}
