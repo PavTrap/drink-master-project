@@ -18,7 +18,7 @@ import { drinksReducer } from './Drinks/DrinksSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  whitelist: ['token','user'],
+  whitelist: ['token'],
 };
 
 const myRecipesPersistConfig = {
