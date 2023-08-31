@@ -5,11 +5,16 @@ const UserBar = ({ toggleModal }) => {
   const { userData } = useAuth();
   const { avatarURL, name } = userData;
   const [usePhoto, setUserPhoto] = useState(avatarURL);
+  const [userName, setUserName] = useState(name);
 
 
   useEffect(()=>{
-   setUserPhoto(avatarURL)
-  }, [avatarURL])
+    if(usePhoto !== avatarURL ) setUserPhoto(avatarURL)
+  }, [avatarURL, usePhoto])
+
+  useEffect(()=>{
+    if(userName !== name) setUserName(name)
+  },[name, userName])
 
   //useEffect for chack photo from redux
   return (
@@ -17,7 +22,7 @@ const UserBar = ({ toggleModal }) => {
       <div style={UserIconContainer}>
         <img style={Avatar} src={usePhoto} alt="User Avatar" />
       </div>
-      <span style={userName}>{name}</span>
+      <span style={userName}>{userName}</span>
     </div>
   );
 };
