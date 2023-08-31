@@ -40,4 +40,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: 24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 100px;
+  white-space: nowrap;
 }
+
