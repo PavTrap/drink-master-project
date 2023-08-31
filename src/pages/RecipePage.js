@@ -21,8 +21,8 @@ const RecipePage = () => {
         setAuthHeader(token);
         const { data } = await axios.get(`/api/recipes/${recipeId}`);
         return data;
-      } catch (error) {
-        throw new Error(error.message);
+      } catch (e) {
+        throw new Error(e.message);
       }
     };
 
@@ -30,14 +30,14 @@ const RecipePage = () => {
       .then(res => {
         setRecipe(res);
       })
-      .catch(err => console.log(err));
+      .catch(e => console.log(e));
   }, [ReduxToken, recipeId]);
-  
+
   console.log(recipe);
 
   return (
     <div>
-      {recipe && ( // Додайте перевірку, чи recipe не є null, перед використанням
+      {recipe && (
         <div>
           RecipePage
           <RecipePageHero data={recipe} />
@@ -46,7 +46,7 @@ const RecipePage = () => {
               <RecipeIngredientsItem data={item} key={nanoid()} />
             ))}
           </RecipeIngredientsList>
-          <RecipePreparation data={recipe} />    
+          <RecipePreparation data={recipe} />
         </div>
       )}
     </div>

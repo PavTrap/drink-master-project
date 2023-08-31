@@ -1,21 +1,18 @@
 import React from 'react';
+import { formatIngredientImg } from 'utils/utils';
 
 const RecipeIngredientsItem = ({data}) => {
-    if (!data) {
-        return <p>Loading...</p>;
-      }
-      
-    const { ingredientThumb, title, measure} = data;
+  const { ingredientThumb, title, measure} = data;
 
-    return (
-        <li>
-            <img src={ingredientThumb} alt="ingredient" width='120px' />
-            <div>
-                <p>{title}</p>
-                <p>{measure}</p>
-            </div>
-        </li>
-      )
-    };
+  return (
+      <li>
+          <img src={formatIngredientImg(ingredientThumb)} alt="ingredient" width='120px' />
+          <div>
+              <p>{title}</p>
+              <p>{measure}</p>
+          </div>
+      </li>
+    )
+  };
 
 export default RecipeIngredientsItem;
