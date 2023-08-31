@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logOut, refreshUser } from './authOperation';
+import { register, login, logOut, refreshUser, updateUser } from './authOperation';
 import INITIAL_STATE from './InitialState';
 
 const handleRejected = (state, { error, payload }) => {
@@ -33,7 +33,6 @@ const authSlice = createSlice({
         state.isRefreshing = false;
         state.error = null;
       })
-
       // Refresh  User
       .addCase(refreshUser.fulfilled, (state, { payload }) => {
         state.user = payload;
@@ -56,6 +55,13 @@ const authSlice = createSlice({
         state.isRefreshing = true;
         state.error = null;
       })
+      //Updating User
+      .addCase(updateUser.fulfilled, (state, { payload }) => {
+        const newUserObject = {...state.user, ...payload};
+        state.user = newUserObject;
+        state.isRefreshing = false;
+      })
+
       .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected);
   },
 });

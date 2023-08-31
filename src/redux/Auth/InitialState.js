@@ -4,6 +4,7 @@ const INITIAL_STATE = {
   isLoggedIn: false,
   isRefreshing: false,
   error: null,
+  isChangedUserBar: false
 };
 
 export default INITIAL_STATE;
