@@ -1,5 +1,6 @@
 import useAuth from 'hooks/useAuth';
 import { useEffect, useState } from 'react';
+import css from './UserBar.module.css';
 
 const UserBar = ({ toggleModal }) => {
   const { userData } = useAuth();
@@ -18,52 +19,58 @@ const UserBar = ({ toggleModal }) => {
 
   //useEffect for chack photo from redux
   return (
-    <div style={littleStyles} onClick={() => toggleModal(prev=>!prev)} title={userName}>
-      <div style={UserIconContainer}>
-        <img style={Avatar} src={usePhoto} alt="User Avatar" />
+    <div className={css.littleStyles} onClick={() => toggleModal(prev=>!prev)} title={userName}>
+      <div className={css.UserIconContainer}>
+        <img className={css.Avatar} src={usePhoto} alt="User Avatar" />
       </div>
-      <span style={userNameStyles}>{userName}</span>
+      <span className={css.userNameStyles}>{userName}</span>
     </div>
   );
 };
 export default UserBar;
 
+// const littleStyles = {
+//   height: '100%',
+//   textAlign: 'center',
+//   display: 'flex',
+//   flexDirection: 'row',
+//   flexWrap: 'no-wrap',
+//   alignItems: 'center',
+//   justifyContent: 'space-between',
+//   boxSizing: 'border-box',
+//   cursor: 'pointer',
+//   textDecoration: 'none',
+//   gap: '14px',
+// };
+// const Avatar = {
+//   display: 'block',
+//   height: '100%',
+//   width: '100%',
+// };
 
-const littleStyles = {
-  height: '100%',
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'no-wrap',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  boxSizing: 'border-box',
-  cursor: 'pointer',
-  textDecoration: 'none',
-  gap: '14px',
-};
-const Avatar = {
-  display: 'block',
-  height: '100%',
-  width: '100%',
-};
+// const UserIconContainer = {
+//   width: '44px',
+//   height: '44px',
+//   overflow: 'hidden',
+//   borderRadius: '50%',
+// };
 
-const UserIconContainer = {
-  width: '44px',
-  height: '44px',
-  overflow: 'hidden',
-  borderRadius: '50%',
-};
+// const UserIconContainer = {
+//   width: '44px',
+//   height: '44px',
+//   overflow: 'hidden',
+//   borderRadius: '50%',
+// };
 
-const userNameStyles = {
-  color: '#F3F3F3',
-  fontFamily: 'Manrope, sans-serif',
-  fontSize: '16px',
-  fontStyle: 'normal',
-  fontWeight: '500',
-  lineHeight: '24px',
-  textOverflow: "ellipsis",
-  overflow: "hidden", 
-  width: "100px", 
-  whiteSpace: "nowrap",
-};
+// const userNameStyles = {
+//   color: '#F3F3F3',
+//   fontFamily: 'Manrope, sans-serif',
+//   fontSize: '16px',
+//   fontStyle: 'normal',
+//   fontWeight: '500',
+//   lineHeight: '24px',
+//   textOverflow: "ellipsis",
+//   overflow: "hidden", 
+//   width: "100px", 
+//   whiteSpace: "nowrap",
+// };
