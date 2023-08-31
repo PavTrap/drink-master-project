@@ -1,6 +1,9 @@
 import React from 'react';
 
 const RecipePreparation = ({ data }) => {
+  if (!data) {
+    return <p>Loading...</p>;
+  }
   const { drinkThumb, drink, instructions } = data;
 
   return (

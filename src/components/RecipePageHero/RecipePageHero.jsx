@@ -4,7 +4,10 @@ import AddToFavorite from 'components/AddToFavorite/AddToFavorite';
 import RemoveFromFavorite from 'components/RemoveFromFavorite/RemoveFromFavorite';
 
 const RecipePageHero = ({ data }) => {
-const { glass, drinkThumb, drink } = data;
+  if (!data) {
+    return <p>Loading...</p>;
+  }
+  const { glass, drinkThumb, drink } = data;
   return (
     <div>
         <div>
