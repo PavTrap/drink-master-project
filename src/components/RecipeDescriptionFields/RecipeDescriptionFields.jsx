@@ -70,20 +70,21 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
     return (
         <div className={s.recipeDescriptionSection}>
 
-        <label className={s.label_img}>
+        <label className={s.recipeDescription_labelImg}>
           <BsFillPlusSquareFill className={s.recipeDescription_addImgIcon} /> <p className={s.recipeDescription_addImgDescr}>Add image</p> 
-                <input type="file" className={s.cocktailImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={handleChange}/>
+                <input type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={handleChange}/>
             </label>
             
 
         <div className={s.recipeDescriptionFields}>
           
-                 <label for="itemTitle" className={s.recipeDescriptionFields_label}>Enter item title</label>
-               <input className={s.recipeDescriptionFields_input} type="text"  name="itemTitle"  required  onChange={handleChange}/>
-                     
-                <label for="about" className={s.recipeDescriptionFields_label}>Enter about recipe</label> 
-                <input className={s.recipeDescriptionFields_input} type="text"  name="about"  onChange={handleChange}/>
-               
+                 <label  className={s.recipeDescriptionFields_label}>Enter item title
+                    <input className={s.recipeDescriptionFields_input} type="text"  name="itemTitle"  required  onChange={handleChange}/>
+                </label>
+          
+                <label  className={s.recipeDescriptionFields_label}>Enter about recipe
+                   <input className={s.recipeDescriptionFields_input} type="text"  name="about"  onChange={handleChange}/>
+               </label> 
        
     
           <label >
@@ -101,7 +102,7 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
                 control: (baseStyles, state) => ({
                    ...baseStyles,
                   border: "none",
-                   width: "154px",
+                  
                    paddingLeft: "24px",
                    backgroundColor: "rgba(22, 31, 55, 0)"
                 }),
@@ -129,12 +130,10 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
               control: (baseStyles, state) => ({
       ...baseStyles,
                   border: "none",
-                   width: "200px",
                    paddingLeft: "24px",
                    backgroundColor: "rgba(22, 31, 55, 0)"}),
               option: (base) => ({
                 ...base,
-               width: "154px",
                 height: '100%',
                 backgroundColor: "rgba(22, 31, 55, 1)",
               }),
