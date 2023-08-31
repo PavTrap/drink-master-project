@@ -36,7 +36,7 @@ export const SharedLayout = () => {
 
         {modalActive && (
           <Modal active={modalActive} setActive={setModalActive}>
-            <ModalCard />
+            <ModalCard closePopup={setModalauthActive}/>
           </Modal>
         )}
         {policyModal && (

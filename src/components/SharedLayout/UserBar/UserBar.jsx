@@ -18,7 +18,7 @@ const UserBar = ({ toggleModal }) => {
 
   //useEffect for chack photo from redux
   return (
-    <div style={littleStyles} onClick={() => toggleModal(true)}>
+    <div style={littleStyles} onClick={() => toggleModal(prev=>!prev)} title={userName}>
       <div style={UserIconContainer}>
         <img style={Avatar} src={usePhoto} alt="User Avatar" />
       </div>
@@ -62,4 +62,8 @@ const userNameStyles = {
   fontStyle: 'normal',
   fontWeight: '500',
   lineHeight: '24px',
+  textOverflow: "ellipsis",
+  overflow: "hidden", 
+  width: "100px", 
+  whiteSpace: "nowrap",
 };

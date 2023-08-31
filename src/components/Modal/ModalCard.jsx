@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { updateUser } from 'redux/Auth/authOperation';
 import LoadingCircle from 'components/Spinner/LoadingCircle';
 
-const ModalCard = ({ onClickClose }) => {
+const ModalCard = ({ closePopup }) => {
   const dispatch = useDispatch();
   const { userData } = isAuth();
   const { name, avatarURL } = userData;
@@ -32,19 +32,19 @@ const ModalCard = ({ onClickClose }) => {
   const onClick = event => {
     //fake input click
     hiddenFileInput.current.click();
-    setTimeout(() => {setLoadingURL(prev=>!prev)}, 500)
-
   };
 
   const onPhotoChange = event => {
     //get new image logic
-
     const file = event.target.files[0];
     if (file) {
-
       setTempImageUrl(URL.createObjectURL(file));
       setUserFile(file);
+
+      
     }
+
+
   };
 
   const onSubmit = () => {
@@ -53,15 +53,17 @@ const ModalCard = ({ onClickClose }) => {
     userName && formData.append('name', userName);
     userFile && formData.append('avatarURL', userFile);
 
-    dispatch(updateUser(formData))
-    onClickClose(prev => !prev);
+    dispatch(updateUser(formData));
+    closePopup(prev=>!prev)
+
+
   };
 
   return (
     <div>
       <div className={css.modal__content__colorEffect1}></div>
       <div className={css.modal__content__colorEffect2}></div>
-      <div className={css.loginContainer}>
+      <div className={css.loginContainer} >
         <div className={css.avatar}>
           <div style={UserIconContainer}>{loadingURL ? <LoadingCircle /> : <img style={Avatar} src={userPhoto} alt="User Avatar" />}</div>
           <button className={css.addAvatar} onClick={onClick}>

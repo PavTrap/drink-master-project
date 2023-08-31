@@ -6,23 +6,31 @@ import useMountTransition from 'hooks/useMountTransition';
 
 import css from './ModalAuth.module.css';
 
-const ModalAuth = ({ active }) => {
+const ModalAuth = ({ active, setActive }) => {
   const hasTransitionedIn = useMountTransition(active, 1000);
 
   const [modalActive, setModalActive] = useState(false);
   const [modalLogoutActive, setModalLogoutActive] = useState(false);
+  const closePopup=()=>{
+    setModalActive(prev=>!prev)
+    setActive(prev=>!prev)
+  }
+  const closePopup2=()=>{
+    setModalLogoutActive(prev=>!prev)
+    setActive(prev=>!prev)
+  }
 
 
   return (
     <>
       {modalActive && (
-        <Modal active={modalActive} setActive={setModalActive}>
-          <ModalCard onClickClose={setModalActive}/>
+        <Modal active={modalActive} setActive={closePopup}>
+          <ModalCard onClickClose={closePopup} closePopup={setActive}/>
         </Modal>
       )}
       {modalLogoutActive && (
-        <Modal active={modalLogoutActive} setActive={setModalLogoutActive}>
-          <ModalCardLogout onClickClose={setModalLogoutActive}/>
+        <Modal active={modalLogoutActive} setActive={closePopup2}>
+          <ModalCardLogout onClickClose={closePopup2}/>
         </Modal>
       )}
       {(hasTransitionedIn || active) && (
