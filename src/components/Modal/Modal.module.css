@@ -12,6 +12,8 @@
 	transition: 0.5s;
 	pointer-events: none;
 	z-index: 20;
+	transition: all 300ms ease-in-out;
+
 
 }
 .modalActive{
@@ -25,31 +27,32 @@
 	align-items: center;
 	justify-content: center;
 	opacity: 1;
-	transition: 0.5s;
+	/* transition: 0.5s; */
 	z-index: 100000000;
+	transition: all 300ms ease-in-out;
 
 }
 .modal__content{
 	padding: 50px 50px 70px 50px;
 	border-radius: 12px;
 	background-color: #161F37;
-	max-height: 426px;
+	/* max-height: 426px; */
 	max-width: 500px;
 	position: relative;
 	overflow: hidden;
-	transform: scale(0);
-	transition: 0.5s;
+	transform: scale(0.5);
+	transition: all 200ms ease-in-out;
 }
 .modal__contentActive{
 	padding: 50px 50px 70px 50px;
 	border-radius: 12px;
 	background-color: #161F37;
-	max-height: 426px;
+	/* max-height: 426px; */
 	max-width: 500px;
 	position: relative;
 	overflow: hidden;
 	transform: scale(1);
-	transition: 0.5s;
+	transition: all 200ms ease-in-out;
 }
 
 .closeBtn{

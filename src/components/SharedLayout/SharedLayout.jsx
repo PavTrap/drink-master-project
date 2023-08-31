@@ -10,7 +10,7 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import useAuth from 'hooks/useAuth';
+import useAuth from 'hooks/useAuth';//hook
 
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
@@ -68,12 +68,12 @@ export const SharedLayout = () => {
         )}
         {policyModal && (
           <Modal active={policyModal} setActive={setPolicyModal}>
-            <ModalPolicyCard />
+            <ModalPolicyCard onMount={policyModal}/>
           </Modal>
         )}
         {termsModal && (
           <Modal active={termsModal} setActive={setTermsModal}>
-            <ModalTermsCard />
+            <ModalTermsCard onMount={termsModal}/>
           </Modal>
         )}
 

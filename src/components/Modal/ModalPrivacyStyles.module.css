@@ -3,7 +3,7 @@
   color: white;
   text-align: justify;
   overflow-y: scroll;
-  height: 426px;
+  height: 60vh;
 }
 
 .body::-webkit-scrollbar {
@@ -34,4 +34,5 @@
 .contentComponent {
   overflow: hidden;
   box-sizing: content-box;
+  height: 60vh;
 }
