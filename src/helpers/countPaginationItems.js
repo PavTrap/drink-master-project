@@ -1,7 +1,15 @@
-export function countPaginationItems(pages) {
+export function countPaginationItems(maxItems, currentPage) {
   let items = [];
-  for (let i = 1; i < pages - 1; i++) {
-    items.push(i + 1);
+  const b = currentPage - Math.round(maxItems / 2);
+  if (b > 0) {
+    for (let i = b; i <= maxItems; i++) {
+      items.push(i + 1);
+    }
+    return items;
+  } else {
+    for (let i = currentPage; i <= maxItems; i++) {
+      items.push(i + 1);
+    }
+    return items;
   }
-  return items;
 }

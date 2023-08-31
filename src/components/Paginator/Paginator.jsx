@@ -8,18 +8,18 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage }) => {
   function calculateVisibleNumbers(windowWidth) {
     let count = 3;
     if (windowWidth > 768 && width < 1440) count = 5;
-    else if (windowWidth > 1440) count = 10;
+    else if (windowWidth > 1440) count = 8;
     return count;
   }
   const { width } = useWindowSize();
   const dispatch = useDispatch();
   const maxVisiblePageNumders = calculateVisibleNumbers(width);
-  const numbers = countPaginationItems(totalPages);
+  const numbers = countPaginationItems(maxVisiblePageNumders, page);
   const startPage = 1;
   const lastPage = totalPages;
   const DOTS = '...';
-  const shouldRenderLeftDots = startPage + page > maxVisiblePageNumders + 1 ? true : false;
-  const shouldRenderRightDots = lastPage - page > maxVisiblePageNumders - 1 ? true : false;
+  const shouldRenderLeftDots = startPage + page > maxVisiblePageNumders + 2 ? true : false;
+  const shouldRenderRightDots = lastPage - page > maxVisiblePageNumders - 2 ? true : false;
   return (
     <div className={css.paginatorContainer}>
       <button onClick={() => dispatch(onChangePage(page - 1))}>
@@ -27,7 +27,7 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage }) => {
       </button>
       <ul className={css.pagesList}>
         <li key={startPage}>
-          <button onClick={() => dispatch(onChangePage({ startPage }))}>{startPage}</button>
+          <button onClick={() => dispatch(onChangePage(startPage))}>{startPage}</button>
         </li>
         {shouldRenderLeftDots && <li key="leftDots">{DOTS}</li>}
         {numbers.map(number => (
