@@ -16,7 +16,7 @@ export const DrinksSearch = () => {
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchIngredients());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchIngredients());
