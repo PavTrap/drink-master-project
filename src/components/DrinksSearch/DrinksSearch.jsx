@@ -3,16 +3,22 @@ import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
 import { DrinkCard } from 'pages/MainPage/MainPage';
-// import Select from "react-select"
+import Select from 'react-select';
 import debounce from 'lodash.debounce';
+import { selectStyles } from './selectStyles';
+// import { Paginator } from 'components/Paginator/Paginator';
 
 export const DrinksSearch = () => {
+  // add lastRequest
   const { categoryList, entities, ingredientList } = useSelector(state => state.drinks);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchDrinks({}));
     dispatch(fetchCategories());
+    dispatch(fetchIngredients());
+  }, []);
+
+  useEffect(() => {
     dispatch(fetchIngredients());
   }, [dispatch]);
 
@@ -25,81 +31,63 @@ export const DrinksSearch = () => {
     debouncedHandleChange(payload);
   };
 
-  const handleChangeSelect = event => {
-    const item = event.currentTarget;
+  
 
-    dispatch(fetchDrinks({ [item.name]: item.value }));
+  const handleChangeSelectCategory = selectedoption => {
+    dispatch(fetchDrinks({ category: selectedoption.label }));
   };
 
-  const SelectList = ({ data }) => {
+  const handleChangeSelectIngredient = selectedoption => {
+    dispatch(fetchDrinks({ ingredient: selectedoption.label }));
+  };
+
+  // const SelectList = ({ data }) => {
+  //   const arr = [];
+  //   data.forEach(elem => {
+  //     arr.push(<option key={elem._id}>{elem.name || elem.title}</option>);
+  //   });
+  //   return arr;
+  // };
+
+  // const changePage = (page) => {
+  //   return fetchDrinks({page, lastRequest})
+  // }
+
+  
+
+  const selectListWithSelectReact = data => {
     const arr = [];
+    let el = null;
     data.forEach(elem => {
-      arr.push(<option key={elem._id}>{elem.name || elem.title}</option>);
+      if (elem?.name) {
+        el = elem.name;
+      } else {
+        el = elem.title;
+      }
+      arr.push({ value: el, label: el });
     });
     return arr;
   };
 
-  // styles for select-react
-  // const styles = {
-  //   // control: () => ({ ...css.selsctDrinks}),
-
-  //   control: styles => ({
-  //     // ...css.selsctDrinks,
-  //     display: "flex",
-  //     backgroundColor: '#161f37',
-  //     width: '199px',
-  //     borderRadius: '200px',
-  //     paddingTop: '14px',
-  //     paddingBottom: '15px',
-  //     paddingLeft: '24px',
-  //     paddingRight: '24px',
-  //   }),
-  //   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-
-  //     return {
-  //       backgroundColor: isDisabled ? 'red' : "#161f37",
-  //       color: '#FFF',
-        
-
-  //       cursor: isDisabled ? 'not-allowed' : 'default',
-  //       // borderRadius: "20px"
-  //     };
-  //   },
-  //   options: (styles) => {
-  //     return {
-  //       ...styles,
-  //       borderRadius: "20px",
-  //       display: 'flex'
-  //     }
-  //   }
-  // };
-
-  // const selectListWithSelectReact = (data) => {
-  //   const arr = [];
-  //   data.forEach(elem => {
-  //     arr.push({ value: 'chocolate', label: 'Chocolate' },);
-  //   });
-  //   return arr;
-  // }
-  // const options = selectListWithSelectReact(categoryList);
-
   return (
     <>
       <form className={css.drinkRequestForm}>
-        <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" /> 
+        <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" />
 
-        <select name="category" onChange={handleChangeSelect} className={css.selsctDrinks}>
-          <option value="categoryMain">All categories</option>
+        
 
-          <SelectList data={categoryList} />
-        </select>
-
-        <select name="ingredient" onChange={handleChangeSelect} className={css.selsctDrinks}>
-          <option value="">Ingredients</option>
-          <SelectList data={ingredientList} />
-        </select>
-
-        {/* <Select options={options} styles={styles} /> */}
+        <Select
+          placeholder="All categories"
+          options={selectListWithSelectReact(categoryList)}
+          styles={selectStyles}
+          onChange={handleChangeSelectCategory}
+        />
+        <Select
+          placeholder="Ingredients"
+          options={selectListWithSelectReact(ingredientList)}
+          styles={selectStyles}
+          onChange={handleChangeSelectIngredient}
+        />
       </form>
       {entities.data && (
         <ul className={css.mainPageList}>
@@ -109,6 +97,7 @@ export const DrinksSearch = () => {
         </ul>
       )}
       {entities?.data?.length === 0 && <h3>No result</h3>}
+      {/* {entities?.data?.length > 10 && <Paginator pages={pages} onChangePage = {changePage} />} */}
     </>
   );
 };

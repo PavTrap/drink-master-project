@@ -19,6 +19,8 @@ const drinksSlice = createSlice({
     categoryList: [],
     ingredientList: [],
     filter: '',
+    lastRequest: {},
+    pages: 0
   },
   reducers: {
     changeFilter: (state, action) => {
@@ -30,6 +32,7 @@ const drinksSlice = createSlice({
       .addCase(fetchDrinks.fulfilled, (state, { payload: drinks }) => {
         state.entities = drinks;
         state.isLoading = false;
+        // state.lastRequest = {q: drinks}
       })
       .addCase(fetchCategories.fulfilled, (state, { payload: categoryList }) => {
         state.categoryList = categoryList;

@@ -6,12 +6,11 @@ axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
 // получается, что запрос одина
 export const fetchDrinks = createAsyncThunk('drinks/fetchDrinks', async (data, thunkAPI) => {
   try {
-    const { word = '', category = 'cocktail', ingredient = '', page = 1 } = data;
-    // по айдишнику категории
+    const { word = '', category = 'cocktail', ingredient = '', page = 1, lastRequest = null } = data;
     let addUrl = '';
-    // console.log('category in FETCHDRINKS', category);
-    console.log('data', data);
-    console.log('word', word)
+
+    if(lastRequest && page !== 1) addUrl = `api/search?${Object.entries(lastRequest)[0]}=${Object.entries(lastRequest)[1]}&page=${page}&limit=9`
+   
 
     if (ingredient !== '') addUrl = `api/search?ingredient=${ingredient}&page=${page}&limit=9`;
     else if (word !== '') addUrl = `api/search?q=${word}&page=${page}&limit=9`;
@@ -33,7 +32,7 @@ export const fetchCategories = createAsyncThunk('drinks/fetchCategories', async 
   }
 });
 
-export const fetchIngredients = createAsyncThunk('drinks/fetchGlasses', async (_, thunkAPI) => {
+export const fetchIngredients = createAsyncThunk('drinks/fetchIngredients', async (_, thunkAPI) => {
   try {
     const response = await axios.get('api/ingredients/list');
     return response.data;
