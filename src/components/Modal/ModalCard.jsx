@@ -2,18 +2,21 @@ import css from './Modal.module.css';
 
 import { MdAdd } from 'react-icons/md';
 import isAuth from '../../hooks/useAuth';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import loader from "../../assets/loading.gif"
 
 const ModalCard = ({ active, onClickClose }) => {
   const { userData } = isAuth();
   const { name, avatarURL } = userData;
 
-  // const [userPhoto, setUserPhoto] = useState(avatarURL);
+  const [userPhoto, setUserPhoto] = useState(null);
   const [userName, setUserName] = useState(null);
+  const [uploadedFile, setUploadedFile] = useState(null);
+  const [loadingURL, setLoadingURL] = useState(false);
 
-  // useEffect(() => {
-  //   setUserPhoto(avatarURL);
-  // }, [avatarURL]);
+  useEffect(() => {
+    uploadedFile ? setUserPhoto(uploadedFile) : setUserPhoto(avatarURL);
+  }, [avatarURL, uploadedFile]);
 
   const hiddenFileInput = useRef(null);
 
@@ -22,17 +25,17 @@ const ModalCard = ({ active, onClickClose }) => {
   };
 
   const handleChange = event => {
-    const fileUploaded = event.target.files[0];
-    console.log(fileUploaded);
+    const file = event.target.files[0];
+    if (file) {
+      setUploadedFile(URL.createObjectURL(file));
+    }
+
     // handleFile(fileUploaded);
   };
 
-const handleSubmit = event =>{
-  // const formData = new FormData()
-}
-
-
-
+  const handleSubmit = event => {
+    // const formData = new FormData()
+  };
 
   return (
     <div>
@@ -41,12 +44,13 @@ const handleSubmit = event =>{
       <div className={css.loginContainer}>
         <div className={css.avatar}>
           <div style={UserIconContainer}>
-            <img style={Avatar} src={avatarURL} alt="User Avatar" />
+           <img style={{width: "60%", height:"60%"}} src={loader} alt="Loading..." />
+            {/* <img style={Avatar} src={userPhoto} alt="User Avatar" /> */}
           </div>
           <button className={css.addAvatar} onClick={handleClick}>
             <MdAdd className={css.addAvatarIcon} />
           </button>
-          <input type="file" onChange={handleChange} ref={hiddenFileInput} style={{ display: 'none' }} name='avatarURL'/>
+          <input type="file" onChange={handleChange} ref={hiddenFileInput} style={{ display: 'none' }} name="avatarURL" />
         </div>
         <input
           type="text"
@@ -59,7 +63,9 @@ const handleSubmit = event =>{
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <button className={css.loginBtn} onClick={handleSubmit}>Save changes</button>
+        <button className={css.loginBtn} onClick={handleSubmit}>
+          Save changes
+        </button>
       </div>
     </div>
   );
@@ -78,4 +84,8 @@ const UserIconContainer = {
   height: '100px',
   overflow: 'hidden',
   borderRadius: '50%',
+  display:"flex",
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: "#181f35",
 };

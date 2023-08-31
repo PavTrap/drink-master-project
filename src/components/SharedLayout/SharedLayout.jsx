@@ -13,8 +13,8 @@ import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
 import useAuth from 'hooks/useAuth';
-// import Modal from '../Modal/Modal'; //component
-// import ModalCard from 'components/Modal/ModalCard';//component
+ 
+
 import ModalAuth from 'components/Modal/ModalAuth';//component
 import Modal from '../Modal/Modal'; //component
 import ModalCard from 'components/Modal/ModalCard';//component
@@ -24,7 +24,7 @@ import ModalTermsCard from 'components/Modal/ModalTermsCard';
 import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
 export const SharedLayout = () => {
-  // const [modalActive, setModalActive] = useState(false);
+
   const [modalAuthActive, setModalauthActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [policyModal, setPolicyModal] = useState(false);
@@ -36,7 +36,6 @@ export const SharedLayout = () => {
     <>
       <MainContainer>
 
-        {/* {modalActive && (<Modal active={modalActive} setActive={setModalActive}><ModalCard /></Modal>)} */}
         {modalAuthActive && (<ModalAuth active={modalAuthActive} setActive={setModalauthActive} />)}
 
         {modalActive && (

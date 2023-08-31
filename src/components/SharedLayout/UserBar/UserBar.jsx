@@ -3,6 +3,8 @@ import useAuth from 'hooks/useAuth';
 const UserBar = ({ toggleModal }) => {
   const { userData } = useAuth();
   const { avatarURL, name } = userData;
+
+  //useEffect for chack photo from redux
   return (
     <div style={littleStyles} onClick={() => toggleModal(true)}>
       <div style={UserIconContainer}>
