@@ -4,16 +4,17 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import setAuthHeader from 'helpers/axiosHedder';
 import useAuth from 'hooks/useAuth';
+import imgSrc from './plug-glass-400x400.png'
 
 export const fetchDrinks = async token => {
-  try {
-    setAuthHeader(token);
-    const { data } = await axios.get('/api/recipes/main-page');
-    // console.log(data);
-    return data;
-  } catch (e) {
-    console.log(e);
-  }
+	try {
+		setAuthHeader(token);
+		const { data } = await axios.get('/api/recipes/main-page');
+		// console.log(data);
+		return data;
+	} catch (e) {
+		console.log(e);
+	}
 };
 
 export const DrinkCard = ({ drink, drinkThumb }) =>
@@ -41,24 +42,24 @@ export const addYourCoctail = ({ children }) =>
 );
 
 const MainPage = () => {
-  const [allDrinks, setAllDrinks] = useState(null);
-  const { ReduxToken } = useAuth();
+	const [allDrinks, setAllDrinks] = useState(null);
+	const { ReduxToken } = useAuth();
 
-  useEffect(() => {
-    fetchDrinks(ReduxToken)
-      .then(res => {
-        setAllDrinks(res);
-      })
-      .catch(err => console.log(err));
-  }, [ReduxToken]);
+	useEffect(() => {
+		fetchDrinks(ReduxToken)
+			.then(res => {
+				setAllDrinks(res);
+			})
+			.catch(err => console.log(err));
+	}, [ReduxToken]);
 
-  const separateDrinks = drinks => {
-    if (!allDrinks) return;
+	const separateDrinks = drinks => {
+		if (!allDrinks) return;
 
-    const ordinaryDrinks = [];
-    const cocktails = [];
-    const shakes = [];
-    const otherDrinks = [];
+		const ordinaryDrinks = [];
+		const cocktails = [];
+		const shakes = [];
+		const otherDrinks = [];
 
 		for (const drink of drinks) {
 			if (drink.category === "Ordinary Drink") ordinaryDrinks.push(drink);
@@ -87,7 +88,7 @@ const MainPage = () => {
 		return getedDrinks;
 	};
 
-  const getedDrinks = separateDrinks(allDrinks);
+	const getedDrinks = separateDrinks(allDrinks);
 
 	return (
 		<>
@@ -110,9 +111,9 @@ const MainPage = () => {
 									<Link to={'/drinks/ordinary-drink'}><h2>Ordinary Drink</h2></Link>
 								</div>
 								<ul className={css.mainPageList}>
-									{getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
+									{getedDrinks['ordinary drink'].length !== 0 ? getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
@@ -120,9 +121,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/coctail'}><h2>Coctail</h2></Link>
 								<ul className={css.mainPageList}>
-									{getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
+									{getedDrinks.coctail.length !== 0 ? getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
@@ -130,9 +131,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/shake'}><h2>Shake</h2></Link>
 								<ul className={css.mainPageList}>
-									{allDrinks[9].items.map(({ drink, drinkThumb, _id }) => (
-										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+								{getedDrinks.shake.length !== 0 ? getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
+									<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
+								)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
@@ -140,9 +141,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/other-unknown'}><h2>Other/Unknown</h2></Link>
 								<ul className={css.mainPageList}>
-									{allDrinks[10].items.map(({ drink, drinkThumb, _id }) => (
-										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									))}
+								{getedDrinks['other/unknown'].length !== 0 ? getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
+									<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
+								)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
