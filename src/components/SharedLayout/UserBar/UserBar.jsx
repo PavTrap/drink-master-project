@@ -22,7 +22,7 @@ const UserBar = ({ toggleModal }) => {
       <div style={UserIconContainer}>
         <img style={Avatar} src={usePhoto} alt="User Avatar" />
       </div>
-      <span style={userName}>{userName}</span>
+      <span style={userNameStyles}>{userName}</span>
     </div>
   );
 };
@@ -55,7 +55,7 @@ const UserIconContainer = {
   borderRadius: '50%',
 };
 
-const userName = {
+const userNameStyles = {
   color: '#F3F3F3',
   fontFamily: 'Manrope, sans-serif',
   fontSize: '16px',

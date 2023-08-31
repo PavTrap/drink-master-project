@@ -32,13 +32,16 @@ const ModalCard = ({ onClickClose }) => {
   const onClick = event => {
     //fake input click
     hiddenFileInput.current.click();
+    setTimeout(() => {setLoadingURL(prev=>!prev)}, 500)
+
   };
 
   const onPhotoChange = event => {
     //get new image logic
+
     const file = event.target.files[0];
     if (file) {
-      setLoadingURL(true);
+
       setTempImageUrl(URL.createObjectURL(file));
       setUserFile(file);
     }
