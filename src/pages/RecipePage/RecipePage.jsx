@@ -33,13 +33,12 @@ const RecipePage = () => {
       .catch(e => console.log(e));
   }, [ReduxToken, recipeId]);
 
-  console.log(recipe);
+  console.log(recipe); 
 
   return (
     <div>
       {recipe && (
         <div>
-          RecipePage
           <RecipePageHero data={recipe} />
           <RecipeIngredientsList data={recipe}>
             {recipe.ingredients.map(item => (

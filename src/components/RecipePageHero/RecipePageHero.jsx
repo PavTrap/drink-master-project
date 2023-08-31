@@ -11,6 +11,7 @@ const RecipePageHero = ({ data }) => {
         <div>
             <p>{glass}</p>
             <RecipePageTitle drink={drink}></RecipePageTitle>
+            {/* звідки брати опис коктейля? написати логіку за відсутності опису */}
             <p>description</p>
             {/* Додати рендер за умовою: якщо ще не має в улюблених показувати кнопку AddToFavorite, а якщо ні - то RemoveFromFavorite */}
             <AddToFavorite></AddToFavorite>

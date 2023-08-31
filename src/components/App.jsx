@@ -16,7 +16,7 @@ const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
-const RecipePage = lazy(() => import('../pages/RecipePage'));
+const RecipePage = lazy(() => import('../pages/RecipePage/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 export const App = () => {

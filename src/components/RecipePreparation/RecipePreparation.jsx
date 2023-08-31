@@ -1,16 +1,14 @@
 import React from 'react';
+import { formatIngredientImg } from 'utils/utils';
 
 const RecipePreparation = ({ data }) => {
-  if (!data) {
-    return <p>Loading...</p>;
-  }
   const { drinkThumb, drink, instructions } = data;
 
   return (
     <div>
       <h3>Recipe Preparation</h3>
       <div>
-        <img src={drinkThumb} alt={drink}  width='250px'/>
+        <img src={formatIngredientImg(drinkThumb)} alt={drink}  width='250px'/>
           <div>
               <p>{instructions}</p>
               <ul>
