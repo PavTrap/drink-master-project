@@ -1,8 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
-// import isAuth from '../Routes/isAuth';
-
 import { Spinner } from 'components/Spinner/Spinner'; //components
 import MainContainer from './MainContainer'; //components
 import Header from 'components/SharedLayout/Header/Header'; // Component
@@ -12,9 +10,8 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import useAuth from 'hooks/useAuth';
-// import Modal from '../Modal/Modal'; //component
-// import ModalCard from 'components/Modal/ModalCard';//component
+import useAuth from 'hooks/useAuth';//hook
+
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
 import ModalCard from 'components/Modal/ModalCard'; //component
@@ -27,7 +24,7 @@ import BurgerMenu from './BurgerMenu/BurgerMenu';
 
 export const SharedLayout = () => {
   const location = useLocation();
-  // const [modalActive, setModalActive] = useState(false);
+
   const [modalAuthActive, setModalauthActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [policyModal, setPolicyModal] = useState(false);
@@ -62,22 +59,21 @@ export const SharedLayout = () => {
   return isLoggedIn ? (
     <>
       <MainContainer>
-        {/* {modalActive && (<Modal active={modalActive} setActive={setModalActive}><ModalCard /></Modal>)} */}
         {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
 
         {modalActive && (
           <Modal active={modalActive} setActive={setModalActive}>
-            <ModalCard />
+            <ModalCard closePopup={setModalauthActive} />
           </Modal>
         )}
         {policyModal && (
           <Modal active={policyModal} setActive={setPolicyModal}>
-            <ModalPolicyCard />
+            <ModalPolicyCard onMount={policyModal}/>
           </Modal>
         )}
         {termsModal && (
           <Modal active={termsModal} setActive={setTermsModal}>
-            <ModalTermsCard />
+            <ModalTermsCard onMount={termsModal}/>
           </Modal>
         )}
 
@@ -99,11 +95,9 @@ export const SharedLayout = () => {
           </Header>
         )}
         <main>
-          (
           <Suspense fallback={<Spinner />}>
             <Outlet />
           </Suspense>
-          )
         </main>
       </MainContainer>
       <div>
@@ -119,20 +113,10 @@ export const SharedLayout = () => {
           <div style={footerBottomContainer}>
             <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
             <div style={rightSide}>
-              <Link
-                style={links}
-                onClick={() => {
-                  setPolicyModal(true);
-                }}
-              >
+              <Link style={links} onClick={() => setPolicyModal(true)}>
                 Privacy Policy
               </Link>
-              <Link
-                style={links}
-                onClick={() => {
-                  setTermsModal(true);
-                }}
-              >
+              <Link style={links} onClick={() => setTermsModal(true)}>
                 Terms of Service
               </Link>
             </div>
