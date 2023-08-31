@@ -1,14 +1,21 @@
 import useAuth from 'hooks/useAuth';
+import { useEffect, useState } from 'react';
 
 const UserBar = ({ toggleModal }) => {
   const { userData } = useAuth();
   const { avatarURL, name } = userData;
+  const [usePhoto, setUserPhoto] = useState(avatarURL);
+
+
+  useEffect(()=>{
+   setUserPhoto(avatarURL)
+  }, [avatarURL])
 
   //useEffect for chack photo from redux
   return (
     <div style={littleStyles} onClick={() => toggleModal(true)}>
       <div style={UserIconContainer}>
-        <img style={Avatar} src={avatarURL} alt="User Avatar" />
+        <img style={Avatar} src={usePhoto} alt="User Avatar" />
       </div>
       <span style={userName}>{name}</span>
     </div>

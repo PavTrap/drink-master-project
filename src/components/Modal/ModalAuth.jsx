@@ -17,7 +17,7 @@ const ModalAuth = ({ active }) => {
     <>
       {modalActive && (
         <Modal active={modalActive} setActive={setModalActive}>
-          <ModalCard />
+          <ModalCard onClickClose={setModalActive}/>
         </Modal>
       )}
       {modalLogoutActive && (

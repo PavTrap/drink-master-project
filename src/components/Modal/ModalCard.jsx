@@ -1,46 +1,57 @@
 import css from './Modal.module.css';
-
-import { MdAdd } from 'react-icons/md';
 import isAuth from '../../hooks/useAuth';
+import { MdAdd } from 'react-icons/md';
+
 import { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateUser } from 'redux/Auth/authOperation';
 import LoadingCircle from 'components/Spinner/LoadingCircle';
 
-const ModalCard = ({ active, onClickClose }) => {
+const ModalCard = ({ onClickClose }) => {
+  const dispatch = useDispatch();
   const { userData } = isAuth();
   const { name, avatarURL } = userData;
 
-  const hiddenFileInput = useRef(null);
+  const hiddenFileInput = useRef(null); //input reference
 
-  const [userPhoto, setUserPhoto] = useState(null);
-  const [userName, setUserName] = useState(null);
-  const [uploadedFile, setUploadedFile] = useState(null);
-  const [loadingURL, setLoadingURL] = useState(false);
+  const [userPhoto, setUserPhoto] = useState(avatarURL); // userPhoto state
+  const [userName, setUserName] = useState(''); // controlled name
+
+  const [tempImageUrl, setTempImageUrl] = useState(null); //link to preview photo
+  const [userFile, setUserFile] = useState(null); //state with file
+  const [loadingURL, setLoadingURL] = useState(false); //spinner on load
 
   useEffect(() => {
-    uploadedFile ? setUserPhoto(uploadedFile) : setUserPhoto(avatarURL);
-    if(uploadedFile) setLoadingURL(false)
-  }, [avatarURL, uploadedFile]);
+    // refresh avatar on modal
+    if (tempImageUrl) {
+      setUserPhoto(tempImageUrl);
+      setLoadingURL(false);
+    }
+  }, [avatarURL, tempImageUrl]);
 
-
-
-  const handleClick = event => {
+  const onClick = event => {
+    //fake input click
     hiddenFileInput.current.click();
   };
 
-  const handleChange = event => {
+  const onPhotoChange = event => {
+    //get new image logic
     const file = event.target.files[0];
     if (file) {
-      setLoadingURL(true)
-      setUploadedFile(URL.createObjectURL(file));
+      setLoadingURL(true);
+      setTempImageUrl(URL.createObjectURL(file));
+      setUserFile(file);
     }
-    
-
-    // handleFile(fileUploaded);
   };
 
-  const handleSubmit = event => {
-    const formData = new FormData()
-    formData.forEach(item =>console.log(item))
+  const onSubmit = () => {
+    //submitting
+    const formData = new FormData();
+    userName && formData.append('name', userName);
+    userFile && formData.append('avatarURL', userFile);
+
+    dispatch(updateUser(formData))
+    onClickClose(prev => !prev);
   };
 
   return (
@@ -50,10 +61,10 @@ const ModalCard = ({ active, onClickClose }) => {
       <div className={css.loginContainer}>
         <div className={css.avatar}>
           <div style={UserIconContainer}>{loadingURL ? <LoadingCircle /> : <img style={Avatar} src={userPhoto} alt="User Avatar" />}</div>
-          <button className={css.addAvatar} onClick={handleClick}>
+          <button className={css.addAvatar} onClick={onClick}>
             <MdAdd className={css.addAvatarIcon} />
           </button>
-          <input type="file" onChange={handleChange} ref={hiddenFileInput} style={{ display: 'none' }} name="avatarURL" />
+          <input type="file" onChange={onPhotoChange} ref={hiddenFileInput} style={{ display: 'none' }} name="avatarURL" />
         </div>
         <input
           type="text"
@@ -61,12 +72,12 @@ const ModalCard = ({ active, onClickClose }) => {
           name="name"
           placeholder={name}
           value={userName}
-          onChange={setUserName}
-          pattern="/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          onChange={event => setUserName(event.target.value)}
+          // pattern="[^\W\d_]"
+          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <button className={css.loginBtn} onClick={handleSubmit}>
+        <button type="submit" className={css.loginBtn} onClick={onSubmit}>
           Save changes
         </button>
       </div>
@@ -90,5 +101,5 @@ const UserIconContainer = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: '#181f35',
+  background: 'transparent',
 };
