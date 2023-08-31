@@ -2,6 +2,7 @@ import React from 'react';
 import RecipePageTitle from 'components/RecipePageTitle/RecipePageTitle';
 import AddToFavorite from 'components/AddToFavorite/AddToFavorite';
 import RemoveFromFavorite from 'components/RemoveFromFavorite/RemoveFromFavorite';
+import { formatIngredientImg } from 'utils/utils';
 
 const RecipePageHero = ({ data }) => {
   const { glass, drinkThumb, drink } = data;
@@ -15,7 +16,7 @@ const RecipePageHero = ({ data }) => {
             <AddToFavorite></AddToFavorite>
             <RemoveFromFavorite></RemoveFromFavorite>
         </div>
-        <img src={drinkThumb} alt={drink} width='250px' />
+        <img src={formatIngredientImg(drinkThumb)} alt={drink} width='250px' />
     </div>
   )
 };
