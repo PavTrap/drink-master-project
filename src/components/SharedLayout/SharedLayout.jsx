@@ -1,8 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
-
-
 import { Spinner } from 'components/Spinner/Spinner'; //components
 import MainContainer from './MainContainer'; //components
 import Header from 'components/SharedLayout/Header/Header'; // Component
@@ -13,7 +11,6 @@ import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
 import useAuth from 'hooks/useAuth';
-
 
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
@@ -62,7 +59,6 @@ export const SharedLayout = () => {
   return isLoggedIn ? (
     <>
       <MainContainer>
-
         {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
 
         {modalActive && (
@@ -99,11 +95,9 @@ export const SharedLayout = () => {
           </Header>
         )}
         <main>
-          (
           <Suspense fallback={<Spinner />}>
             <Outlet />
           </Suspense>
-          )
         </main>
       </MainContainer>
       <div>
