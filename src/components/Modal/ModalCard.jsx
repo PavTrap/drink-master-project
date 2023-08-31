@@ -3,11 +3,13 @@ import css from './Modal.module.css';
 import { MdAdd } from 'react-icons/md';
 import isAuth from '../../hooks/useAuth';
 import { useEffect, useRef, useState } from 'react';
-import loader from "../../assets/loading.gif"
+import LoadingCircle from 'components/Spinner/LoadingCircle';
 
 const ModalCard = ({ active, onClickClose }) => {
   const { userData } = isAuth();
   const { name, avatarURL } = userData;
+
+  const hiddenFileInput = useRef(null);
 
   const [userPhoto, setUserPhoto] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -16,9 +18,10 @@ const ModalCard = ({ active, onClickClose }) => {
 
   useEffect(() => {
     uploadedFile ? setUserPhoto(uploadedFile) : setUserPhoto(avatarURL);
+    if(uploadedFile) setLoadingURL(false)
   }, [avatarURL, uploadedFile]);
 
-  const hiddenFileInput = useRef(null);
+
 
   const handleClick = event => {
     hiddenFileInput.current.click();
@@ -27,14 +30,17 @@ const ModalCard = ({ active, onClickClose }) => {
   const handleChange = event => {
     const file = event.target.files[0];
     if (file) {
+      setLoadingURL(true)
       setUploadedFile(URL.createObjectURL(file));
     }
+    
 
     // handleFile(fileUploaded);
   };
 
   const handleSubmit = event => {
-    // const formData = new FormData()
+    const formData = new FormData()
+    formData.forEach(item =>console.log(item))
   };
 
   return (
@@ -43,10 +49,7 @@ const ModalCard = ({ active, onClickClose }) => {
       <div className={css.modal__content__colorEffect2}></div>
       <div className={css.loginContainer}>
         <div className={css.avatar}>
-          <div style={UserIconContainer}>
-           <img style={{width: "60%", height:"60%"}} src={loader} alt="Loading..." />
-            {/* <img style={Avatar} src={userPhoto} alt="User Avatar" /> */}
-          </div>
+          <div style={UserIconContainer}>{loadingURL ? <LoadingCircle /> : <img style={Avatar} src={userPhoto} alt="User Avatar" />}</div>
           <button className={css.addAvatar} onClick={handleClick}>
             <MdAdd className={css.addAvatarIcon} />
           </button>
@@ -84,8 +87,8 @@ const UserIconContainer = {
   height: '100px',
   overflow: 'hidden',
   borderRadius: '50%',
-  display:"flex",
+  display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  background: "#181f35",
+  background: '#181f35',
 };
