@@ -45,6 +45,7 @@ export const SharedLayout = () => {
   useEffect(() => {
     const handleWindowResize = () => {
       setIsDesctop(window.innerWidth >= 768);
+
       if (window.innerWidth >= 768) {
         setBurgerMenuActive(false);
       }
@@ -97,48 +98,46 @@ export const SharedLayout = () => {
             {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
           </Header>
         )}
-        <main style={{ zIndex: '10' }}>
-          {!burgerMenuActive && (
-            <Suspense fallback={<Spinner />}>
-              <Outlet />
-            </Suspense>
-          )}
+        <main>
+          (
+          <Suspense fallback={<Spinner />}>
+            <Outlet />
+          </Suspense>
+          )
         </main>
       </MainContainer>
       <div>
-        {!burgerMenuActive && (
-          <Footer>
-            <div style={footerUpperContainer}>
-              <div style={leftSideBar}>
-                <Logo />
-                <Socials />
-              </div>
-              <NavBarFooter />
-              <div style={subskribeBlock}>SubskribeBlock</div>
+        <Footer>
+          <div style={footerUpperContainer}>
+            <div style={leftSideBar}>
+              <Logo />
+              <Socials />
             </div>
-            <div style={footerBottomContainer}>
-              <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
-              <div style={rightSide}>
-                <Link
-                  style={links}
-                  onClick={() => {
-                    setPolicyModal(true);
-                  }}
-                >
-                  Privacy Policy
-                </Link>
-                <Link
-                  style={links}
-                  onClick={() => {
-                    setTermsModal(true);
-                  }}
-                >
-                  Terms of Service
-                </Link>
-              </div>
+            <NavBarFooter />
+            <div style={subskribeBlock}>SubskribeBlock</div>
+          </div>
+          <div style={footerBottomContainer}>
+            <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
+            <div style={rightSide}>
+              <Link
+                style={links}
+                onClick={() => {
+                  setPolicyModal(true);
+                }}
+              >
+                Privacy Policy
+              </Link>
+              <Link
+                style={links}
+                onClick={() => {
+                  setTermsModal(true);
+                }}
+              >
+                Terms of Service
+              </Link>
             </div>
-          </Footer>
-        )}
+          </div>
+        </Footer>
       </div>
     </>
   ) : (

@@ -24,7 +24,6 @@
   justify-content: center;
   opacity: 1;
   transition: 0.5s;
-  z-index: 1000;
 }
 .modal__contentLogout {
   padding: 50px;

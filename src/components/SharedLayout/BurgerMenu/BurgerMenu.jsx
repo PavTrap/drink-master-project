@@ -1,15 +1,18 @@
 import React from 'react';
 import NavBar from '../NavBar/NavBar';
+import useMountTransition from 'hooks/useMountTransition';
 
 const BurgerMenu = ({ burgerMenuActive }) => {
+  const isMonted = useMountTransition(burgerMenuActive, 1000);
+
   const burgerMenuStyles = {
     position: 'fixed',
     top: '90px',
-    right: burgerMenuActive ? '0' : '-100%',
+    right: isMonted ? '0' : '-100%',
     width: '100%',
     height: '100%',
     background: '#161F37',
-    zIndex: '200',
+    zIndex: '1000',
     transition: 'right 1s ease',
 
     // Анімація виїзду
