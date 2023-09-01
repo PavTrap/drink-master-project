@@ -10,29 +10,39 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage }) => {
   const startPage = 1;
   const lastPage = totalPages;
   const { numbers, DOTS, shouldRenderLeftDots, shouldRenderRightDots } = usePagination(totalPages, page, width);
+  const isEnd = page === lastPage ? true : false;
+  const isStart = page === startPage ? true : false;
   return (
     <div className={css.paginatorContainer}>
-      <button onClick={() => dispatch(onChangePage(page - 1))}>
-        <RiArrowLeftSLine />
-      </button>
+      {!isStart && (
+        <button onClick={() => dispatch(onChangePage(page - 1))} className={css.button}>
+          <RiArrowLeftSLine className={css.buttonIcon} />
+        </button>
+      )}
       <ul className={css.pagesList}>
         <li key={startPage}>
-          <button onClick={() => dispatch(onChangePage(startPage))}>{startPage}</button>
+          <button onClick={() => dispatch(onChangePage(startPage))} className={css.pageButton}>
+            {startPage}
+          </button>
         </li>
         {shouldRenderLeftDots && <li key="leftDots">{DOTS}</li>}
         {numbers.map(number => (
           <li key={number}>
-            <button onClick={() => dispatch(onChangePage(number))}>{number}</button>
+            <button onClick={() => dispatch(onChangePage(number))} className={css.pageButton}>
+              {number}
+            </button>
           </li>
         ))}
         {shouldRenderRightDots && <li key="rightDOTS">{DOTS}</li>}
         <li key={lastPage}>
-          <button onClick={() => dispatch(onChangePage({ lastPage }))}>{lastPage}</button>
+          <button onClick={() => dispatch(onChangePage(lastPage))} className={css.pageButton}>
+            {lastPage}
+          </button>
         </li>
       </ul>
-      <button onClick={() => dispatch(onChangePage(page + 1))}>
-        <RiArrowRightSLine />
-      </button>
+      {!isEnd && ( <button onClick={() => dispatch(onChangePage(page + 1))} disabled={isEnd} className={css.button}>
+        <RiArrowRightSLine className={css.buttonIcon} />
+      </button>)}
     </div>
   );
 };
