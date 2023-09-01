@@ -1,4 +1,4 @@
-const fiendWIdth = '100%';
+const fiendWIdth = '100%',
 
 export const categoryStyles = {
   singleValue: styles => ({
@@ -75,7 +75,18 @@ export const categoryStyles = {
     //plaseholder
 
     ...defaultStyles,
-    display: 'none',
-    // color:"transpatent",
+    // display: 'none',
+
+
+    // position: "absolute",
+    // left: 0,
+    // top: 0,
+    transform: "translateY(-50%) translateX(0)",
+
+    transformOrigin: "left center",
+    transition:"0.3s all",
+    color: "#f3f3f380",
+    fontSize: "16px",
+
   }),
-};
+}

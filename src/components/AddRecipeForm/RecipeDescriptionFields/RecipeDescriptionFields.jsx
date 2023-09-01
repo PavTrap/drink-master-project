@@ -114,7 +114,7 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
             options={allCategory}
             styles={categoryStyles}
           />
-           <div className={s.recipeDescriptionFields_labelContent}>Category</div>
+           {/* <div className={s.recipeDescriptionFields_labelContent}>Category</div> */}
         </label>
 
         <label className={s.recipeDescriptionFields_label}>
@@ -132,7 +132,7 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
             required
             styles={categoryStyles}
           />
-            <div className={s.recipeDescriptionFields_labelContent}>Glass</div>
+            {/* <div className={s.recipeDescriptionFields_labelContent}>Glass</div> */}
         </label>
       </div>
     </div>
