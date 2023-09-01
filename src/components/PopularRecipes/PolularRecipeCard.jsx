@@ -5,6 +5,7 @@ const PolularRecipeCard = ({ item, onClick }) => {
 
   return (
     <li className={css.listItem} onClick={() => onClick(_id)}>
+
       <div className={css.listItem_image_container}>
         <img src={image} alt={title} className={css.listItem_image} />
       </div>
