@@ -4,14 +4,10 @@ import PolularRecipeCard from './PolularRecipeCard';
 // import axios  from "axios";
 // import setAuthHeader from "helpers/axiosHedder";
 
-const PolularRecipe = () => {
+const PopularRecipes = () => {
   const [title, setTitle] = useState(null);
   const [data, setData] = useState(null);
 
-  const listItems = data.map(item => (
-    // Correct! Key should be specified inside the array.
-    <PolularRecipeCard key={item._id} item={item} />
-  ));
 
   return (
     <article>
@@ -21,4 +17,4 @@ const PolularRecipe = () => {
   );
 };
 
-export default PolularRecipe;
+export default PopularRecipes;
