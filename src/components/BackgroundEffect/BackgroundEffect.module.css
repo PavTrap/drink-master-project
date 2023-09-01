@@ -1,0 +1,81 @@
+.colorEffect1 {
+  background-color: rgba(188, 230, 210, 0.4);
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(6.5rem);
+
+  width: 257px;
+  height: 247px;
+  left: 42px;
+  top: 84px;
+
+  @media screen and (min-width: 768px) {
+    width: 387px;
+    height: 372.44px;
+    left: 0px;
+    top: 46.33px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 381px;
+    height: 387px;
+    left: 171px;
+    top: -132px;
+  }
+
+}
+
+.colorEffect2 {
+  background-color: hsla(220, 59%, 53%, 0.5);
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(6.5rem);
+
+  width: 520px;
+  height: 550px;
+  left: -399px;
+  top: 20px;
+
+  @media screen and (min-width: 768px) {
+    width: 784px;
+    height: 829.93px;
+    left: -665px;
+    top: -50.45px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 784px;
+    height: 849px;
+    left: -494px;
+    top: -231px;
+  }
+
+}
+
+.colorEffect3 {
+  background-color: hsla(220, 59%, 53%, 0.5);
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(6.5rem);
+
+  width: 549px;
+  height: 543px;
+  right: -481px;
+  bottom: -345px;
+
+  @media screen and (min-width: 768px) {
+    width: 549px;
+    height: 543px;
+    right: -403px;
+    bottom: -45px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    width: 549px;
+    height: 543px;
+    right: -259px;
+    bottom: -312px;
+
+  }
+
+}

@@ -1,7 +1,5 @@
-import { Suspense, useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
-
-// import isAuth from '../Routes/isAuth';
+import { Suspense, useEffect, useState } from 'react';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 
 import { Spinner } from 'components/Spinner/Spinner'; //components
 import MainContainer from './MainContainer'; //components
@@ -12,57 +10,91 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import useAuth from 'hooks/useAuth';
-// import Modal from '../Modal/Modal'; //component
-// import ModalCard from 'components/Modal/ModalCard';//component
-import ModalAuth from 'components/Modal/ModalAuth';//component
-import Modal from '../Modal/Modal'; //component
-import ModalCard from 'components/Modal/ModalCard';//component
+import useAuth from 'hooks/useAuth';//hook
 
+import ModalAuth from 'components/Modal/ModalAuth'; //component
+import Modal from '../Modal/Modal'; //component
+import ModalCard from 'components/Modal/ModalCard'; //component
 
 import ModalTermsCard from 'components/Modal/ModalTermsCard';
 import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
+import BurgerMenuIcon from './BurgerMenu/BurgerMenuIcon';
+import BurgerMenu from './BurgerMenu/BurgerMenu';
+
 export const SharedLayout = () => {
-  // const [modalActive, setModalActive] = useState(false);
+  const location = useLocation();
+
   const [modalAuthActive, setModalauthActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [policyModal, setPolicyModal] = useState(false);
   const [termsModal, setTermsModal] = useState(false);
 
-  const { isLoggedIn} = useAuth();
+  const [isDesctop, setIsDesctop] = useState(true); //визначає ширину екрану
+  const [burgerMenuActive, setBurgerMenuActive] = useState(false); //чи активне burger menu
+
+  // useEffect для слідкування за зміною роута
+  useEffect(() => {
+    setBurgerMenuActive(false);
+  }, [location]);
+
+  //слідкує за шириною екрану і її зміни
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setIsDesctop(window.innerWidth >= 768);
+
+      if (window.innerWidth >= 768) {
+        setBurgerMenuActive(false);
+      }
+    };
+    handleWindowResize();
+    window.addEventListener('resize', handleWindowResize);
+    return () => {
+      window.removeEventListener('resize', handleWindowResize);
+    };
+  }, []);
+
+  const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (
     <>
       <MainContainer>
-
-        {/* {modalActive && (<Modal active={modalActive} setActive={setModalActive}><ModalCard /></Modal>)} */}
-        {modalAuthActive && (<ModalAuth active={modalAuthActive} setActive={setModalauthActive} />)}
+        {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
 
         {modalActive && (
           <Modal active={modalActive} setActive={setModalActive}>
-            <ModalCard />
+            <ModalCard closePopup={setModalauthActive} />
           </Modal>
         )}
-                        {policyModal && (
+        {policyModal && (
           <Modal active={policyModal} setActive={setPolicyModal}>
-            <ModalPolicyCard />
+            <ModalPolicyCard onMount={policyModal}/>
           </Modal>
         )}
-                {termsModal && (
+        {termsModal && (
           <Modal active={termsModal} setActive={setTermsModal}>
-            <ModalTermsCard />
+            <ModalTermsCard onMount={termsModal}/>
           </Modal>
         )}
 
-
-        <Header>
-          <Logo />
-          <NavBar />
-          {/* <UserBar toggleModal={setModalActive} /> */}
-          <UserBar toggleModal={setModalauthActive} />
-        </Header>
-        <main style={{ zIndex: '10' }}>
+        {isDesctop ? (
+          <Header>
+            <Logo />
+            <NavBar />
+            {/* <UserBar toggleModal={setModalActive} /> */}
+            <UserBar toggleModal={setModalauthActive} />
+          </Header>
+        ) : (
+          <Header>
+            <Logo />
+            {/* <NavBar /> */}
+            {/* <UserBar toggleModal={setModalActive} /> */}
+            <UserBar toggleModal={setModalauthActive} />
+            <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
+            {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+          </Header>
+        )}
+        <main>
           <Suspense fallback={<Spinner />}>
             <Outlet />
           </Suspense>
@@ -81,15 +113,19 @@ export const SharedLayout = () => {
           <div style={footerBottomContainer}>
             <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
             <div style={rightSide}>
-              <Link style={links}onClick={()=>{setPolicyModal(true)}}>Privacy Policy</Link>
-              <Link style={links}onClick={()=>{setTermsModal(true)}}>Terms of Service</Link>
+              <Link style={links} onClick={() => setPolicyModal(true)}>
+                Privacy Policy
+              </Link>
+              <Link style={links} onClick={() => setTermsModal(true)}>
+                Terms of Service
+              </Link>
             </div>
           </div>
         </Footer>
       </div>
     </>
   ) : (
-    <main style={{width:'100%'}}>
+    <main style={{ width: '100%' }}>
       <Suspense fallback={<Spinner />}>
         <Outlet />
       </Suspense>
