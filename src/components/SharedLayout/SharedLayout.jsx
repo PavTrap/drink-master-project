@@ -31,7 +31,6 @@ export const SharedLayout = () => {
   const [modalActive, setModalActive] = useState(false);
   const [policyModal, setPolicyModal] = useState(false);
   const [termsModal, setTermsModal] = useState(false);
-  const [email, setEmail] = useState('');
 
 
   const [isDesctop, setIsDesctop] = useState(true); //визначає ширину екрану
@@ -59,20 +58,37 @@ export const SharedLayout = () => {
   }, []);
 
 
-  
+
+
+
+  const [email, setEmail] = useState('');
+  const [isSubmiting, setIsSubmiting] = useState(false);
+
+  useEffect(() => {
+    if(isSubmiting){
+      sendForm(email);
+      setIsSubmiting(false);
+    }
+    // eslint-disable-next-line
+  }, [email, isSubmiting]);
+
   axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
   const { ReduxToken } = useAuth();
   setAuthHeader(ReduxToken);
 
   async function sendForm() {
     try {
-      axios.post('/subscribe', { email });
+      await axios.post('/subscribe', { email });
       setEmail('');
     } catch (error) {
       console.log('error send email')
     }
   }
-
+  
+ function onSubmit(e) {
+    e.preventDefault();
+    setIsSubmiting(true);
+  }
 
 
 
@@ -134,7 +150,7 @@ export const SharedLayout = () => {
               <Socials />
             </div>
             <NavBarFooter />
-              <form style={subskribeBlock} onSubmit={sendForm}>
+              <form style={subskribeBlock} onSubmit={onSubmit}>
                 <p style={subskribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
                 <input 
                   style={subskribeBlockInput} 
