@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { nanoid } from 'nanoid';
 //styles
 import css from './RecipeIngredientsFields.module.css';
-import {ingredientStyles, measureStyles} from "./inputStyles"
+import { ingredientStyles, measureStyles } from './inputStyles';
 //icons
 import { MdOutlineClose } from 'react-icons/md';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
@@ -16,21 +16,22 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
   const [countIngredients, setCountIngredients] = useState(1);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [allIngredients, setIngredients] = useState([]);
-  // const [addedIngredients, setAddedIngredients] = useState([]);
-  // const [addedMeasure, setAddedMeasure] = useState([]);
 
   const InselectRef = useRef(null);
   const selectRef = useRef(null);
 
   useEffect(() => {
-    fetchIngredients()
-      .then(res => {
-        const result = res.map(r => {
-          return { value: `${r.title}`, label: `${r.title}`, descr: `ingredient` };
+    (async () => {
+      try {
+        const response = await fetchIngredients();
+        const ingredients = response.map(({ title }) => {
+          return { value: `${title}`, label: `${title}`, descr: `ingredient` };
         });
-        setIngredients(result);
-      })
-      .catch(err => console.log(err));
+        setIngredients(ingredients);
+      } catch (error) {
+        console.log(error);
+      }
+    })();
   }, []);
 
   useEffect(() => {
@@ -95,6 +96,7 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
         </div>
       );
     }
+
     return inputFields;
   }
 
@@ -123,6 +125,3 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
     </div>
   );
 };
-
-
-
