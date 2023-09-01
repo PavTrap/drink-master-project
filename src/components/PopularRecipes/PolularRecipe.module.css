@@ -1,11 +1,14 @@
 .list {
   display: flex;
-  flex-direction: column;
+  width: 100%;
+  gap: 24px;
   align-items: flex-start;
-  gap: 28px;
+  flex-direction: column;
+
   width: 313px;
   z-index: 15;
   filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
+  font-family: Manrope, sans-serif;
 }
 .listTitle {
   color: #f3f3f3;
@@ -19,11 +22,12 @@
 .listItem {
   display: flex;
   align-items: center;
+  flex-direction: column;
   gap: 14px;
 }
 
 .textContainer{
-  width: 209px;
+  width: 80%;
 }
 .listItem_image {
   width: 100%;
@@ -32,11 +36,12 @@
 }
 
 .listItem_image_container{
-  width: 90px;
-  height: 90px;
+  width: 60%;
+  height: auto;
   border-radius: 10px;
   object-fit: cover;
   overflow: hidden;
+
 }
 
 .listItem_title {
@@ -47,8 +52,8 @@
   line-height: 22px;
 }
 .listItem_descrption {
-  width: 209px;
-  height: 63px;
+  width: 80%;
+  height: 10em;
 
   flex-shrink: 0;
   overflow: hidden;
@@ -59,4 +64,44 @@
   font-style: normal;
   font-weight: 400;
   line-height: 20px;
+}
+
+@media screen and (min-width: 340px) {
+  .list{
+    flex-direction: column;
+    gap: 28px;
+  }
+  .textContainer{
+    width: 209px;
+  }
+  .listItem_descrption{
+    width: 209px;
+    height: 63px;
+  }
+  .listItem {
+    flex-direction: row;
+  }
+  .listItem_image_container{
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .list{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .list{
+    flex-direction: column;
+    gap: 28px;
+    width: 100%;
+  }
 }
