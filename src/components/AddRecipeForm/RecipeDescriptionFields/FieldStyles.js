@@ -1,14 +1,21 @@
-const fiendWIdth = '100%',
+const fieldWIdth = '100%';
+const fieldHIGHT = '41px';
 
 export const categoryStyles = {
   singleValue: styles => ({
     //Init value
     ...styles,
     color: '#F3F3F3',
-    padding: 0,
-    margin: 0,
+
+    transform: 'translateY(-50%) translateX(0)',
+
   }),
-  valueContainer : styles =>({...styles, paddingLeft:0, margin:0}),
+  valueContainer: styles => ({
+    ...styles,
+    paddingLeft: 0,
+    margin: 0,
+    height: fieldHIGHT,
+  }),
   control: styles => ({
     //base input
     ...styles,
@@ -18,22 +25,24 @@ export const categoryStyles = {
     borderWidth: '1px',
     borderRadius: '60px',
     padding: 0,
-    width: fiendWIdth,
+    width: fieldWIdth,
     backgroundColor: 'transparent',
     color: '#F3F3F3',
-
   }),
   dropdownIndicator: (styles, { isFocused }) => ({
     // icon
     ...styles,
     color: isFocused ? '#F3F3F3' : 'rgba(243, 243, 243, 0.50)',
     '&:hover': { color: '#F3F3F3' },
+    
+    transform: 'translateY(-20%) translateX(0)',
+
   }),
   option: (styles, { isFocused }) => ({
     //List values
     ...styles,
     color: isFocused ? '#F3F3F3' : 'rgba(243, 243, 243, 0.40)',
-    fontSize: '14px',
+    fontSize: '16px',
     backgroundColor: 'transparent',
     fontFamily: 'Manrope, sans-serif',
     fontWeight: '400',
@@ -52,7 +61,7 @@ export const categoryStyles = {
 
     ...styles,
 
-    width: fiendWIdth,
+    width: fieldWIdth,
     marginBottom: '8px',
     backgroundColor: 'rgba(22, 31, 55, 1)',
     borderRadius: '20px',
@@ -68,25 +77,22 @@ export const categoryStyles = {
 
     ...styles,
     borderRadius: '20px',
-    width: fiendWIdth,
+    width: fieldWIdth,
     bachgroundColor: 'transparent',
   }),
   placeholder: defaultStyles => ({
     //plaseholder
-
     ...defaultStyles,
     // display: 'none',
-
 
     // position: "absolute",
     // left: 0,
     // top: 0,
-    transform: "translateY(-50%) translateX(0)",
+    transform: 'translateY(-50%) translateX(0)',
 
-    transformOrigin: "left center",
-    transition:"0.3s all",
-    color: "#f3f3f380",
-    fontSize: "16px",
-
+    // transformOrigin: 'left center',
+    // transition: '0.3s all',
+    color: '#f3f3f380',
+    fontSize: '16px',
   }),
-}
+};
