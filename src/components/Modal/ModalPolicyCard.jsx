@@ -1,6 +1,9 @@
 import css from './ModalPrivacyStyles.module.css';
 
-const ModalPolicyCard = () => {
+const ModalPolicyCard = ({onMount}) => {
+
+
+
   return (
     <div className={css.contentComponent}>
       <div className={css.body}>

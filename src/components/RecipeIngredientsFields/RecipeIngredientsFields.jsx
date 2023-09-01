@@ -1,20 +1,23 @@
 // // import PropTypes from 'prop-types';
 import s from './RecipeIngredientsFields.module.css'
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { MdOutlineClose } from 'react-icons/md';
 import { AiOutlinePlus , AiOutlineMinus } from 'react-icons/ai';
 
 import Select from 'react-select';
 import {fetchIngredients} from '../../fetchAPI/fetchAPI'
 import measure from '../../data/measure'
-
+import { nanoid } from 'nanoid';
+// import { refreshUser } from 'redux/Auth/authOperation';
 
 
 export const RecipeIngredientsFields = () => {
 const [countIngredients, setCountIngredients] = useState(1);
 const [isBtnDisabled, setIsBtnDisabled] = useState(false);
 const [allIngredients, setIngredients] = useState([]);
-
+// const [addedIngredients, setAddedIngredients] = useState([]);
+const InselectRef = useRef(null)
+const selectRef = useRef(null)
   useEffect(() => {
 	fetchIngredients()
             .then(res => {
@@ -28,20 +31,21 @@ const [allIngredients, setIngredients] = useState([]);
   }, []);
         
      const changeHandler = e => {
-           console.log(e.name)
-  
-        switch (e.descr) {
-       case "measure":
+           console.log(e)
+             console.log(selectRef.current.props.name)
+
+    //     switch (e.descr) {
+    //    case `${selectRef.current.props.name}`:
+    //     console.log(e.value)
+    //      break;
        
-         break;
+    //    case `${InselectRef.current.props.name}`:
+    //      console.log(e.value)
+    //      break;
        
-       case "ingredient":
-         
-         break;
-       
-       default:
-      break;
-     }
+    //    default:
+    //   break;
+    //  }
   };
 
       useEffect(() => {
@@ -66,12 +70,13 @@ const [allIngredients, setIngredients] = useState([]);
     const inputFields = [];
     for (let i = 0; i < countIngredients; i++) {
           inputFields.push(
-      <div className={s.addIngredients_box}>
-            
-       <Select  className="basic-single"
+      <div className={s.addIngredients_box} key={nanoid()}>
+         
+        <Select className="basic-single"
+        ref={InselectRef}
         classNamePrefix="select"
         isSearchable={true}
-      name="ingredients"
+      name="ingredient"
       onChange={changeHandler}
       options={allIngredients}
       defaultValue={allIngredients[0]}
@@ -87,20 +92,21 @@ const [allIngredients, setIngredients] = useState([]);
                    color: "white"
                 }),
                 option: (base) => ({
-                ...base,
+                  ...base,
+                  
                color: "white",
                 height: '100%',
                 backgroundColor: "rgba(22, 31, 55, 1)",
               }),
               }}                      
-                      /> 
+                      ></Select> 
                       
 
        <Select  className="basic-single"
         classNamePrefix="select"
-        
+            ref={selectRef}
         isSearchable={true}
-      name="mesure"
+      name="measure"
       onChange={changeHandler}
       options={measure}
       styles={{
@@ -133,8 +139,8 @@ const [allIngredients, setIngredients] = useState([]);
 
       return (
            
-            <>
-                  <div >
+           
+                  <div className={s.addIngredients_wrapper}>
                   <div className={s.addIngredients_titleBtnBox}> 
                   
                         <h2 className={s.recipeIngredients_title}>Ingredients</h2>
@@ -150,7 +156,7 @@ const [allIngredients, setIngredients] = useState([]);
                         </div>
                   </div>      
             
-            </>
+        
            
             )
 }

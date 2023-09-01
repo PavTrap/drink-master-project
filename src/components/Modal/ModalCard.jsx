@@ -1,52 +1,75 @@
 import css from './Modal.module.css';
-
-import { MdAdd } from 'react-icons/md';
 import isAuth from '../../hooks/useAuth';
-import { useRef, useState } from 'react';
+import { MdAdd } from 'react-icons/md';
 
-const ModalCard = ({ active, onClickClose }) => {
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateUser } from 'redux/Auth/authOperation';
+import LoadingCircle from 'components/Spinner/LoadingCircle';
+
+const ModalCard = ({ closePopup }) => {
+  const dispatch = useDispatch();
   const { userData } = isAuth();
   const { name, avatarURL } = userData;
 
-  // const [userPhoto, setUserPhoto] = useState(avatarURL);
-  const [userName, setUserName] = useState(null);
+  const hiddenFileInput = useRef(null); //input reference
 
-  // useEffect(() => {
-  //   setUserPhoto(avatarURL);
-  // }, [avatarURL]);
+  const [userPhoto, setUserPhoto] = useState(avatarURL); // userPhoto state
+  const [userName, setUserName] = useState(''); // controlled name
 
-  const hiddenFileInput = useRef(null);
+  const [tempImageUrl, setTempImageUrl] = useState(null); //link to preview photo
+  const [userFile, setUserFile] = useState(null); //state with file
+  const [loadingURL, setLoadingURL] = useState(false); //spinner on load
 
-  const handleClick = event => {
+  useEffect(() => {
+    // refresh avatar on modal
+    if (tempImageUrl) {
+      setUserPhoto(tempImageUrl);
+      setLoadingURL(false);
+    }
+  }, [avatarURL, tempImageUrl]);
+
+  const onClick = event => {
+    //fake input click
     hiddenFileInput.current.click();
   };
 
-  const handleChange = event => {
-    const fileUploaded = event.target.files[0];
-    console.log(fileUploaded);
-    // handleFile(fileUploaded);
+  const onPhotoChange = event => {
+    //get new image logic
+    const file = event.target.files[0];
+    if (file) {
+      setTempImageUrl(URL.createObjectURL(file));
+      setUserFile(file);
+
+      
+    }
+
+
   };
 
-const handleSubmit = event =>{
-  // const formData = new FormData()
-}
+  const onSubmit = () => {
+    //submitting
+    const formData = new FormData();
+    userName && formData.append('name', userName);
+    userFile && formData.append('avatarURL', userFile);
+
+    dispatch(updateUser(formData));
+    closePopup(prev=>!prev)
 
 
-
+  };
 
   return (
     <div>
       <div className={css.modal__content__colorEffect1}></div>
       <div className={css.modal__content__colorEffect2}></div>
-      <div className={css.loginContainer}>
+      <div className={css.loginContainer} >
         <div className={css.avatar}>
-          <div style={UserIconContainer}>
-            <img style={Avatar} src={avatarURL} alt="User Avatar" />
-          </div>
-          <button className={css.addAvatar} onClick={handleClick}>
+          <div style={UserIconContainer}>{loadingURL ? <LoadingCircle /> : <img style={Avatar} src={userPhoto} alt="User Avatar" />}</div>
+          <button className={css.addAvatar} onClick={onClick}>
             <MdAdd className={css.addAvatarIcon} />
           </button>
-          <input type="file" onChange={handleChange} ref={hiddenFileInput} style={{ display: 'none' }} name='avatarURL'/>
+          <input type="file" onChange={onPhotoChange} ref={hiddenFileInput} style={{ display: 'none' }} name="avatarURL" />
         </div>
         <input
           type="text"
@@ -54,12 +77,14 @@ const handleSubmit = event =>{
           name="name"
           placeholder={name}
           value={userName}
-          onChange={setUserName}
-          pattern="/^\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/"
-          title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+          onChange={event => setUserName(event.target.value)}
+          // pattern="[^\W\d_]"
+          // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        <button className={css.loginBtn} onClick={handleSubmit}>Save changes</button>
+        <button type="submit" className={css.loginBtn} onClick={onSubmit}>
+          Save changes
+        </button>
       </div>
     </div>
   );
@@ -78,4 +103,8 @@ const UserIconContainer = {
   height: '100px',
   overflow: 'hidden',
   borderRadius: '50%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  background: 'transparent',
 };
