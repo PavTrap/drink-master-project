@@ -27,7 +27,7 @@ export const ingredientStyles = {
   }),
   dropdownIndicator: (styles, { isFocused }) => ({  // icon
     ...styles,
-    color: isFocused ? 'rgba(243, 243, 243, 0.50)' : '#F3F3F3',
+    color: isFocused ?  '#F3F3F3' : 'rgba(243, 243, 243, 0.50)',
     '&:hover': { color: '#F3F3F3' },
   }),
   option: (styles, { isFocused }) => ({    //List values
@@ -118,7 +118,7 @@ export const measureStyles = {
   }),
   dropdownIndicator: (styles, { isFocused }) => ({  // icon
     ...styles,
-    color: isFocused ? 'rgba(243, 243, 243, 0.50)' : '#F3F3F3',
+    color: isFocused ?  '#F3F3F3' : 'rgba(243, 243, 243, 0.50)' ,
     '&:hover': { color: '#F3F3F3' },
   }),
   menuList: styles => ({   //datalist menu
