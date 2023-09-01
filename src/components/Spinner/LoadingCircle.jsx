@@ -5,7 +5,8 @@ export default function LoadingCircle({style}) {
 }
 
 const spinner = {
-  width: '60%',
-  height: '60%',
+  // width: '60%',
+  // height: '60%',
+  width: '50px',
   mixBlendMode: 'lighten',
 };
