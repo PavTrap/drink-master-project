@@ -1,20 +1,6 @@
-.recipeDescriptionSection {
-  @media screen and (min-width: 768px) {
-    display: flex;
-    align-items: flex-start;
-  }
-}
-
 .recipeDescriptionFields {
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: 768px) {
-    margin-left: 32px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-left: 40px;
-  }
 }
 
 .recipeDescription_inputImg {
@@ -31,10 +17,6 @@
   height: 50px;
   color: #ffffff;
   margin-top: 35%;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 40%;
-  }
 }
 
 .recipeDescription_addImgDescr {
@@ -57,16 +39,6 @@
 
   color: #333;
   background-color: #161f3780;
-
-  @media screen and (min-width: 375px) {
-    width: 335px;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 0;
-    width: 320px;
-    height: 320px;
-  }
 }
 
 .recipeDescription_labelImg:hover,
@@ -89,17 +61,6 @@
   border-bottom: 1px solid #f3f3f380;
   color: #f3f3f3e0;
   font-size: 16px;
-  @media screen and (min-width: 375px) {
-    width: 325px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 352px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 393px;
-  }
 }
 
 .recipeDescriptionFields_input::placeholder {
@@ -132,18 +93,6 @@
   display: flex;
   justify-content: space-around;
   position: relative;
-
-  @media screen and (min-width: 375px) {
-    width: 325px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 352px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 393px;
-  }
 }
 
 .recipeDescriptionFields_select {
@@ -225,3 +174,51 @@
   background-color: #161f3700;
 } 
 */
+
+@media screen and (min-width: 375px) {
+  .recipeDescription_labelImg {
+    width: 335px;
+  }
+  .recipeDescriptionFields_input {
+    width: 325px;
+  }
+  .recipeDescriptionFields_labelSelect {
+    width: 325px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .recipeDescriptionSection {
+    display: flex;
+    align-items: flex-start;
+  }
+  .recipeDescriptionFields {
+    margin-left: 32px;
+  }
+  .recipeDescription_addImgIcon {
+    margin-top: 40%;
+  }
+  .recipeDescription_labelImg {
+    margin-bottom: 0;
+    width: 320px;
+    height: 320px;
+  }
+  .recipeDescriptionFields_input {
+    width: 352px;
+  }
+  .recipeDescriptionFields_labelSelect {
+    width: 352px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .recipeDescriptionFields {
+    margin-left: 40px;
+  }
+  .recipeDescriptionFields_input {
+    width: 393px;
+  }
+  .recipeDescriptionFields_labelSelect {
+    width: 393px;
+  }
+}
