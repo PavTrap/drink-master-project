@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import setAuthHeader from 'helpers/axiosHedder';
 import useAuth from 'hooks/useAuth';
-import imgSrc from './plug-glass-400x400.png'
+import imgSrc from './img/plug-glass-400x400.png'
 
 export const fetchDrinks = async token => {
 	try {
@@ -18,14 +18,13 @@ export const fetchDrinks = async token => {
 };
 
 export const DrinkCard = ({ drink, drinkThumb }) =>
-(<li >
+(<li className={css.mainPageList_item}>
 	<img src={drinkThumb} alt='drink' height={400} />
 	<div className={css.card_text_wrapper}>
 		<p className={css.card_name}>{drink}</p>
 		<a className={css.card_link} href='ingredients'><p className={css.ingredients_text}>ingredients</p></a>
 	</div>
 </li>)
-
 
 export const PreviewDrinks = ({ children }) =>
 (
@@ -100,16 +99,13 @@ const MainPage = () => {
 						destination for exploring, crafting, and mastering the<br /> world's finest
 						beverages.
 					</p>
-					{/* <a className={css.button} href="add">Add recipe</a> */}
 					<Link className={css.button} to={"/add"}>Add recipe</Link>
 				</section>
 				<PreviewDrinks>
-					<section className={css.section}>
+					<section className={css.drinks_section}>
 						{allDrinks &&
 							<>
-								<div>
-									<Link to={'/drinks/ordinary-drink'}><h2>Ordinary Drink</h2></Link>
-								</div>
+								<Link to={'/drinks/ordinary-drink'}><h2>Ordinary Drink</h2></Link>
 								<ul className={css.mainPageList}>
 									{getedDrinks['ordinary drink'].length !== 0 ? getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
@@ -131,9 +127,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/shake'}><h2>Shake</h2></Link>
 								<ul className={css.mainPageList}>
-								{getedDrinks.shake.length !== 0 ? getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
-									<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-								)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									{getedDrinks.shake.length !== 0 ? getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
+										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
@@ -141,9 +137,9 @@ const MainPage = () => {
 							<>
 								<Link to={'/drinks/other-unknown'}><h2>Other/Unknown</h2></Link>
 								<ul className={css.mainPageList}>
-								{getedDrinks['other/unknown'].length !== 0 ? getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
-									<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-								)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									{getedDrinks['other/unknown'].length !== 0 ? getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
+										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
+									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
 								</ul>
 							</>
 						}
