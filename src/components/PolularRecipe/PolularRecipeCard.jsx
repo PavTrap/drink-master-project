@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import css from './PolularRecipe.module.css'
 
-const PolularRecipeCard = ({ item, ooClick }) => {
+const PolularRecipeCard = ({ item, onClick }) => {
   const { image, title, descrption } = item;
 
+
+
   return (
-    <li className={css.listItem}>
+    <li className={css.listItem} onClick={onClick}>
       <img src={image} alt={title}  className={css.listItem_image}/>
       <div>
         <p className={css.listItem_title}>{title}</p>
