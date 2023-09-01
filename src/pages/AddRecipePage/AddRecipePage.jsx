@@ -9,9 +9,9 @@ import s from './AddRecipePage.module.css'
 
 export default function AddRecipePage() {
   return (<section className={s.addRecipeForm_section}>
-    <MainTitle title='Add recipe' />
+    <MainTitle title='Add recipe'/>
 
-    <div className={s.AddRecipePage}>
+    <div className={s.addRecipePage}>
           <div>
             <AddRecipeForm/>
           </div>
