@@ -4,7 +4,7 @@ import { MainTitle } from '../../components/MainTitle/MainTitle';
 import { FollowUs } from '../../components/FollowUs/FollowUs';
 import { AddRecipeForm } from '../../components/AddRecipeForm/AddRecipeForm';
 // import { PopularRecipe } from '../../components/PopularRecipe/PopularRecipe';
-import PolularRecipe from 'components/PopularRecipes/PopularRecipes';
+import PopularRecipes from 'components/PopularRecipes/PopularRecipes';
 
 import s from './AddRecipePage.module.css'
 
@@ -19,7 +19,7 @@ export default function AddRecipePage() {
 
       <div>
         <FollowUs />
-        {/* <PopularRecipe/> */}
+        <PopularRecipes/>
           
         </div>
     </div>

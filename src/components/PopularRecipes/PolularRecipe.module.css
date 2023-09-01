@@ -4,6 +4,8 @@
   align-items: flex-start;
   gap: 28px;
   width: 313px;
+  z-index: 15;
+  filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
 }
 .listTitle {
   color: #f3f3f3;
@@ -19,10 +21,24 @@
   align-items: center;
   gap: 14px;
 }
+
+.textContainer{
+  width: 209px;
+}
 .listItem_image {
+  width: 100%;
+  height: 100%;
+
+}
+
+.listItem_image_container{
   width: 90px;
   height: 90px;
+  border-radius: 10px;
+  object-fit: cover;
+  overflow: hidden;
 }
+
 .listItem_title {
   color: #f3f3f3;
   font-size: 16px;
@@ -38,7 +54,7 @@
   overflow: hidden;
   color: rgba(243, 243, 243, 0.5);
   text-overflow: ellipsis;
-  white-space: nowrap;
+  /* white-space: nowrap; */
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
