@@ -21,6 +21,7 @@ const ModalCard = ({ closePopup }) => {
   const [userFile, setUserFile] = useState(null); //state with file
   const [loadingURL, setLoadingURL] = useState(false); //spinner on load
 
+
   useEffect(() => {
     // refresh avatar on modal
     if (tempImageUrl) {
@@ -40,11 +41,7 @@ const ModalCard = ({ closePopup }) => {
     if (file) {
       setTempImageUrl(URL.createObjectURL(file));
       setUserFile(file);
-
-      
     }
-
-
   };
 
   const onSubmit = () => {
@@ -59,6 +56,7 @@ const ModalCard = ({ closePopup }) => {
 
   };
 
+  
   return (
     <div>
       <div className={css.modal__content__colorEffect1}></div>
