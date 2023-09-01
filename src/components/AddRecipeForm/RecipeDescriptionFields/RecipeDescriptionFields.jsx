@@ -2,7 +2,7 @@
 import s from './RecipeDescriptionFields.module.css'
 import { useState, useEffect } from "react"
 import Select from 'react-select';
-import {fetchCategory , fetchGlasses} from '../../fetchAPI/fetchAPI'
+import {fetchCategory , fetchGlasses} from '../../../fetchAPI/fetchAPI'
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import React from 'react';
 import styled from 'styled-components';

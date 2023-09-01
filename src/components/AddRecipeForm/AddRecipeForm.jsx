@@ -2,9 +2,9 @@
 import { useState } from "react";
 import { nanoid } from 'nanoid'
 import s from './AddRecipeForm.module.css'
-import { RecipeDescriptionFields } from '../RecipeDescriptionFields/RecipeDescriptionFields';
- import { RecipeIngredientsFields } from '../RecipeIngredientsFields/RecipeIngredientsFields';
-import { RecipePreparationFields } from '../RecipePreparationFields/RecipePreparationFields';
+import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
+ import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
+import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
 
  
 export const AddRecipeForm = () => {

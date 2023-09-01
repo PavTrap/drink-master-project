@@ -5,10 +5,10 @@ import { MdOutlineClose } from 'react-icons/md';
 import { AiOutlinePlus , AiOutlineMinus } from 'react-icons/ai';
 
 import Select from 'react-select';
-import {fetchIngredients} from '../../fetchAPI/fetchAPI'
-import measure from '../../data/measure'
+import {fetchIngredients} from '../../../fetchAPI/fetchAPI'
+import measure from "data/measure";
 import { nanoid } from 'nanoid';
-// import { refreshUser } from 'redux/Auth/authOperation';
+
 
 
 export const RecipeIngredientsFields = ({addIngredients, addMeasure}) => {

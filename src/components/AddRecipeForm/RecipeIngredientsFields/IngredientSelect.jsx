@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from "react"
 
 import Select from 'react-select';
-import {fetchIngredients} from '../../fetchAPI/fetchAPI'
-import measure from '../../data/measure'
+import {fetchIngredients} from '../../../fetchAPI/fetchAPI'
+import measure from "data/measure";
 import { nanoid } from 'nanoid';
+
 
 export const IngredientSelect = () => {
 const [allIngredients, setIngredients] = useState([]);
