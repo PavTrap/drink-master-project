@@ -1,4 +1,4 @@
-const fiendWIdth = '393px';
+const fiendWIdth = '100%';
 
 export const categoryStyles = {
   singleValue: styles => ({
@@ -8,6 +8,7 @@ export const categoryStyles = {
     padding: 0,
     margin: 0,
   }),
+  valueContainer : styles =>({...styles, paddingLeft:0, margin:0}),
   control: styles => ({
     //base input
     ...styles,
@@ -18,12 +19,9 @@ export const categoryStyles = {
     borderRadius: '60px',
     padding: 0,
     width: fiendWIdth,
-    // height: '56px',
     backgroundColor: 'transparent',
     color: '#F3F3F3',
-    // position: "absolute",
-    // top: 0,
-    // left: 0,
+
   }),
   dropdownIndicator: (styles, { isFocused }) => ({
     // icon
@@ -77,6 +75,7 @@ export const categoryStyles = {
     //plaseholder
 
     ...defaultStyles,
-    dislay: 'none',
+    display: 'none',
+    // color:"transpatent",
   }),
 };

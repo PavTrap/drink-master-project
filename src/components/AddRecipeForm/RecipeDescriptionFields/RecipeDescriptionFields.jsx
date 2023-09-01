@@ -99,13 +99,13 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
         </label>
 
         <label className={s.recipeDescriptionFields_label}>
-          {/* Category */}
+          
           <Select
             className={s.recipeDescriptionFields_input}
             classNamePrefix="select"
             isSearchable={true}
             name="category"
-            plaseHolder="Category"
+            placeholder="Category"
             onChange={handleChangeSelect}
             components={{
               IndicatorSeparator: () => null,
@@ -114,16 +114,16 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
             options={allCategory}
             styles={categoryStyles}
           />
+           <div className={s.recipeDescriptionFields_labelContent}>Category</div>
         </label>
 
         <label className={s.recipeDescriptionFields_label}>
-          {/* Glass */}
           <Select
             className={s.recipeDescriptionFields_input}
             classNamePrefix="select"
             isSearchable={true}
             name="glass"
-            plaseHolder="Glass"
+            placeholder="Glass"
             onChange={handleChangeSelect}
              components={{
               IndicatorSeparator: () => null,
@@ -132,6 +132,7 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
             required
             styles={categoryStyles}
           />
+            <div className={s.recipeDescriptionFields_labelContent}>Glass</div>
         </label>
       </div>
     </div>

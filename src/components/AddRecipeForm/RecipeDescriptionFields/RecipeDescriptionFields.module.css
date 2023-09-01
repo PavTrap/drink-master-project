@@ -48,7 +48,7 @@
 
 .recipeDescriptionFields_label {
   margin-bottom: 5px;
-  height: 41px;
+  /* height: 41px; */
   display: inline-block;
   position: relative;
 }
@@ -60,6 +60,8 @@
   border-bottom: 1px solid #f3f3f380;
   color: #f3f3f3e0;
   font-size: 16px;
+  height: 41px;
+  margin-bottom: 40px
 }
 
 .recipeDescriptionFields_input::placeholder {
@@ -87,8 +89,8 @@
 }
 
 .recipeDescriptionFields_labelSelect {
-  margin-bottom: 5px;
-  height: 41px;
+  /* margin-bottom: 5px; */
+  /* height: 41px; */
   display: flex;
   justify-content: space-around;
   position: relative;
@@ -104,7 +106,7 @@
 
   border: none;
   width: 165px;
-  margin-bottom: 3px;
+  /* margin-bottom: 3px; */
   text-align: right;
   padding-right: 5px;
 }

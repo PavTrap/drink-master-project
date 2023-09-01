@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 
 import Select from 'react-select';
-import { fetchIngredients } from '../../../fetchAPI/fetchAPI';
+import { fetchIngredients } from '../../../../fetchAPI/fetchAPI';
 import measure from 'data/measure';
 // import { nanoid } from 'nanoid';
 
