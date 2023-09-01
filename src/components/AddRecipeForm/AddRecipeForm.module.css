@@ -14,8 +14,10 @@
 
   background-color: #f3f3f3;
   color: #161f37;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .add_btn {
     width: 118px;
     height: 54px;
     padding: 18px 44px 18px 44px;
