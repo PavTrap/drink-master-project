@@ -1,10 +1,22 @@
 .addRecipeForm_section {
-  margin-top: 140px;
-  margin-bottom: 140px;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  @media screen and (min-width: 768px) {
+    margin-top: 140px;
+    margin-bottom: 140px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 160px;
+  }
 }
 
-.AddRecipePage {
-  margin-top: 60px;
-  display: flex;
-  justify-items: center;
+.addRecipePage {
+  display: block;
+
+  @media screen and (min-width: 1440px) {
+    margin-top: 60px;
+    display: flex;
+    justify-items: center;
+  }
 }

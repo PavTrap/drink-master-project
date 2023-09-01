@@ -4,11 +4,31 @@ import { useState, useEffect } from "react"
 import Select from 'react-select';
 import {fetchCategory , fetchGlasses} from '../../fetchAPI/fetchAPI'
 import { BsFillPlusSquareFill } from 'react-icons/bs';
+import React from 'react';
+import styled from 'styled-components';
+
+const StyledSelect = styled(Select)`
+  .react-select__slider {
+    background-color: #007bff; 
+    height: 10px; 
+  }
+
+  
+  .react-select__control {
+    border: 2px solid #007bff; 
+    border-radius: 10px; 
+  }
+
+   border: "none",
+                  
+    paddingLeft: "24px",
+    backgroundColor: "rgba(22, 31, 55, 0)"
+`;
 
 export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glass  }) => {
-  const [allCategory, setCategory] = useState([]);
+  const [allCategory, setCategory] = useState([{ value: ``, label: ``, descr: `category` }]);
   const [allGlasses, setGlasses] = useState([]);
-
+  // const [сategoryInput, setCategoryInput] = useState('');
 
   useEffect(() => {
 		fetchCategory()
@@ -16,7 +36,7 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
          const result = res.map(r => {
                         return ({ value: `${r.name}`, label: `${r.name}`, descr: `category` })
                   });
-        setCategory(result);
+        setCategory([ ...result]);
       })
       .catch(err => console.log(err))
   
@@ -28,7 +48,7 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
         const result = res.map(r => {
                         return ({ value: `${r.name}`, label: `${r.name}`, descr: `glasses` })
                   });
-        setGlasses(result);
+        setGlasses(result );
       })
       .catch(err => console.log(err))
   
@@ -78,19 +98,34 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
 
         <div className={s.recipeDescriptionFields}>
           
-                 <label  className={s.recipeDescriptionFields_label}>Enter item title
-                    <input className={s.recipeDescriptionFields_input} type="text"  name="itemTitle"  required  onChange={handleChange}/>
+                 <label className={s.recipeDescriptionFields_label}>
+                    <input placeholder="" className={s.recipeDescriptionFields_input} type="text"  name="itemTitle"  required  onChange={handleChange}/>
+                    <div className={s.recipeDescriptionFields_labelContent}>Enter item title</div>
                 </label>
           
-                <label  className={s.recipeDescriptionFields_label}>Enter about recipe
-                   <input className={s.recipeDescriptionFields_input} type="text"  name="about"  onChange={handleChange}/>
+                <label className={s.recipeDescriptionFields_label}>
+                   <input placeholder="" className={s.recipeDescriptionFields_input} type="text"  name="about"  onChange={handleChange}/>
+                   <div className={s.recipeDescriptionFields_labelContent}>Enter about recipe</div>
                </label> 
        
+          {/* <label className={s.recipeDescriptionFields_labelSelect} >
+              <input disabled placeholder="" className={s.recipeDescriptionFields_input} type="text"  name="about"  onChange={handleChange}/>
+              <div className={s.recipeDescriptionFields_labelContent}>Category</div>
+
+          <select name="select" className={s.recipeDescriptionFields_select} aria-invalid="false">
+            {allCategory.map(category => {
+              return <option selectstart='' placeholder='' value="value1" className={s.recipeDescriptionFields_option}>{category.value}</option>
+            })}
     
-          <label >
+            </select>
+          </label> */}
+
+           <StyledSelect options={allCategory}/>
+  
+                      
+          <label className={s.recipeDescriptionFields_label}>
             Category          
               <Select
-              
               className={s.recipeDescriptionFields_input}
         classNamePrefix="select"
         isSearchable={true}
@@ -143,5 +178,12 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
         </div>
 
           </div>
-            )
+        )
 }
+
+
+
+// Создайте стилизованный компонент
+
+
+// Опции для React Select
