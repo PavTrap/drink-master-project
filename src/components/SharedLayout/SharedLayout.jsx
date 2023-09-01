@@ -21,6 +21,7 @@ import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
 import BurgerMenuIcon from './BurgerMenu/BurgerMenuIcon';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
+import css from './SharedLayout.module.css'
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -81,20 +82,20 @@ export const SharedLayout = () => {
           <Header>
             <Logo />
             <NavBar />
-            {/* <UserBar toggleModal={setModalActive} /> */}
+\
             <UserBar toggleModal={setModalauthActive} />
           </Header>
         ) : (
           <Header>
             <Logo />
-            {/* <NavBar /> */}
-            {/* <UserBar toggleModal={setModalActive} /> */}
+\
+
             <UserBar toggleModal={setModalauthActive} />
             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
             {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
           </Header>
         )}
-        <main>
+        <main className={css.mainFrame}>
           <Suspense fallback={<Spinner />}>
             <Outlet />
           </Suspense>

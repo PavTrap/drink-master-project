@@ -64,7 +64,8 @@
   color: #f3f3f3e0;
   font-size: 16px;
   height: 41px;
-  margin-bottom: 40px
+  margin-bottom: 40px;
+  outline-style: none;
 }
 
 .recipeDescriptionFields_input::placeholder {

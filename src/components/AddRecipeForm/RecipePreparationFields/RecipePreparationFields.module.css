@@ -13,16 +13,13 @@
 .recipePreparation_textarea {
   width: 480px;
   height: 184px;
-  top: 1316px;
-  left: 100px;
+  /* top: 1316px;
+  left: 100px; */
   border-radius: 20px;
   padding: 14px 24px;
   border: 1px solid #f3f3f380;
   resize: none;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   color: #fff;
-}
-
-.recipePreparation_textarea::placeholder {
-  padding: inherit;
+  outline-style: none;
 }

@@ -6,6 +6,7 @@ import { AddRecipeForm } from '../../components/AddRecipeForm/AddRecipeForm';
 
 
 import css from './AddRecipePage.module.css';
+import PopularRecipes from 'components/PopularRecipes/PopularRecipes';
 
 export default function AddRecipePage() {
   return (
@@ -20,11 +21,7 @@ export default function AddRecipePage() {
 
         <div>
           <FollowUs />
-          <>
-          <div style={{width: "313px", height: "515px", border: "1px solid white", marginTop: "88px", textAlign:"start", paddingLeft: "20px"}}>
-            <h3 styles={{fontSize:"24px", fontWeight: "500", lineHeight:"32px"}}>Popular recipe Block</h3>
-          </div>
-          </>
+          <PopularRecipes/>
 
         </div>
       </div>
