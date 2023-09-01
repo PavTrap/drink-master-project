@@ -29,36 +29,24 @@ a {
 	max-height: 522px;
 }
 
-/* @media screen and (min-width: 1208px) {
-	.mainPageList {
+
+@media screen and (max-width: 767px) {
+	.mainPageList_item:not(:first-child) {
 		display: none;
 		opacity: 0;
 		visibility: hidden;
 		pointer-events: none;
 	}
-} */
-
-@media screen and (max-width: 767px) {
-	.mainPageList_item:not(:first-child) {
-		display: none;
-	}
 }
 
-@media screen and (max-width: 767px) {
-	.mainPageList_item:not(:first-child) {
+@media screen and (max-width: 1439px) {
+	.mainPageList_item:nth-child(n + 3) {
 		display: none;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
 	}
 }
-
-/* .mainPageList:nth-child() */
-
-/* .mainPageList_item {
-	@media screen and (min-width: 767px) {
-		:nth-child(n + 3) {
-			display: none;
-		}
-	}
-} */
 
 .drinks_section {
 	position: relative;
@@ -69,7 +57,6 @@ a {
 	padding: 160px 100px 100px;
 	margin-bottom: 80px;
 }
-
 
 /* .main {
   background-color: black;
