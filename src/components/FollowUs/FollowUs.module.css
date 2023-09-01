@@ -1,20 +1,12 @@
-.followUs_list {
-  margin: 0;
-  list-style: none;
-  display: flex;
-  gap: 16px;
-}
+.followUs_title {
+  font-family: Manrope;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
 
-.followUs_item {
-  width: 44px;
-  height: 44px;
-}
-
-.followUs_icon {
-  width: 30px;
-  height: 30px;
-  background-color: #000000;
-  color: #f3f3f3;
-  border-radius: 10px;
-  border: solid 2px #f3f3f333;
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
 }

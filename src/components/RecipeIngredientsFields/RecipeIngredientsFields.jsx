@@ -11,13 +11,19 @@ import { nanoid } from 'nanoid';
 // import { refreshUser } from 'redux/Auth/authOperation';
 
 
-export const RecipeIngredientsFields = () => {
+export const RecipeIngredientsFields = ({addIngredients, addMeasure}) => {
 const [countIngredients, setCountIngredients] = useState(1);
 const [isBtnDisabled, setIsBtnDisabled] = useState(false);
 const [allIngredients, setIngredients] = useState([]);
-// const [addedIngredients, setAddedIngredients] = useState([]);
+  // const [addedIngredients, setAddedIngredients] = useState([]);
+  // const [addedMeasure, setAddedMeasure] = useState([]);
+
+
+
+
 const InselectRef = useRef(null)
 const selectRef = useRef(null)
+  
   useEffect(() => {
 	fetchIngredients()
             .then(res => {
@@ -27,26 +33,14 @@ const selectRef = useRef(null)
         setIngredients(result);
       })
       .catch(err => console.log(err))
+    
+//     fetchRecipes().then(res => {
+//                   console.log(res.data.map(r => r.ingredients
+// ))
+//       })
+//       .catch(err => console.log(err))
   
   }, []);
-        
-     const changeHandler = e => {
-           console.log(e)
-             console.log(selectRef.current.props.name)
-
-    //     switch (e.descr) {
-    //    case `${selectRef.current.props.name}`:
-    //     console.log(e.value)
-    //      break;
-       
-    //    case `${InselectRef.current.props.name}`:
-    //      console.log(e.value)
-    //      break;
-       
-    //    default:
-    //   break;
-    //  }
-  };
 
       useEffect(() => {
        if (countIngredients <= 1) {
@@ -64,21 +58,29 @@ const selectRef = useRef(null)
       
       function clickHandlerMinus() {
 		setCountIngredients(countIngredients - 1);
-      }
+  }
+  
+     function handlerSelect(){
+    
+      
+         }
+
 
         function createInputFields() {
     const inputFields = [];
     for (let i = 0; i < countIngredients; i++) {
           inputFields.push(
-      <div className={s.addIngredients_box} key={nanoid()}>
+      <div className={s.addIngredients_box} key={nanoid()} >
          
-        <Select className="basic-single"
+        <Select 
+                className="basic-single"
         ref={InselectRef}
         classNamePrefix="select"
         isSearchable={true}
       name="ingredient"
-      onChange={changeHandler}
+      onChange={handlerSelect}
       options={allIngredients}
+             
       defaultValue={allIngredients[0]}
        styles={{
                 control: (baseStyles, state) => ({
@@ -99,15 +101,14 @@ const selectRef = useRef(null)
                 backgroundColor: "rgba(22, 31, 55, 1)",
               }),
               }}                      
-                      ></Select> 
+                      />
                       
-
-       <Select  className="basic-single"
+  <Select  className="basic-single"
         classNamePrefix="select"
             ref={selectRef}
         isSearchable={true}
       name="measure"
-      onChange={changeHandler}
+      onChange={handlerSelect}
       options={measure}
       styles={{
                 control: (baseStyles, state) => ({
@@ -127,6 +128,7 @@ const selectRef = useRef(null)
               }),
               }}    
                       /> 
+      
                       
                       <button className={s.addIngredients_btnDelete} disabled={isBtnDisabled} onClick={clickHandlerMinus} type="button" id="buttonDeleteIng">
                             <MdOutlineClose className={s.addIngredients_btnDeleteIcon} /></button>              

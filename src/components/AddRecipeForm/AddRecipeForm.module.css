@@ -1,10 +1,9 @@
 .add_btn {
   display: block;
-  width: 118px;
-  height: 54px;
-  padding: 18px 44px 18px 44px;
+  width: 107px;
+  height: 46px;
+  padding: 14px 40px 14px 40px;
   border-radius: 42px;
-  gap: 10px;
 
   font-family: Manrope;
   font-size: 16px;
@@ -15,4 +14,10 @@
 
   background-color: #f3f3f3;
   color: #161f37;
+
+  @media screen and (min-width: 768px) {
+    width: 118px;
+    height: 54px;
+    padding: 18px 44px 18px 44px;
+  }
 }
