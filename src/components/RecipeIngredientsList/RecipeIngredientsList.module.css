@@ -1,0 +1,4 @@
+.ingredientsList {
+    display: flex;
+    gap: 35px;
+  }
