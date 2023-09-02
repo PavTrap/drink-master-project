@@ -20,7 +20,6 @@ const drinksSlice = createSlice({
     ingredientList: [],
     filter: '',
     lastRequest: {},
-    pages: 0
   },
   reducers: {
     changeFilter: (state, action) => {
@@ -29,9 +28,11 @@ const drinksSlice = createSlice({
   },
   extraReducers: builder => {
     builder
-      .addCase(fetchDrinks.fulfilled, (state, { payload: drinks }) => {
-        state.entities = drinks;
+      .addCase(fetchDrinks.fulfilled, (state, { payload }) => {
+        console.log('payload', payload)
+        state.entities = payload.data;
         state.isLoading = false;
+        state.lastRequest = payload.url
         // state.lastRequest = {q: drinks}
       })
       .addCase(fetchCategories.fulfilled, (state, { payload: categoryList }) => {

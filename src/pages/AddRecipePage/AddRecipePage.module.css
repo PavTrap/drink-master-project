@@ -1,6 +1,15 @@
-.addRecipeForm_section {
+.addRecipeForm_container {
   margin-top: 80px;
   margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.addRecipePage_section {
+  margin-top: 80px;
+  margin-bottom: 80px;
+  padding: 0 20px;
   @media screen and (min-width: 768px) {
     margin-top: 140px;
     margin-bottom: 140px;
@@ -11,12 +20,32 @@
   }
 }
 
-.addRecipePage {
-  display: block;
+@media screen and (min-width: 768px) {
+  .addRecipeForm_section {
+    margin-top: 140px;
+    margin-bottom: 140px;
+  }
+}
 
-  @media screen and (min-width: 1440px) {
+@media screen and (min-width: 1440px) {
+  .addRecipeForm_container {
+    margin-top: 160px;
+    width: 100%;
+    padding: 0 100px;
+  }
+  .addRecipePage {
     margin-top: 60px;
     display: flex;
-    justify-items: center;
+    justify-content: flex-start;
+    gap: 90px;
+    width: 100%;
+  }
+}
+
+.addRecipePage_title {
+  margin-bottom: 40px;
+
+  @media screen and (min-width: 768px) {
+    margin-bottom: 60px;
   }
 }

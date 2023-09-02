@@ -1,7 +1,8 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
-import { Spinner } from 'components/Spinner/Spinner'; //components
+
+import {LayoutSpiner} from '../Spinner/LayoutSpinner'
 import MainContainer from './MainContainer'; //components
 import Header from 'components/SharedLayout/Header/Header'; // Component
 import Logo from './Logo'; //components
@@ -12,6 +13,7 @@ import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
 import useAuth from 'hooks/useAuth'; //hook
 
+
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
 import ModalCard from 'components/Modal/ModalCard'; //component
@@ -21,6 +23,8 @@ import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
 import BurgerMenuIcon from './BurgerMenu/BurgerMenuIcon';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
+import css from './SharedLayout.module.css';
+import SubscribeForm from './SubscribeForm';
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -38,7 +42,7 @@ export const SharedLayout = () => {
     setBurgerMenuActive(false);
   }, [location]);
 
-  // //слідкує за шириною екрану і її зміни
+  //слідкує за шириною екрану і її зміни
   useEffect(() => {
     const handleWindowResize = () => {
       setIsDesctop(window.innerWidth >= 768);
@@ -53,6 +57,9 @@ export const SharedLayout = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
+
+
+
 
   const { isLoggedIn } = useAuth();
 
@@ -81,21 +88,18 @@ export const SharedLayout = () => {
           <Header>
             <Logo />
             <NavBar />
-            {/* <UserBar toggleModal={setModalActive} /> */}
             <UserBar toggleModal={setModalauthActive} />
           </Header>
         ) : (
           <Header>
             <Logo />
-            {/* <NavBar /> */}
-            {/* <UserBar toggleModal={setModalActive} /> */}
             <UserBar toggleModal={setModalauthActive} />
             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-            <BurgerMenu burgerMenuActive={burgerMenuActive} />
+            {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
           </Header>
         )}
-        <main>
-          <Suspense fallback={<Spinner />}>
+        <main className={css.mainFrame}>
+          <Suspense fallback={<LayoutSpiner />}>
             <Outlet />
           </Suspense>
         </main>
@@ -108,7 +112,7 @@ export const SharedLayout = () => {
               <Socials />
             </div>
             <NavBarFooter />
-            <div style={subskribeBlock}>SubskribeBlock</div>
+            <SubscribeForm />
           </div>
           <div style={footerBottomContainer}>
             <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
@@ -126,7 +130,7 @@ export const SharedLayout = () => {
     </>
   ) : (
     <main style={{ width: '100%' }}>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LayoutSpiner />}>
         <Outlet />
       </Suspense>
     </main>
@@ -146,14 +150,6 @@ const footerUpperContainer = {
   marginBottom: '80px',
 };
 
-const subskribeBlock = {
-  width: '309px',
-  height: '226px',
-  border: '1px solid White',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
 const footerBottomContainer = {
   textAlign: 'center',
   display: 'flex',
