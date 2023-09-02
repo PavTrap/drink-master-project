@@ -8,7 +8,9 @@ const RecipeIngredientsItem = ({ data }) => {
 
   return (
     <li>
-      <img className={css.imgIngredient} src={formatIngredientImg(ingredientThumb)} alt={title} />
+      <div className={css.containerImg}>
+        <img className={css.imgIngredient} src={formatIngredientImg(ingredientThumb)} alt={title} />
+      </div>
       <div className={css.descriptIngr}>
         <p className={css.title}>{title}</p>
         <p className={css.measure}>{measure}</p>

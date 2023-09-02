@@ -1,10 +1,23 @@
-.imgIngredient {
-    margin-bottom: 14px;
+.containerImg {
+    position: relative;
     width: 220px;
     height: 220px;
 
     border-radius: 8px;
     background-color: rgba(22, 31, 55, 0.5);
+  }
+
+.imgIngredient {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 175px;
+    height: 175px;
+    
+    background-size: cover;
+
+    transform: translate(-50%, -50%);
 }
 
 .descriptIngr {
