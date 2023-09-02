@@ -146,7 +146,7 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ab
 // Создайте стилизованный компонент
 // Опции для React Select
 RecipeDescriptionFields.propTypes = {
-  drinkThumb: PropTypes.func,
+  drinkThumb: PropTypes.string,
   cocktailImg: PropTypes.func,
   itemTitle: PropTypes.func,
   about: PropTypes.func,
