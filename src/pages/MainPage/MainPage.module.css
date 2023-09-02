@@ -7,8 +7,34 @@ h2 {
 	color: #f3f3f3;
 }
 
+h1 {
+	font-size: 32px;
+	font-weight: 600;
+
+	@media screen and (min-width: 768px) and (max-width: 1200px) {
+		font-size: 56px;
+	}
+
+	@media screen and (min-width: 1201px) {
+		font-size: 64px;
+	}
+}
+
 h2 {
-	margin-bottom: 40px;
+	margin-bottom: 24px;
+
+	font-size: 32px;
+	font-weight: 600;
+
+	@media screen and (min-width: 768px) and (max-width: 1200px) {
+		font-size: 40px;
+		margin-bottom: 40px;
+	}
+
+	@media screen and (min-width: 1201px) {
+		font-size: 44px;
+		margin-bottom: 40px;
+	}
 }
 
 a {
@@ -25,18 +51,60 @@ a {
 
 	margin-bottom: 80px;
 
-	max-width: 1240px;
-	max-height: 522px;
+	/* max-width: 1240px; */
+	/* max-height: 522px; */
+
+	@media screen and (max-width: 767px) {
+		margin-bottom: 40px;
+	}
 }
 
 .drinks_section {
 	position: relative;
 	padding: 0px 100px 270px;
+
+	@media screen and (max-width: 767px) {
+		padding: 0px 20px 60px;
+	}
+
+	@media screen and (min-width: 768px) and (max-width: 1200px) {
+		padding: 0px 32px 80px;
+	}
 }
 
 .hero_section {
 	padding: 160px 100px 100px;
 	margin-bottom: 80px;
+
+	background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
+	background-position: right;
+	background-repeat: no-repeat;
+
+	@media (-webkit-min-device-pixel-ratio: 2) {
+			background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
+		}
+	
+		@media screen and (min-width: 768px) {
+			background-image: url("../MainPage/img/main-page-glass-tablet-1x.png");
+			justify-content: left;
+			padding-left: 64px;
+	
+			@media (-webkit-min-device-pixel-ratio: 2) {
+				background-image: url("../MainPage/img/main-page-glass-tablet-2x.png");
+			}
+		}
+	
+		@media screen and (min-width: 1440px) {
+	
+			background-image: url("../WelcomePage/img/desktop_x1.png");
+			background-color: #07070b;
+			justify-content: left;
+			padding-left: 100px;
+	
+			@media (-webkit-min-device-pixel-ratio: 2) {
+				background-image: url("../WelcomePage/img/desktop_x2.png");
+			}
+		}
 }
 
 .button {
@@ -46,10 +114,6 @@ a {
 	color: #161f37;
 	background-color: #f3f3f3;
 	padding: 18px 44px;
-}
-
-h1 {
-	font-size: 64px;
 }
 
 .main_p {
@@ -73,3 +137,8 @@ h1 {
 	color: rgba(243, 243, 243, 0.5);
 }
 
+.mainGlass {
+	position: absolute;
+	top: 0;
+	right: 0;
+}

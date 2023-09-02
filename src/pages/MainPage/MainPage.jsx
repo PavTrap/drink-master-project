@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
-import imgSrc from './img/plug-glass-400x400.png'
+import imgSrc from './img/plug-glass-desktop-1x.png';
+// import glassImg from './img/main-page-glass-desktop-1x.png'
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
 import { fetchDrinks } from 'helpers/fetchDrinks';
 import css from './MainPage.module.css';
@@ -70,6 +71,7 @@ const MainPage = () => {
 						beverages.
 					</p>
 					<Link className={css.button} to={"/add"}>Add recipe</Link>
+					{/* <img className={css.mainGlass} src={glassImg} alt="glass" /> */}
 				</section>
 				<PreviewDrinks>
 					<section className={css.drinks_section}>
@@ -79,7 +81,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks['ordinary drink'].length !== 0 ? getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink" />}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink" />}
 								</ul>
 							</>
 						}
@@ -89,7 +91,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks.coctail.length !== 0 ? getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink" />}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink" />}
 								</ul>
 							</>
 						}
@@ -99,7 +101,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks.shake.length !== 0 ? getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink" />}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink" />}
 								</ul>
 							</>
 						}
@@ -109,15 +111,13 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks['other/unknown'].length !== 0 ? getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink"/>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink"/>}
 								</ul>
 							</>
 						}
 						{allDrinks && <a className={`${css.button} ${css.other_drinks_btn}`} href="drinks">Other drinks</a>}
 					</section>
-
 				</PreviewDrinks>
-
 			</div>
 		</>
 	);
