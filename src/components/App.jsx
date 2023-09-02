@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Spinner } from './Spinner/Spinner';
 import Private from './Routes/Privat';
@@ -20,10 +20,8 @@ const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 export const App = () => {
-
-
-
-
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -31,12 +29,14 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
+  useEffect(() => {
+    navigate(location.pathname, { relative: 'path' });
+  }, [location.pathname, navigate]);
 
   return isRefreshing ? (
     <Spinner />
   ) : (
     <Routes>
-
       <Route path="/" element={<OnlyGuest component={<SharedLayout />} />}>
         <Route index element={<OnlyGuest component={<WelcomePage />} />} />
         <Route path="signin" element={<OnlyGuest component={<LoginPage />} />} />

@@ -38,6 +38,10 @@ export const SharedLayout = () => {
     setBurgerMenuActive(false);
   }, [location]);
 
+  // useEffect(()=>{
+    
+  // })
+
   //слідкує за шириною екрану і її зміни
   useEffect(() => {
     const handleWindowResize = () => {
@@ -81,13 +85,13 @@ export const SharedLayout = () => {
           <Header>
             <Logo />
             <NavBar />
-\
+
             <UserBar toggleModal={setModalauthActive} />
           </Header>
         ) : (
           <Header>
             <Logo />
-\
+
 
             <UserBar toggleModal={setModalauthActive} />
             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />

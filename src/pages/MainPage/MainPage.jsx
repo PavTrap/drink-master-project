@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import setAuthHeader from 'helpers/axiosHedder';
 import useAuth from 'hooks/useAuth';
 
+
 export const fetchDrinks = async token => {
   try {
     setAuthHeader(token);
@@ -35,6 +36,8 @@ export const addYourCoctail = ({ children }) => <>{children}</>;
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
   const { ReduxToken } = useAuth();
+
+
 
   useEffect(() => {
     fetchDrinks(ReduxToken)
