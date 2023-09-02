@@ -2,7 +2,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
 
-import { Spinner } from 'components/Spinner/Spinner'; //components
+import {LayoutSpiner} from '../Spinner/LayoutSpinner'
 import MainContainer from './MainContainer'; //components
 import Header from 'components/SharedLayout/Header/Header'; // Component
 import Logo from './Logo'; //components
@@ -99,7 +99,7 @@ export const SharedLayout = () => {
           </Header>
         )}
         <main className={css.mainFrame}>
-          <Suspense fallback={<Spinner />}>
+          <Suspense fallback={<LayoutSpiner />}>
             <Outlet />
           </Suspense>
         </main>
@@ -130,7 +130,7 @@ export const SharedLayout = () => {
     </>
   ) : (
     <main style={{ width: '100%' }}>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LayoutSpiner />}>
         <Outlet />
       </Suspense>
     </main>
