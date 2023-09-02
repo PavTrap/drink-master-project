@@ -15,7 +15,7 @@ const RecipePreparation = ({ data }) => {
         <div>
           {/* Рендерити опис  або щось інше */}
           <p className={css.description}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis cum aliquam dignissimos nisi quaerat numquam, odio temporibus ab rerum voluptatibus doloribus! Voluptatem sit architecto magni corporis nisi expedita veritatis perspiciatis.</p>
-          <ul>
+          <ul className={css.instructionList}>
           {sentences.map((sentence, index) => (
             <li className={css.instructionItem} key={index}>
               <p className={css.instructionText}>• {sentence.trim()}</p>

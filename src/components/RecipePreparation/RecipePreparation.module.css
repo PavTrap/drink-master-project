@@ -32,6 +32,15 @@
   color: #F3F3F3;
 }
 
+.instructionList {
+  max-height: 280px;
+  overflow: auto;
+}
+
+.instructionList::-webkit-scrollbar {
+  width: 0;
+}
+
 .instructionText {
   margin-bottom: 29px;
   
