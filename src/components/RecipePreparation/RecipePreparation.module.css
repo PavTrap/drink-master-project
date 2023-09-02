@@ -1,0 +1,8 @@
+.imgDrink {
+    width: 631px;
+    height: 430px;
+    border-radius: 8px;
+    
+    transform: scaleX(-1);
+    object-fit: cover;
+  }

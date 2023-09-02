@@ -13,10 +13,10 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
   return (
     <section className={css.sectionContainer}>
         <div>
-            <p>{glass}</p>
+            <p className={css.textGlass}>{glass}</p>
             <RecipePageTitle title={drink} />
             {/* звідки брати опис коктейля? написати логіку за відсутності опису */}
-            <p>description</p>
+            <p className={css.textDescript}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus sequi, facilis eum ea sit laboriosam ut consequatur optio dolore minima pariatur atque laudantium reprehenderit a vel sunt hic distinctio asperiores!</p>
             {/* Додати рендер за умовою: якщо ще не має в улюблених показувати кнопку AddToFavorite, а якщо ні - то RemoveFromFavorite */}
             <AddToFavorite onAdd={onAdd}/>
             <RemoveFromFavorite id={_id} onDelete={onDelete}/>
@@ -26,7 +26,7 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
                 <AddToFavorite id={_id} onAdd={onAdd} />
               )} */}
         </div>
-        <img src={formatIngredientImg(drinkThumb)} alt={drink} width='250px' />
+        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink} width='250px' />
     </section>
   )
 };

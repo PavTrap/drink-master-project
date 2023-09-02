@@ -1,3 +1,31 @@
 .sectionContainer {
-    display: flex;
-  }
+  display: flex;
+  margin: 0 auto;
+}
+  
+.textGlass {
+  margin-bottom: 8px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(20 / 16);
+
+  color: rgba(243, 243, 243, 0.5);
+}
+
+.textDescript {
+  margin-bottom: 40px;
+  max-width: 593px;
+
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(22 / 16);
+
+  color: #F3F3F3;
+}
+
+.imgDrink {
+  width: 400px;
+  height: 400px;
+  border-radius: 8px;
+}
