@@ -21,7 +21,7 @@ RecipeIngredientsItem.propTypes = {
   data: PropTypes.shape({
     ingredientThumb: PropTypes.string,
     title: PropTypes.string.isRequired,
-    measure: PropTypes.string.isRequired,
+    measure: PropTypes.string,
   }).isRequired,
 };
 

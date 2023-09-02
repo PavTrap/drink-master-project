@@ -21,3 +21,27 @@
   transform: scaleX(-1);
   object-fit: cover;
 }
+
+.description {
+  margin-bottom: 60px;
+  
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(22 / 16);
+
+  color: #F3F3F3;
+}
+
+.instructionText {
+  margin-bottom: 29px;
+  
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(22 / 16);
+
+  color: #F3F3F3;
+}
+
+.instructionItem:last-child .instructionText {
+  margin-bottom: 0;
+}

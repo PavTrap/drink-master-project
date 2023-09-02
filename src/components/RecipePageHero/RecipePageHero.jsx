@@ -16,7 +16,8 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
             <p className={css.textGlass}>{glass}</p>
             <RecipePageTitle title={drink} />
             {/* звідки брати опис коктейля? написати логіку за відсутності опису */}
-            <p className={css.textDescript}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus sequi, facilis eum ea sit laboriosam ut consequatur optio dolore minima pariatur atque laudantium reprehenderit a vel sunt hic distinctio asperiores!</p>
+            <p className={css.textDescript}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptatum excepturi, in illo obcaecati possimus accusantium hic perferendis, provident, fugit explicabo quaerat? Culpa odio magnam maxime facere unde facilis praesentium. Distinctio.
+            Consectetur esse molestias odio accusamus pariatur voluptatibus dicta quidem. Deserunt, enim quis consequuntur minus velit sit reiciendis suscipit quo ad voluptate ipsam culpa neque aspernatur autem porro doloremque quam cum?</p>
             {/* Додати рендер за умовою: якщо ще не має в улюблених показувати кнопку AddToFavorite, а якщо ні - то RemoveFromFavorite */}
             <AddToFavorite onAdd={onAdd}/>
             <RemoveFromFavorite id={_id} onDelete={onDelete}/>
