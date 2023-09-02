@@ -48,21 +48,19 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
   function clickHandlerMinus() {
     setCountIngredients(countIngredients - 1);
   }
+  let array = [];
 
   const getFromForm = item => {
-    let array = [];
+
     if (Object.keys(item?.ingredient).length !== 0) {
-    
-
       array[item.id] = item.ingredient;  
-
-      // console.log(array);
       return array;
     }
     console.log(array);
   };
 
-  // const insert = (arr, index, newItem) => [...arr.slice(0, index), newItem, ...arr.slice(index)];
+
+
 
   
 
