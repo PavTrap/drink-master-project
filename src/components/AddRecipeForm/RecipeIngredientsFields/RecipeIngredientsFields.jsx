@@ -14,8 +14,6 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
   const [ingrediensName, setIngrediensName] = useState([]);
   const [allIngredientsList, setAllIngrediensList] = useState([]);
 
-  // const [fieldsData, setFieldsData] = useState([]);
-
   useEffect(() => {
     (async () => {
       try {
@@ -44,27 +42,23 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
   function clickHandlerPlus() {
     setCountIngredients(countIngredients + 1);
   }
-
-  function clickHandlerMinus() {
-    setCountIngredients(countIngredients - 1);
-  }
   let array = [];
 
+  function clickHandlerMinus(id) {
+    array.splice(id - 1, 1);
+    setCountIngredients(countIngredients - 1);
+  }
+
   const getFromForm = item => {
-
     if (Object.keys(item?.ingredient).length !== 0) {
-      array[item.id] = item.ingredient;  
-      return array;
+      array[item.id - 1] = item.ingredient;
+      if (array.length > 0){
+        console.log(array)
+        //поднять пропы наверх
+      }
     }
-    console.log(array);
+   
   };
-
-
-
-
-  
-
-  // console.log(fieldsData);
 
   function createInputFields() {
     const inputFields = [];
