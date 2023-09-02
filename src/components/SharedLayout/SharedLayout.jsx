@@ -115,7 +115,7 @@ export const SharedLayout = () => {
       </Footer>
     </MainContainer>
   ) : (
-    <main className={css.mainFrame}>
+    <main className={css.mainStyles}>
       <Suspense fallback={<LayoutSpiner />}>
         <Outlet />
       </Suspense>
