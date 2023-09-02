@@ -76,12 +76,13 @@ a {
 	padding: 160px 100px 100px;
 	margin-bottom: 80px;
 
-	background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
-	background-position: right;
-	background-repeat: no-repeat;
-
-	@media (-webkit-min-device-pixel-ratio: 2) {
-			background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
+	background-image: url("../MainPage/img/main-page-glass-mobile-1x.png");
+		background-position: right;
+		background-repeat: no-repeat;
+	
+	
+		@media (-webkit-min-device-pixel-ratio: 2) {
+			background-image: url("../MainPage/img/main-page-glass-mobile-2x.png");
 		}
 	
 		@media screen and (min-width: 768px) {
@@ -96,13 +97,13 @@ a {
 	
 		@media screen and (min-width: 1440px) {
 	
-			background-image: url("../WelcomePage/img/desktop_x1.png");
+			background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
 			background-color: #07070b;
 			justify-content: left;
 			padding-left: 100px;
 	
 			@media (-webkit-min-device-pixel-ratio: 2) {
-				background-image: url("../WelcomePage/img/desktop_x2.png");
+				background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
 			}
 		}
 }
