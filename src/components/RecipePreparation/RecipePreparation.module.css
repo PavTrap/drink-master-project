@@ -42,7 +42,7 @@
 }
 
 .instructionText {
-  margin-bottom: 29px;
+  margin-bottom: 14px;
   
   font-size: 16px;
   font-weight: 400;
@@ -53,4 +53,14 @@
 
 .instructionItem:last-child .instructionText {
   margin-bottom: 0;
+}
+
+.instructionText::after {
+  content: "";
+  display: block;
+  margin-top: 14px;
+  width: 100%;
+  height: 1px;
+
+  background-color: rgba(243, 243, 243, 0.2);
 }
