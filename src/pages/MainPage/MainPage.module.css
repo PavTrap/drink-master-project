@@ -73,73 +73,99 @@ a {
 }
 
 .hero_section {
-	padding: 160px 100px 100px;
-	margin-bottom: 80px;
+	padding: 128px 20px 80px;
+	margin-bottom: 300px;
+
 
 	background-image: url("../MainPage/img/main-page-glass-mobile-1x.png");
-		background-position: right;
-		background-repeat: no-repeat;
-	
-	
+	background-position: right;
+	background-repeat: no-repeat;
+
+
+	@media (-webkit-min-device-pixel-ratio: 2) {
+		background-image: url("../MainPage/img/main-page-glass-mobile-2x.png");
+	}
+
+	@media screen and (min-width: 768px) {
+		padding: 184px 32px 80px;
+		background-image: url("../MainPage/img/main-page-glass-tablet-1x.png");
+		justify-content: left;
+		padding-left: 64px;
+
 		@media (-webkit-min-device-pixel-ratio: 2) {
-			background-image: url("../MainPage/img/main-page-glass-mobile-2x.png");
+			background-image: url("../MainPage/img/main-page-glass-tablet-2x.png");
 		}
-	
-		@media screen and (min-width: 768px) {
-			background-image: url("../MainPage/img/main-page-glass-tablet-1x.png");
-			justify-content: left;
-			padding-left: 64px;
-	
-			@media (-webkit-min-device-pixel-ratio: 2) {
-				background-image: url("../MainPage/img/main-page-glass-tablet-2x.png");
-			}
+	}
+
+	@media screen and (min-width: 1440px) {
+		padding: 160px 100px 100px;
+		margin-bottom: 100px;
+
+		background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
+		background-color: #07070b;
+		justify-content: left;
+		padding-left: 100px;
+
+		@media (-webkit-min-device-pixel-ratio: 2) {
+			background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
 		}
-	
-		@media screen and (min-width: 1440px) {
-	
-			background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
-			background-color: #07070b;
-			justify-content: left;
-			padding-left: 100px;
-	
-			@media (-webkit-min-device-pixel-ratio: 2) {
-				background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
-			}
-		}
+	}
 }
 
 .button {
-	font-size: 18px;
-	height: 54px;
+	font-size: 14px;
+	font-weight: 600;
+	height: 40px;
 	border-radius: 42px;
 	color: #161f37;
 	background-color: #f3f3f3;
-	padding: 18px 44px;
+	padding: 14px 40px;
+
+	@media screen and (min-width: 768px) {
+		font-size: 16px;
+		height: 54px;
+		padding: 18px 44px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 18px;
+	}
 }
 
+
 .main_p {
-	margin-bottom: 40px;
+	margin-bottom: 32px;
+	font-size: 14px;
+
+	@media screen and (min-width: 768px) {
+		margin-bottom: 58px;
+		font-size: 18px;
+	}
 }
 
 .hero_title {
-	margin-bottom: 28px;
+	font-size: 32px;
+	font-weight: 600;
+	margin-bottom: 16px;
+
+	@media screen and (min-width: 768px) {
+		font-size: 56px;
+		margin-bottom: 28px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 64px;
+	}
 }
 
 .other_drinks_btn {
-	display: flex;
-	align-items: center;
 	position: absolute;
 	left: 50%;
+
+	display: flex;
+	align-items: center;
+
 	max-height: 54px;
-}
 
-.ingredients_text {
-	font-size: 16px;
-	color: rgba(243, 243, 243, 0.5);
-}
-
-.mainGlass {
-	position: absolute;
-	top: 0;
-	right: 0;
+	transform: translate(-50%);
 }

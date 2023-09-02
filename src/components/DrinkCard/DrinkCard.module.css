@@ -31,3 +31,13 @@
 
 	margin-top: 14px;
 }
+
+.ingredients_text {
+	font-size: 14px;
+	font-weight: 500;
+	color: rgba(243, 243, 243, 0.5);
+
+	@media screen and (min-width: 768px) {
+		font-size: 16px;
+	}
+}

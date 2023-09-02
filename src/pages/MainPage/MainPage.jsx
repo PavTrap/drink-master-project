@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import useAuth from 'hooks/useAuth';
 import imgSrc from './img/plug-glass-desktop-1x.png';
-// import glassImg from './img/main-page-glass-desktop-1x.png'
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
 import { fetchDrinks } from 'helpers/fetchDrinks';
 import css from './MainPage.module.css';
@@ -71,7 +70,6 @@ const MainPage = () => {
 						beverages.
 					</p>
 					<Link className={css.button} to={"/add"}>Add recipe</Link>
-					{/* <img className={css.mainGlass} src={glassImg} alt="glass" /> */}
 				</section>
 				<PreviewDrinks>
 					<section className={css.drinks_section}>
