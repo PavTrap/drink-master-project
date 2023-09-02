@@ -1,25 +1,32 @@
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import styles from './NavBar.module.css';
 
 const NavBar = () => {
+  const location = useLocation();
+
+  const isActive = path => {
+    return location.pathname === path ? styles.activeLink : '';
+  };
+
   return (
     <nav className={styles.navBar}>
-      <NavLink to="/drinks" className={styles.links}>
+      <NavLink to="/drinks" className={`${styles.links} ${isActive('/drinks')}`}>
         Drinks
       </NavLink>
-      <NavLink to="/add" className={styles.links}>
+      <NavLink to="/add" className={`${styles.links} ${isActive('/add')}`}>
         Add recipe
       </NavLink>
-      <NavLink to="/recipe" className={styles.links}>
+      <NavLink to="/recipe" className={`${styles.links} ${isActive('/recipe')}`}>
         Recipe
       </NavLink>
-      <NavLink to="/my" className={styles.links}>
+      <NavLink to="/my" className={`${styles.links} ${isActive('/my')}`}>
         My recipes
       </NavLink>
-      <NavLink to="/spinner" className={styles.links}>
+      <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
         Spinner
       </NavLink>
-      <NavLink to="/favorite" className={styles.links}>
+      <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}>
         Favorites
       </NavLink>
     </nav>

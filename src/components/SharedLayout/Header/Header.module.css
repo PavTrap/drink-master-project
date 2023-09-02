@@ -1,0 +1,26 @@
+.header {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 22.5px 100px;
+  z-index: 10;
+  box-sizing: border-box;
+  position: relative;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.2);
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 20px 32px;
+  }
+
+  @media (max-width: 375px) {
+    .header {
+      padding: 20px 20px;
+    }
+  }
+}
