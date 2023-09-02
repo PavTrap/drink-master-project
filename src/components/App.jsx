@@ -7,12 +7,11 @@ import OnlyGuest from './Routes/OnlyGuest';
 import useAuth from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/Auth/authOperation';
-import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-
+const NotFoundPage= lazy(()=> import('../pages/NotFoundPage/NotFoundPage'))
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));

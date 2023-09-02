@@ -1,7 +1,7 @@
-.favoritesContainer {
-  max-width: 375px;
-  min-height: 96vh;
+.notFoundContainer {
   position: relative;
+  text-align: center;
+  max-width: 375px;
   margin: 0 auto;
   padding: 80px 20px;
   @media screen and (min-width: 768px) {
@@ -14,4 +14,13 @@
     padding-left: 100px;
     padding-right: 100px;
   }
+}
+.textContainer {
+  gap: 150px;
+}
+.span {
+  font-size: 120px;
+  line-height: calc(123 / 120);
+  font-weight: 600;
+  color: rgba(243, 243, 243, 0.1);
 }

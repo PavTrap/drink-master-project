@@ -4,11 +4,11 @@ import { useLocation } from 'react-router-dom';
 import { MainTitle } from 'components/MainTitle/MainTitle';
 import { RecipesList } from 'components/RecipesList/RecipesList';
 import { Paginator } from 'components/Paginator/Paginator';
+import { NoRecipe } from 'components/NoRecipe/NoRecipe';
 import { getFavoriteRecipes, getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import { deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 import { changeFavPage } from 'redux/FavoriteCocktails/FavoritesSlice';
 import css from './FavoritePage.module.css';
-import { NoRecipe } from 'components/NoRecipe/NoRecipe';
 
 export default function FavoritePage() {
   const favorites = useSelector(getFavoriteRecipes);
@@ -21,7 +21,7 @@ export default function FavoritePage() {
   return (
     <section className={css.favoritesContainer}>
       <MainTitle title="Favorites" />
-      {favorites.length !== 0 ? (
+      {favorites.length > 0 ? (
         <>
           <RecipesList recipes={favorites.data} state={{ from: location }} onDelete={deleteFavorites} />
           {favorites.count.totalPages > 1 && <Paginator pages={favorites.count} onChangePage={changeFavPage} />}

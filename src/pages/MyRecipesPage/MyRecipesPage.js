@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { Paginator } from 'components/Paginator/Paginator';
 import { changePage } from 'redux/MyRecipe/MyRecipeSlice';
 import css from "./MyRecipesPage.module.css";
+import { NoRecipe } from 'components/NoRecipe/NoRecipe';
 
 export default function MyRecipesPage() {
   const dispatch = useDispatch();
@@ -20,12 +21,12 @@ export default function MyRecipesPage() {
   return (
     <section className={css.myRecipeContainer}>
       <MainTitle title="My recipes" />
-      {recipes.length !== 0 && (
+      {recipes.length > 0 ? (
         <>
           <RecipesList recipes={recipes.data} state={{ from: location }} onDelete={deleteMyRecipes} />
           {recipes.count.totalPages> 1 &&<Paginator pages={recipes.count} onChangePage={changePage} />}
         </>
-      )}
+      ): <NoRecipe title="You haven't added any own cocktails yet"/>}
     </section>
   );
 }

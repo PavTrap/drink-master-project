@@ -1,9 +1,47 @@
-import css from './NoRecipe.module.css';
+// import { useNavigate } from 'react-router-dom';
+// export default function NotFoundPage() {
+//   const navigate = useNavigate();
+//   return (
+//     <div style={littleStyles}>
+//       THIS IS NOT FOUND 404 PAGE
+//       <button
+//         style={button}
+//         onClick={() => {
+//           navigate('/');
+//         }}
+//       >
+//         {' '}
+//         Oops not found <br /> Whant to go to main page?
+//       </button>
+//     </div>
+//   );
+// }
 
-export const NoRecipe = ({ title }) => {
+// const littleStyles = {
+//   height: '70vh',
+//   fontSize: '40px',
+
+//   width: '100%',
+//   textAlign: 'center',
+//   display: 'flex',
+//   flexDirection: 'column',
+//   gap: '50px',
+//   flexWrap: 'no-wrap',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+// };
+
+// const button = {
+//   padding: '20px',
+//   backgroundColor: 'lightblue',
+// };
+
+import css from './NotFoundPage.module.css';
+
+export default function NotFoundPage() {
   return (
-    <div className={css.noRecipeContainer}>
-      <picture className={css.imageContainer}>
+    <section className={css.notFoundContainer}>
+      <picture>
         <source
           srcSet="
           images/notFound/not-found-desk.webp   517w,
@@ -66,7 +104,10 @@ export const NoRecipe = ({ title }) => {
         />
         <img src="/images/notFound/not-found-mob.jpg" alt="Recipes not found" />
       </picture>
-      <p className={css.noRecipeTitle}>{title}</p>
-    </div>
+      <div className={css.textContainer}>
+        <span className={css.span}>4</span>
+        <span className={css.span}>4</span>
+      </div>
+    </section>
   );
-};
+}
