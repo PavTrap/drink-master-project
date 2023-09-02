@@ -12,7 +12,7 @@ const AddToFavorite = ({ id, onAdd }) => {
 
 AddToFavorite.propTypes = {
   id: PropTypes.string.isRequired,
-  // onAdd: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
 };
 
 export default AddToFavorite;

@@ -6,7 +6,7 @@ const RecipePreparation = ({ data }) => {
   const { drinkThumb, drink, instructions } = data;
 
   return (
-    <div>
+    <section>
       <h3>Recipe Preparation</h3>
       <div>
         <img src={formatIngredientImg(drinkThumb)} alt={drink}  width='250px'/>
@@ -19,7 +19,7 @@ const RecipePreparation = ({ data }) => {
           </ul>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

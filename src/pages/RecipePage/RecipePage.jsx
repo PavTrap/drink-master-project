@@ -13,6 +13,8 @@ import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
 import { getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import { addFavorites, deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 
+import css from './RecipePage.module.css'
+
 const RecipePage = () => {
   const [recipe, setRecipe] = useState(null);
   const { ReduxToken } = useAuth();
@@ -46,9 +48,9 @@ const RecipePage = () => {
   }, [dispatch, page]);
 
   return (
-    <div>
+    <>
       {recipe && (
-        <div>
+        <div className={css.container}>
           <RecipePageHero data={recipe} onDelete={deleteFavorites} onAdd={addFavorites} />
           <RecipeIngredientsList data={recipe}>
             {recipe.ingredients.map(item => (
@@ -58,7 +60,7 @@ const RecipePage = () => {
           <RecipePreparation data={recipe} />
         </div>
       )}
-    </div>
+    </>
   );
 };
 

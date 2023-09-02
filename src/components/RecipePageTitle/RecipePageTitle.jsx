@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import css from './RecipePageTitle.module.css'
 
 const RecipePageTitle = ({title}) => {
   return (
-    <h2>{title}</h2>
+    <h2 className={css.title}>{title}</h2>
   )
 };
 

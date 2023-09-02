@@ -1,11 +1,12 @@
 import React from 'react';
+import css from './RecipeIngredientsList.module.css'
 
 const RecipeIngredientsList = ({ children }) => {
   return (
-    <div>
+    <section>
         <p>Ingredients</p>
-        <ul>{children}</ul>
-    </div>
+        <ul className={css.ingredientsList}>{children}</ul>
+    </section>
   )
 };
 
