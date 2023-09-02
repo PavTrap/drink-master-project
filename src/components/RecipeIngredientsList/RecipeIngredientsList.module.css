@@ -1,0 +1,14 @@
+.ingredientsList {
+  display: flex;
+  gap: 35px;
+}
+
+.title {
+  margin-bottom: 24px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: calc(20 / 16);
+
+  color: rgba(243, 243, 243, 0.5);
+}

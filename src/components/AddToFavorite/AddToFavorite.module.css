@@ -1,0 +1,25 @@
+.button {
+    padding: 18px 44px;
+
+    font-weight: 600;
+    font-size: 16px;
+    line-height: calc(18 / 16);
+
+    color: #161f37;
+    background-color: #f3f3f3;
+    border-radius: 42px;
+    border-color: transparent;
+
+    transition: all 250ms ease;
+}
+
+.button:focus,
+.button:hover {
+    color: #F3F3F3;
+    background-color: #161F37;
+}
+
+.button:disabled {
+    color: rgba(243, 243, 243, 0.2);
+    background-color: #434D67;
+}

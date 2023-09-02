@@ -32,7 +32,7 @@ const favoritesSlice = createSlice({
       })
       // ADD
       .addCase(addFavorites.fulfilled, (state, action) => {
-        state.entities.push(action.payload);
+        state.entities.data.push(action.payload);
         state.isLoading = false;
       })
       // DELETE

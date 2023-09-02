@@ -10,7 +10,7 @@ import { RecipePreparationFields } from './RecipePreparationFields/RecipePrepara
 export const AddRecipeForm = () => {
   const [drinkThumb, setDrinkThumb] = useState('');
   const [drink, setDrink] = useState('');
-  // const [about, setAbout] = useState("");
+  const [about, setAbout] = useState('');
   const [category, setCategory] = useState('');
   const [glass, setGlass] = useState('');
 

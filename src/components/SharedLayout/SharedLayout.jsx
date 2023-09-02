@@ -11,7 +11,6 @@ import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
 import useAuth from 'hooks/useAuth'; //hook
 
-
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
 import ModalCard from 'components/Modal/ModalCard'; //component
@@ -60,9 +59,6 @@ export const SharedLayout = () => {
     };
   }, []);
 
-
-
-
   const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (
@@ -100,7 +96,7 @@ export const SharedLayout = () => {
 
             <UserBar toggleModal={setModalauthActive} />
             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-            {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+            <BurgerMenu burgerMenuActive={burgerMenuActive} />
           </Header>
         )}
         <main className={css.mainFrame}>
