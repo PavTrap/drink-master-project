@@ -1,8 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const RemoveFromFavorite = () => {
+const RemoveFromFavorite = ({ id, onDelete }) => {
+  const dispatch = useDispatch();
   return (
-    <button type="button">Remove from favorite recipe</button>
+    <button type="button" onClick={()=>dispatch(onDelete(id))}>Remove from favorite recipe</button>
   )
 };
 

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-const AddToFavorite = () => {
+const AddToFavorite = ({ id, onAdd }) => {
+  const dispatch = useDispatch();
   return (
-    <button type="button">Add to favorite recipe</button>
+    <button type="button" onClick={()=>dispatch(onAdd(id))}>Add to favorite recipe</button>
   )
 };
 

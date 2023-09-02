@@ -9,11 +9,16 @@ import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
 import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import RecipeIngredientsItem from 'components/RecipeIngredientsItem/RecipeIngredientsItem';
 import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
+import { useDispatch, useSelector } from 'react-redux';
+import { getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
+import { addFavorites, deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 
 const RecipePage = () => {
   const [recipe, setRecipe] = useState(null);
   const { ReduxToken } = useAuth();
   const { recipeId } = useParams();
+  const page = useSelector(getFavPage);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const getRecipe = async (token, recipeId) => {
@@ -33,13 +38,17 @@ const RecipePage = () => {
       .catch(e => console.log(e));
   }, [ReduxToken, recipeId]);
 
-  console.log(recipe); 
+  // console.log(recipe); 
+
+  useEffect(() => {
+    dispatch(fetchFavorites(page));
+  }, [dispatch, page]);
 
   return (
     <div>
       {recipe && (
         <div>
-          <RecipePageHero data={recipe} />
+          <RecipePageHero data={recipe} onDelete={deleteFavorites} onAdd={addFavorites} />
           <RecipeIngredientsList data={recipe}>
             {recipe.ingredients.map(item => (
               <RecipeIngredientsItem data={item} key={nanoid()} />
