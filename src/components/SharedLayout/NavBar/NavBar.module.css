@@ -3,6 +3,8 @@
   gap: 16px;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 @media (max-width: 768px) {
