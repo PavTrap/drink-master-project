@@ -157,8 +157,8 @@
 }
 
 
-@media screen and (min-width: 1140px) {
+@media screen and (min-width: 1440px) {
   .mainFrame {
-    max-width: 1144px;
+    max-width: 1444px;
   }
 }

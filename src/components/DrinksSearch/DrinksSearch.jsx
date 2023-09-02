@@ -33,6 +33,8 @@ export const DrinksSearch = () => {
   // const navigate = useNavigate()
   // const location = useLocation();
 
+
+
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchIngredients());
@@ -131,7 +133,7 @@ export const DrinksSearch = () => {
         />
       </form>
       <div className={css.responseContainer}>
-        {entities.data && (
+        {entities.data && !isLoading && (
           <ul className={css.mainPageList}>
             {entities.data.map(({ _id, drink, drinkThumb }) => (
               <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
@@ -139,7 +141,7 @@ export const DrinksSearch = () => {
           </ul>
         )}
 
-        {isLoading && <Dots className={css.loading} />}
+        {isLoading && !entities.data &&<div styles={{width: "100vw", height: "100vh"}}><Dots className={css.loading} /></div>}
         {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
 
         {/* <Paginator pages={pages } onChangePage={ changePage} /> */}

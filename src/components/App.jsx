@@ -1,5 +1,6 @@
 import { lazy, useEffect } from 'react';
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Spinner } from './Spinner/Spinner';
 import Private from './Routes/Privat';
@@ -34,6 +35,18 @@ export const App = () => {
     navigate(location.pathname, { relative: 'path' });
   }, [location.pathname, navigate]);
 
+
+
+// useEffect(() => {
+//           navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
+//           window.onbeforeunload = () => {
+//               window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
+//           }
+//           return () => window.sessionStorage.setItem('lastRoute', "");
+//       // eslint-disable-next-line react-hooks/exhaustive-deps
+//       }, [])
+
+
   return isRefreshing ? (
     <Spinner />
   ) : (
@@ -55,7 +68,7 @@ export const App = () => {
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
-      <Route path="spinner" element={<Spinner />} />
+      {/* <Route path="spinner" element={<Spinner />} /> */}
     </Routes>
   );
 };

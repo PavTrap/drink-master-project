@@ -1,16 +1,25 @@
-
-
 .searchSvg {
   position: absolute;
   top: 18px;
   right: 24px;
 }
 
-.responseContainer{
+.responseContainer {
   min-height: 400px;
 }
+.mainPageList > li {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.mainPageList > li > img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
 
-@media screen and (min-width: 320px) {
+
+
   .inputDrinks {
     padding: 18px 24px;
     width: 100%;
@@ -76,16 +85,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-
     margin-bottom: 80px;
-
-    max-width: 1240px;
+    width: 100%;
   }
-}
+
 
 @media screen and (min-width: 768px) {
   .container {
-    margin: 140px 32px;
+    margin: 140px 0;
   }
   .title {
     margin-bottom: 60px;
@@ -98,6 +105,11 @@
     padding-top: 14px;
     padding-bottom: 15px;
     padding-left: 24px;
+  }
+  .mainPageList > li {
+    display: block;
+    width: calc(50% - 10px);
+    height: auto;
   }
   .selsctDrinks {
     padding-top: 14px;
@@ -119,7 +131,7 @@
 
 @media screen and (min-width: 1440px) {
   .container {
-    margin: 160px 100px;
+    margin: 160px 0;
   }
   .title {
     margin-bottom: 80px;
@@ -127,4 +139,21 @@
   .drinkRequestForm {
     display: flex;
   }
+  .mainPageList{
+    justify-content: space-between;
+  }
+  .mainPageList > li {
+    display: block;
+    width: calc(33% - 40px);
+    height: auto;
+  }
+  .mainPageList > li > img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
+
+.loading{
+  height: 100vh;
 }

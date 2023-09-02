@@ -23,9 +23,9 @@ const NavBar = () => {
       <NavLink to="/my" className={`${styles.links} ${isActive('/my')}`}>
         My recipes
       </NavLink>
-      <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
+      {/* <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
         Spinner
-      </NavLink>
+      </NavLink> */}
       <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}>
         Favorites
       </NavLink>
