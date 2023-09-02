@@ -5,14 +5,18 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* padding: 0 20px; */
+
   margin: 0 auto;
   box-sizing: border-box;
   background-color: #0a0a11;
   color: #f3f3f3;
   overflow: hidden;
 
-  /* padding: 0 100px */
+}
+
+.mainFrame {
+  max-width: 335px;
+  margin: 0 auto;
 }
 
 .gradient {
@@ -48,6 +52,44 @@
 }
 .gradient4 {
   display: none;
+}
+
+
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes firework {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.5);
+  }
+}
+
+.icons {
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: block;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  padding: 8px;
+  box-sizing: content-box;
+}
+
+.icons > svg {
+  transition: all 200ms ease-out;
+}
+
+.icons:hover > svg {
+  scale: 1.2;
 }
 
 @media screen and (min-width: 340px) {
@@ -101,41 +143,22 @@
     animation-delay: 1800;
     pointer-events: none;
   }
+  .mainFrame {
+    max-width: 335px;
+  }
+
+
 }
 
-@keyframes pulse {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.1);
-  }
-}
-
-@keyframes firework {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.5);
+@media screen and (min-width: 768px) {
+  .mainFrame {
+    max-width: 704px;
   }
 }
 
-.icons {
-  width: 28px;
-  height: 28px;
-  border-radius: 10px;
-  display: block;
-  border: 1px solid rgba(243, 243, 243, 0.2);
-  padding: 8px;
- box-sizing: content-box;
- 
-}
 
-.icons > svg {
-  transition: all 200ms ease-out;;
-}
-
-.icons:hover > svg {
-  scale: 1.2;
+@media screen and (min-width: 1140px) {
+  .mainFrame {
+    max-width: 1144px;
+  }
 }

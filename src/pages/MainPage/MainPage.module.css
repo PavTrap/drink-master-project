@@ -17,13 +17,21 @@ a {
 }
 
 .mainPageList {
+  list-style: none;
+  justify-content: space-between;
 	list-style: none;
 
 	display: flex;
 	flex-wrap: nowrap;
 	gap: 20px;
-
 	margin-bottom: 80px;
+  /* max-width: 1240px; */
+  /* max-height: 522px; */
+}
+
+.mainPageList >li{
+  width: calc(30% - 40px);
+  height: calc(30% - 40px);;
 
 	max-width: 1240px;
 	max-height: 522px;
@@ -39,6 +47,18 @@ a {
 	}
 }
 
+
+.hero_section {
+  padding: 160px 0;
+  margin-bottom: 80px;
+}
+
+
+/* .main {
+  padding: 0 100px;
+
+} 
+
 @media screen and (max-width: 1439px) {
 	.mainPageList_item:nth-child(n + 3) {
 		display: none;
@@ -46,17 +66,28 @@ a {
 		visibility: hidden;
 		pointer-events: none;
 	}
-}
+}*/
+
 
 .drinks_section {
 	position: relative;
 	padding: 0px 100px 270px;
 }
 
+
+.hero_section_wrapper {
+	display: flex;
+} 
+
+/* .main_div {
+	margin: 0 auto;
+} */
+
 .hero_section {
 	padding: 160px 100px 100px;
 	margin-bottom: 80px;
 }
+
 
 /* .main {
   background-color: black;
@@ -110,9 +141,12 @@ h1 {
 }
 
 .card_text_wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
 
-	margin-top: 14px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 14px;
 }
+
+
