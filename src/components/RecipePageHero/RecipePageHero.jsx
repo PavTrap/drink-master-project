@@ -18,7 +18,7 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
             {/* звідки брати опис коктейля? написати логіку за відсутності опису */}
             <p>description</p>
             {/* Додати рендер за умовою: якщо ще не має в улюблених показувати кнопку AddToFavorite, а якщо ні - то RemoveFromFavorite */}
-            <AddToFavorite id={_id} onAdd={onAdd}/>
+            <AddToFavorite onAdd={onAdd}/>
             <RemoveFromFavorite id={_id} onDelete={onDelete}/>
             {/* {isFavorite ? (
                 <RemoveFromFavorite id={_id} onDelete={onDelete} />
