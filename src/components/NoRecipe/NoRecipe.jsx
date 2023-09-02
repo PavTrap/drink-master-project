@@ -1,10 +1,9 @@
-
 export const NoRecipe = ({ title }) => {
   return (
     <div>
       <picture>
         <source
-          srcset="
+          srcSet="
           ../../images/notFound/not-found-desk.webp   517w,
           ../../images/notFound/not-found-desk@2x.webp 1034w,
           ../../images/notFound/not-found-desk@3x.webp 1551w
@@ -14,7 +13,7 @@ export const NoRecipe = ({ title }) => {
           type="image/webp"
         />
         <source
-          srcset="
+          srcSet="
           ../../images/notFound/not-found-desk.jpg   517w,
           ../../images/notFound/not-found-desk@2x.jpg 1034w,
           ../../images/notFound/not-found-desk@3x.jpg 1551w
@@ -24,7 +23,7 @@ export const NoRecipe = ({ title }) => {
           type="image/jpeg"
         />
         <source
-          srcset="
+          srcSet="
           ../../images/notFound/not-found-tab.webp   465w,
           ../../images/notFound/not-found-tab@2x.webp 930w,
           ../../images/notFound/not-found-tab@3x.webp 1395w
@@ -34,7 +33,7 @@ export const NoRecipe = ({ title }) => {
           type="image/webp"
         />
         <source
-          srcset="
+          srcSet="
           ../../images/notFound/not-found-tab.jpg   465w,
           ../../images/notFound/not-found-tab@2x.jpg 930w,
           ../../images/notFound/not-found-tab@3x.jpg 1395w
@@ -44,7 +43,7 @@ export const NoRecipe = ({ title }) => {
           type="image/jpeg"
         />
         <source
-          srcset="
+          srcSet="
           ../../images/notFound/not-found-mob.webp   375w,
           ../../images/notFound/not-found-mob@2x.webp 750w,
           ../../images/notFound/not-found-mob@3x.webp 1125w
@@ -54,7 +53,7 @@ export const NoRecipe = ({ title }) => {
           type="image/webp"
         />
         <source
-          srcset="
+          srcSet="
           ../../images/notFound/not-found-mob.jpg   375w,
           ../../images/notFound/not-found-mob@2x.jpg 750w,
           ../../images/notFound/not-found-mob@3x.jpg 1125w

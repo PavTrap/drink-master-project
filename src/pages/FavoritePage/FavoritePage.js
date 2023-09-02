@@ -21,12 +21,14 @@ export default function FavoritePage() {
   return (
     <section className={css.favoritesContainer}>
       <MainTitle title="Favorites" />
-      {favorites.length !== 0 ?(
+      {favorites.length !== 0 ? (
         <>
           <RecipesList recipes={favorites.data} state={{ from: location }} onDelete={deleteFavorites} />
-          {favorites.count.totalPages > 1 && <Paginator pages={favorites.count} onChangePage={changeFavPage}/>}
+          {favorites.count.totalPages > 1 && <Paginator pages={favorites.count} onChangePage={changeFavPage} />}
         </>
-      ): <NoRecipe title="You haven't added any favorite cocktails yet"/>}
+      ) : (
+        <NoRecipe title="You haven't added any favorite cocktails yet" />
+      )}
     </section>
   );
 }
