@@ -5,6 +5,7 @@ import imgSrc from './img/plug-glass-400x400.png'
 import { DrinkCard } from 'components/DrinkCard/DrinkCard';
 import { fetchDrinks } from 'helpers/fetchDrinks';
 import css from './MainPage.module.css';
+import { DrinkCardPlug } from 'components/DrinkCardPlug/DrinkCardPlug';
 
 export const PreviewDrinks = ({ children }) =>
 (
@@ -78,7 +79,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks['ordinary drink'].length !== 0 ? getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink" />}
 								</ul>
 							</>
 						}
@@ -88,7 +89,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks.coctail.length !== 0 ? getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink" />}
 								</ul>
 							</>
 						}
@@ -98,7 +99,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks.shake.length !== 0 ? getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink" />}
 								</ul>
 							</>
 						}
@@ -108,7 +109,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks['other/unknown'].length !== 0 ? getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="some drink"/>}
 								</ul>
 							</>
 						}
