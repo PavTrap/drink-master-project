@@ -29,25 +29,6 @@ a {
 	max-height: 522px;
 }
 
-
-@media screen and (max-width: 767px) {
-	.mainPageList_item:not(:first-child) {
-		display: none;
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-	}
-}
-
-@media screen and (max-width: 1439px) {
-	.mainPageList_item:nth-child(n + 3) {
-		display: none;
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-	}
-}
-
 .drinks_section {
 	position: relative;
 	padding: 0px 100px 270px;
@@ -57,15 +38,6 @@ a {
 	padding: 160px 100px 100px;
 	margin-bottom: 80px;
 }
-
-/* .main {
-  background-color: black;
-} */
-
-/* .section_wrapper {
-	margin-left: auto;
-	@@ -63,51 +66,51 @@ a {
-} */
 
 .button {
 	font-size: 18px;
@@ -96,23 +68,8 @@ h1 {
 	max-height: 54px;
 }
 
-.card_name {
-	font-size: 18px;
-}
-
 .ingredients_text {
 	font-size: 16px;
 	color: rgba(243, 243, 243, 0.5);
 }
 
-.card_link {
-	display: inline-block;
-}
-
-.card_text_wrapper {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-
-	margin-top: 14px;
-}

@@ -1,30 +1,10 @@
 import { useEffect, useState } from 'react';
-import css from './MainPage.module.css';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import setAuthHeader from 'helpers/axiosHedder';
 import useAuth from 'hooks/useAuth';
 import imgSrc from './img/plug-glass-400x400.png'
-
-export const fetchDrinks = async token => {
-	try {
-		setAuthHeader(token);
-		const { data } = await axios.get('/api/recipes/main-page');
-		// console.log(data);
-		return data;
-	} catch (e) {
-		console.log(e);
-	}
-};
-
-export const DrinkCard = ({ drink, drinkThumb }) =>
-(<li className={css.mainPageList_item}>
-	<img src={drinkThumb} alt='drink' height={400} />
-	<div className={css.card_text_wrapper}>
-		<p className={css.card_name}>{drink}</p>
-		<a className={css.card_link} href='ingredients'><p className={css.ingredients_text}>ingredients</p></a>
-	</div>
-</li>)
+import { DrinkCard } from 'components/DrinkCard/DrinkCard';
+import { fetchDrinks } from 'helpers/fetchDrinks';
+import css from './MainPage.module.css';
 
 export const PreviewDrinks = ({ children }) =>
 (
@@ -69,21 +49,10 @@ const MainPage = () => {
 
 		const getedDrinks = {
 			"ordinary drink": ordinaryDrinks[0].items,
-
-			// "ordinary drink": {
-			// 	"category": "ordinary drink",
-			// 	"drinks": ordinaryDrinks[0].items,
-			// },
-
 			"coctail": cocktails[0].items,
 			"shake": shakes[0].items,
 			"other/unknown": otherDrinks[0].items,
 		};
-
-		// const categoriesDrinks = Object.keys(getedDrinks);
-		// console.log(categoriesDrinks);
-
-		console.log(getedDrinks);
 		return getedDrinks;
 	};
 
