@@ -8,11 +8,11 @@ const RecipePreparation = ({ data }) => {
 
   return (
     <section>
-      <h3>Recipe Preparation</h3>
-      <div>
-        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink}  width='250px'/>
+      <h3 className={css.title}>Recipe Preparation</h3>
+      <div className={css.recipeContainer}>
+        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink}/>
         <div>
-          <p>{instructions}</p>
+          <p className={css.instructions}>{instructions}</p>
           <ul>
             <li>
               <p></p>

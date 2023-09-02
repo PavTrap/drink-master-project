@@ -12,7 +12,7 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
 
   return (
     <section className={css.sectionContainer}>
-        <div>
+        <div className={css.heroContainer}>
             <p className={css.textGlass}>{glass}</p>
             <RecipePageTitle title={drink} />
             {/* звідки брати опис коктейля? написати логіку за відсутності опису */}
@@ -26,7 +26,7 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
                 <AddToFavorite id={_id} onAdd={onAdd} />
               )} */}
         </div>
-        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink} width='250px' />
+        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink} />
     </section>
   )
 };

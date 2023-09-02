@@ -8,10 +8,10 @@ const RecipeIngredientsItem = ({ data }) => {
 
   return (
     <li>
-      <img className={css.imgIngredient} src={formatIngredientImg(ingredientThumb)} alt="ingredient" width='120px' />
-      <div>
-        <p>{title}</p>
-        <p>{measure}</p>
+      <img className={css.imgIngredient} src={formatIngredientImg(ingredientThumb)} alt={title} />
+      <div className={css.descriptIngr}>
+        <p className={css.title}>{title}</p>
+        <p className={css.measure}>{measure}</p>
       </div>
     </li>
   );

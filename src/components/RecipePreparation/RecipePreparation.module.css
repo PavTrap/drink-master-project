@@ -1,8 +1,23 @@
+.title {
+  margin-bottom: 60px;
+
+  font-size: 40px;
+  font-weight: 600;
+  line-height: calc(44 / 40);
+
+  color: #F3F3F3;
+}
+
+.recipeContainer {
+  display: flex;
+  gap: 60px;
+}
+
 .imgDrink {
-    width: 631px;
-    height: 430px;
-    border-radius: 8px;
-    
-    transform: scaleX(-1);
-    object-fit: cover;
-  }
+  min-width: 631px;
+  height: 430px;
+  border-radius: 8px;
+  
+  transform: scaleX(-1);
+  object-fit: cover;
+}
