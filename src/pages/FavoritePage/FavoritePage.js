@@ -8,7 +8,7 @@ import { NoRecipe } from 'components/NoRecipe/NoRecipe';
 import { getFavoriteRecipes, getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import { deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 import { changeFavPage } from 'redux/FavoriteCocktails/FavoritesSlice';
-import css from './FavoritePage.module.css';
+// import css from './FavoritePage.module.css';
 
 export default function FavoritePage() {
   const favorites = useSelector(getFavoriteRecipes);
@@ -19,7 +19,7 @@ export default function FavoritePage() {
     dispatch(fetchFavorites(page));
   }, [dispatch, page]);
   return (
-    <section className={css.favoritesContainer}>
+    <section>
       <MainTitle title="Favorites" />
       {favorites.data.length === 0 ? (
         <NoRecipe title="You haven't added any favorite cocktails yet" />

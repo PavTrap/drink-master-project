@@ -1,9 +1,13 @@
 .paginatorContainer {
+  max-width: 295px;
   display: flex;
   justify-content: center;
   padding: 4px 32px;
   justify-content: center;
   align-items: center;
+  @media screen and (min-width: 768px) {
+    max-width: 436px;
+  }
 }
 
 .pagesList {
@@ -15,7 +19,7 @@
 }
 
 .button {
-  width: 30px;
+  width: 15px;
   height: 55px;
   justify-content: center;
   align-items: center;
