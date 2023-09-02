@@ -1,19 +1,15 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import s from './RecipeDescriptionFields.module.css';
 import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { fetchCategory, fetchGlasses } from '../../../fetchAPI/fetchAPI';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import React from 'react';
-
-
 //styles
 import { categoryStyles } from './FieldStyles';
 
-
-
-export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, category, glass }) => {
-  const [allCategory, setCategory] = useState([{ value: ``, label: ``, descr: `category` }]);
+export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, about, category, glass }) => {
+  const [allCategory, setCategory] = useState([]);
   const [allGlasses, setGlasses] = useState([]);
   const [addImage, setAddImage] = useState(false);
   
@@ -23,7 +19,7 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
         const result = res.map(r => {
           return { value: `${r.name}`, label: `${r.name}`, descr: `category` };
         });
-        setCategory([...result]);
+        setCategory(result);
       })
       .catch(err => console.log(err));
   }, []);
@@ -52,6 +48,7 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
   }, [drinkThumb]);
 
   const handleChangeSelect = e => {
+
     switch (e.descr) {
       case 'category':
         category(e.value);
@@ -76,6 +73,10 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
       case 'itemTitle':
         itemTitle(value);
         break;
+      
+        case 'about':
+        about(value);
+        break;
 
       default:
         break;
@@ -90,7 +91,7 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
             <div className={s.recipeDescription_showImgContainerActive} > <img className={s.recipeDescription_showImg} src={drinkThumb} alt="Cocktail" /></div>
             :<div><BsFillPlusSquareFill className={s.recipeDescription_addImgIcon} /> <p className={s.recipeDescription_addImgDescr}>Add image</p> </div>
           }
-                <input type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={cocktailImg}/>
+                <input required type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={cocktailImg}/>
       </label>
 
       <div className={s.recipeDescriptionFields}>
@@ -119,7 +120,6 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
             options={allCategory}
             styles={categoryStyles}
           />
-           {/* <div className={s.recipeDescriptionFields_labelContent}>Category</div> */}
         </label>
 
         <label className={s.recipeDescriptionFields_label}>
@@ -137,7 +137,6 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
             required
             styles={categoryStyles}
           />
-            {/* <div className={s.recipeDescriptionFields_labelContent}>Glass</div> */}
         </label>
       </div>
     </div>
@@ -146,3 +145,11 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
 
 // Создайте стилизованный компонент
 // Опции для React Select
+RecipeDescriptionFields.propTypes = {
+  drinkThumb: PropTypes.func,
+  cocktailImg: PropTypes.func,
+  itemTitle: PropTypes.func,
+  about: PropTypes.func,
+  category: PropTypes.func,
+  glass: PropTypes.func,
+};

@@ -15,7 +15,7 @@ export const RecipePreparationFields = ({ textarea }) => {
           placeholder="Enter the recipe"
           type="text"
           onChange={handleChange}
-          name="descrRecipe"
+          name="instructions"
           pattern="^^[A-Za-z\u0080-\uFFFF ']+$"
           required
         />
