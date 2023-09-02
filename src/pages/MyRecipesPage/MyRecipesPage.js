@@ -7,6 +7,7 @@ import { fetchMyRecipes, deleteMyRecipes } from 'redux/MyRecipe/MyRecipeOperatio
 import { useEffect } from 'react';
 import { Paginator } from 'components/Paginator/Paginator';
 import { changePage } from 'redux/MyRecipe/MyRecipeSlice';
+import css from "./MyRecipesPage.module.css";
 
 export default function MyRecipesPage() {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ export default function MyRecipesPage() {
     dispatch(fetchMyRecipes(page));
   }, [dispatch, page]);
   return (
-    <div>
+    <section className={css.myRecipeContainer}>
       <MainTitle title="My recipes" />
       {recipes.length !== 0 && (
         <>
@@ -25,6 +26,6 @@ export default function MyRecipesPage() {
           {recipes.count.totalPages> 1 &&<Paginator pages={recipes.count} onChangePage={changePage} />}
         </>
       )}
-    </div>
+    </section>
   );
 }

@@ -10,17 +10,14 @@ const NavBar = () => {
       <NavLink to="/add" className={styles.links}>
         Add recipe
       </NavLink>
-      <NavLink to="/recipe" className={styles.links}>
-        Recipe
-      </NavLink>
       <NavLink to="/my" className={styles.links}>
         My recipes
       </NavLink>
-      <NavLink to="/spinner" className={styles.links}>
-        Spinner
-      </NavLink>
       <NavLink to="/favorite" className={styles.links}>
         Favorites
+      </NavLink>
+      <NavLink to="/spinner" className={styles.links}>
+        Spinner
       </NavLink>
     </nav>
   );

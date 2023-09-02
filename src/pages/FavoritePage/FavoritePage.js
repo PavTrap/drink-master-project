@@ -7,10 +7,9 @@ import { Paginator } from 'components/Paginator/Paginator';
 import { getFavoriteRecipes, getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import { deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 import { changeFavPage } from 'redux/FavoriteCocktails/FavoritesSlice';
-import useWindowSize from 'hooks/useWindowSize';
+import css from './FavoritePage.module.css';
 
 export default function FavoritePage() {
-  const { width } = useWindowSize();
   const favorites = useSelector(getFavoriteRecipes);
   const page = useSelector(getFavPage);
   const location = useLocation();
@@ -19,14 +18,14 @@ export default function FavoritePage() {
     dispatch(fetchFavorites(page));
   }, [dispatch, page]);
   return (
-    <>
+    <section className={css.favoritesContainer}>
       <MainTitle title="Favorites" />
       {favorites.length !== 0 && (
         <>
           <RecipesList recipes={favorites.data} state={{ from: location }} onDelete={deleteFavorites} />
-          {favorites.count.totalPages > 1 && <Paginator pages={favorites.count} onChangePage={changeFavPage} width={width} />}
+          {favorites.count.totalPages > 1 && <Paginator pages={favorites.count} onChangePage={changeFavPage}/>}
         </>
       )}
-    </>
+    </section>
   );
 }
