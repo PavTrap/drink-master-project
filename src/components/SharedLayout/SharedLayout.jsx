@@ -1,8 +1,8 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import axios from 'axios';
 
-import { Spinner } from 'components/Spinner/Spinner'; //components
+
+import {LayoutSpiner} from '../Spinner/LayoutSpinner'
 import MainContainer from './MainContainer'; //components
 import Header from 'components/SharedLayout/Header/Header'; // Component
 import Logo from './Logo'; //components
@@ -12,7 +12,6 @@ import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
 import useAuth from 'hooks/useAuth'; //hook
-import setAuthHeader from 'helpers/axiosHedder'; //helpers
 
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
@@ -23,6 +22,8 @@ import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
 import BurgerMenuIcon from './BurgerMenu/BurgerMenuIcon';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
+import css from './SharedLayout.module.css';
+import SubscribeForm from './SubscribeForm';
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -56,118 +57,78 @@ export const SharedLayout = () => {
     };
   }, []);
 
-  const [email, setEmail] = useState('');
-  const [isSubmiting, setIsSubmiting] = useState(false);
-
-  useEffect(() => {
-    if (isSubmiting) {
-      sendForm(email);
-      setIsSubmiting(false);
-    }
-    // eslint-disable-next-line
-  }, [email, isSubmiting]);
-
-  axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
-  const { ReduxToken } = useAuth();
-  setAuthHeader(ReduxToken);
-
-  async function sendForm() {
-    try {
-      await axios.post('/subscribe', { email });
-      setEmail('');
-    } catch (error) {
-      console.log('error send email');
-    }
-  }
-
-  function onSubmit(e) {
-    e.preventDefault();
-    setIsSubmiting(true);
-  }
-
   const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (
+    <>
     <MainContainer>
       {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
 
-      {modalActive && (
-        <Modal active={modalActive} setActive={setModalActive}>
-          <ModalCard closePopup={setModalauthActive} />
-        </Modal>
-      )}
-      {policyModal && (
-        <Modal active={policyModal} setActive={setPolicyModal}>
-          <ModalPolicyCard onMount={policyModal} />
-        </Modal>
-      )}
-      {termsModal && (
-        <Modal active={termsModal} setActive={setTermsModal}>
-          <ModalTermsCard onMount={termsModal} />
-        </Modal>
-      )}
+        {modalActive && (
+          <Modal active={modalActive} setActive={setModalActive}>
+            <ModalCard closePopup={setModalauthActive} />
+          </Modal>
+        )}
+        {policyModal && (
+          <Modal active={policyModal} setActive={setPolicyModal}>
+            <ModalPolicyCard onMount={policyModal} />
+          </Modal>
+        )}
+        {termsModal && (
+          <Modal active={termsModal} setActive={setTermsModal}>
+            <ModalTermsCard onMount={termsModal} />
+          </Modal>
+        )}
 
       {isDesctop ? (
         <Header>
           <Logo />
           <NavBar />
-          {/* <UserBar toggleModal={setModalActive} /> */}
+
           <UserBar toggleModal={setModalauthActive} />
         </Header>
       ) : (
         <Header>
           <Logo />
-          {/* <NavBar /> */}
-          {/* <UserBar toggleModal={setModalActive} /> */}
+
           <UserBar toggleModal={setModalauthActive} />
           <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
           {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
         </Header>
       )}
-      <main>
-        <Suspense fallback={<Spinner />}>
+      <main className={css.mainFrame}>
+        <Suspense fallback={<LayoutSpiner />}>
           <Outlet />
         </Suspense>
       </main>
-      <Footer>
+      </MainContainer>
+      <div>
+ <Footer>
         <div style={footerUpperContainer}>
           <div style={leftSideBar}>
             <Logo />
             <Socials />
+            </div>
+            <NavBarFooter />
+            <SubscribeForm />
+            </div>
+            <div style={footerBottomContainer}>
+            <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
+            <div style={rightSide}>
+              <Link style={links} onClick={() => setPolicyModal(true)}>
+                Privacy Policy
+              </Link>
+              <Link style={links} onClick={() => setTermsModal(true)}>
+                Terms of Service
+              </Link>
+            </div>
           </div>
-          <NavBarFooter />
-          <form style={subskribeBlock} onSubmit={onSubmit}>
-            <p style={subskribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
-            <input
-              style={subskribeBlockInput}
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Enter the email"
-              onChange={e => setEmail(e.target.value)}
-              value={email}
-            />
-            <button style={subskribeBlockButton} type="submit">
-              Subscribe
-            </button>
-          </form>
-        </div>
-        <div style={footerBottomContainer}>
-          <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
-          <div style={rightSide}>
-            <Link style={links} onClick={() => setPolicyModal(true)}>
-              Privacy Policy
-            </Link>
-            <Link style={links} onClick={() => setTermsModal(true)}>
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </Footer>
-    </MainContainer>
-  ) : (
+        </Footer>
+      </div>
+    </>)
+  : (
     <main style={{ width: '100%' }}>
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<LayoutSpiner />}>
         <Outlet />
       </Suspense>
     </main>
@@ -185,44 +146,6 @@ const footerUpperContainer = {
   justifyContent: 'space-between',
   gap: '20px',
   marginBottom: '80px',
-};
-
-const subskribeBlock = {
-  width: '309px',
-  height: '226px',
-  // border: '1px solid White',
-  boxSizing: 'border-box',
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
-const subskribeBlockText = {
-  textAlign: 'justify',
-  marginBottom: '24px',
-  fontSize: '18px',
-};
-
-const subskribeBlockInput = {
-  width: '309px',
-  height: '56px',
-  borderRadius: '200px',
-  marginBottom: '18px',
-  border: '1px solid White',
-  boxSizing: 'border-box',
-  backgroundColor: 'inherit',
-  color: '#F3F3F3',
-  padding: '14px 24px',
-};
-
-const subskribeBlockButton = {
-  width: '309px',
-  height: '56px',
-  borderRadius: '200px',
-  border: '1px solid White',
-  boxSizing: 'border-box',
-  backgroundColor: 'inherit',
-  color: '#F3F3F3',
 };
 
 const footerBottomContainer = {

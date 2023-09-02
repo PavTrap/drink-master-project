@@ -2,13 +2,14 @@ import { useEffect } from 'react';
 import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
-import cssMainPage from "../../pages/MainPage/MainPage.module.css"
+import cssMainPage from '../../pages/MainPage/MainPage.module.css';
 import Select from 'react-select';
 import debounce from 'lodash.debounce';
 import { selectStyles } from './selectStyles';
 // import { useLocation, useNavigate } from 'react-router-dom';
 import Dots from 'components/Spinner/Dots';
 import { Paginator } from 'components/Paginator/Paginator';
+import { Link } from 'react-router-dom';
 
 const SearchSvg = ({ className }) => {
   return (
@@ -25,14 +26,12 @@ const SearchSvg = ({ className }) => {
   );
 };
 
-
 export const DrinksSearch = () => {
-  const { categoryList, entities, ingredientList, isLoading, pages, lastRequest } = useSelector(state => state.drinks);
+  const { categoryList, entities, ingredientList, isLoading, lastRequest } = useSelector(state => state.drinks);
   const dispatch = useDispatch();
+  const drinksDispatch = useDispatch();
   // const navigate = useNavigate()
   // const location = useLocation();
-
- 
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -40,24 +39,29 @@ export const DrinksSearch = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    dispatch(fetchIngredients());
-  }, [dispatch]);
+    drinksDispatch(fetchDrinks({}));
+  }, [drinksDispatch]);
 
   const debouncedHandleChange = debounce(payload => {
-    dispatch(fetchDrinks({ word: payload }));
+    drinksDispatch(fetchDrinks({ word: payload }));
   }, 1000);
 
   const handleChange = event => {
     const payload = event.currentTarget.value;
+    if (payload === '') {
+      console.log('should EXIT');
+      return;
+    }
+    console.log('не дошдло')
     debouncedHandleChange(payload);
   };
 
   const handleChangeSelectCategory = selectedoption => {
-    dispatch(fetchDrinks({ category: selectedoption.label }));
+    drinksDispatch(fetchDrinks({ category: selectedoption.label }));
   };
 
   const handleChangeSelectIngredient = selectedoption => {
-    dispatch(fetchDrinks({ ingredient: selectedoption.label }));
+    drinksDispatch(fetchDrinks({ ingredient: selectedoption.label }));
   };
 
   // const SelectList = ({ data }) => {
@@ -68,9 +72,9 @@ export const DrinksSearch = () => {
   //   return arr;
   // };
 
-  const changePage = (page) => {
-    return fetchDrinks({page, lastRequest})
-  }
+  const changePage = page => {
+    return fetchDrinks({ page, lastRequest });
+  };
 
   const selectListWithSelectReact = data => {
     const arr = [];
@@ -86,8 +90,6 @@ export const DrinksSearch = () => {
     return arr;
   };
 
- 
-
   // const navigateToRecipe = () => {
   //   const moveTo = location.pathname.replace(/\/[^/]+$/, '/recipe')
   //   console.log('moveTo', moveTo)
@@ -100,9 +102,9 @@ export const DrinksSearch = () => {
       <img src={drinkThumb} alt="drink" height={400} />
       <div className={cssMainPage.card_text_wrapper}>
         <p className={cssMainPage.card_name}>{drink}</p>
-        <a className={cssMainPage.card_link} href='recipe'> 
+        <Link className={cssMainPage.card_link} to="/recipe">
           <p className={cssMainPage.ingredients_text}>ingredients</p>
-        </a>
+        </Link>
       </div>
     </li>
   );
@@ -114,8 +116,6 @@ export const DrinksSearch = () => {
           <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" />
           <SearchSvg className={css.searchSvg} />
         </div>
-        
-      
 
         <Select
           placeholder="All categories"
@@ -130,19 +130,21 @@ export const DrinksSearch = () => {
           onChange={handleChangeSelectIngredient}
         />
       </form>
-      {entities.data && (
-        <ul className={css.mainPageList}>
-          {entities.data.map(({ _id, drink, drinkThumb }) => (
-            <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
-          ))}
-        </ul>
-      )}
-      
-      {isLoading && <Dots className={css.loading } />}
-      {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
-      
-      {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
-      {entities?.data?.length > 10 && <Paginator pages={pages} onChangePage = {changePage} />}
+      <div className={css.responseContainer}>
+        {entities.data && (
+          <ul className={css.mainPageList}>
+            {entities.data.map(({ _id, drink, drinkThumb }) => (
+              <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
+            ))}
+          </ul>
+        )}
+
+        {isLoading && <Dots className={css.loading} />}
+        {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
+
+        {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
+        {entities?.count?.totalPages > 1 && <Paginator pages={{page: entities.count.page, totalPages: entities.count.totalPages}} onChangePage={changePage} />}
+      </div>
     </>
   );
 };

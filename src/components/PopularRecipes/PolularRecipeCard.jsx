@@ -4,7 +4,8 @@ const PolularRecipeCard = ({ item, onClick }) => {
   const { drinkThumb: image, drink: title, instructions: descrption, _id } = item;
 
   return (
-    <li className={css.listItem} onClick={()=>onClick(_id)}>
+    <li className={css.listItem} onClick={() => onClick(_id)}>
+
       <div className={css.listItem_image_container}>
         <img src={image} alt={title} className={css.listItem_image} />
       </div>

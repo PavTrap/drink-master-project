@@ -26,7 +26,7 @@ export const fetchDrinks = createAsyncThunk('drinks/fetchDrinks', async (data, t
     // else if (ingredient === '' && category !== '') addUrl = `api/search?category=${category}&page=${page}&limit=9`;
     // console.log('addUrl', addUrl);
     const response = await axios.get(url);
-    return response.data;
+    return {url, data: response.data};
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }

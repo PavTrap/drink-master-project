@@ -9,18 +9,35 @@ import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/Auth/authOperation';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
+import {useNavigate} from 'react-router-dom';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const NotFoundPage= lazy(()=> import('../pages/NotFoundPage/NotFoundPage'))
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
-const RecipePage = lazy(() => import('../pages/RecipePage'));
+const RecipePage = lazy(() => import('../pages/RecipePage/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 
 
 export const App = () => {
+
+
+const navigate = useNavigate()
+
+useEffect(() => {
+          navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
+          window.onbeforeunload = () => {
+              window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
+          }
+          return () => window.sessionStorage.setItem('lastRoute', "");
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      }, [])
+
+
+
+
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   useEffect(() => {
