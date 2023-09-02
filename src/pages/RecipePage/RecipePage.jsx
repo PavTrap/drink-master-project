@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import setAuthHeader from 'helpers/axiosHedder';
 import useAuth from 'hooks/useAuth';
@@ -9,7 +10,6 @@ import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
 import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
 import RecipeIngredientsItem from 'components/RecipeIngredientsItem/RecipeIngredientsItem';
 import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
-import { useDispatch, useSelector } from 'react-redux';
 import { getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import { addFavorites, deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 
@@ -38,6 +38,7 @@ const RecipePage = () => {
       .catch(e => console.log(e));
   }, [ReduxToken, recipeId]);
 
+  // console.log(ReduxToken); 
   // console.log(recipe); 
 
   useEffect(() => {

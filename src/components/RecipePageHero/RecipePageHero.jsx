@@ -31,6 +31,8 @@ RecipePageHero.propTypes = {
     drinkThumb: PropTypes.string,
     drink: PropTypes.string,
   }),
+  // onAdd: PropTypes.func.isRequired,
+  // onDelete: PropTypes.func.isRequired,
 };
 
 export default RecipePageHero;
