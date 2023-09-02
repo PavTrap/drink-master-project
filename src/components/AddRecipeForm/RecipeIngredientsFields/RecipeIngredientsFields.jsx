@@ -8,7 +8,7 @@ import IngrediendsLittleForm from './IngrediendsLittleForm';
 import * as API from '../../../fetchAPI/fetchAPI';
 // data
 
-export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
+export const RecipeIngredientsFields = ({ setIngredients}) => {
   const [countIngredients, setCountIngredients] = useState(1);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [ingrediensName, setIngrediensName] = useState([]);
@@ -53,7 +53,8 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
     if (Object.keys(item?.ingredient).length !== 0) {
       array[item.id - 1] = item.ingredient;
       if (array.length > 0){
-        console.log(array)
+        setIngredients(array)
+        // console.log(array)
         //поднять пропы наверх
       }
     }
