@@ -57,9 +57,10 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
           key={counter}
           clickHandlerMinus={clickHandlerMinus}
           isBtnDisabled={isBtnDisabled}
-          id={counter}
-          ingrediensName={ingrediensName}
-          allIngredientsList={allIngredientsList}
+          id={counter} // id to array asign
+          ingrediensName={ingrediensName} // list for selector
+          allIngredientsList={allIngredientsList} // array of ingredients objects
+          //function to get values
         />
       );
     }

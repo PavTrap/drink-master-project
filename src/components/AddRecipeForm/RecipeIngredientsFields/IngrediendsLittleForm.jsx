@@ -4,7 +4,6 @@ import { MdOutlineClose } from 'react-icons/md';
 import measure from 'data/measure';
 import Select from 'react-select';
 import { useEffect, useRef, useState } from 'react';
-// import { nanoid } from 'nanoid';
 
 const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingrediensName, allIngredientsList }) => {
   const [ingredientObject, setIngredientObject] = useState({});
@@ -24,11 +23,11 @@ const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingredien
 
   useEffect(() => {
     if (ingredientObject ) {
-        // console.log(ingredientObject)
+        console.log(ingredientObject)
     };
   }, [ingredientObject]);
 
-  return (
+  return (  
     <div className={css.addIngredients_box} key={id}>
       <Select
         ref={ingredientRef}
