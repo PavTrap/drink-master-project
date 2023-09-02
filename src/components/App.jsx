@@ -19,6 +19,7 @@ const RecipePage = lazy(() => import('../pages/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 
+
 export const App = () => {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();

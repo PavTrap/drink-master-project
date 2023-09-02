@@ -11,8 +11,8 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import useAuth from 'hooks/useAuth';//hook
-import setAuthHeader from 'helpers/axiosHedder';//helpers
+import useAuth from 'hooks/useAuth'; //hook
+import setAuthHeader from 'helpers/axiosHedder'; //helpers
 
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
@@ -31,7 +31,6 @@ export const SharedLayout = () => {
   const [modalActive, setModalActive] = useState(false);
   const [policyModal, setPolicyModal] = useState(false);
   const [termsModal, setTermsModal] = useState(false);
-
 
   const [isDesctop, setIsDesctop] = useState(true); //визначає ширину екрану
   const [burgerMenuActive, setBurgerMenuActive] = useState(false); //чи активне burger menu
@@ -57,15 +56,11 @@ export const SharedLayout = () => {
     };
   }, []);
 
-
-
-
-
   const [email, setEmail] = useState('');
   const [isSubmiting, setIsSubmiting] = useState(false);
 
   useEffect(() => {
-    if(isSubmiting){
+    if (isSubmiting) {
       sendForm(email);
       setIsSubmiting(false);
     }
@@ -81,103 +76,95 @@ export const SharedLayout = () => {
       await axios.post('/subscribe', { email });
       setEmail('');
     } catch (error) {
-      console.log('error send email')
+      console.log('error send email');
     }
   }
-  
- function onSubmit(e) {
+
+  function onSubmit(e) {
     e.preventDefault();
     setIsSubmiting(true);
   }
 
-
-
-
-
-
-
   const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (
-    <>
-      <MainContainer>
-        {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
+    <MainContainer>
+      {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
 
-        {modalActive && (
-          <Modal active={modalActive} setActive={setModalActive}>
-            <ModalCard closePopup={setModalauthActive} />
-          </Modal>
-        )}
-        {policyModal && (
-          <Modal active={policyModal} setActive={setPolicyModal}>
-            <ModalPolicyCard onMount={policyModal}/>
-          </Modal>
-        )}
-        {termsModal && (
-          <Modal active={termsModal} setActive={setTermsModal}>
-            <ModalTermsCard onMount={termsModal}/>
-          </Modal>
-        )}
+      {modalActive && (
+        <Modal active={modalActive} setActive={setModalActive}>
+          <ModalCard closePopup={setModalauthActive} />
+        </Modal>
+      )}
+      {policyModal && (
+        <Modal active={policyModal} setActive={setPolicyModal}>
+          <ModalPolicyCard onMount={policyModal} />
+        </Modal>
+      )}
+      {termsModal && (
+        <Modal active={termsModal} setActive={setTermsModal}>
+          <ModalTermsCard onMount={termsModal} />
+        </Modal>
+      )}
 
-        {isDesctop ? (
-          <Header>
+      {isDesctop ? (
+        <Header>
+          <Logo />
+          <NavBar />
+          {/* <UserBar toggleModal={setModalActive} /> */}
+          <UserBar toggleModal={setModalauthActive} />
+        </Header>
+      ) : (
+        <Header>
+          <Logo />
+          {/* <NavBar /> */}
+          {/* <UserBar toggleModal={setModalActive} /> */}
+          <UserBar toggleModal={setModalauthActive} />
+          <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
+          {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+        </Header>
+      )}
+      <main>
+        <Suspense fallback={<Spinner />}>
+          <Outlet />
+        </Suspense>
+      </main>
+      <Footer>
+        <div style={footerUpperContainer}>
+          <div style={leftSideBar}>
             <Logo />
-            <NavBar />
-            {/* <UserBar toggleModal={setModalActive} /> */}
-            <UserBar toggleModal={setModalauthActive} />
-          </Header>
-        ) : (
-          <Header>
-            <Logo />
-            {/* <NavBar /> */}
-            {/* <UserBar toggleModal={setModalActive} /> */}
-            <UserBar toggleModal={setModalauthActive} />
-            <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-            {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
-          </Header>
-        )}
-        <main>
-          <Suspense fallback={<Spinner />}>
-            <Outlet />
-          </Suspense>
-        </main>
-      </MainContainer>
-      <div>
-        <Footer>
-          <div style={footerUpperContainer}>
-            <div style={leftSideBar}>
-              <Logo />
-              <Socials />
-            </div>
-            <NavBarFooter />
-              <form style={subskribeBlock} onSubmit={onSubmit}>
-                <p style={subskribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
-                <input 
-                  style={subskribeBlockInput} 
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Enter the email"
-                  onChange={e => setEmail(e.target.value)}
-                  value={email}
-                  />
-                <button style={subskribeBlockButton} type="submit">Subscribe</button>
-              </form>
+            <Socials />
           </div>
-          <div style={footerBottomContainer}>
-            <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
-            <div style={rightSide}>
-              <Link style={links} onClick={() => setPolicyModal(true)}>
-                Privacy Policy
-              </Link>
-              <Link style={links} onClick={() => setTermsModal(true)}>
-                Terms of Service
-              </Link>
-            </div>
+          <NavBarFooter />
+          <form style={subskribeBlock} onSubmit={onSubmit}>
+            <p style={subskribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
+            <input
+              style={subskribeBlockInput}
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Enter the email"
+              onChange={e => setEmail(e.target.value)}
+              value={email}
+            />
+            <button style={subskribeBlockButton} type="submit">
+              Subscribe
+            </button>
+          </form>
+        </div>
+        <div style={footerBottomContainer}>
+          <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
+          <div style={rightSide}>
+            <Link style={links} onClick={() => setPolicyModal(true)}>
+              Privacy Policy
+            </Link>
+            <Link style={links} onClick={() => setTermsModal(true)}>
+              Terms of Service
+            </Link>
           </div>
-        </Footer>
-      </div>
-    </>
+        </div>
+      </Footer>
+    </MainContainer>
   ) : (
     <main style={{ width: '100%' }}>
       <Suspense fallback={<Spinner />}>
@@ -211,9 +198,9 @@ const subskribeBlock = {
   justifyContent: 'center',
 };
 const subskribeBlockText = {
- textAlign: 'justify',
- marginBottom: '24px',
- fontSize: '18px',
+  textAlign: 'justify',
+  marginBottom: '24px',
+  fontSize: '18px',
 };
 
 const subskribeBlockInput = {

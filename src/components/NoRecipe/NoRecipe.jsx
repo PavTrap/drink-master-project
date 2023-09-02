@@ -3,7 +3,7 @@ import css from './NoRecipe.module.css';
 export const NoRecipe = ({ title }) => {
   return (
     <div className={css.noRecipeContainer}>
-      <picture className={css.imageContainer}>
+      <picture>
         <source
           srcSet="
           images/notFound/not-found-desk.webp   517w,

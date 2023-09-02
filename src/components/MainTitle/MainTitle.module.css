@@ -1,11 +1,12 @@
 .mainTittle {
+  position: relative;
   margin-top: 80px;
   margin-bottom: 40px;
   font-size: 32px;
   line-height: calc(38 / 32);
   font-weight: 600;
   color: #f3f3f3;
-  
+  z-index: 3;
   @media screen and (min-width: 375px) {
     margin-top: 140px;
     margin-bottom: 60px;

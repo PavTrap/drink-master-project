@@ -11,4 +11,4 @@ const MainContainer = ({ children }) => {
     </div>
   );
 };
-export default MainContainer
+export default MainContainer;

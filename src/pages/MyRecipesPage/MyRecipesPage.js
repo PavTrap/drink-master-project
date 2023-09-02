@@ -21,7 +21,7 @@ export default function MyRecipesPage() {
   return (
     <section className={css.myRecipeContainer}>
       <MainTitle title="My recipes" />
-      {recipes.length > 0 ? (
+      {recipes.data.length > 0 ? (
         <>
           <RecipesList recipes={recipes.data} state={{ from: location }} onDelete={deleteMyRecipes} />
           {recipes.count.totalPages> 1 &&<Paginator pages={recipes.count} onChangePage={changePage} />}
