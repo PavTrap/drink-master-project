@@ -91,18 +91,18 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ab
             <div className={s.recipeDescription_showImgContainerActive} > <img className={s.recipeDescription_showImg} src={drinkThumb} alt="Cocktail" /></div>
             :<div><BsFillPlusSquareFill className={s.recipeDescription_addImgIcon} /> <p className={s.recipeDescription_addImgDescr}>Add image</p> </div>
           }
-                <input required type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={cocktailImg}/>
+                <input  required type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={cocktailImg}/>
       </label>
 
       <div className={s.recipeDescriptionFields}>
         <label className={s.recipeDescriptionFields_label}>
-          <input placeholder="" className={s.recipeDescriptionFields_input} type="text" name="itemTitle" required onChange={handleChange} />
+          <input autoComplete='off' placeholder="" className={s.recipeDescriptionFields_input} type="text" name="itemTitle" required onChange={handleChange} />
           <div className={s.recipeDescriptionFields_labelContent}>Enter item title</div>
         </label>
 
         <label className={s.recipeDescriptionFields_label}>
           <input placeholder="" className={s.recipeDescriptionFields_input} type="text" name="about" onChange={handleChange} />
-          <div className={s.recipeDescriptionFields_labelContent}>Enter about recipe</div>
+          <div autoComplete='off' className={s.recipeDescriptionFields_labelContent}>Enter about recipe</div>
         </label>
 
         <label className={s.recipeDescriptionFields_label}>         

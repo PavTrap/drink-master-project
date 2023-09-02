@@ -24,7 +24,7 @@ import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 import BurgerMenuIcon from './BurgerMenu/BurgerMenuIcon';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
 import css from './SharedLayout.module.css';
-import SubscribeForm from './SubscribeForm';
+import SubscribeForm from './SubscribeForm/SubscribeForm';
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -104,6 +104,7 @@ export const SharedLayout = () => {
           </Suspense>
         </main>
       </MainContainer>
+      
       <div>
         <Footer>
           <div style={footerUpperContainer}>

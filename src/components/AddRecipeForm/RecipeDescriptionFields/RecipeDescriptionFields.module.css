@@ -77,14 +77,13 @@
 
 .recipeDescriptionFields_label {
   margin-bottom: 5px;
-  /* height: 41px; */
   display: inline-block;
   position: relative;
 }
 
 .recipeDescriptionFields_input {
   width: 100%;
-  background-color: #161f3700;
+  background-color: #0044ff00;
   border: none;
   border-bottom: 1px solid #f3f3f380;
   color: #f3f3f3e0;
@@ -96,6 +95,13 @@
 
 .recipeDescriptionFields_input::placeholder {
   display: none;
+}
+
+.recipeDescriptionFields_input::-webkit-autofill,
+.recipeDescriptionFields_input:-webkit-autofill:hover,
+.recipeDescriptionFields_input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  background-color: aqua;
 }
 
 .recipeDescriptionFields_labelContent {
