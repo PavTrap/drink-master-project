@@ -6,6 +6,8 @@ import {fetchCategory , fetchGlasses} from '../../fetchAPI/fetchAPI'
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import React from 'react';
 import styled from 'styled-components';
+// import LoadingCircle from 'components/Spinner/LoadingCircle';
+
 
 const StyledSelect = styled(Select)`
   .react-select__slider {
@@ -25,9 +27,12 @@ const StyledSelect = styled(Select)`
     backgroundColor: "rgba(22, 31, 55, 0)"
 `;
 
-export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glass  }) => {
+export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, category, glass}) => {
   const [allCategory, setCategory] = useState([{ value: ``, label: ``, descr: `category` }]);
   const [allGlasses, setGlasses] = useState([]);
+
+  const [addImage, setAddImage] = useState(false);
+
   // const [сategoryInput, setCategoryInput] = useState('');
 
   useEffect(() => {
@@ -53,6 +58,17 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
       .catch(err => console.log(err))
   
   }, []);
+
+  useEffect(() => {
+		console.log(drinkThumb)
+    if (drinkThumb === "") {
+      setAddImage(false)
+      return
+    } else {
+      setAddImage(true)
+    }
+  
+  }, [drinkThumb]);
 
   const handleChangeSelect = (e) => {
    
@@ -89,10 +105,13 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
   }
     return (
         <div className={s.recipeDescriptionSection}>
-
         <label className={s.recipeDescription_labelImg}>
-          <BsFillPlusSquareFill className={s.recipeDescription_addImgIcon} /> <p className={s.recipeDescription_addImgDescr}>Add image</p> 
-                <input type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={handleChange}/>
+
+          {addImage ?
+            <div className={s.recipeDescription_showImgContainerActive} > <img className={s.recipeDescription_showImg} src={drinkThumb} alt="Cocktail photo" /></div>
+            :<div><BsFillPlusSquareFill className={s.recipeDescription_addImgIcon} /> <p className={s.recipeDescription_addImgDescr}>Add image</p> </div>
+          }
+                <input type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={cocktailImg}/>
             </label>
             
 
@@ -184,6 +203,4 @@ export const RecipeDescriptionFields = ({ cocktailImg, itemTitle, category, glas
 
 
 // Создайте стилизованный компонент
-
-
 // Опции для React Select

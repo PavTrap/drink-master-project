@@ -51,13 +51,10 @@ a {
 
 	margin-bottom: 80px;
 
-	/* max-width: 1240px; */
-	/* max-height: 522px; */
-
-	@media screen and (max-width: 767px) {
-		margin-bottom: 40px;
-	}
+	max-width: 1240px;
+	max-height: 522px;
 }
+
 
 .drinks_section {
 	position: relative;
@@ -71,6 +68,15 @@ a {
 		padding: 0px 32px 80px;
 	}
 }
+
+
+.hero_section_wrapper {
+	display: flex;
+} 
+
+/* .main_div {
+	margin: 0 auto;
+} */
 
 .hero_section {
 	padding: 128px 20px 80px;

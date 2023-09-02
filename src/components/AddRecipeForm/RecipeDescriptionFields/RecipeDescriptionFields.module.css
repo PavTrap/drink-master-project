@@ -1,20 +1,35 @@
-.recipeDescriptionSection {
-  @media screen and (min-width: 768px) {
-    display: flex;
-    align-items: flex-start;
-  }
-}
-
 .recipeDescriptionFields {
   display: flex;
   flex-direction: column;
   @media screen and (min-width: 768px) {
-    margin-left: 32px;
+    margin-top: 12px;
+  }
+}
+
+.recipeDescription_showImgContainerActive {
+  width: 320px;
+  height: 320px;
+  overflow: hidden;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  @media screen and (min-width: 375px) {
+    width: 335px;
   }
 
-  @media screen and (min-width: 1440px) {
-    margin-left: 40px;
+  @media screen and (min-width: 768px) {
+    margin-bottom: 0;
+    width: 320px;
+    height: 320px;
   }
+}
+.recipeDescription_showImg {
+  object-fit: cover;
+  display: block;
+  height: 100%;
+  width: 100%;
 }
 
 .recipeDescription_inputImg {
@@ -31,10 +46,6 @@
   height: 50px;
   color: #ffffff;
   margin-top: 35%;
-
-  @media screen and (min-width: 768px) {
-    margin-top: 40%;
-  }
 }
 
 .recipeDescription_addImgDescr {
@@ -57,16 +68,6 @@
 
   color: #333;
   background-color: #161f3780;
-
-  @media screen and (min-width: 375px) {
-    width: 335px;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 0;
-    width: 320px;
-    height: 320px;
-  }
 }
 
 .recipeDescription_labelImg:hover,
@@ -76,30 +77,21 @@
 
 .recipeDescriptionFields_label {
   margin-bottom: 5px;
-  height: 41px;
+  /* height: 41px; */
   display: inline-block;
   position: relative;
 }
 
 .recipeDescriptionFields_input {
   width: 100%;
-
   background-color: #161f3700;
   border: none;
   border-bottom: 1px solid #f3f3f380;
   color: #f3f3f3e0;
   font-size: 16px;
-  @media screen and (min-width: 375px) {
-    width: 325px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 352px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 393px;
-  }
+  height: 41px;
+  margin-bottom: 40px;
+  outline-style: none;
 }
 
 .recipeDescriptionFields_input::placeholder {
@@ -127,23 +119,9 @@
 }
 
 .recipeDescriptionFields_labelSelect {
-  margin-bottom: 5px;
-  height: 41px;
   display: flex;
   justify-content: space-around;
   position: relative;
-
-  @media screen and (min-width: 375px) {
-    width: 325px;
-  }
-
-  @media screen and (min-width: 768px) {
-    width: 352px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 393px;
-  }
 }
 
 .recipeDescriptionFields_select {
@@ -156,7 +134,7 @@
 
   border: none;
   width: 165px;
-  margin-bottom: 3px;
+  /* margin-bottom: 3px; */
   text-align: right;
   padding-right: 5px;
 }
@@ -174,54 +152,51 @@
 .recipeDescriptionFields_option {
   background: #161f3700;
 }
-/* 
-.select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  -ms-appearance: none;
-  appearance: none;
-  outline: 0;
-  box-shadow: none;
-  border: 0 !important;
-  background: #161f37;
-  background-image: none;
 
-  flex: 1;
-  padding: 0 0.5em;
-  color: #fff;
-  cursor: pointer;
-  font-size: 1em;
-  font-family: 'Open Sans', sans-serif;
+@media screen and (min-width: 375px) {
+  .recipeDescription_labelImg {
+    width: 335px;
+  }
+  .recipeDescriptionFields_input {
+    width: 325px;
+  }
+  .recipeDescriptionFields_labelSelect {
+    width: 325px;
+  }
 }
-.select::-ms-expand {
-  display: none;
+
+@media screen and (min-width: 768px) {
+  .recipeDescriptionSection {
+    display: flex;
+    align-items: flex-start;
+  }
+  .recipeDescriptionFields {
+    margin-left: 32px;
+  }
+  .recipeDescription_addImgIcon {
+    margin-top: 40%;
+  }
+  .recipeDescription_labelImg {
+    margin-bottom: 0;
+    width: 320px;
+    height: 320px;
+  }
+  .recipeDescriptionFields_input {
+    width: 352px;
+  }
+  .recipeDescriptionFields_labelSelect {
+    width: 352px;
+  }
 }
-.selectBox {
-  position: relative;
-  display: flex;
-  width: 20em;
-  height: 3em;
-  line-height: 3;
-  background: #161f3700;
-  overflow: hidden;
-  border-radius: 0.25em;
-  border-radius: 12px;
+
+@media screen and (min-width: 1440px) {
+  .recipeDescriptionFields {
+    margin-left: 40px;
+  }
+  .recipeDescriptionFields_input {
+    width: 393px;
+  }
+  .recipeDescriptionFields_labelSelect {
+    width: 393px;
+  }
 }
-.selectBox::after {
-  content: '\25BC';
-  position: absolute;
-  top: 0;
-  right: 0;
-  padding: 0 1em;
-  background: #161f3700;
-  cursor: pointer;
-  pointer-events: none;
-  transition: 0.25s all ease;
-  border-radius: 12px;
-}
-.selectBox:hover::after {
-  /* color: #161f3700; */
-/* border-radius: 12px;
-  background-color: #161f3700;
-} 
-*/
