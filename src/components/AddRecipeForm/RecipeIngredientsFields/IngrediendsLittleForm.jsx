@@ -6,22 +6,32 @@ import Select from 'react-select';
 import { useEffect, useRef, useState } from 'react';
 // import { nanoid } from 'nanoid';
 
+const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingrediensName, allIngredientsList }) => {
+  const [ingredientObject, setIngredientObject] = useState({});
 
-const IngrediendsLittleForm = ({clickHandlerMinus, isBtnDisabled, id, ingrediensName}) => {
-    const [ingredientObject, setIngredientObject] = useState()
+  const ingredientRef = useRef(null);
+  const measureRef = useRef(null);
 
-  const InselectRef = useRef(null);
-  const selectRef = useRef(null);
-
-  function handlerSelect() {
-    //добавить ингредиенты массивом filter -> fieldName
+  function handlerSelect({ descr, value }) {
+    if (descr === 'ingredient') {
+      const foundIngredient = allIngredientsList.filter(item => item.title === value);
+      setIngredientObject(prev => ({ ...prev, ...foundIngredient[0] }));
+    }
+    if (descr === 'measure') {
+      setIngredientObject(prev => ({ ...prev , measure: `${value}`}));
+    }
   }
 
+  useEffect(() => {
+    if (ingredientObject ) {
+        // console.log(ingredientObject)
+    };
+  }, [ingredientObject]);
 
   return (
-    <div className={css.addIngredients_box} key={id} >
+    <div className={css.addIngredients_box} key={id}>
       <Select
-        ref={InselectRef}
+        ref={ingredientRef}
         isSearchable={true}
         components={{
           IndicatorSeparator: () => null,
@@ -29,12 +39,12 @@ const IngrediendsLittleForm = ({clickHandlerMinus, isBtnDisabled, id, ingrediens
         name="ingredient"
         onChange={handlerSelect}
         options={ingrediensName}
-        defaultValue={ingrediensName[0]}
+        placeholder="ingredient"
         styles={ingredientStyles}
       />
 
       <Select
-        ref={selectRef}
+        ref={measureRef}
         isSearchable={true}
         name="measure"
         onChange={handlerSelect}

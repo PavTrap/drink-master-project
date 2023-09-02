@@ -12,7 +12,7 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
   const [countIngredients, setCountIngredients] = useState(1);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [ingrediensName, setIngrediensName] = useState([]);
-  const [allIngredientsList, setAllIngrediensList] = useState([])
+  const [allIngredientsList, setAllIngrediensList] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -22,7 +22,7 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
           return { value: `${title}`, label: `${title}`, descr: `ingredient` };
         });
         setIngrediensName(ingredientsNames);
-        setAllIngrediensList(response)
+        setAllIngrediensList(response);
       } catch (error) {
         console.log(error);
       }
@@ -54,10 +54,12 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
       counter += 1;
       inputFields.push(
         <IngrediendsLittleForm
+          key={counter}
           clickHandlerMinus={clickHandlerMinus}
           isBtnDisabled={isBtnDisabled}
           id={counter}
           ingrediensName={ingrediensName}
+          allIngredientsList={allIngredientsList}
         />
       );
     }
