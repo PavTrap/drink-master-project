@@ -13,7 +13,8 @@ const [drink, setDrink] = useState("");
 // const [about, setAbout] = useState("");
 const [category, setCategory] = useState("");
 const [glass, setGlass] = useState("");
-const [ingredients, setIngredients] = useState([]);
+const [addedIngredients, setIngredients] = useState([]);
+const [addedMeasure, setMeasure] = useState([]);
 const [instructions, setInstructions] = useState("");
 
 
@@ -36,15 +37,22 @@ const [instructions, setInstructions] = useState("");
         const handleSubmit = (e) => {
       e.preventDefault()
       // e.currentTarget.reset()
-            //   setIngredients({title: "lemon", measure: "50 ml"})
-       formSubmit(category, drink, drinkThumb, glass, ingredients, instructions)
-  }
+      
+      const formData = new FormData();
+      addedIngredients && formData.append('ingredient', addedIngredients);
+      addedMeasure && formData.append('measure', addedMeasure);
+              
+    console.log(formData)
+       formSubmit(category, drink, drinkThumb, glass, instructions)
+      }
+      
+      
       return (
            
             <div >
                   <form  onSubmit={handleSubmit}>
                   <RecipeDescriptionFields cocktailImg={setDrinkThumb} itemTitle={setDrink} category={setCategory} glass={setGlass}/>
-                  <RecipeIngredientsFields addIngredients={setIngredients} />
+                  <RecipeIngredientsFields addIngredients={setIngredients} addMeasure={setMeasure}/>
                   <RecipePreparationFields textarea={setInstructions} />
                         
                   <button type='submit' className={s.add_btn}>Add</button>

@@ -1,19 +1,17 @@
 import s from './FollowUs.module.css'
- import { BiLogoFacebook, BiLogoInstagramAlt, BiLogoYoutube } from 'react-icons/bi';
+import Socials from 'components/SharedLayout/Socials';
 
 export const FollowUs = ( ) => {
       
       return (
            <div>
-            <h3>Follow Us</h3>  
+            <h3 className={s.followUs_title}>Follow Us</h3>  
+              <Socials/>
               
-              <ul className={s.followUs_list}>
+        </div>
         
-            <li className={s.followUs_item}> <BiLogoFacebook className={s.followUs_icon}/>  </li>
-            <li className={s.followUs_item}><BiLogoInstagramAlt className={s.followUs_icon}/></li>
-            <li className={s.followUs_item}><BiLogoYoutube className={s.followUs_icon}/></li>
-    </ul>
-           </div>
+
+
             )
 }
 

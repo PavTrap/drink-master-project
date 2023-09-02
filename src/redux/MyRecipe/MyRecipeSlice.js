@@ -1,9 +1,5 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
-import {
-  fetchMyRecipes,
-  addMyRecipes,
-  deleteMyRecipes,
-} from './MyRecipeOperation';
+import { fetchMyRecipes, addMyRecipes, deleteMyRecipes } from './MyRecipeOperation';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -35,45 +31,24 @@ const myRecipesSlice = createSlice({
         state.error = null;
         state.isLoading = false;
       })
-
       // ADD
       .addCase(addMyRecipes.fulfilled, (state, action) => {
         state.recipes.push(action.payload);
         state.isLoading = false;
       })
-
       // DELETE
       .addCase(deleteMyRecipes.fulfilled, (state, action) => {
-        const index = state.recipes.data.findIndex(
-          recipe => recipe.id === action.payload.cocktailId
-        );
-
+        const index = state.recipes.data.findIndex(recipe => recipe.id === action.payload.cocktailId);
         state.recipes.data.splice(index, 1);
         state.isLoading = false;
       })
-
       // PENDING
-      .addMatcher(
-        isAnyOf(
-          fetchMyRecipes.pending,
-          addMyRecipes.pending,
-          deleteMyRecipes.pending
-        ),
-        handlePending
-      )
+      .addMatcher(isAnyOf(fetchMyRecipes.pending, addMyRecipes.pending, deleteMyRecipes.pending), handlePending)
 
       // REJECTED
-      .addMatcher(
-        isAnyOf(
-          fetchMyRecipes.rejected,
-          addMyRecipes.rejected,
-          deleteMyRecipes.rejected
-        ),
-        handleRejected
-      );
+      .addMatcher(isAnyOf(fetchMyRecipes.rejected, addMyRecipes.rejected, deleteMyRecipes.rejected), handleRejected);
   },
 });
 
-export const { changePage, incrementPage, decrementPage } =
-  myRecipesSlice.actions;
+export const { changePage } = myRecipesSlice.actions;
 export const myRecipesReducer = myRecipesSlice.reducer;
