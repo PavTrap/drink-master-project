@@ -1,24 +1,21 @@
-const Header = ({children}) => {
-  return (
-    <header style={styles}>
-      {children}
+import styles from './Header.module.css';
 
-    </header>
-  );
+const Header = ({ children }) => {
+  return <header className={styles.header}>{children}</header>;
 };
+
 export default Header;
-const styles = {
-
-  width:"100%",
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  flexWrap: 'no-wrap',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding:"22.5px 100px",
-  zIndex: "10",
-  boxSizing: 'border-box',
-  position: 'relative',
-  borderBottom: "1px solid rgba(243, 243, 243, 0.20)",
-};
+// const styles = {
+//   width: '100%',
+//   textAlign: 'center',
+//   display: 'flex',
+//   flexDirection: 'row',
+//   flexWrap: 'no-wrap',
+//   alignItems: 'center',
+//   justifyContent: 'space-between',
+//   padding: '22.5px 100px',
+//   zIndex: '10',
+//   boxSizing: 'border-box',
+//   position: 'relative',
+//   borderBottom: '1px solid rgba(243, 243, 243, 0.20)',
+// };

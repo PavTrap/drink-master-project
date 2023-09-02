@@ -10,7 +10,7 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import useAuth from 'hooks/useAuth';//hook
+import useAuth from 'hooks/useAuth'; //hook
 
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
@@ -38,7 +38,7 @@ export const SharedLayout = () => {
     setBurgerMenuActive(false);
   }, [location]);
 
-  //слідкує за шириною екрану і її зміни
+  // //слідкує за шириною екрану і її зміни
   useEffect(() => {
     const handleWindowResize = () => {
       setIsDesctop(window.innerWidth >= 768);
@@ -68,12 +68,12 @@ export const SharedLayout = () => {
         )}
         {policyModal && (
           <Modal active={policyModal} setActive={setPolicyModal}>
-            <ModalPolicyCard onMount={policyModal}/>
+            <ModalPolicyCard onMount={policyModal} />
           </Modal>
         )}
         {termsModal && (
           <Modal active={termsModal} setActive={setTermsModal}>
-            <ModalTermsCard onMount={termsModal}/>
+            <ModalTermsCard onMount={termsModal} />
           </Modal>
         )}
 
@@ -91,7 +91,7 @@ export const SharedLayout = () => {
             {/* <UserBar toggleModal={setModalActive} /> */}
             <UserBar toggleModal={setModalauthActive} />
             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-            {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+            <BurgerMenu burgerMenuActive={burgerMenuActive} />
           </Header>
         )}
         <main>
