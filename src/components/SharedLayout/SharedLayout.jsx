@@ -1,8 +1,7 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
-
-import {LayoutSpiner} from '../Spinner/LayoutSpinner'
+import { LayoutSpiner } from '../Spinner/LayoutSpinner';
 import MainContainer from './MainContainer'; //components
 import Header from 'components/SharedLayout/Header/Header'; // Component
 import Logo from './Logo'; //components
@@ -12,7 +11,6 @@ import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
 import useAuth from 'hooks/useAuth'; //hook
-
 
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
@@ -58,9 +56,6 @@ export const SharedLayout = () => {
     };
   }, []);
 
-
-
-
   const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (
@@ -95,7 +90,7 @@ export const SharedLayout = () => {
             <Logo />
             <UserBar toggleModal={setModalauthActive} />
             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-            {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+            <BurgerMenu burgerMenuActive={burgerMenuActive} />
           </Header>
         )}
         <main className={css.mainFrame}>
