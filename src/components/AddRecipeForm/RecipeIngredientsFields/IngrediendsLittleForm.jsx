@@ -3,13 +3,11 @@ import { ingredientStyles, measureStyles } from './inputStyles';
 import { MdOutlineClose } from 'react-icons/md';
 import measure from 'data/measure';
 import Select from 'react-select';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingrediensName, allIngredientsList }) => {
+const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingrediensName, allIngredientsList, getFromForm }) => {
   const [ingredientObject, setIngredientObject] = useState({});
 
-  const ingredientRef = useRef(null);
-  const measureRef = useRef(null);
 
   function handlerSelect({ descr, value }) {
     if (descr === 'ingredient') {
@@ -17,20 +15,20 @@ const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingredien
       setIngredientObject(prev => ({ ...prev, ...foundIngredient[0] }));
     }
     if (descr === 'measure') {
-      setIngredientObject(prev => ({ ...prev , measure: `${value}`}));
+      setIngredientObject(prev => ({ ...prev, measure: `${value}` }));
     }
   }
 
   useEffect(() => {
-    if (ingredientObject ) {
-        console.log(ingredientObject)
-    };
-  }, [ingredientObject]);
+    if (ingredientObject) {
+      const block = { id, ingredient: ingredientObject };
+      getFromForm(block);
+    }
+  }, [getFromForm, id, ingredientObject]);
 
-  return (  
+  return (
     <div className={css.addIngredients_box} key={id}>
       <Select
-        ref={ingredientRef}
         isSearchable={true}
         components={{
           IndicatorSeparator: () => null,
@@ -39,16 +37,17 @@ const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingredien
         onChange={handlerSelect}
         options={ingrediensName}
         placeholder="ingredient"
+        defaultValue=''
         styles={ingredientStyles}
       />
 
       <Select
-        ref={measureRef}
         isSearchable={true}
         name="measure"
         onChange={handlerSelect}
         options={measure}
         styles={measureStyles}
+        defaultValue=''
         components={{
           IndicatorSeparator: () => null,
         }}

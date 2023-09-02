@@ -14,6 +14,8 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
   const [ingrediensName, setIngrediensName] = useState([]);
   const [allIngredientsList, setAllIngrediensList] = useState([]);
 
+  // const [fieldsData, setFieldsData] = useState([]);
+
   useEffect(() => {
     (async () => {
       try {
@@ -47,6 +49,25 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
     setCountIngredients(countIngredients - 1);
   }
 
+  const getFromForm = item => {
+    let array = [];
+    if (Object.keys(item?.ingredient).length !== 0) {
+    
+
+      array[item.id] = item.ingredient;  
+
+      // console.log(array);
+      return array;
+    }
+    console.log(array);
+  };
+
+  // const insert = (arr, index, newItem) => [...arr.slice(0, index), newItem, ...arr.slice(index)];
+
+  
+
+  // console.log(fieldsData);
+
   function createInputFields() {
     const inputFields = [];
     let counter = 0;
@@ -60,6 +81,7 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
           id={counter} // id to array asign
           ingrediensName={ingrediensName} // list for selector
           allIngredientsList={allIngredientsList} // array of ingredients objects
+          getFromForm={getFromForm}
           //function to get values
         />
       );

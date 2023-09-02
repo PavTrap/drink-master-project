@@ -105,7 +105,6 @@ export const SharedLayout = () => {
         )}
         <main className={css.mainFrame}>
           <Suspense fallback={<LayoutSpiner />}>
-          <Suspense fallback={<LayoutSpiner />}>
             <Outlet />
           </Suspense>
         </main>
@@ -136,7 +135,7 @@ export const SharedLayout = () => {
     </>
   ) : (
     <main style={{ width: '100%' }}>
-      <Suspense fallback={<LayoutSpiner />}>
+
       <Suspense fallback={<LayoutSpiner />}>
         <Outlet />
       </Suspense>

@@ -10,7 +10,7 @@ import { refreshUser } from 'redux/Auth/authOperation';
 import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
-import {useNavigate} from 'react-router-dom';
+
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 
