@@ -5,9 +5,7 @@ import { AddRecipeForm } from '../../components/AddRecipeForm/AddRecipeForm';
 // import { PopularRecipe } from '../../components/PopularRecipe/PopularRecipe';
 import PopularRecipes from 'components/PopularRecipes/PopularRecipes';
 
-
 import s from './AddRecipePage.module.css';
-import PopularRecipes from 'components/PopularRecipes/PopularRecipes';
 
 export default function AddRecipePage() {
   return (
@@ -16,15 +14,10 @@ export default function AddRecipePage() {
       <div className={s.addRecipePage}>
         <div>
           <AddRecipeForm />
-      <div>
-        <FollowUs />
-        <PopularRecipes/>
-
         </div>
-
         <div>
           <FollowUs />
-          <PopularRecipes/>
+          <PopularRecipes />
         </div>
       </div>
     </section>
