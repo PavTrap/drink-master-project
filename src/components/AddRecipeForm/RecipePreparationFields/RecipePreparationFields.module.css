@@ -2,19 +2,21 @@
   margin-bottom: 20px;
 }
 .recipePreparation_title {
+  font-size: 28px;
+  line-height: 32px;
   font-family: Manrope;
-  font-size: 40px;
   font-weight: 600;
-  line-height: 44px;
-  letter-spacing: 0em;
   text-align: left;
+
+  @media screen and (min-width: 768px) {
+    font-size: 40px;
+    line-height: 44px;
+  }
 }
 
 .recipePreparation_textarea {
-  width: 480px;
   height: 184px;
-  /* top: 1316px;
-  left: 100px; */
+  width: 100%;
   border-radius: 20px;
   padding: 14px 24px;
   border: 1px solid #f3f3f380;
@@ -22,4 +24,12 @@
   background-color: transparent;
   color: #fff;
   outline-style: none;
+
+  @media screen and (min-width: 375px) {
+    width: 335px;
+  }
+
+  @media screen and (min-width: 768px) {
+    width: 480px;
+  }
 }

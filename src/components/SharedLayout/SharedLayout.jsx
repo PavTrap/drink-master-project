@@ -9,7 +9,8 @@ import UserBar from './UserBar/UserBar'; //components
 import Footer from 'components/SharedLayout/Footer/Footer'; // Component
 import NavBarFooter from './NavBar/NavBarFooter'; //components
 import Socials from './Socials'; //components
-import useAuth from 'hooks/useAuth';//hook
+import useAuth from 'hooks/useAuth'; //hook
+
 
 import ModalAuth from 'components/Modal/ModalAuth'; //component
 import Modal from '../Modal/Modal'; //component
@@ -20,7 +21,8 @@ import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 
 import BurgerMenuIcon from './BurgerMenu/BurgerMenuIcon';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
-import css from './SharedLayout.module.css'
+import css from './SharedLayout.module.css';
+import SubscribeForm from './SubscribeForm';
 
 export const SharedLayout = () => {
   const location = useLocation();
@@ -58,6 +60,9 @@ export const SharedLayout = () => {
     };
   }, []);
 
+
+
+
   const { isLoggedIn } = useAuth();
 
   return isLoggedIn ? (
@@ -72,12 +77,12 @@ export const SharedLayout = () => {
         )}
         {policyModal && (
           <Modal active={policyModal} setActive={setPolicyModal}>
-            <ModalPolicyCard onMount={policyModal}/>
+            <ModalPolicyCard onMount={policyModal} />
           </Modal>
         )}
         {termsModal && (
           <Modal active={termsModal} setActive={setTermsModal}>
-            <ModalTermsCard onMount={termsModal}/>
+            <ModalTermsCard onMount={termsModal} />
           </Modal>
         )}
 
@@ -100,6 +105,7 @@ export const SharedLayout = () => {
         )}
         <main className={css.mainFrame}>
           <Suspense fallback={<LayoutSpiner />}>
+          <Suspense fallback={<LayoutSpiner />}>
             <Outlet />
           </Suspense>
         </main>
@@ -112,7 +118,7 @@ export const SharedLayout = () => {
               <Socials />
             </div>
             <NavBarFooter />
-            <div style={subskribeBlock}>SubskribeBlock</div>
+            <SubscribeForm />
           </div>
           <div style={footerBottomContainer}>
             <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
@@ -130,6 +136,7 @@ export const SharedLayout = () => {
     </>
   ) : (
     <main style={{ width: '100%' }}>
+      <Suspense fallback={<LayoutSpiner />}>
       <Suspense fallback={<LayoutSpiner />}>
         <Outlet />
       </Suspense>
@@ -150,14 +157,6 @@ const footerUpperContainer = {
   marginBottom: '80px',
 };
 
-const subskribeBlock = {
-  width: '309px',
-  height: '226px',
-  border: '1px solid White',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-};
 const footerBottomContainer = {
   textAlign: 'center',
   display: 'flex',

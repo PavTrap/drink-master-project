@@ -2,43 +2,51 @@ p,
 ul,
 h1,
 h2 {
-  margin: 0;
-  padding: 0;
-  color: #f3f3f3;
+	margin: 0;
+	padding: 0;
+	color: #f3f3f3;
 }
 
 h2 {
-  margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 a {
-  text-decoration: none;
-  color: #f3f3f3;
+	text-decoration: none;
+	color: #f3f3f3;
 }
 
 .mainPageList {
   list-style: none;
   justify-content: space-between;
+	list-style: none;
 
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-
-  margin-bottom: 80px;
-
+	display: flex;
+	flex-wrap: nowrap;
+	gap: 20px;
+	margin-bottom: 80px;
   /* max-width: 1240px; */
   /* max-height: 522px; */
 }
+
 .mainPageList >li{
   width: calc(30% - 40px);
   height: calc(30% - 40px);;
+
+	max-width: 1240px;
+	max-height: 522px;
 }
 
-.section {
-  position: relative;
 
-  /* padding: 0px 100px 270px; */
+@media screen and (max-width: 767px) {
+	.mainPageList_item:not(:first-child) {
+		display: none;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+	}
 }
+
 
 .hero_section {
   padding: 160px 0;
@@ -49,72 +57,96 @@ a {
 /* .main {
   padding: 0 100px;
 
-} */
+} 
 
-/* .section_wrapper {
-	margin-left: auto;
-	margin-right: auto;
+@media screen and (max-width: 1439px) {
+	.mainPageList_item:nth-child(n + 3) {
+		display: none;
+		opacity: 0;
+		visibility: hidden;
+		pointer-events: none;
+	}
+}*/
+
+
+.drinks_section {
+	position: relative;
+	padding: 0px 100px 270px;
 }
+
 
 .hero_section_wrapper {
 	display: flex;
-} */
+} 
 
 /* .main_div {
 	margin: 0 auto;
 } */
+
+.hero_section {
+	padding: 160px 100px 100px;
+	margin-bottom: 80px;
+}
 
 
 /* .main {
   background-color: black;
 } */
 
+/* .section_wrapper {
+	margin-left: auto;
+	@@ -63,51 +66,51 @@ a {
+} */
+
 .button {
-  font-size: 18px;
-  height: 54px;
-  border-radius: 42px;
-  color: #161f37;
-  background-color: #f3f3f3;
-  padding: 18px 44px;
+	font-size: 18px;
+	height: 54px;
+	border-radius: 42px;
+	color: #161f37;
+	background-color: #f3f3f3;
+	padding: 18px 44px;
 }
 
 h1 {
-  font-size: 64px;
+	font-size: 64px;
 }
 
 .main_p {
-  margin-bottom: 40px;
+	margin-bottom: 40px;
 }
 
 .hero_title {
-  margin-bottom: 28px;
+	margin-bottom: 28px;
 }
 
 .other_drinks_btn {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  left: 50%;
+	display: flex;
+	align-items: center;
+	position: absolute;
+	left: 50%;
 	max-height: 54px;
 }
 
 .card_name {
-  font-size: 18px;
+	font-size: 18px;
 }
 
 .ingredients_text {
-  font-size: 16px;
-  color: rgba(243, 243, 243, 0.5);
+	font-size: 16px;
+	color: rgba(243, 243, 243, 0.5);
 }
 
 .card_link {
-  display: inline-block;
+	display: inline-block;
 }
 
 .card_text_wrapper {
+
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   margin-top: 14px;
 }
+
+

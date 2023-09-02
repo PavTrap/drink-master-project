@@ -27,6 +27,10 @@
   margin-bottom: 12px;
 }
 
+.addIngredients_box:nth-last-child(1) {
+  margin-bottom: 80px;
+}
+
 .addIngredients_titleBtnBox {
   display: flex;
   align-items: center;
@@ -79,4 +83,3 @@
   width: 25px;
   height: 25px;
 }
-

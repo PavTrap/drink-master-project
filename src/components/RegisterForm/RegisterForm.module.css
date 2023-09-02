@@ -67,17 +67,57 @@
     background-color: transparent;
   }
 
-  &.valid-border {
+
+  &.validBorder {
     border-color: green;
     outline: none;
     background-color: transparent;
   }
 
-  &.invalid-border {
+  &.invalidBorder {
     border-color: red;
     outline: none;
     background-color: transparent;
   }
+}
+
+.errorIconClass {
+  position: absolute;
+  fill: #DA1414;
+
+  height: 1.5em;
+  width: 1.5em;
+  right: 24px;
+  top: 27px;
+  transform: translateY(-50%);
+}
+
+.validIconClass {
+  position: absolute;
+  fill: #3CBC81;
+
+  height: 1.5em;
+  width: 1.5em;
+  right: 24px;
+  top: 27px;
+  transform: translateY(-50%);
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  fill: #F3F3F3;
+  height: 1.5em;
+  width: 1.5em;
+  right: 24px;
+  top: 27px;
+  transform: translateY(-50%);
+}
+
+.error {
+  margin-top: 8px;
+  margin-bottom: 11px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 .registerButton {
@@ -119,6 +159,6 @@
   }
 }
 
-.error {
+/* .error {
   color: #f3f3f3;
-}
+} */
