@@ -9,26 +9,18 @@
 }
 
 @media screen and (min-width: 768px) {
-    .title {
+    .title {   
         margin-bottom: 28px;
-    
-        font-size: 64px;
-        font-weight: 600;
-        line-height: calc(68 / 64);
-    
-        color: #F3F3F3;
+ 
+        font-size: 56px;
+        line-height: calc(60 / 56);
     }    
   }
   
   @media screen and (min-width: 1440px) {
     .title {
-        margin-bottom: 28px;
-    
         font-size: 64px;
-        font-weight: 600;
         line-height: calc(68 / 64);
-    
-        color: #F3F3F3;
     }    
   }
   

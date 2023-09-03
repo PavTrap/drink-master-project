@@ -16,24 +16,16 @@
 
 @media screen and (min-width: 768px) {
   .ingredientsList {
-    display: flex;
-    gap: 35px;
+    gap: 22px;
   }
   
   .title {
     margin-bottom: 24px;
-  
-    font-size: 16px;
-    font-weight: 500;
-    line-height: calc(20 / 16);
-  
-    color: rgba(243, 243, 243, 0.5);
   }
 }
 
 @media screen and (min-width: 1440px) {
   .ingredientsList {
-    display: flex;
     gap: 35px;
   }
   

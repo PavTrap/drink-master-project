@@ -16,7 +16,6 @@
 
 .textDescript {
   margin-bottom: 40px;
-  /* max-width: 593px; */
 
   font-size: 14px;
   font-weight: 400;
@@ -33,42 +32,26 @@
   object-fit: cover;
 }
 
-@media screen and (min-width: 768px) {
-  .sectionContainer {
-    display: flex;
-    flex-direction: column;
-    margin: 0 auto;
-  }
-  
-  .heroContainer {
-    margin-right: auto;
-  }
-    
+@media screen and (min-width: 768px) {    
   .textGlass {
-    margin-bottom: 8px;
-  
     font-size: 16px;
-    font-weight: 400;
     line-height: calc(20 / 16);
-  
-    color: rgba(243, 243, 243, 0.5);
   }
   
   .textDescript {
-    margin-bottom: 40px;
     /* max-width: 593px; */
   
     font-size: 16px;
-    font-weight: 400;
     line-height: calc(22 / 16);
-  
-    color: #F3F3F3;
   }
   
   .imgDrink {
-    min-width: 400px;
+    min-width: 704px;
     height: 400px;
+    margin-bottom: 80px;
+
     border-radius: 8px;
+    object-fit: cover;
   }
 }
 
