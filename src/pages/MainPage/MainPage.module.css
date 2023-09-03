@@ -91,7 +91,7 @@ a {
 	@media screen and (min-width: 1440px) {
 		padding: 160px 0px 316px;
 		/* margin-bottom: 300px; */
-		background-position: top -100px right -100px;
+		background-position: top -150px right -100px;
 
 		background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
 		background-color: #07070b;
@@ -129,7 +129,6 @@ a {
 	@media screen and (min-width: 768px) {
 		margin-bottom: 58px;
 		font-size: 18px;
-
 	}
 }
 
