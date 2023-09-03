@@ -118,7 +118,7 @@ export const SharedLayout = () => {
           <div className={css.leftSideBar}>
             <Logo />
 
-//            {*/ <NavBar />
+            {/* / <NavBar />
 
 //             <UserBar toggleModal={setModalauthActive} />
 //           </Header>
