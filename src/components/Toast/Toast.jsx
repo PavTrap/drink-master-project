@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import css from './Toast.module.css';
 
 
-const Tost = ({ message, tittle = "Info", active , style}) => {
+const Tost = ({ message, active , style}) => {
   const [showTost, setShowTost] = useState(true);
   const [isActive, setIsActive] = useState(true);
 

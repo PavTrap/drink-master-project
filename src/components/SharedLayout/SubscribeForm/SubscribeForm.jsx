@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 import css from './SubscribeForm.module.css';
-import Toast from '../../Toast/Toast';
+// import Toast from '../../Toast/Toast';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmiting, setIsSubmiting] = useState(false);
+  // const [backendError, setBackendError] = useState(null);
 
-  const [message, setMessage] = useState(''); //Добавил один useState, в котором будет сообщения для  Toast
-
+  const [message, setMessage] = useState(null); //Добавил один useState, в котором будет сообщения для  Toast
+console.log(message);
   useEffect(() => {
     if (isSubmiting) {
       sendForm(email);
@@ -17,6 +20,11 @@ const SubscribeForm = () => {
     }
     // eslint-disable-next-line
   }, [email, isSubmiting]);
+
+  // useEffect(() => {   // showing Toast
+  //     toast.success(message);
+  // }, [message]);
+
 
   function onSubmit(e) {
     e.preventDefault();
@@ -46,12 +54,16 @@ const SubscribeForm = () => {
       if (res.status === 200) {
         setMessage('Subscription email has been sent, please check your email');
         setEmail('');
+        const message = 'ok';
+        toast.success(message);
       }
     } catch (error) {
       if (error.response) {
         //Если есть HTTP-ответ
         setMessage(error.response.data.message);
         setEmail('');
+        const message = 'not ok';
+        toast.warn(message);
       } else {
         // В противном случае, обработка ошибки без HTTP-ответа
         setMessage('error send email');
@@ -61,6 +73,8 @@ const SubscribeForm = () => {
   }
 
   return (
+  <>
+  <ToastContainer />
     <form className={css.subscribeBlock} onSubmit={onSubmit}>
       <p className={css.subscribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
       <input
@@ -75,9 +89,9 @@ const SubscribeForm = () => {
       <button className={css.subscribeBlockButton} type="submit">
         Subscribe
       </button>
-
-      {isSubmiting ? <Toast message={message} /> : null}
     </form>
+  </>
+    
   );
 };
 
