@@ -5,7 +5,7 @@
   padding: 14px 40px 14px 40px;
   border-radius: 42px;
 
-  font-family: Manrope, sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-size: 16px;
   font-weight: 600;
   line-height: 18px;
@@ -16,6 +16,8 @@
   background-color: #f3f3f3;
   color: #161f37;
   margin-bottom: 80px;
+
+  transition: all 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {
@@ -24,4 +26,11 @@
     height: 54px;
     padding: 18px 44px 18px 44px;
   }
+}
+
+.add_btn:hover,
+.add_btn:focus {
+  background-color: #161f3700;
+  color: #f3f3f3;
+  border: 2px solid #dadada;
 }
