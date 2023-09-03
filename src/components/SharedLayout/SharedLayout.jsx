@@ -78,19 +78,7 @@ export const SharedLayout = () => {
           <ModalTermsCard onMount={termsModal} />
         </Modal>
       )}
-      <Header>
-        <Logo />
-        {isDesctop && <NavBar />}
-        <UserBar toggleModal={setModalauthActive} />
-        {!isDesctop && (
-          <>
-            <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-            <BurgerMenu burgerMenuActive={burgerMenuActive} />
-          </>
-        )}
-      </Header>
-
-      {/* {isDesctop ? (
+      {isDesctop ? (
         <Header>
           <Logo />
           <NavBar />
@@ -103,7 +91,7 @@ export const SharedLayout = () => {
           <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
           <BurgerMenu burgerMenuActive={burgerMenuActive} />
         </Header>
-      )} */}
+      )} 
       <main className={css.mainFrame}>
         <Suspense fallback={<LayoutSpiner />}>
           <Outlet />
@@ -138,83 +126,3 @@ export const SharedLayout = () => {
 
 //     {*/<main style={{ width: '100%' }}>*/}
 
-
-    <main className={css.mainStyles}>
-
-      <Suspense fallback={<LayoutSpiner />}>
-        <Outlet />
-      </Suspense>
-    </main>
-  );
-};
-
-
-
-            /* <NavBar />
-//             <UserBar toggleModal={setModalauthActive} />
-//           </Header>
-//         ) : (
-//           <Header>
-//             <Logo />
-//             <UserBar toggleModal={setModalauthActive} />
-//             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-//             <BurgerMenu burgerMenuActive={burgerMenuActive} />
-//           </Header>
-//         )}
-//         <main className={css.mainFrame}>
-//           <Suspense fallback={<LayoutSpiner />}>
-//             <Outlet />
-//           </Suspense>
-//         </main>
-//       </MainContainer>
-//       <div>
-//         <Footer>
-//           <div style={footerUpperContainer}>
-//             <div style={leftSideBar}>
-//               <Logo />
-//               <Socials />
-//             </div>
-//             <NavBarFooter />
-//             <SubscribeForm />
-//           </div>
-//           <div style={footerBottomContainer}>
-//             <Link style={links} to='https://drink-master-back-end.onrender.com/api-docs'>©2023 Drink Master. All rights reserved.</Link>
-//             <div style={rightSide}>
-//               <Link style={links} onClick={() => setPolicyModal(true)}>
-//                 Privacy Policy
-//               </Link>
-//               <Link style={links} onClick={() => setTermsModal(true)}>
-//                 Terms of Service
-//               </Link>
-
-//             </div>
-
-            <Socials />
-          </div>
-          <NavBarFooter />
-          <SubscribeForm />
-        </div>
-        <div className={css.footerBottomContainer}>
-          <Link className={css.links}>©2023 Drink Master. All rights reserved.</Link>
-          <div className={css.rightSide}>
-            <Link className={css.links} onClick={() => setPolicyModal(true)}>
-              Privacy Policy
-            </Link>
-            <Link className={css.links} onClick={() => setTermsModal(true)}>
-              Terms of Service
-            </Link>
-          </div>
-        </div>
-      </Footer>
-    </MainContainer>
-  ) : (
-      <main style={{ width: '100%' }}>
-
-    <main className={css.mainStyles}>
-      <Suspense fallback={<LayoutSpiner />}>
-        <Outlet />
-      </Suspense>
-    </main>
-  );
-};
-*/

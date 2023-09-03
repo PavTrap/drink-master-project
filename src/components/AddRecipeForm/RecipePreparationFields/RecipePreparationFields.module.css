@@ -7,11 +7,7 @@
   font-family: Manrope;
   font-weight: 600;
   text-align: left;
-
-  @media screen and (min-width: 768px) {
-    font-size: 40px;
-    line-height: 44px;
-  }
+  margin-bottom: 40px;
 }
 
 .recipePreparation_textarea {
@@ -24,12 +20,21 @@
   background-color: transparent;
   color: #fff;
   outline-style: none;
+}
 
-  @media screen and (min-width: 375px) {
+@media screen and (min-width: 375px) {
+  .recipePreparation_textarea {
     width: 335px;
   }
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .recipePreparation_title {
+    font-size: 40px;
+    line-height: 44px;
+
+  }
+  .recipePreparation_textarea {
     width: 480px;
   }
 }

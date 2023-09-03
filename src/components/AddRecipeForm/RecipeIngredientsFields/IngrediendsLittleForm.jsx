@@ -56,6 +56,7 @@ const IngrediendsLittleForm = ({ clickHandlerMinus, isBtnDisabled, id, ingredien
         <Select
           isSearchable={true}
           name="measure"
+          placeholder="ml"
           onChange={handlerSelect}
           options={measure}
           styles={measureStyles}

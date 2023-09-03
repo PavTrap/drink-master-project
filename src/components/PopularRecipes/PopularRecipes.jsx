@@ -22,14 +22,12 @@ const PopularRecipes = () => {
     })();
   }, [BackEndError]);
 
-  function onCardClick(id) {
-    // console.log(id)
-  }
+
 
   return (
     <article>
       <h3 className={css.listTitle}>Popular recipe</h3>
-      <ul className={css.list}> {data && data.map(item => <PolularRecipeCard key={item._id} item={item} onClick={onCardClick} />)}</ul>
+      <ul className={css.list}> {data && data.map(item => <PolularRecipeCard key={item._id} item={item} />)}</ul>
       {error && <p>error</p>}
     </article>
   );

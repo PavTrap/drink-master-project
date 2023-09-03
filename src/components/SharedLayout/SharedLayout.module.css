@@ -402,3 +402,40 @@
   justify-content: space-between;
   gap: 20px;
 }
+
+
+
+
+
+
+
+@media screen and (min-width: 1440px) {
+  .mainFrame {
+      /* padding-top: 160px; */
+  max-width: 1240px;
+
+  }
+
+}
+/* gradient blending fix */
+.gradient, .gradient1, .gradient2, .gradient3, .gradient4, .gradient5, .gradient6{
+  mix-blend-mode: screen;
+}
+/* social icons animation */
+.icons {
+  box-sizing: content-box;
+  width: 28px;
+  height: 28px;
+  border-radius: 10px;
+  display: block;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  padding: 8px;
+ 
+}
+.icons > svg {
+  transition: all 200ms ease-out;;
+}
+.icons:hover > svg {
+  scale: 1.2;
+}
+
