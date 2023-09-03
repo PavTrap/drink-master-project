@@ -80,3 +80,15 @@ export const updateUser = createAsyncThunk('/auth/update', async (newData, { rej
     return rejectWithValue(e.response.data.message);
   }
 });
+
+export const startLoadingMainPage = createAsyncThunk('/auth/startLoading', async () => {
+  const res = await new Promise(function (resolve, _) {
+    setTimeout(() => resolve(), 10000);
+  });
+
+  return res;
+});
+
+export const mainPageLoaded = createAsyncThunk('/auth/endLoading', async () => {
+  return false;
+});
