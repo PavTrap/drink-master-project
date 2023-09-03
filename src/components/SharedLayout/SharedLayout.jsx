@@ -13,6 +13,24 @@ import Socials from './Socials';
 import ModalAuth from 'components/Modal/ModalAuth';
 import Modal from '../Modal/Modal';
 import ModalCard from 'components/Modal/ModalCard';
+
+
+// import { LayoutSpiner } from '../Spinner/LayoutSpinner';
+// import MainContainer from './MainContainer'; //components
+// import Header from 'components/SharedLayout/Header/Header'; // Component
+// import Logo from './Logo'; //components
+// import NavBar from './NavBar/NavBar'; //components
+// import UserBar from './UserBar/UserBar'; //components
+// import Footer from 'components/SharedLayout/Footer/Footer'; // Component
+// import NavBarFooter from './NavBar/NavBarFooter'; //components
+// import Socials from './Socials'; //components
+// import useAuth from 'hooks/useAuth'; //hook
+
+// import ModalAuth from 'components/Modal/ModalAuth'; //component
+// import Modal from '../Modal/Modal'; //component
+// import ModalCard from 'components/Modal/ModalCard'; //component
+
+
 import ModalTermsCard from 'components/Modal/ModalTermsCard';
 import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 import BurgerMenu from './BurgerMenu/BurgerMenu';
@@ -54,6 +72,10 @@ export const SharedLayout = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
+
+
+  const { isLoggedIn } = useAuth();
+
 
   return isLoggedIn ? (
     <MainContainer>
@@ -97,6 +119,32 @@ export const SharedLayout = () => {
           <div className={css.leftSideBar}>
             <Logo />
             <Socials />
+            <NavBar />
+            <UserBar toggleModal={setModalauthActive} />
+          </Header>
+        ) : (
+          <Header>
+            <Logo />
+            <UserBar toggleModal={setModalauthActive} />
+            <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
+            <BurgerMenu burgerMenuActive={burgerMenuActive} />
+          </Header>
+        )}
+        <main className={css.mainFrame}>
+          <Suspense fallback={<LayoutSpiner />}>
+            <Outlet />
+          </Suspense>
+        </main>
+      </MainContainer>
+      <div>
+        <Footer>
+          <div style={footerUpperContainer}>
+            <div style={leftSideBar}>
+              <Logo />
+              <Socials />
+            </div>
+            <NavBarFooter />
+            <SubscribeForm />
           </div>
           <NavBarFooter />
           <SubscribeForm />

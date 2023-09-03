@@ -1,0 +1,66 @@
+.title {
+  margin-bottom: 60px;
+
+  font-size: 40px;
+  font-weight: 600;
+  line-height: calc(44 / 40);
+
+  color: #F3F3F3;
+}
+
+.recipeContainer {
+  display: flex;
+  gap: 60px;
+}
+
+.imgDrink {
+  min-width: 631px;
+  height: 430px;
+  border-radius: 8px;
+  
+  transform: scaleX(-1);
+  object-fit: cover;
+}
+
+.description {
+  margin-bottom: 60px;
+  
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(22 / 16);
+
+  color: #F3F3F3;
+}
+
+.instructionList {
+  max-height: 280px;
+  overflow: auto;
+}
+
+.instructionList::-webkit-scrollbar {
+  width: 0;
+}
+
+.instructionText {
+  margin-bottom: 14px;
+  
+  font-size: 16px;
+  font-weight: 400;
+  line-height: calc(22 / 16);
+
+  color: #F3F3F3;
+}
+
+.instructionItem:last-child .instructionText {
+  margin-bottom: 0;
+}
+
+.instructionText::after {
+  content: "";
+  display: block;
+  margin-top: 14px;
+  width: 100%;
+  height: 1px;
+
+  background-color: rgba(243, 243, 243, 0.2);
+}

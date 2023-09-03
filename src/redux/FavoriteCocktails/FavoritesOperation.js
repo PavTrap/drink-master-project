@@ -33,7 +33,7 @@ export const addFavorites = createAsyncThunk('favorite/addFavorites', async (id,
   const persistedToken = state.auth.token;
   try {
     setAuthHeader(persistedToken);
-    const response = await axios.post('api/favorite', { data: { cocktailId: id } });
+    const response = await axios.post('api/favorite', {cocktailId: id});
     return response.data;
   } catch (error) {
     return rejectWithValue(error.message);

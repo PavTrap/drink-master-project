@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Spinner } from './Spinner/Spinner';
 import Private from './Routes/Privat';
@@ -24,16 +24,21 @@ const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 export const App = () => {
 
 
-const navigate = useNavigate()
+const navigate = useNavigate();
+const location = useLocation();
 
-useEffect(() => {
-          navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
-          window.onbeforeunload = () => {
-              window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
-          }
-          return () => window.sessionStorage.setItem('lastRoute', "");
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+  useEffect(() => {
+    navigate(location.pathname,{ relative: "path" });
+  }, [location.pathname, navigate]);
+
+// useEffect(() => {
+//           navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
+//           window.onbeforeunload = () => {
+//               window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
+//           }
+//           return () => window.sessionStorage.setItem('lastRoute', "");
+//       // eslint-disable-next-line react-hooks/exhaustive-deps
+//       }, [])
 
 
 

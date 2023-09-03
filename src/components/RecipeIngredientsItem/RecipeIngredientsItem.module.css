@@ -1,0 +1,44 @@
+.containerImg {
+    position: relative;
+    width: 220px;
+    height: 220px;
+
+    border-radius: 8px;
+    background-color: rgba(22, 31, 55, 0.5);
+  }
+
+.imgIngredient {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 175px;
+    height: 175px;
+    
+    background-size: cover;
+
+    transform: translate(-50%, -50%);
+}
+
+.descriptIngr {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin-right: auto;
+
+    font-size: 18px;
+    font-weight: 500;
+    line-height: calc(24 / 18);
+
+    color: #F3F3F3;
+}
+
+.measure {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: calc(20 / 16);
+
+    color: rgba(243, 243, 243, 0.5);
+}
