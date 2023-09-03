@@ -12,6 +12,7 @@ p,h1,h2,h3,h4,h5,h6{
   font-size: 28px;
   letter-spacing: 0em;
   text-align: left;
+  margin: 0;
 }
 
 .recipeIngredients_label {
@@ -97,7 +98,7 @@ p,h1,h2,h3,h4,h5,h6{
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
-  left: 5px;
+  left: 25px;
 }
 .errorMeasure {
   font-family: Manrope, sans-serif;
@@ -107,16 +108,17 @@ p,h1,h2,h3,h4,h5,h6{
   font-size: 12px;
   font-weight: 400;
   line-height: 14px;
-  left: 0px;
+  left: 10px;
 }
 .active {
-  top: 48px;
+  top: 45px;
 }
 
 @media screen and (min-width: 748px) {
   .errorMeasure,
   .errorIngredient {
-    left: 22px;
+    left: 10px;
+    font-size: 14px;
   }
   .active {
     top: 50px;
@@ -127,7 +129,7 @@ p,h1,h2,h3,h4,h5,h6{
   }
   .addIngredients_titleBtnBox {
     gap: 77px;
-    justify-content: flex-start;
+    justify-content: space-between;
   }
   .addIngredients_btnBox {
     font-size: 17px;
@@ -140,6 +142,9 @@ p,h1,h2,h3,h4,h5,h6{
   .addIngredients_btnDeleteIcon{
     transform:scale(1.35);
   }
+ 
+  
+  
 }
 
 @media screen and (min-width: 1440px) {
@@ -148,13 +153,10 @@ p,h1,h2,h3,h4,h5,h6{
     left: 22px;
   }
   .active {
-    top: 58px;
+    top: 50px;
   }
-  .addIngredients_titleBtnBox {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    justify-content: flex-start;
-    gap: 205px;
+  .addIngredients_wrapper {
+    max-width: 540px;
   }
+  
 }
