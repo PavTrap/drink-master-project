@@ -33,8 +33,6 @@ export const DrinksSearch = () => {
   // const navigate = useNavigate()
   // const location = useLocation();
 
-
-
   useEffect(() => {
     dispatch(fetchCategories());
     dispatch(fetchIngredients());
@@ -54,7 +52,7 @@ export const DrinksSearch = () => {
       console.log('should EXIT');
       return;
     }
-    console.log('не дошдло')
+    console.log('не дошдло');
     debouncedHandleChange(payload);
   };
 
@@ -132,21 +130,28 @@ export const DrinksSearch = () => {
           onChange={handleChangeSelectIngredient}
         />
       </form>
-      <div className={css.responseContainer}>
-        {entities.data && !isLoading && (
-          <ul className={css.mainPageList}>
-            {entities.data.map(({ _id, drink, drinkThumb }) => (
-              <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
-            ))}
-          </ul>
-        )}
+      {isLoading ? (
+        <div styles={{ minWidth: '100vw', minHeight: '100vh' }}>
+          <Dots className={css.loading} />
+        </div>
+      ) : (
+        <div className={css.responseContainer}>
+          {entities.data && !isLoading && (
+            <ul className={css.mainPageList}>
+              {entities.data.map(({ _id, drink, drinkThumb }) => (
+                <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
+              ))}
+            </ul>
+          )}
 
-        {isLoading && !entities.data &&<div styles={{width: "100vw", height: "100vh"}}><Dots className={css.loading} /></div>}
-        {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
+          {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
 
-        {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
-        {entities?.count?.totalPages > 1 && <Paginator pages={{page: entities.count.page, totalPages: entities.count.totalPages}} onChangePage={changePage} />}
-      </div>
+          {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
+          {entities?.count?.totalPages > 1 && (
+            <Paginator pages={{ page: entities.count.page, totalPages: entities.count.totalPages }} onChangePage={changePage} />
+          )}
+        </div>
+      )}
     </>
   );
 };

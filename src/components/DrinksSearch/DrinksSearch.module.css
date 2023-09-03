@@ -17,6 +17,12 @@
   width: 100%;
   height: auto;
 }
+.container {
+  margin: 80px 0;
+
+  width: 100%;
+  min-height: 100vh;
+}
 
 
 
@@ -67,10 +73,7 @@
     position: absolute;
     left: 8px;
   }
-  .container {
-    margin: 80px 20px;
-    height: auto;
-  }
+ 
   .drinkRequestForm {
     display: flex;
     flex-direction: column;

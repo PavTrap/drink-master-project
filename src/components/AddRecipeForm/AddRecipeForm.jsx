@@ -1,74 +1,71 @@
-// import PropTypes from 'prop-types';
-import { useState, useEffect } from 'react';
-// import { nanoid } from 'nanoid';
+import { useState, useEffect } from 'react'; // react
+import { addCocktail } from '../../fetchAPI/fetchAPI'; //api
+import { useNavigate } from 'react-router-dom'; // router dom
+import Tost from 'components/Toast/Toast'; // toast
+
 import s from './AddRecipeForm.module.css';
 
-import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
-import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
-import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
+import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields'; // upper fields with file
+import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields'; // dynamic adding fields
+import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields'; // comment field
 
 export const AddRecipeForm = () => {
+  const navigate = useNavigate();
+  let ingredients;
   const [drinkThumb, setDrinkThumb] = useState('');
+  const [tempImageUrl, setTempImageUrl] = useState(null);
+  const [file, setFile] = useState(null);
   const [drink, setDrink] = useState('');
   const [about, setAbout] = useState('');
   const [category, setCategory] = useState('');
   const [glass, setGlass] = useState('');
-
-
   const [instructions, setInstructions] = useState('');
-  const [tempImageUrl, setTempImageUrl] = useState(null);
-
-  let ingredients;
+  const [backendError, setBackendError] = useState(null);
 
   useEffect(() => {
-    setDrinkThumb('');
-  }, [setDrinkThumb]);
+    if (tempImageUrl) setDrinkThumb(tempImageUrl);
+  }, [drinkThumb, tempImageUrl]); // reseting url
 
-  useEffect(() => {
-    if(tempImageUrl) setDrinkThumb(tempImageUrl);
-  }, [drinkThumb, tempImageUrl]);
+  useEffect(() => {   // showing Toast
+    setTimeout(() => {
+      setBackendError(null);
+    }, 5000);
+  }, [backendError]);
 
-  const onPhotoChange = event => {
+  const onPhotoChange = event => {  // handele photo change
     const file = event.target.files[0];
-    console.log(event.target.files[0]);
     if (file) {
       setTempImageUrl(URL.createObjectURL(file));
       setDrinkThumb(file);
+      setFile(file);
     }
   };
 
-  const setIngredients = data => {
-    ingredients = data
-
+  const setIngredients = data => {  // catch ingredients object
+    ingredients = data;
   };
 
-  const formSubmit = (drinkThumb, drink, category, glass, instructions, ingredients) => {
-    const recipe = {
-      drinkThumb,
-      drink,
-      category,
-      glass,
-      instructions,
-      ingredients: [JSON.stringify(ingredients)],
-      // ingredients,
-    };
-    //  dispatch(addRecipe(recipe))
-    console.dir(recipe);
-  };
+  const handleSubmit = async e => { // submit
 
-  const handleSubmit = (e) => {
-    /////// submiting !!!!!!!!!
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('recipeImg', file);
+    formData.append('drink', drink);
+    formData.append('category', category);
+    formData.append('glass', glass);
+    formData.append('instructions', `${about}. ${instructions}`);
+    formData.append('ingredients', [JSON.stringify(ingredients)]);
 
-    formSubmit(category, drink, drinkThumb, glass, instructions,ingredients);
-    // const formData = new FormData();
+    const res = await addCocktail(formData);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    // console.log(formData);
-
+    if (res?.status === 201) navigate('/my');
+    if (res?.status !== 201) setBackendError(res.response.data.message);
   };
 
   return (
     <div>
+      {backendError && <Tost message={backendError} />} 
       <form onSubmit={handleSubmit}>
         <RecipeDescriptionFields
           drinkThumb={drinkThumb}
@@ -76,6 +73,7 @@ export const AddRecipeForm = () => {
           itemTitle={setDrink}
           category={setCategory}
           glass={setGlass}
+          about={setAbout}
         />
         <RecipeIngredientsFields setIngredients={setIngredients} />
         <RecipePreparationFields textarea={setInstructions} />

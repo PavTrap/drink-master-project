@@ -1,15 +1,17 @@
 .tost {
-    position: absolute;
-    width: 300px;
-    top: 160px;
+    position: fixed;
+    width: 400px;
+    top: 100px;
     left: 50%;
-    height: 150px;
-    background-color: #fff;
-    border-radius: 10px;
+    border-radius: 56px;
+    background: #161F37;
     text-align: center;
     transform: translateX(-50%);
     overflow: hidden;
     z-index: 9999;
+    padding: 18px 44px;
+    border: 1px solid rgba(243, 243, 243, 0.50);
+
   }
   .title {
     display: block;
@@ -20,10 +22,12 @@
   
   }
   .text {
-    text-transform: capitalize;
-    width: 80%;
-    margin: 0 auto;
-    line-height: 1.6rem;
-    padding-top: 10px;
-    color: black;
+     text-transform: capitalize;
+    color: #DA1414;
+    font-family: Manrope, sans-serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    margin:0;
+    padding:0,
   }

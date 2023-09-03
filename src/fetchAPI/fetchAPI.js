@@ -43,3 +43,13 @@ export const fetchRecipes = async () => {
 		console.log(e);
 	}
 };
+
+
+export const addCocktail = async (data) => {
+	try {
+		const res = await axios.post('/api/own', data);
+		return res;
+	} catch (e) {
+		return(e)
+	}
+};

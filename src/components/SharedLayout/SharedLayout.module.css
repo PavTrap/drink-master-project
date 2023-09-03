@@ -4,7 +4,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 
   margin: 0 auto;
   box-sizing: border-box;
@@ -16,6 +16,7 @@
 
 .mainFrame {
   max-width: 335px;
+  min-height: 100vh;
   margin: 0 auto;
 }
 
@@ -153,6 +154,7 @@
 @media screen and (min-width: 768px) {
   .mainFrame {
     max-width: 704px;
+    min-height: 100vh;
   }
 }
 
@@ -160,5 +162,6 @@
 @media screen and (min-width: 1440px) {
   .mainFrame {
     max-width: 1444px;
+    min-height: 100vh;
   }
 }
