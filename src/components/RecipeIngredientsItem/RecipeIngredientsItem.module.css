@@ -1,7 +1,12 @@
+.ingredientsItem {
+    flex-basis: calc((100% - 21 * (2 - 1)) / 2);
+}
+
 .containerImg {
     position: relative;
-    width: 220px;
-    height: 220px;
+    width: 157px;
+    height: 157px;
+    margin-bottom: 8px;
 
     border-radius: 8px;
     background-color: rgba(22, 31, 55, 0.5);
@@ -12,8 +17,8 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 175px;
-    height: 175px;
+    width: 107px;
+    height: 107px;
     
     background-size: cover;
 
@@ -23,22 +28,130 @@
 .descriptIngr {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .title {
     margin-right: auto;
+    width: 50%;
 
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 500;
-    line-height: calc(24 / 18);
+    line-height: calc(18 / 14);
 
     color: #F3F3F3;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .measure {
-    font-size: 16px;
+    width: 50%;
+
+    font-size: 14px;
     font-weight: 500;
-    line-height: calc(20 / 16);
+    line-height: calc(18 / 14);
 
     color: rgba(243, 243, 243, 0.5);
+
+    text-align: right;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+@media screen and (min-width: 768px) {
+    .containerImg {
+        position: relative;
+        width: 220px;
+        height: 220px;
+    
+        border-radius: 8px;
+        background-color: rgba(22, 31, 55, 0.5);
+      }
+    
+    .imgIngredient {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 175px;
+        height: 175px;
+        
+        background-size: cover;
+    
+        transform: translate(-50%, -50%);
+    }
+    
+    .descriptIngr {
+        display: flex;
+        align-items: center;
+    }
+    
+    .title {
+        margin-right: auto;
+    
+        font-size: 18px;
+        font-weight: 500;
+        line-height: calc(24 / 18);
+    
+        color: #F3F3F3;
+    }
+    
+    .measure {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: calc(20 / 16);
+    
+        color: rgba(243, 243, 243, 0.5);
+    }
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .containerImg {
+        position: relative;
+        width: 220px;
+        height: 220px;
+    
+        border-radius: 8px;
+        background-color: rgba(22, 31, 55, 0.5);
+      }
+    
+    .imgIngredient {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 175px;
+        height: 175px;
+        
+        background-size: cover;
+    
+        transform: translate(-50%, -50%);
+    }
+    
+    .descriptIngr {
+        display: flex;
+        align-items: center;
+    }
+    
+    .title {
+        margin-right: auto;
+    
+        font-size: 18px;
+        font-weight: 500;
+        line-height: calc(24 / 18);
+    
+        color: #F3F3F3;
+    }
+    
+    .measure {
+        font-size: 16px;
+        font-weight: 500;
+        line-height: calc(20 / 16);
+    
+        color: rgba(243, 243, 243, 0.5);
+    }
+  }
+  
