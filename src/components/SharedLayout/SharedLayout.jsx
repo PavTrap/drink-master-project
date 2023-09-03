@@ -16,7 +16,6 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 // import Modal from '../Modal/Modal'; //component
 // import ModalCard from 'components/Modal/ModalCard'; //component
 
-
 // components
 import { LayoutSpiner } from '../Spinner/LayoutSpinner';
 import MainContainer from './MainContainer';
@@ -43,7 +42,7 @@ import css from './SharedLayout.module.css';
 export const SharedLayout = () => {
   const location = useLocation();
   const { isLoggedIn } = useAuth();
-  
+
   const [modalAuthActive, setModalauthActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [policyModal, setPolicyModal] = useState(false);
@@ -57,7 +56,7 @@ export const SharedLayout = () => {
   }, [location]);
 
   // useEffect(()=>{
-    
+
   // })
 
   //слідкує за шириною екрану і її зміни
@@ -75,7 +74,7 @@ export const SharedLayout = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-
+  console.log(isDesctop);
   return isLoggedIn ? (
     <MainContainer>
       {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
@@ -94,7 +93,19 @@ export const SharedLayout = () => {
           <ModalTermsCard onMount={termsModal} />
         </Modal>
       )}
-      {isDesctop ? (
+      <Header>
+        <Logo />
+        {isDesctop && <NavBar />}
+        <UserBar toggleModal={setModalauthActive} />
+        {!isDesctop && (
+          <>
+            <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
+            <BurgerMenu burgerMenuActive={burgerMenuActive} />
+          </>
+        )}
+      </Header>
+
+      {/* {isDesctop ? (
         <Header>
           <Logo />
           <NavBar />
@@ -105,9 +116,9 @@ export const SharedLayout = () => {
           <Logo />
           <UserBar toggleModal={setModalauthActive} />
           <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-          {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+          <BurgerMenu burgerMenuActive={burgerMenuActive} />
         </Header>
-      )}
+      )} */}
       <main className={css.mainFrame}>
         <Suspense fallback={<LayoutSpiner />}>
           <Outlet />
@@ -173,25 +184,20 @@ export const SharedLayout = () => {
             <Link className={css.links} onClick={() => setTermsModal(true)}>
               Terms of Service
             </Link>
-
           </div>
         </div>
       </Footer>
     </MainContainer>
   ) : (
-
-//     {*/<main style={{ width: '100%' }}>*/}
-
+    //     {*/<main style={{ width: '100%' }}>*/}
 
     <main className={css.mainStyles}>
-
       <Suspense fallback={<LayoutSpiner />}>
         <Outlet />
       </Suspense>
     </main>
   );
 };
-
 
 // import { Suspense, useEffect, useState } from 'react';
 // import { Outlet, Link, useLocation } from 'react-router-dom';
@@ -209,7 +215,6 @@ export const SharedLayout = () => {
 // import Modal from '../Modal/Modal';
 // import ModalCard from 'components/Modal/ModalCard';
 
-
 // // import { LayoutSpiner } from '../Spinner/LayoutSpinner';
 // // import MainContainer from './MainContainer'; //components
 // // import Header from 'components/SharedLayout/Header/Header'; // Component
@@ -225,7 +230,6 @@ export const SharedLayout = () => {
 // // import Modal from '../Modal/Modal'; //component
 // // import ModalCard from 'components/Modal/ModalCard'; //component
 
-
 // import ModalTermsCard from 'components/Modal/ModalTermsCard';
 // import ModalPolicyCard from 'components/Modal/ModalPolicyCard';
 // import BurgerMenu from './BurgerMenu/BurgerMenu';
@@ -239,7 +243,7 @@ export const SharedLayout = () => {
 // export const SharedLayout = () => {
 //   const location = useLocation();
 //   const { isLoggedIn } = useAuth();
-  
+
 //   const [modalAuthActive, setModalauthActive] = useState(false);
 //   const [modalActive, setModalActive] = useState(false);
 //   const [policyModal, setPolicyModal] = useState(false);
@@ -267,9 +271,6 @@ export const SharedLayout = () => {
 //       window.removeEventListener('resize', handleWindowResize);
 //     };
 //   }, []);
-
-
-
 
 //   return isLoggedIn ? (
 //     <MainContainer>
@@ -338,7 +339,6 @@ export const SharedLayout = () => {
 //     </main>
 //   );
 // };
-
 
 // return isLoggedIn ? (
 //   <MainContainer>
