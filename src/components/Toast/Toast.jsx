@@ -10,13 +10,13 @@ const Tost = ({ message, tittle = "Info" }) => {
     setTimeout(() => {
       setShowTost(false);
 
-    }, 3000);
+    }, 5000);
   }, []);
 
   return (
     showTost && (
       <div className={css.tost} onClick={() => setShowTost(false)}>
-        <h3 className={css.title}>{tittle}</h3>
+        {/* <h3 className={css.title}>{tittle}</h3> */}
         <p className={css.text}>{message}</p>
       </div>
     )

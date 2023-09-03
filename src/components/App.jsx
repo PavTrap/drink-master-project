@@ -1,5 +1,6 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
+
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Spinner } from './Spinner/Spinner';
 import Private from './Routes/Privat';
@@ -9,7 +10,7 @@ import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/Auth/authOperation';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
-import {useNavigate} from 'react-router-dom';
+
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
 const NotFoundPage= lazy(()=> import('../pages/NotFoundPage/NotFoundPage'))
@@ -22,14 +23,20 @@ const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 
 
 export const App = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
 
-
-const navigate = useNavigate();
-const location = useLocation();
+  const dispatch = useDispatch();
+  const { isRefreshing } = useAuth();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
   useEffect(() => {
-    navigate(location.pathname,{ relative: "path" });
+    navigate(location.pathname, { relative: 'path' });
   }, [location.pathname, navigate]);
+
+
 
 // useEffect(() => {
 //           navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
@@ -41,13 +48,6 @@ const location = useLocation();
 //       }, [])
 
 
-
-
-  const dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
-  useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
 
   return isRefreshing ? (
     <Spinner />
@@ -69,7 +69,11 @@ const location = useLocation();
         <Route path="*" element={<NotFoundPage />} />
       </Route>
 
-      <Route path="spinner" element={<Spinner />} />
+
+      <Route path="*" element={<NotFoundPage />} />
+      {/* <Route path="spinner" element={<Spinner />} /> */}
+
+
     </Routes>
   );
 };

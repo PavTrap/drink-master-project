@@ -12,9 +12,9 @@ const NavBarFooter = () => {
       <NavLink to="/my" style={linksStyles}>
         My recipes
       </NavLink>
-      <NavLink to="/spinner" style={linksStyles}>
+      {/* <NavLink to="/spinner" style={linksStyles}>
         Spinner
-      </NavLink>
+      </NavLink> */}
       <NavLink to="/favorite" style={linksStyles}>
         Favorites
       </NavLink>

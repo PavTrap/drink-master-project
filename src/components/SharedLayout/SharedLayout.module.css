@@ -4,7 +4,8 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+
+
   margin: 0 auto;
   box-sizing: border-box;
   background-color: #0a0a11;
@@ -58,6 +59,8 @@
 }
 .footerContainer {
   max-width: 335px;
+  min-height: 100vh;
+
   padding-top: 40px;
   padding-bottom: 18px;
   margin: 0 auto;
@@ -225,6 +228,23 @@
   text-decoration: none;
   justify-content: space-between;
 }
+
+
+@media screen and (min-width: 768px) {
+  .mainFrame {
+    max-width: 704px;
+    min-height: 100vh;
+  }
+}
+
+
+@media screen and (min-width: 1440px) {
+  .mainFrame {
+    max-width: 1444px;
+    min-height: 100vh;
+  }
+}
+
 .rightSide {
   display: flex;
   flex-direction: row;
@@ -250,3 +270,4 @@
   justify-content: space-between;
   flex-direction: column;
 }
+
