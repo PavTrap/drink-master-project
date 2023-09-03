@@ -54,7 +54,7 @@ const SubscribeForm = () => {
         setEmail('');
       } else {
         // В противном случае, обработка ошибки без HTTP-ответа
-        setMessage(error);
+        setMessage('error send email');
         setEmail('');
       }
     }
