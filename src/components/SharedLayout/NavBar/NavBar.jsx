@@ -43,9 +43,9 @@ const NavBar = () => {
 
         Favorites
       </NavLink>
-      <NavLink to="/spinner" className={styles.links}>
+      {/* <NavLink to="/spinner" className={styles.links}>
         Spinner
-      </NavLink>
+      </NavLink> */}
     </nav>
   );
 };
