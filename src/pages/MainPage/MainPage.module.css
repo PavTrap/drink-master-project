@@ -7,8 +7,40 @@ h2 {
 	color: #f3f3f3;
 }
 
+h1 {
+	font-size: 32px;
+	font-weight: 600;
+
+	max-width: 279px;
+
+	@media screen and (min-width: 768px) {
+		font-size: 56px;
+
+		max-width: 483px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 64px;
+
+		max-width: 715px;
+	}
+}
+
 h2 {
-	margin-bottom: 40px;
+	margin-bottom: 24px;
+
+	font-size: 32px;
+	font-weight: 600;
+
+	@media screen and (min-width: 768px) and (max-width: 1200px) {
+		font-size: 40px;
+		margin-bottom: 40px;
+	}
+
+	@media screen and (min-width: 1201px) {
+		font-size: 44px;
+		margin-bottom: 40px;
+	}
 }
 
 a {
@@ -17,136 +49,126 @@ a {
 }
 
 .mainPageList {
-  list-style: none;
-  justify-content: space-between;
 	list-style: none;
 
 	display: flex;
 	flex-wrap: nowrap;
 	gap: 20px;
-	margin-bottom: 80px;
-  /* max-width: 1240px; */
-  /* max-height: 522px; */
-}
 
-.mainPageList >li{
-  width: calc(30% - 40px);
-  height: calc(30% - 40px);;
+	margin-bottom: 40px;
 
-	max-width: 1240px;
-	max-height: 522px;
-}
-
-
-@media screen and (max-width: 767px) {
-	.mainPageList_item:not(:first-child) {
-		display: none;
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
+	@media screen and (min-width: 1440px) {
+		margin-bottom: 80px;
 	}
 }
-
-
-.hero_section {
-  padding: 160px 0;
-  margin-bottom: 80px;
-}
-
-
-/* .main {
-  padding: 0 100px;
-
-} 
-
-@media screen and (max-width: 1439px) {
-	.mainPageList_item:nth-child(n + 3) {
-		display: none;
-		opacity: 0;
-		visibility: hidden;
-		pointer-events: none;
-	}
-}*/
-
 
 .drinks_section {
 	position: relative;
-	padding: 0px 100px 270px;
+	padding: 0px 0px 60px;
+
+	@media screen and (min-width: 768px) {
+		padding: 0px 0px 140px;
+	}
 }
-
-
-.hero_section_wrapper {
-	display: flex;
-} 
-
-/* .main_div {
-	margin: 0 auto;
-} */
 
 .hero_section {
-	padding: 160px 100px 100px;
-	margin-bottom: 80px;
+	padding: 128px 0px 358px;
+	min-width: 335px;
+
+	background-repeat: no-repeat;
+
+	background-image: url("../MainPage/img/main-page-glass-mobile-1x.png");
+	background-position: top 30px right -10px;
+
+	@media (-webkit-min-device-pixel-ratio: 2) {
+		background-image: url("../MainPage/img/main-page-glass-mobile-2x.png");
+	}
+
+	@media screen and (min-width: 768px) {
+		padding: 184px 0px 459px;
+		background-position: top -70px right -10px;
+
+		background-image: url("../MainPage/img/main-page-glass-tablet-1x.png");
+
+		@media (-webkit-min-device-pixel-ratio: 2) {
+			background-image: url("../MainPage/img/main-page-glass-tablet-2x.png");
+		}
+	}
+
+	@media screen and (min-width: 1440px) {
+		padding: 160px 0px 316px;
+		background-position: top -100px right -90px;
+
+		background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
+		background-color: #07070b;
+
+		@media (-webkit-min-device-pixel-ratio: 2) {
+			background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
+		}
+	}
 }
 
-
-/* .main {
-  background-color: black;
-} */
-
-/* .section_wrapper {
-	margin-left: auto;
-	@@ -63,51 +66,51 @@ a {
-} */
-
 .button {
-	font-size: 18px;
-	height: 54px;
+	font-size: 14px;
+	font-weight: 600;
+	height: 40px;
 	border-radius: 42px;
 	color: #161f37;
 	background-color: #f3f3f3;
-	padding: 18px 44px;
-}
+	padding: 14px 40px;
 
-h1 {
-	font-size: 64px;
+	@media screen and (min-width: 768px) {
+		font-size: 16px;
+		height: 54px;
+		padding: 18px 44px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 18px;
+	}
 }
 
 .main_p {
-	margin-bottom: 40px;
+	margin-bottom: 32px;
+	font-size: 14px;
+
+	max-width: 266px;
+
+	@media screen and (min-width: 768px) {
+		margin-bottom: 58px;
+		font-size: 18px;
+
+		max-width: 449px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		max-width: 500px;
+	}
 }
 
 .hero_title {
-	margin-bottom: 28px;
+	font-size: 32px;
+	font-weight: 600;
+	margin-bottom: 16px;
+
+	@media screen and (min-width: 768px) {
+		font-size: 56px;
+		margin-bottom: 28px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 64px;
+	}
 }
 
 .other_drinks_btn {
-	display: flex;
-	align-items: center;
 	position: absolute;
 	left: 50%;
+
+	display: flex;
+	align-items: center;
+
 	max-height: 54px;
+
+	transform: translate(-50%);
 }
-
-.card_name {
-	font-size: 18px;
-}
-
-.ingredients_text {
-	font-size: 16px;
-	color: rgba(243, 243, 243, 0.5);
-}
-
-.card_link {
-	display: inline-block;
-}
-
-.card_text_wrapper {
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: 14px;
-}
-
-
