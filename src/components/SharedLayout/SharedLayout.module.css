@@ -393,3 +393,10 @@
 }
 
 }
+
+
+
+
+.gradient, .gradient1, .gradient2, .gradient3, .gradient4, .gradient5, .gradient6{
+  mix-blend-mode: screen;
+}

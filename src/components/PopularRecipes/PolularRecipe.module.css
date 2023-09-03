@@ -10,6 +10,10 @@
   filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.5));
   font-family: Manrope, sans-serif;
 }
+ul{
+  list-style: none;
+}
+a{text-decoration: none;}
 .listTitle {
   color: #f3f3f3;
   font-size: 24px;
