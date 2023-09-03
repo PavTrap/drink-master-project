@@ -400,3 +400,13 @@
 .gradient, .gradient1, .gradient2, .gradient3, .gradient4, .gradient5, .gradient6{
   mix-blend-mode: screen;
 }
+
+
+@media screen and (min-width: 1440px) {
+  .mainFrame {
+      /* padding-top: 160px; */
+  max-width: 1240px;
+
+  }
+
+}
