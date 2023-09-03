@@ -19,7 +19,9 @@ const Tost = ({ message, tittle = "Info", active , style}) => {
 
   return (
     showTost && (
+
       <div className={`${css.tost} ${isActive && css.active}`} style={{...style}} onClick={() => setShowTost(false)}>
+
         {/* <h3 className={css.title}>{tittle}</h3> */}
         <p className={css.text}>{message}</p>
       </div>

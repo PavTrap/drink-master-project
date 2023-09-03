@@ -21,7 +21,13 @@ const NavBar = () => {
       <NavLink to="/my" className={styles.links}>
         My recipes
       </NavLink>
-      <NavLink to="/favorite" className={styles.links}>
+
+      {/* <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
+        Spinner
+      </NavLink> */}
+      <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}>
+
+      {/*<NavLink to="/favorite" className={styles.links}>*/}
 
       {/* <NavLink to="/recipe" className={`${styles.links} ${isActive('/recipe')}`}>
          Recipe
@@ -33,6 +39,7 @@ const NavBar = () => {
          Spinner
        </NavLink>
       <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}> */}
+
 
         Favorites
       </NavLink>

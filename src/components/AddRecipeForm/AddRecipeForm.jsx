@@ -1,80 +1,87 @@
-import { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
-import s from './AddRecipeForm.module.css'
+import { useState, useEffect } from 'react'; // react
+import { addCocktail } from '../../fetchAPI/fetchAPI'; //api
+import { useNavigate } from 'react-router-dom'; // router dom
+import Tost from 'components/Toast/Toast'; // toast
 
+import s from './AddRecipeForm.module.css';
 
-import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields';
-import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields';
-import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields';
+import { RecipeDescriptionFields } from './RecipeDescriptionFields/RecipeDescriptionFields'; // upper fields with file
+import { RecipeIngredientsFields } from './RecipeIngredientsFields/RecipeIngredientsFields'; // dynamic adding fields
+import { RecipePreparationFields } from './RecipePreparationFields/RecipePreparationFields'; // comment field
 
 export const AddRecipeForm = () => {
-
+  const navigate = useNavigate();
+  let ingredients;
   const [drinkThumb, setDrinkThumb] = useState('');
+  const [tempImageUrl, setTempImageUrl] = useState(null);
+  const [file, setFile] = useState(null);
   const [drink, setDrink] = useState('');
   const [about, setAbout] = useState('');
   const [category, setCategory] = useState('');
   const [glass, setGlass] = useState('');
-  const [addedIngredients, setIngredients] = useState([]);
-  const [addedMeasure, setMeasure] = useState([]);
   const [instructions, setInstructions] = useState('');
-  const [tempImageUrl, setTempImageUrl] = useState(null); 
+  const [backendError, setBackendError] = useState(null);
 
-  useEffect(() => { setDrinkThumb(""); setInstructions('')}, [setDrinkThumb])
-      
   useEffect(() => {
-    if (tempImageUrl) {
-      setDrinkThumb(tempImageUrl);
-    }
-  }, [drinkThumb, tempImageUrl]);     
-      
-    const onPhotoChange = event => {
-          const file = event.target.files[0];
+    if (tempImageUrl) setDrinkThumb(tempImageUrl);
+  }, [drinkThumb, tempImageUrl]); // reseting url
+
+  useEffect(() => {   // showing Toast
+    setTimeout(() => {
+      setBackendError(null);
+    }, 5000);
+  }, [backendError]);
+
+  const onPhotoChange = event => {  // handele photo change
+    const file = event.target.files[0];
     if (file) {
       setTempImageUrl(URL.createObjectURL(file));
       setDrinkThumb(file);
+      setFile(file);
     }
-};
-  
-  const formSubmit = (drinkThumb, drink, category, glass, instructions) => {
-    console.log(addedIngredients, addedMeasure);
-    
-    const formDataRecipe = new FormData();
-    drinkThumb && formDataRecipe.append('drinkThumb', drinkThumb);
-    drink && formDataRecipe.append('drink', drink);
-    category && formDataRecipe.append('category', category);
-    glass && formDataRecipe.append('glass', glass);
-    instructions && formDataRecipe.append('instructions', instructions);
-
-            
-  //  dispatch(addRecipe(recipe))
-    console.log(formDataRecipe);
   };
 
+  const setIngredients = data => {  // catch ingredients object
+    ingredients = data;
+  };
 
-    const handleSubmit = (e) => {
-      e.preventDefault()
-      // e.currentTarget.reset()
+  const handleSubmit = async e => { // submit
 
-      setInstructions(`${about} ${instructions}`)
-       formSubmit(drinkThumb, drink, category, glass, instructions)
-      }
-      
-      
-      return (
-            <div >
-                  <form  onSubmit={handleSubmit}>
-                  <RecipeDescriptionFields drinkThumb={drinkThumb} cocktailImg={onPhotoChange} itemTitle={setDrink} about={setAbout} category={setCategory} glass={setGlass}/>
-                  <RecipeIngredientsFields addIngredients={setIngredients} addMeasure={setMeasure}/>
-                  <RecipePreparationFields textarea={setInstructions} />
-                        
-                  <button type='submit' className={s.add_btn}>Add</button>
-                  
-                   <br />
-                  <NavLink to="/my">
-                  My recipes
-                 </NavLink>
-                  </form>
-            </div >
-            )
-}
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('recipeImg', file);
+    formData.append('drink', drink);
+    formData.append('category', category);
+    formData.append('glass', glass);
+    formData.append('instructions', `${about}. ${instructions}`);
+    formData.append('ingredients', [JSON.stringify(ingredients)]);
 
+    const res = await addCocktail(formData);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (res?.status === 201) navigate('/my');
+    if (res?.status !== 201) setBackendError(res.response.data.message);
+  };
+
+  return (
+    <div>
+      {backendError && <Tost message={backendError} />} 
+      <form onSubmit={handleSubmit}>
+        <RecipeDescriptionFields
+          drinkThumb={drinkThumb}
+          cocktailImg={onPhotoChange}
+          itemTitle={setDrink}
+          category={setCategory}
+          glass={setGlass}
+          about={setAbout}
+        />
+        <RecipeIngredientsFields setIngredients={setIngredients} />
+        <RecipePreparationFields textarea={setInstructions} />
+
+        <button type="submit" className={s.add_btn}>
+          Add
+        </button>
+      </form>
+    </div>
+  );
+};

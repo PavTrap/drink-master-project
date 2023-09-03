@@ -1,9 +1,10 @@
 .button {
-    padding: 18px 44px;
+    margin-bottom: 80px;
+    padding: 14px 40px;
 
     font-weight: 600;
-    font-size: 16px;
-    line-height: calc(18 / 16);
+    font-size: 14px;
+    line-height: calc(18 / 14);
 
     color: #161f37;
     background-color: #f3f3f3;
@@ -23,3 +24,19 @@
     color: rgba(243, 243, 243, 0.2);
     background-color: #434D67;
 }
+
+@media screen and (min-width: 768px) {
+    .button {
+        padding: 18px 44px;
+    
+        font-size: 16px;
+        line-height: calc(18 / 16);
+    }
+  }
+  
+  @media screen and (min-width: 1440px) {
+    .button {
+        margin-bottom: 0;
+    }
+  }
+  

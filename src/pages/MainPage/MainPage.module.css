@@ -2,11 +2,47 @@ p,
 ul,
 h1,
 h2 {
-  margin: 0;
-  padding: 0;
-  color: #f3f3f3;
   font-family: Manrope;
   font-style: normal;
+	margin: 0;
+	padding: 0;
+	color: #f3f3f3;
+}
+
+h1 {
+	font-size: 32px;
+	font-weight: 600;
+
+	max-width: 279px;
+
+	@media screen and (min-width: 768px) {
+		font-size: 56px;
+
+		max-width: 483px;
+	}
+
+	@media screen and (min-width: 1440px) {
+		font-size: 64px;
+
+		max-width: 715px;
+	}
+}
+
+h2 {
+	margin-bottom: 24px;
+
+	font-size: 32px;
+	font-weight: 600;
+
+	@media screen and (min-width: 768px) and (max-width: 1200px) {
+		font-size: 40px;
+		margin-bottom: 40px;
+	}
+
+	@media screen and (min-width: 1201px) {
+		font-size: 44px;
+		margin-bottom: 40px;
+	}
 }
 
 a {
@@ -232,3 +268,4 @@ ul {
     line-height: 44px;
   }
 }
+
