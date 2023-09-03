@@ -17,14 +17,6 @@
   text-decoration: none;
 }
 
-@media screen and (min-width: 340px) {
-  .logoTextStyles {
-  }
-
-  .logoBar {
-  }
-}
-
 @media screen and (min-width: 768px) {
   .logoTextStyles {
     font-size: 18px;
