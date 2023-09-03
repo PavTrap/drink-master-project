@@ -23,6 +23,7 @@
 }
 
 .links {
+  font-family: Manrope, sans-serif;
   text-decoration: none;
   display: flex;
   padding: 8px 16px;
@@ -37,6 +38,11 @@
   font-weight: 500;
   line-height: 22.4px;
   color: #f3f3f3;
+}
+@media (max-width: 768px) {
+  .links {
+    line-height: 20px;
+  }
 }
 
 .links:hover,
