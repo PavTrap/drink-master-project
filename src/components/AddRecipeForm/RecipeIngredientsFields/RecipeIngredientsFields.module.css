@@ -1,12 +1,15 @@
 .addIngredients_wrapper {
   margin-top: 60px;
 }
+p,h1,h2,h3,h4,h5,h6{
+  font-family: Manrope;
+}
 
 .recipeIngredients_title {
   font-family: Manrope;
-  font-size: 40px;
+  line-height: 32px;
   font-weight: 600;
-  line-height: 44px;
+  font-size: 28px;
   letter-spacing: 0em;
   text-align: left;
 }
@@ -19,13 +22,12 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  /* justify-content: center;
-  align-items: center; */
 }
 
 .addIngredients_box {
   display: flex;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 18px;
 }
 
 .addIngredients_box:nth-last-child(1) {
@@ -35,21 +37,22 @@
 .addIngredients_titleBtnBox {
   display: flex;
   align-items: center;
-  justify-content: center;
-  justify-content: flex-start;
-  gap: 205px;
+  justify-content: space-between;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
 .addIngredients_btnBox {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
-  padding: 10px 18px;
+
+  padding: 11px 16px;
 
   border: 1px solid #f3f3f380;
   border-radius: 70px;
-  font-size: 17px;
+  gap: 16px;
+
 }
 
 .addIngredients_btn {
@@ -81,6 +84,7 @@
 }
 
 .addIngredients_btnDeleteIcon {
+  transform:scale(1.2);
   width: 25px;
   height: 25px;
 }
@@ -109,7 +113,6 @@
   top: 48px;
 }
 
-
 @media screen and (min-width: 748px) {
   .errorMeasure,
   .errorIngredient {
@@ -117,6 +120,25 @@
   }
   .active {
     top: 50px;
+  }
+  .recipeIngredients_title {
+    font-size: 40px;
+    line-height: 44px;
+  }
+  .addIngredients_titleBtnBox {
+    gap: 77px;
+    justify-content: flex-start;
+  }
+  .addIngredients_btnBox {
+    font-size: 17px;
+    gap: 18px;
+    padding: 10px 18px;
+
+  }.addIngredients_btnDelete {
+    margin-left: auto;
+  }
+  .addIngredients_btnDeleteIcon{
+    transform:scale(1.35);
   }
 }
 
@@ -127,5 +149,12 @@
   }
   .active {
     top: 58px;
+  }
+  .addIngredients_titleBtnBox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: flex-start;
+    gap: 205px;
   }
 }

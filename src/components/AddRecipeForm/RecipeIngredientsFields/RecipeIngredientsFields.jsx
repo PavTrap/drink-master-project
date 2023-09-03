@@ -74,10 +74,9 @@ export const RecipeIngredientsFields = ({ setIngredients}) => {
           id={counter} // id to array asign
           ingrediensName={ingrediensName} // list for selector
           allIngredientsList={allIngredientsList} // array of ingredients objects
-          getFromForm={getFromForm}
-          //function to get values
+          getFromForm={getFromForm}  //function to get values
         />
-      );
+      );  
     }
 
     return inputFields;
