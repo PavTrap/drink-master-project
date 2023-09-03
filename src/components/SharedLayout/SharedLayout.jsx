@@ -116,7 +116,7 @@ export const SharedLayout = () => {
             <SubscribeForm />
           </div>
           <div style={footerBottomContainer}>
-            <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
+            <Link style={links} to='https://drink-master-back-end.onrender.com/api-docs'>©2023 Drink Master. All rights reserved.</Link>
             <div style={rightSide}>
               <Link style={links} onClick={() => setPolicyModal(true)}>
                 Privacy Policy
