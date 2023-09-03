@@ -23,16 +23,16 @@ const NavBar = () => {
       </NavLink>
       <NavLink to="/favorite" className={styles.links}>
 
-//       <NavLink to="/recipe" className={`${styles.links} ${isActive('/recipe')}`}>
-//         Recipe
-//       </NavLink>
-//       <NavLink to="/my" className={`${styles.links} ${isActive('/my')}`}>
-//         My recipes
-//       </NavLink>
-//       <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
-//         Spinner
-//       </NavLink>
-//       <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}>
+      {/* <NavLink to="/recipe" className={`${styles.links} ${isActive('/recipe')}`}>
+         Recipe
+       </NavLink>
+       <NavLink to="/my" className={`${styles.links} ${isActive('/my')}`}>
+         My recipes
+       </NavLink>
+       <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
+         Spinner
+       </NavLink>
+      <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}> */}
 
         Favorites
       </NavLink>
