@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import css from "./SubscribeForm.module.css"
+import css from './SubscribeForm.module.css';
 import Toast from '../../Toast/Toast';
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmiting, setIsSubmiting] = useState(false);
+
+  const [message, setMessage] = useState(''); //Добавил один useState, в котором будет сообщения для  Toast
 
   useEffect(() => {
     if (isSubmiting) {
@@ -21,15 +23,40 @@ const SubscribeForm = () => {
     setIsSubmiting(true);
   }
 
+  // Старая функция
+  // async function sendForm() {
+  //   try {
+  //     const baseURL = 'https://drink-master-back-end.onrender.com';
+
+  //     const res = await axios.post(`${baseURL}/subscribe`, { email: email });
+
+  //     res && setEmail('');
+  //   } catch (error) {
+  //     console.log('error send email');
+  //   }
+  // }
+
   async function sendForm() {
     try {
       const baseURL = 'https://drink-master-back-end.onrender.com';
 
       const res = await axios.post(`${baseURL}/subscribe`, { email: email });
+      console.log(res.status);
 
-      res && setEmail('');
+      if (res.status === 200) {
+        setMessage('Subscription email has been sent, please check your email');
+        setEmail('');
+      }
     } catch (error) {
-      console.log('error send email');
+      if (error.response) {
+        //Если есть HTTP-ответ
+        setMessage(error.response.data.message);
+        setEmail('');
+      } else {
+        // В противном случае, обработка ошибки без HTTP-ответа
+        setMessage(error);
+        setEmail('');
+      }
     }
   }
 
@@ -49,7 +76,7 @@ const SubscribeForm = () => {
         Subscribe
       </button>
 
-      {isSubmiting ? <Toast /> : null}
+      {isSubmiting ? <Toast message={message} /> : null}
     </form>
   );
 };
