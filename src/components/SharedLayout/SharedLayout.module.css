@@ -33,6 +33,7 @@
   position: relative;
   border-bottom: 1px solid rgba(243, 243, 243, 0.2);
 }
+
 .headerContainer {
   max-width: 335px;
   padding: 20px 0;
@@ -114,6 +115,7 @@
     height: 849px;
   }
 }
+
 .gradient3 {
   position: absolute;
   display: block;
@@ -138,6 +140,7 @@
     height: 762px;
   }
 }
+
 .gradient4 {
   position: absolute;
   display: block;
@@ -221,6 +224,193 @@
   gap: 20px;
   margin-bottom: 80px;
 }
+@media screen and (min-width: 768px) {
+  .mainFrame,
+  .headerContainer,
+  .footerContainer {
+    max-width: 704px;
+  }
+
+  .footerContainer {
+    padding-top: 80px;
+    padding-bottom: 24px;
+  }
+
+  .gradient1 {
+    top: 116px;
+    left: 42px;
+    width: 387px;
+    height: 372px;
+  }
+
+  .gradient2 {
+    left: -623px;
+    width: 784px;
+    height: 830px;
+  }
+
+  .gradient3 {
+    bottom: -670px;
+    left: 237px;
+    width: 774px;
+    height: 762px;
+  }
+
+  .gradient4 {
+    bottom: 120px;
+    left: -590px;
+    width: 784px;
+    height: 849px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainFrame,
+  .headerContainer,
+  .footerContainer {
+    max-width: 1240px;
+  }
+
+  .gradient1 {
+    top: 119px;
+    left: -25px;
+    height: 381px;
+  }
+
+  .gradient2 {
+    left: -690px;
+    height: 849px;
+  }
+
+  .gradient4 {
+    bottom: 140px;
+    left: -690px;
+  }
+}
+
+@media screen and (min-width: 340px) {
+  .spinner {
+    width: 339px;
+  }
+  .gradient {
+    width: 784px;
+    height: 849px;
+    border-radius: 849px;
+    left: -30.8em;
+    top: -40%;
+    filter: blur(104.8543701171875px);
+  }
+  .gradient2 {
+    width: 387px;
+    height: 381px;
+    left: 10.6875em;
+    top: -10%;
+    flex-shrink: 0;
+    border-radius: 387px;
+    filter: blur(104.8543701171875px);
+  }
+  .gradient3 {
+    position: absolute;
+    display: block;
+    top: 28em;
+    right: -15em;
+    width: 549px;
+    height: 543px;
+    flex-shrink: 0;
+    border-radius: 549px;
+    background: rgba(64, 112, 205, 0.5);
+    filter: blur(104.8543701171875px);
+    animation: 3s firework ease-out alternate running infinite;
+    animation-delay: 1600;
+    pointer-events: none;
+  }
+  .gradient4 {
+    position: absolute;
+    display: block;
+    top: 11.5em;
+    right: -18em;
+    width: 430px;
+    height: 465px;
+    flex-shrink: 0;
+    border-radius: 465px;
+    background: rgba(188, 230, 210, 0.4);
+    filter: blur(104.8543701171875px);
+    animation: 3s pulse ease-out alternate running infinite;
+    animation-delay: 1800;
+    pointer-events: none;
+  }
+  .mainFrame {
+    max-width: 335px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .mainFrame {
+    max-width: 704px;
+    min-height: 100vh;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .mainFrame {
+    max-width: 1444px;
+    min-height: 100vh;
+  }
+}
+
+/* FOOTER STYLE */
+
+.footerUpperContainer {
+  margin-top: 40px;
+  margin-bottom: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+}
+
+.leftSideBar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.links {
+  color: #f3f3f380;
+  text-decoration: none;
+  font-size: 12px;
+  font-family: 'Manrope' sans-serif;
+  font-weight: 400;
+  line-height: calc(16 / 12);
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.footerBottomContainer {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: flex-start;
+  text-decoration: none;
+  justify-content: space-between;
+}
+
+@media screen and (min-width: 340px) {
+  .leftSideBar,
+  .footerBottomContainer {
+    width: 335px;
+  }
+
+  .footerBottomContainer {
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
   .footerUpperContainer {
     margin-top: 40px;
     margin-bottom: 80px;
@@ -360,3 +550,30 @@
   
     }
   }
+.rightSide {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  text-decoration: none;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+
+
+
+
+
+
+@media screen and (min-width: 1440px) {
+  .mainFrame {
+      /* padding-top: 160px; */
+  max-width: 1240px;
+
+  }
+
+}
+/* gradient blending fix */
+.gradient, .gradient1, .gradient2, .gradient3, .gradient4, .gradient5, .gradient6{
+  mix-blend-mode: screen;
+}

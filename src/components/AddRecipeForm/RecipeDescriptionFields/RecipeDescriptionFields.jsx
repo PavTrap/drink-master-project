@@ -6,48 +6,53 @@ import { fetchCategory, fetchGlasses } from '../../../fetchAPI/fetchAPI';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import React from 'react';
 import LoadingCircle from 'components/Spinner/LoadingCircle';
+import { writeToLoaclStore, readFromLocalStore } from 'helpers/localStorageApi';
 //styles
 import { categoryStyles } from './FieldStyles';
 
-export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, about, category, glass,}) => {
+
+export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, about, category, glass }) => {
   const [allCategory, setCategory] = useState([]);
   const [allGlasses, setGlasses] = useState([]);
   const [addImage, setAddImage] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    fetchCategory()
-      .then(res => {
-        const result = res.map(({ name }) => {
+    if(!readFromLocalStore("category-list") || readFromLocalStore("glasses-list")){
+      (async () => {
+        const categories = await fetchCategory();
+        const glasses = await fetchGlasses();
+        const calegorieList = categories.map(({ name }) => {
           return { value: `${name}`, label: `${name}`, descr: `category` };
         });
-        setCategory(result);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
-  useEffect(() => {
-    fetchGlasses()
-      .then(res => {
-        const result = res.map(({ name }) => {
+  
+        const glassesList = glasses.map(({ name }) => {
           return { value: `${name}`, label: `${name}`, descr: `glasses` };
         });
-        setGlasses(result);
-      })
-      .catch(err => console.log(err));
+        writeToLoaclStore("category-list",calegorieList )
+        writeToLoaclStore("glasses-list",glassesList )
+        calegorieList && setCategory(calegorieList);
+        glassesList && setGlasses(glassesList);
+      })();
+    }else{
+      const calegorieList = readFromLocalStore("category-list")
+      const glassesList = readFromLocalStore("glasses-list")
+      calegorieList && setCategory(calegorieList);
+      glassesList && setGlasses(glassesList);
+
+    }
+    
   }, []);
 
   useEffect(() => {
-    // console.log(drinkThumb)
     if (drinkThumb === '') {
       setAddImage(false);
       return;
     } else {
       setAddImage(true);
-      setIsLoading(false)
+      setIsLoading(false);
     }
   }, [drinkThumb]);
-
 
   const handleChangeSelect = e => {
     switch (e.descr) {
@@ -84,16 +89,15 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ab
     }
   };
 
-
-  function onClickOnImage(){
-    setTimeout(()=>{setIsLoading(true)}, 500)
-    
+  function onClickOnImage() {
+    setTimeout(() => {
+      setIsLoading(true);
+    }, 500);
   }
   return (
     <div className={s.recipeDescriptionSection}>
       <label className={s.recipeDescription_labelImg}>
-
-        {addImage  ? (
+        {addImage ? (
           <div className={s.recipeDescription_showImgContainerActive}>
             <img className={s.recipeDescription_showImg} src={drinkThumb} alt="Cocktail" />
           </div>
