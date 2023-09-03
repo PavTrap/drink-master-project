@@ -3,24 +3,39 @@
   gap: 14px;
   margin-top: 28px;
 }
-
+/* social icons animation */
 .icons {
-  padding: 7px;
-  border: 1px solid #f3f3f333;
+  box-sizing: content-box;
+
   border-radius: 10px;
-  transition: 0.2s;
+  display: block;
+  border: 1px solid rgba(243, 243, 243, 0.2);
+  padding: 8px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+ 
+}
+.icons > svg {
+  transition: all 200ms ease-out;
+  width: 22px;
+  height: 22px;
+}
+.icons:hover > svg {
+  scale: 1.2;
 }
 
-.icons:hover,
-.icons:focus {
-  transform: scale(1.1);
-}
 
 @media screen and (min-width: 768px) {
   .social_box {
+    
     display: flex;
     gap: 16px;
     margin-top: 50px;
+  }
+  .icons > svg {
+    width: 28px;
+    height: 28px
   }
 }
 
@@ -29,3 +44,5 @@
     margin-top: 50px;
   }
 }
+
+
