@@ -11,11 +11,13 @@ h1 {
 	font-size: 32px;
 	font-weight: 600;
 
-	@media screen and (min-width: 768px) and (max-width: 1200px) {
+	@media screen and (min-width: 768px) {
 		font-size: 56px;
+
+		max-width: 483px;
 	}
 
-	@media screen and (min-width: 1201px) {
+	@media screen and (min-width: 1440px) {
 		font-size: 64px;
 	}
 }
@@ -50,41 +52,36 @@ a {
 	gap: 20px;
 
 	margin-bottom: 80px;
-
-	max-width: 1240px;
-	max-height: 522px;
 }
 
-/* .drinks_section {
+.drinks_section {
 	position: relative;
-	padding: 0px 100px 270px;
+	padding: 0px 0px 60px;
 
-	@media screen and (max-width: 767px) {
-		padding: 0px 20px 60px;
+	@media screen and (min-width: 768px) {
+		padding: 0px 0px 140px;
 	}
-
-	@media screen and (min-width: 768px) and (max-width: 1200px) {
-		padding: 0px 32px 80px;
-	}
-} */
+}
 
 .hero_section {
-	padding: 128px 0px 0px;
-	margin-bottom: 300px;
+	padding: 128px 0px 358px;
+	/* margin-bottom: 300px; */
+	min-width: 335px;
+
+	background-repeat: no-repeat;
 
 	background-image: url("../MainPage/img/main-page-glass-mobile-1x.png");
-	background-position: right;
-	background-repeat: no-repeat;
+	background-position: top -10px right -10px;
 
 	@media (-webkit-min-device-pixel-ratio: 2) {
 		background-image: url("../MainPage/img/main-page-glass-mobile-2x.png");
 	}
 
 	@media screen and (min-width: 768px) {
-		padding: 184px 0px 0px;
+		padding: 184px 0px 459px;
+		background-position: right;
+
 		background-image: url("../MainPage/img/main-page-glass-tablet-1x.png");
-		/* justify-content: left; */
-		/* padding-left: 64px; */
 
 		@media (-webkit-min-device-pixel-ratio: 2) {
 			background-image: url("../MainPage/img/main-page-glass-tablet-2x.png");
@@ -92,13 +89,12 @@ a {
 	}
 
 	@media screen and (min-width: 1440px) {
-		padding: 160px 0px 0px;
-		margin-bottom: 300px;
+		padding: 160px 0px 316px;
+		/* margin-bottom: 300px; */
+		background-position: top -100px right -100px;
 
 		background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
 		background-color: #07070b;
-		/* justify-content: left; */
-		/* padding-left: 100px; */
 
 		@media (-webkit-min-device-pixel-ratio: 2) {
 			background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
@@ -133,6 +129,7 @@ a {
 	@media screen and (min-width: 768px) {
 		margin-bottom: 58px;
 		font-size: 18px;
+
 	}
 }
 

@@ -43,9 +43,10 @@
 }
 
 .drinkCardImg {
+	max-width: 335px;
 	max-height: 360px;
 
 	@media screen and (min-width: 1440px) {
-		max-height: 400px;
+		max-width: 400px;
 	}
 }
