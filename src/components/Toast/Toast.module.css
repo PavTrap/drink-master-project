@@ -1,5 +1,5 @@
 .tost {
-    position: absolute;
+    position: fixed;
     width: 300px;
     top: 160px;
     left: 50%;
@@ -9,7 +9,7 @@
     text-align: center;
     transform: translateX(-50%);
     overflow: hidden;
-    z-index: 9999;
+    z-index: 99999;
   }
   .title {
     display: block;
