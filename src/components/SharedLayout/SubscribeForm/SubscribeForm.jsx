@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import css from './SubscribeForm.module.css';
+
+import css from "./SubscribeForm.module.css"
 import Toast from '../../Toast/Toast';
 
 const SubscribeForm = () => {
@@ -23,7 +24,9 @@ const SubscribeForm = () => {
   async function sendForm() {
     try {
       const baseURL = 'https://drink-master-back-end.onrender.com';
+
       const res = await axios.post(`${baseURL}/subscribe`, { email: email });
+
       res && setEmail('');
     } catch (error) {
       console.log('error send email');
@@ -45,6 +48,7 @@ const SubscribeForm = () => {
       <button className={css.subscribeBlockButton} type="submit">
         Subscribe
       </button>
+
       {isSubmiting ? <Toast /> : null}
     </form>
   );
