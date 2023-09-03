@@ -7,26 +7,36 @@ import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import IngrediendsLittleForm from './IngrediendsLittleForm';
 import * as API from '../../../fetchAPI/fetchAPI';
 // data
-
-export const RecipeIngredientsFields = ({ setIngredients}) => {
+import { writeToLoaclStore, readFromLocalStore } from 'helpers/localStorageApi';
+export const RecipeIngredientsFields = ({ setIngredients }) => {
   const [countIngredients, setCountIngredients] = useState(1);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
   const [ingrediensName, setIngrediensName] = useState([]);
   const [allIngredientsList, setAllIngrediensList] = useState([]);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const response = await API.fetchIngredients();
-        const ingredientsNames = response.map(({ title }) => {
-          return { value: `${title}`, label: `${title}`, descr: `ingredient` };
-        });
-        setIngrediensName(ingredientsNames);
-        setAllIngrediensList(response);
-      } catch (error) {
-        console.log(error);
-      }
-    })();
+    if (!readFromLocalStore('ingredients-names') && !readFromLocalStore('ingredients-list')) {
+      (async () => {
+        try {
+          const response = await API.fetchIngredients();
+          const ingredientsNames = response.map(({ title }) => {
+            return { value: `${title}`, label: `${title}`, descr: `ingredient` };
+          });
+          writeToLoaclStore('ingredients-names', ingredientsNames);
+          writeToLoaclStore('ingredients-list', response);
+          setIngrediensName(ingredientsNames);
+          setAllIngrediensList(response);
+        } catch (error) {
+          console.log(error);
+        }
+      })();
+    } else {
+      const ingredientNamesLS = readFromLocalStore('ingredients-names');
+      const ingredients = readFromLocalStore('ingredients-list');
+
+      ingredientNamesLS && setIngrediensName(ingredientNamesLS);
+      setAllIngrediensList(ingredients);
+    }
   }, []);
 
   useEffect(() => {
@@ -52,13 +62,10 @@ export const RecipeIngredientsFields = ({ setIngredients}) => {
   const getFromForm = item => {
     if (Object.keys(item?.ingredient).length !== 0) {
       array[item.id - 1] = item.ingredient;
-      if (array.length > 0){
-        setIngredients(array)
-        // console.log(array)
-        //поднять пропы наверх
+      if (array.length > 0) {
+        setIngredients(array);
       }
     }
-   
   };
 
   function createInputFields() {
@@ -74,9 +81,9 @@ export const RecipeIngredientsFields = ({ setIngredients}) => {
           id={counter} // id to array asign
           ingrediensName={ingrediensName} // list for selector
           allIngredientsList={allIngredientsList} // array of ingredients objects
-          getFromForm={getFromForm}  //function to get values
+          getFromForm={getFromForm} //function to get values
         />
-      );  
+      );
     }
 
     return inputFields;
