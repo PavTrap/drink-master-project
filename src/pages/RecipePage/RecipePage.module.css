@@ -32,7 +32,6 @@ li {
 .container {
   display: flex;
   flex-direction: column;
-  /* margin: 58px auto 80px auto; */
   min-width: 375px;
   padding: 0 20px;
 }
@@ -46,6 +45,9 @@ li {
 
 @media screen and (min-width: 1440px) {
   .container {
-    margin: 132px auto 140px auto;
+    /* Чомусь не спрацьовує */
+    /* min-width: 1440;  
+    padding: 0 100px; */
+    padding: 0;
   }
 }
