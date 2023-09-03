@@ -55,8 +55,7 @@ a {
 	max-height: 522px;
 }
 
-
-.drinks_section {
+/* .drinks_section {
 	position: relative;
 	padding: 0px 100px 270px;
 
@@ -67,36 +66,25 @@ a {
 	@media screen and (min-width: 768px) and (max-width: 1200px) {
 		padding: 0px 32px 80px;
 	}
-}
-
-
-.hero_section_wrapper {
-	display: flex;
-} 
-
-/* .main_div {
-	margin: 0 auto;
 } */
 
 .hero_section {
-	padding: 128px 20px 80px;
+	padding: 128px 0px 0px;
 	margin-bottom: 300px;
-
 
 	background-image: url("../MainPage/img/main-page-glass-mobile-1x.png");
 	background-position: right;
 	background-repeat: no-repeat;
-
 
 	@media (-webkit-min-device-pixel-ratio: 2) {
 		background-image: url("../MainPage/img/main-page-glass-mobile-2x.png");
 	}
 
 	@media screen and (min-width: 768px) {
-		padding: 184px 32px 80px;
+		padding: 184px 0px 0px;
 		background-image: url("../MainPage/img/main-page-glass-tablet-1x.png");
-		justify-content: left;
-		padding-left: 64px;
+		/* justify-content: left; */
+		/* padding-left: 64px; */
 
 		@media (-webkit-min-device-pixel-ratio: 2) {
 			background-image: url("../MainPage/img/main-page-glass-tablet-2x.png");
@@ -104,13 +92,13 @@ a {
 	}
 
 	@media screen and (min-width: 1440px) {
-		padding: 160px 100px 100px;
-		margin-bottom: 100px;
+		padding: 160px 0px 0px;
+		margin-bottom: 300px;
 
 		background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
 		background-color: #07070b;
-		justify-content: left;
-		padding-left: 100px;
+		/* justify-content: left; */
+		/* padding-left: 100px; */
 
 		@media (-webkit-min-device-pixel-ratio: 2) {
 			background-image: url("../MainPage/img/main-page-glass-desktop-2x.png");
@@ -137,7 +125,6 @@ a {
 		font-size: 18px;
 	}
 }
-
 
 .main_p {
 	margin-bottom: 32px;
@@ -175,3 +162,12 @@ a {
 
 	transform: translate(-50%);
 }
+
+/* .mainPageList>li {
+	width: calc(30% - 40px);
+	height: calc(30% - 40px);
+	;
+
+	max-width: 1240px;
+	max-height: 522px;
+} */
