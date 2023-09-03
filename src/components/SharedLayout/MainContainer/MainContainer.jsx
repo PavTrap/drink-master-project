@@ -1,5 +1,5 @@
 import useWindowSize from 'hooks/useWindowSize';
-import css from './SharedLayout.module.css';
+import css from './MainContainer.module.css';
 
 const MainContainer = ({ children }) => {
   const { width } = useWindowSize();

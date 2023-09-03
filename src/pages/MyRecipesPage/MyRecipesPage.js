@@ -7,7 +7,7 @@ import { fetchMyRecipes, deleteMyRecipes } from 'redux/MyRecipe/MyRecipeOperatio
 import { useEffect } from 'react';
 import { Paginator } from 'components/Paginator/Paginator';
 import { changePage } from 'redux/MyRecipe/MyRecipeSlice';
-// import css from "./MyRecipesPage.module.css";
+import css from './MyRecipesPage.module.css';
 import { NoRecipe } from 'components/NoRecipe/NoRecipe';
 
 export default function MyRecipesPage() {
@@ -19,14 +19,16 @@ export default function MyRecipesPage() {
     dispatch(fetchMyRecipes(page));
   }, [dispatch, page]);
   return (
-    <section>
+    <section className={css.myRecipeContainer}>
       <MainTitle title="My recipes" />
       {recipes?.data?.length > 0 ? (
         <>
           <RecipesList recipes={recipes.data} state={{ from: location }} onDelete={deleteMyRecipes} />
-          {recipes.count.totalPages> 1 &&<Paginator pages={recipes.count} onChangePage={changePage} />}
+          {recipes.count.totalPages > 1 && <Paginator pages={recipes.count} onChangePage={changePage} />}
         </>
-      ): <NoRecipe title="You haven't added any own cocktails yet"/>}
+      ) : (
+        <NoRecipe title="You haven't added any own cocktails yet" />
+      )}
     </section>
   );
 }
