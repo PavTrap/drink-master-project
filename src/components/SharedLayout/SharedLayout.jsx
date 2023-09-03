@@ -1,22 +1,6 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
-// import { LayoutSpiner } from 'components/Spinner/LayoutSpinner';
-// import MainContainer from './MainContainer'; //components
-// import Header from 'components/SharedLayout/Header/Header'; // Component
-// import Logo from './Logo'; //components
-// import NavBar from './NavBar/NavBar'; //components
-// import UserBar from './UserBar/UserBar'; //components
-// import Footer from 'components/SharedLayout/Footer/Footer'; // Component
-// import NavBarFooter from './NavBar/NavBarFooter'; //components
-// import Socials from './Socials'; //components
-// import useAuth from 'hooks/useAuth'; //hook
-
-// import ModalAuth from 'components/Modal/ModalAuth'; //component
-// import Modal from '../Modal/Modal'; //component
-// import ModalCard from 'components/Modal/ModalCard'; //component
-
-
 // components
 import { LayoutSpiner } from '../Spinner/LayoutSpinner';
 import MainContainer from './MainContainer';
@@ -134,7 +118,6 @@ export const SharedLayout = () => {
             <Link className={css.links} onClick={() => setTermsModal(true)}>
               Terms of Service
             </Link>
-
           </div>
         </div>
       </Footer>
@@ -155,15 +138,12 @@ export const SharedLayout = () => {
 
 
 
-            {/* <NavBar />
-
+            /* <NavBar />
 //             <UserBar toggleModal={setModalauthActive} />
 //           </Header>
 //         ) : (
 //           <Header>
 //             <Logo />
-
-
 //             <UserBar toggleModal={setModalauthActive} />
 //             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
 //             <BurgerMenu burgerMenuActive={burgerMenuActive} />
@@ -194,4 +174,4 @@ export const SharedLayout = () => {
 //               <Link style={links} onClick={() => setTermsModal(true)}>
 //                 Terms of Service
 //               </Link>
-//             </div>*/}
+//             </div>*/
