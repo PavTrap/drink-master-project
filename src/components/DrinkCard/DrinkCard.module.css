@@ -21,7 +21,11 @@
 }
 
 .card_name {
-	font-size: 18px;
+	font-size: 16px;
+
+	@media screen and (min-width: 1440px) {
+		font-size: 18px;
+	}
 }
 
 .card_text_wrapper {

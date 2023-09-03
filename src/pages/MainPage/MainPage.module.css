@@ -78,7 +78,7 @@ a {
 	background-repeat: no-repeat;
 
 	background-image: url("../MainPage/img/main-page-glass-mobile-1x.png");
-	background-position: top 20px right -10px;
+	background-position: top 30px right -10px;
 
 	@media (-webkit-min-device-pixel-ratio: 2) {
 		background-image: url("../MainPage/img/main-page-glass-mobile-2x.png");
@@ -86,7 +86,7 @@ a {
 
 	@media screen and (min-width: 768px) {
 		padding: 184px 0px 459px;
-		background-position: right;
+		background-position: top -70px right -10px;
 
 		background-image: url("../MainPage/img/main-page-glass-tablet-1x.png");
 
@@ -97,7 +97,7 @@ a {
 
 	@media screen and (min-width: 1440px) {
 		padding: 160px 0px 316px;
-		background-position: top -150px right -100px;
+		background-position: top -100px right -90px;
 
 		background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
 		background-color: #07070b;
@@ -141,9 +141,9 @@ a {
 		max-width: 449px;
 	}
 
-		@media screen and (min-width: 1440px) {
-			max-width: 500px;
-		}
+	@media screen and (min-width: 1440px) {
+		max-width: 500px;
+	}
 }
 
 .hero_title {
