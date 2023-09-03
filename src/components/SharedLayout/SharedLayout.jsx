@@ -104,24 +104,27 @@ export const SharedLayout = () => {
           </Suspense>
         </main>
       </MainContainer>
-      
+
       <div>
         <Footer>
-          <div style={footerUpperContainer}>
-            <div style={leftSideBar}>
-              <Logo />
-              <Socials />
+          <div className={css.footerUpperContainer}>
+            <div className={css.leftSideBar}>
+              <div>
+                <Logo />
+                <Socials />
+              </div>
+              <NavBarFooter />
             </div>
-            <NavBarFooter />
             <SubscribeForm />
           </div>
-          <div style={footerBottomContainer}>
-            <Link style={links}>©2023 Drink Master. All rights reserved.</Link>
-            <div style={rightSide}>
-              <Link style={links} onClick={() => setPolicyModal(true)}>
+
+          <div className={css.footerBottomContainer}>
+            <Link className={css.links}>©2023 Drink Master. All rights reserved.</Link>
+            <div className={css.rightSide}>
+              <Link className={css.links} onClick={() => setPolicyModal(true)}>
                 Privacy Policy
               </Link>
-              <Link style={links} onClick={() => setTermsModal(true)}>
+              <Link className={css.links} onClick={() => setTermsModal(true)}>
                 Terms of Service
               </Link>
             </div>
@@ -141,46 +144,5 @@ export const SharedLayout = () => {
 /////----------------------------------------------------------------
 // когда будут компоненты - удалить
 
-const footerUpperContainer = {
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  gap: '20px',
-  marginBottom: '80px',
-};
 
-const footerBottomContainer = {
-  textAlign: 'center',
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'center',
-  textDecoration: 'none',
-  justifyContent: 'space-between',
-};
-const rightSide = {
-  display: 'flex',
-  flexDirection: 'row',
-  alignItems: 'flex-end',
-  textDecoration: 'none',
-  justifyContent: 'space-between',
-  gap: '20px',
-};
-const links = {
-  color: 'rgba(243, 243, 243, 0.50)',
-  fontFamily: 'Manrope, sans-serif',
-  fontSize: '14px',
-  fontStyle: 'normal',
-  fontWeight: '400',
-  lineHeight: '18px',
-  letterSpacing: '-0.28px',
-  opacity: '0.9',
-  textDecoration: 'none',
-};
-const leftSideBar = {
-  display: 'flex',
-  alignItems: 'flex-start',
-  justifyContent: 'space-between',
-  flexDirection: 'column',
-};
+

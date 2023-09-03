@@ -1,0 +1,37 @@
+.logoTextStyles {
+  font-family: Manrope sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  font-style: normal;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+
+.logoBar {
+  height: 22px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  color: #f3f3f3;
+  text-decoration: none;
+}
+
+@media screen and (min-width: 340px) {
+  .logoTextStyles {
+  }
+
+  .logoBar {
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .logoTextStyles {
+    font-size: 18px;
+    line-height: calc(22 / 22);
+  }
+
+  .logoBar {
+    height: 28px;
+  }
+}

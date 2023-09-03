@@ -1,0 +1,26 @@
+.footer_style {
+  width: 100%;
+  border-top: 1px solid rgba(243, 243, 243, 0.2);
+  box-sizing: border-box;
+  background-color: #0a0a11;
+  color: #f3f3f3;
+  overflow: hidden;
+
+  padding: 0 20px 18px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (min-width: 768px) {
+  .footer_style {
+    padding: 0 32px 24px 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .footer_style {
+    padding: 0 100px 24px 100px;
+  }
+}
