@@ -123,6 +123,12 @@ export const SharedLayout = () => {
       </Footer>
     </MainContainer>
   ) : (
+  //     {*/<main style={{ width: '100%' }}>*/}
 
-//     {*/<main style={{ width: '100%' }}>*/}
-
+  <main className={css.mainStyles}>
+    <Suspense fallback={<LayoutSpiner />}>
+      <Outlet />
+    </Suspense>
+  </main>
+);
+};
