@@ -6,20 +6,24 @@ import CategoryList from './CategoryList';
 import { fetchDrinks } from './featchApi';
 import { writeToLoaclStore, readFromLocalStore } from 'helpers/localStorageApi';
 import { Link } from 'react-router-dom';
+import Dots from 'components/Spinner/Dots';
 
 const PreviewDrinks = ({ children }) => <>{children}</>;
 
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     if (!readFromLocalStore('main-page')) {
       (async () => {
         const data = await fetchDrinks();
-        writeToLoaclStore('main-page', data);
+        data && writeToLoaclStore('main-page', data);
         data && setAllDrinks(data);
+        setIsLoading(false)
       })();
     } else {
+      setIsLoading(false)
       const data = readFromLocalStore('main-page');
       data && setAllDrinks(data);
     }
@@ -28,6 +32,7 @@ const MainPage = () => {
   return (
     <div className={css.main}>
       <MainHero />
+      {isLoading ? (<div style={{margin:"-200px 0", width:"100vw"}}><Dots/></div>) :(
       <PreviewDrinks>
         <section className={css.drinks_section}>
           <ul>
@@ -41,7 +46,9 @@ const MainPage = () => {
             </Link>
           )}
         </section>
-      </PreviewDrinks>
+      </PreviewDrinks> 
+      )}
+
     </div>
   );
 };

@@ -33,7 +33,7 @@
 
 }
 .modal__content{
-	padding: 50px 50px 70px 50px;
+	padding: 50px 50px 50px 50px;
 	border-radius: 12px;
 	background-color: #161F37;
 	/* max-height: 426px; */
@@ -44,7 +44,7 @@
 	transition: all 200ms ease-in-out;
 }
 .modal__contentActive{
-	padding: 50px 50px 70px 50px;
+	padding: 50px 50px 50px 50px;
 	border-radius: 12px;
 	background-color: #161F37;
 	/* max-height: 426px; */
