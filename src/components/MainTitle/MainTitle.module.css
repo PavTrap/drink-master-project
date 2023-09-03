@@ -7,14 +7,18 @@
   font-weight: 600;
   color: #f3f3f3;
   z-index: 11;
-  @media screen and (min-width: 375px) {
+}
+
+@media screen and (min-width: 375px) {
+  .mainTittle {
     margin-top: 140px;
     margin-bottom: 60px;
     font-size: 56px;
     line-height: calc(60 / 56);
   }
-  
-  @media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 768px) {
+  .mainTittle {
     margin-top: 244px;
     font-size: 64px;
     line-height: calc(68 / 54);
