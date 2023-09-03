@@ -51,66 +51,7 @@
       // When the single page app is loaded further down in this file,
       // the correct url will be waiting in the browser's history for
       // the single page app to route accordingly.
-      (function (l) {
-        if (l.search[1] === '/') {
-          var decoded = l.search
-            .slice(1)
-            .split('&')
-            .map(function (s) {
-              return s.replace(/~and~/g, '&');
-            })
-            .join('?');
-          window.history.replaceState(
-            null,
-            null,
-            l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      })(window.location);
-
-      let favicon_images = [
-        './animated-favicon/frame_00.gif',
-        './animated-favicon/frame_01.gif',
-        './animated-favicon/frame_02.gif',
-        './animated-favicon/frame_03.gif',
-        './animated-favicon/frame_04.gif',
-        './animated-favicon/frame_05.gif',
-        './animated-favicon/frame_06.gif',
-        './animated-favicon/frame_07.gif',
-        './animated-favicon/frame_08.gif',
-        './animated-favicon/frame_09.gif',
-        './animated-favicon/frame_10.gif',
-        './animated-favicon/frame_11.gif',
-        './animated-favicon/frame_12.gif',
-        './animated-favicon/frame_13.gif',
-        './animated-favicon/frame_14.gif',
-        './animated-favicon/frame_15.gif',
-        './animated-favicon/frame_16.gif',
-        './animated-favicon/frame_17.gif',
-        './animated-favicon/frame_18.gif',
-        './animated-favicon/frame_19.gif',
-        './animated-favicon/frame_20.gif',
-        './animated-favicon/frame_21.gif',
-        './animated-favicon/frame_23.gif',
-        './animated-favicon/frame_22.gif',
-        './animated-favicon/frame_25.gif',
-        './animated-favicon/frame_24.gif',
-      ];
-      image_counter = 0;
-
-      setInterval(function() {
-    // remove current favicon
-    if(document.querySelector("link[rel='icon']") !== null)
-        document.querySelector("link[rel='icon']").remove();
-    // add new favicon image
-    document.querySelector("head").insertAdjacentHTML('beforeend', '<link rel="icon" href="' + favicon_images[image_counter] + '" type="image/gif">');
-    
-    // Else go to next image    
-    if(image_counter == favicon_images.length -1)
-        image_counter = 6;
-    else
-        image_counter+=1;
-}, 150);
+//      
 
     </script>
     <!-- End Single Page Apps for GitHub Pages -->
