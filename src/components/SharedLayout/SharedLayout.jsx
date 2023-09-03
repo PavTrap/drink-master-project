@@ -118,32 +118,6 @@ export const SharedLayout = () => {
           <div className={css.leftSideBar}>
             <Logo />
             <Socials />
-            <NavBar />
-            <UserBar toggleModal={setModalauthActive} />
-          </Header>
-        ) : (
-          <Header>
-            <Logo />
-            <UserBar toggleModal={setModalauthActive} />
-            <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-            <BurgerMenu burgerMenuActive={burgerMenuActive} />
-          </Header>
-        )}
-        <main className={css.mainFrame}>
-          <Suspense fallback={<LayoutSpiner />}>
-            <Outlet />
-          </Suspense>
-        </main>
-      </MainContainer>
-      <div>
-        <Footer>
-          <div style={footerUpperContainer}>
-            <div style={leftSideBar}>
-              <Logo />
-              <Socials />
-            </div>
-            <NavBarFooter />
-            <SubscribeForm />
           </div>
           <NavBarFooter />
           <SubscribeForm />
@@ -169,3 +143,98 @@ export const SharedLayout = () => {
     </main>
   );
 };
+
+
+// return isLoggedIn ? (
+//   <MainContainer>
+//     {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
+//     {modalActive && (
+//       <Modal active={modalActive} setActive={setModalActive}>
+//         <ModalCard closePopup={setModalauthActive} />
+//       </Modal>
+//     )}
+//     {policyModal && (
+//       <Modal active={policyModal} setActive={setPolicyModal}>
+//         <ModalPolicyCard onMount={policyModal} />
+//       </Modal>
+//     )}
+//     {termsModal && (
+//       <Modal active={termsModal} setActive={setTermsModal}>
+//         <ModalTermsCard onMount={termsModal} />
+//       </Modal>
+//     )}
+//     {isDesctop ? (
+//       <Header>
+//         <Logo />
+//         <NavBar />
+//         <UserBar toggleModal={setModalauthActive} />
+//       </Header>
+//     ) : (
+//       <Header>
+//         <Logo />
+//         <UserBar toggleModal={setModalauthActive} />
+//         <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
+//         {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+//       </Header>
+//     )}
+//     <main className={css.mainFrame}>
+//       <Suspense fallback={<LayoutSpiner />}>
+//         <Outlet />
+//       </Suspense>
+//     </main>
+//     <Footer>
+//       <div className={css.footerUpperContainer}>
+//         <div className={css.leftSideBar}>
+//           <Logo />
+//           <Socials />
+//           <NavBar />
+//           <UserBar toggleModal={setModalauthActive} />
+//         </Header>
+//       ) : (
+//         <Header>
+//           <Logo />
+//           <UserBar toggleModal={setModalauthActive} />
+//           <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
+//           <BurgerMenu burgerMenuActive={burgerMenuActive} />
+//         </Header>
+//       )}
+//       <main className={css.mainFrame}>
+//         <Suspense fallback={<LayoutSpiner />}>
+//           <Outlet />
+//         </Suspense>
+//       </main>
+//     </MainContainer>
+//     <div>
+//       <Footer>
+//         <div style={footerUpperContainer}>
+//           <div style={leftSideBar}>
+//             <Logo />
+//             <Socials />
+//           </div>
+//           <NavBarFooter />
+//           <SubscribeForm />
+//         </div>
+//         <NavBarFooter />
+//         <SubscribeForm />
+//       </div>
+//       <div className={css.footerBottomContainer}>
+//         <Link className={css.links}>©2023 Drink Master. All rights reserved.</Link>
+//         <div className={css.rightSide}>
+//           <Link className={css.links} onClick={() => setPolicyModal(true)}>
+//             Privacy Policy
+//           </Link>
+//           <Link className={css.links} onClick={() => setTermsModal(true)}>
+//             Terms of Service
+//           </Link>
+//         </div>
+//       </div>
+//     </Footer>
+//   </MainContainer>
+// ) : (
+//   <main className={css.mainStyles}>
+//     <Suspense fallback={<LayoutSpiner />}>
+//       <Outlet />
+//     </Suspense>
+//   </main>
+// );
+// };
