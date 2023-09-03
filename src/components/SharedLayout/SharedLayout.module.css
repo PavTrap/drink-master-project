@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
 
-
   margin: 0 auto;
   box-sizing: border-box;
   background-color: #0a0a11;
@@ -17,10 +16,10 @@
   margin: 0 auto;
   max-width: 335px;
   padding: 80px 0;
-  @media screen and (min-width: 768px) {
+  @media only screen and (min-width: 768px) {
     max-width: 704px;
   }
-  @media screen and (min-width: 1440px) {
+  @media only screen and (min-width: 1440px) {
     max-width: 1240px;
   }
 }
@@ -30,6 +29,7 @@
   position: relative;
   border-bottom: 1px solid rgba(243, 243, 243, 0.2);
 }
+
 .headerContainer {
   max-width: 335px;
   padding: 20px 0;
@@ -165,14 +165,13 @@
     left: -590px;
     width: 784px;
     height: 849px;
-
   }
   @media screen and (min-width: 1440px) {
     bottom: 140px;
     left: -690px;
   }
 }
-.gradient5{
+.gradient5 {
   position: absolute;
   display: block;
   bottom: 100px;
@@ -188,7 +187,7 @@
   pointer-events: none;
   z-index: 1;
 }
-.gradient6{
+.gradient6 {
   position: absolute;
   display: block;
   bottom: -690px;
@@ -218,7 +217,6 @@
   gap: 20px;
   margin-bottom: 80px;
 }
-
 
 @media screen and (min-width: 340px) {
   .spinner {
@@ -274,6 +272,7 @@
   .mainFrame {
     max-width: 335px;
   }
+}
 
 @media screen and (min-width: 768px) {
   .mainFrame {
@@ -281,8 +280,6 @@
     min-height: 100vh;
   }
 }
-
-
 
 @media screen and (min-width: 1440px) {
   .mainFrame {
@@ -307,12 +304,14 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: row;
+  gap: 15px;
 }
 
 .links {
   color: #f3f3f380;
   text-decoration: none;
   font-size: 12px;
+  font-family: 'Manrope' sans-serif;
   font-weight: 400;
   line-height: calc(16 / 12);
   letter-spacing: -0.02em;
@@ -389,4 +388,3 @@
   justify-content: space-between;
   gap: 20px;
 }
-

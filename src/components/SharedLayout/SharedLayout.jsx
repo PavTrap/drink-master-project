@@ -21,12 +21,12 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 import { LayoutSpiner } from '../Spinner/LayoutSpinner';
 import MainContainer from './MainContainer';
 import Header from 'components/SharedLayout/Header/Header';
-import Logo from './Logo';
+import Logo from './Logo/Logo';
 import NavBar from './NavBar/NavBar';
 import UserBar from './UserBar/UserBar';
 import Footer from 'components/SharedLayout/Footer/Footer';
 import NavBarFooter from './NavBar/NavBarFooter';
-import Socials from './Socials';
+import Socials from './Socials/Socials';
 import ModalAuth from 'components/Modal/ModalAuth';
 import Modal from '../Modal/Modal';
 import ModalCard from 'components/Modal/ModalCard';
@@ -113,10 +113,47 @@ export const SharedLayout = () => {
           <Outlet />
         </Suspense>
       </main>
+      
       <Footer>
         <div className={css.footerUpperContainer}>
           <div className={css.leftSideBar}>
-            <Logo />
+            <div>
+                 <Logo />
+            <Socials />
+            </div>
+            <NavBarFooter />
+             </div>
+          <SubscribeForm />
+        </div>
+        <div className={css.footerBottomContainer}>
+          <Link className={css.links}>©2023 Drink Master. All rights reserved.</Link>
+          <div className={css.rightSide}>
+            <Link className={css.links} onClick={() => setPolicyModal(true)}>
+              Privacy Policy
+            </Link>
+            <Link className={css.links} onClick={() => setTermsModal(true)}>
+              Terms of Service
+            </Link>
+
+          </div>
+        </div>
+      </Footer>
+    </MainContainer>
+  ) : (
+
+//     {*/<main style={{ width: '100%' }}>*/}
+
+
+    <main className={css.mainStyles}>
+
+      <Suspense fallback={<LayoutSpiner />}>
+        <Outlet />
+      </Suspense>
+    </main>
+  );
+};
+
+
 
             {/* <NavBar />
 
@@ -158,36 +195,3 @@ export const SharedLayout = () => {
 //                 Terms of Service
 //               </Link>
 //             </div>*/}
-
-            <Socials />
-          </div>
-          <NavBarFooter />
-          <SubscribeForm />
-        </div>
-        <div className={css.footerBottomContainer}>
-          <Link className={css.links}>©2023 Drink Master. All rights reserved.</Link>
-          <div className={css.rightSide}>
-            <Link className={css.links} onClick={() => setPolicyModal(true)}>
-              Privacy Policy
-            </Link>
-            <Link className={css.links} onClick={() => setTermsModal(true)}>
-              Terms of Service
-            </Link>
-
-          </div>
-        </div>
-      </Footer>
-    </MainContainer>
-  ) : (
-
-//     {*/<main style={{ width: '100%' }}>*/}
-
-
-    <main className={css.mainStyles}>
-
-      <Suspense fallback={<LayoutSpiner />}>
-        <Outlet />
-      </Suspense>
-    </main>
-  );
-};

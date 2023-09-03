@@ -1,21 +1,19 @@
 import { NavLink } from 'react-router-dom';
+import css from './NavBarFooter.module.css'
 
 const NavBarFooter = () => {
   return (
-    <nav style={navBarStyles}>
-      <NavLink to="/drinks" style={linksStyles}>
+    <nav className={css.navBarStyles}>
+      <NavLink to="/drinks" className={css.linksStyles}>
         Drinks
       </NavLink>
-      <NavLink to="/add" style={linksStyles}>
+      <NavLink to="/add" className={css.linksStyles}>
         Add recipe
       </NavLink>
-      <NavLink to="/my" style={linksStyles}>
+      <NavLink to="/my" className={css.linksStyles}>
         My recipes
       </NavLink>
-      {/* <NavLink to="/spinner" style={linksStyles}>
-        Spinner
-      </NavLink> */}
-      <NavLink to="/favorite" style={linksStyles}>
+      <NavLink to="/favorite" className={css.linksStyles}>
         Favorites
       </NavLink>
     </nav>
@@ -23,24 +21,3 @@ const NavBarFooter = () => {
 };
 
 export default NavBarFooter;
-
-const linksStyles = {
-  color: "#F3F3F3",
-  justifyContent: 'flex-start',
-  display:"flex",
-  fontFamily: "Manrope, sans-serif",
-  fontSize: "14px",
-  fontStyle: "normal",
-  fontWeight: "500",
-  lineHeight:" 22.4px",
-  textDecoration: "none",
-  cursor:"pointer",
-};
-const navBarStyles = {
-
-  display: 'flex',
-  gap: '16px',
-  flexDirection: 'column',
-  justifyContent: 'center',
-  width: "78px",
-};
