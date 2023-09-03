@@ -1,5 +1,5 @@
 import s from './FollowUs.module.css'
-import Socials from 'components/SharedLayout/Socials';
+import Socials from 'components/SharedLayout/Socials/Socials';
 
 export const FollowUs = ( ) => {
       

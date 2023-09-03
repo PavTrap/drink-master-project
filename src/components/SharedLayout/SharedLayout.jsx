@@ -1,31 +1,16 @@
 import { Suspense, useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
-// import { LayoutSpiner } from 'components/Spinner/LayoutSpinner';
-// import MainContainer from './MainContainer'; //components
-// import Header from 'components/SharedLayout/Header/Header'; // Component
-// import Logo from './Logo'; //components
-// import NavBar from './NavBar/NavBar'; //components
-// import UserBar from './UserBar/UserBar'; //components
-// import Footer from 'components/SharedLayout/Footer/Footer'; // Component
-// import NavBarFooter from './NavBar/NavBarFooter'; //components
-// import Socials from './Socials'; //components
-// import useAuth from 'hooks/useAuth'; //hook
-
-// import ModalAuth from 'components/Modal/ModalAuth'; //component
-// import Modal from '../Modal/Modal'; //component
-// import ModalCard from 'components/Modal/ModalCard'; //component
-
 // components
 import { LayoutSpiner } from '../Spinner/LayoutSpinner';
 import MainContainer from './MainContainer';
 import Header from 'components/SharedLayout/Header/Header';
-import Logo from './Logo';
+import Logo from './Logo/Logo';
 import NavBar from './NavBar/NavBar';
 import UserBar from './UserBar/UserBar';
 import Footer from 'components/SharedLayout/Footer/Footer';
 import NavBarFooter from './NavBar/NavBarFooter';
-import Socials from './Socials';
+import Socials from './Socials/Socials';
 import ModalAuth from 'components/Modal/ModalAuth';
 import Modal from '../Modal/Modal';
 import ModalCard from 'components/Modal/ModalCard';
@@ -112,55 +97,16 @@ export const SharedLayout = () => {
           <Outlet />
         </Suspense>
       </main>
+      
       <Footer>
         <div className={css.footerUpperContainer}>
           <div className={css.leftSideBar}>
-            <Logo />
-
-          {/* <NavBar />
-
-//             <UserBar toggleModal={setModalauthActive} />
-//           </Header>
-//         ) : (
-//           <Header>
-//             <Logo />
-
-
-//             <UserBar toggleModal={setModalauthActive} />
-//             <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-//             <BurgerMenu burgerMenuActive={burgerMenuActive} />
-//           </Header>
-//         )}
-//         <main className={css.mainFrame}>
-//           <Suspense fallback={<LayoutSpiner />}>
-//             <Outlet />
-//           </Suspense>
-//         </main>
-//       </MainContainer>
-//       <div>
-//         <Footer>
-//           <div style={footerUpperContainer}>
-//             <div style={leftSideBar}>
-//               <Logo />
-//               <Socials />
-//             </div>
-//             <NavBarFooter />
-//             <SubscribeForm />
-//           </div>
-//           <div style={footerBottomContainer}>
-//             <Link style={links} to='https://drink-master-back-end.onrender.com/api-docs'>©2023 Drink Master. All rights reserved.</Link>
-//             <div style={rightSide}>
-//               <Link style={links} onClick={() => setPolicyModal(true)}>
-//                 Privacy Policy
-//               </Link>
-//               <Link style={links} onClick={() => setTermsModal(true)}>
-//                 Terms of Service
-//               </Link>
-//             </div>*/}
-
+            <div>
+                 <Logo />
             <Socials />
-          </div>
-          <NavBarFooter />
+            </div>
+            <NavBarFooter />
+             </div>
           <SubscribeForm />
         </div>
         <div className={css.footerBottomContainer}>
@@ -177,12 +123,6 @@ export const SharedLayout = () => {
       </Footer>
     </MainContainer>
   ) : (
-    //     {*/<main style={{ width: '100%' }}>*/}
 
-    <main className={css.mainStyles}>
-      <Suspense fallback={<LayoutSpiner />}>
-        <Outlet />
-      </Suspense>
-    </main>
-  );
-};
+//     {*/<main style={{ width: '100%' }}>*/}
+
