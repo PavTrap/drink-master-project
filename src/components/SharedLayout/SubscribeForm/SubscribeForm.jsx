@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import css from './SubscribeForm.module.css';
+import Toast from '../../Toast/Toast';
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
@@ -44,6 +45,7 @@ const SubscribeForm = () => {
       <button className={css.subscribeBlockButton} type="submit">
         Subscribe
       </button>
+      {isSubmiting ? <Toast /> : null}
     </form>
   );
 };
