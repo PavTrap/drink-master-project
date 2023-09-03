@@ -1,76 +1,97 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import css from './DrinksSearch.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
-import cssMainPage from '../../pages/MainPage/MainPage.module.css';
 import Select from 'react-select';
 import debounce from 'lodash.debounce';
 import { selectStyles } from './selectStyles';
-// import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Dots from 'components/Spinner/Dots';
 import { Paginator } from 'components/Paginator/Paginator';
-import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom/dist';
+import { SearchSvg, DrinkCard } from './additionalComponents';
+// import { setIn } from 'formik/dist';
 
-const SearchSvg = ({ className }) => {
-  return (
-    <svg className={className} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-      <path
-        d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
-        stroke="#F3F3F3"
-        strokeWidth="1.8"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <path d="M17.5 17.5L13.875 13.875" stroke="#F3F3F3" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-  );
-};
+
 
 export const DrinksSearch = () => {
-  const { categoryList, entities, ingredientList, isLoading, lastRequest } = useSelector(state => state.drinks);
   const dispatch = useDispatch();
   const drinksDispatch = useDispatch();
-  // const navigate = useNavigate()
-  // const location = useLocation();
-
+  const navigate = useNavigate()
+  const { categoryList, entities, ingredientList, isLoading } = useSelector(state => state.drinks);
+  const { categoryName } = useParams();
+  const [category, setCategory] = useState(categoryName);
+  const [ingredient, setIngredient] = useState('')
+  const [q, setQ] = useState('')
+  const [lastRequest, setLastRequest] = useState(category)
+  
+  // делает запрос за категориями и ингридиентами
   useEffect(() => {
-    dispatch(fetchCategories());
-    dispatch(fetchIngredients());
-  }, [dispatch]);
+    if (categoryList.length === 0) {
+      dispatch(fetchCategories());
+    }
+    if (ingredientList.length === 0) {
+      dispatch(fetchIngredients());
+    }
+  }, [dispatch, categoryList.length, ingredientList.length]);
 
+  // ставит fetch по дефолту или берет с params, если есть
   useEffect(() => {
-    drinksDispatch(fetchDrinks({}));
-  }, [drinksDispatch]);
+    if (categoryName === undefined) {
+      setCategory('Cocktail');
+    } else {
+      setCategory(categoryName);
+    }
+  }, [categoryName]);
+
+  // делает fetch по категории
+  useEffect(() => {
+    if (category !== undefined) {
+      setLastRequest({ category })
+      drinksDispatch(fetchDrinks({category}))
+    }
+  }, [category, drinksDispatch])
+  
+  // делает fetch по ингридиенту
+  useEffect(() => {
+    if (ingredient !== '') {
+      setLastRequest({ ingredient })
+      drinksDispatch(fetchDrinks({ingredient}))
+    }
+  }, [ingredient, drinksDispatch])
+  
+  // делает fetch по q
+  useEffect(() => {
+    if (q !== '') {
+      setLastRequest({ q })
+      drinksDispatch(fetchDrinks({q}))
+    }
+  }, [q, drinksDispatch ])
+
+  
+
+  
 
   const debouncedHandleChange = debounce(payload => {
-    drinksDispatch(fetchDrinks({ word: payload }));
+    setQ(payload)
   }, 1000);
 
   const handleChange = event => {
     const payload = event.currentTarget.value;
     if (payload === '') {
-      console.log('should EXIT');
       return;
     }
-    console.log('не дошдло');
     debouncedHandleChange(payload);
   };
 
   const handleChangeSelectCategory = selectedoption => {
-    drinksDispatch(fetchDrinks({ category: selectedoption.label }));
+    setCategory(selectedoption.label)
   };
 
   const handleChangeSelectIngredient = selectedoption => {
-    drinksDispatch(fetchDrinks({ ingredient: selectedoption.label }));
+    navigate(`/drinks`)
+    setIngredient(selectedoption.label)
   };
-
-  // const SelectList = ({ data }) => {
-  //   const arr = [];
-  //   data.forEach(elem => {
-  //     arr.push(<option key={elem._id}>{elem.name || elem.title}</option>);
-  //   });
-  //   return arr;
-  // };
 
   const changePage = page => {
     return fetchDrinks({ page, lastRequest });
@@ -90,32 +111,14 @@ export const DrinksSearch = () => {
     return arr;
   };
 
-  // const navigateToRecipe = () => {
-  //   const moveTo = location.pathname.replace(/\/[^/]+$/, '/recipe')
-  //   console.log('moveTo', moveTo)
-  //   navigate(moveTo)
-  //   // navigate(`/recipe`)
-  // }
-
-  const DrinkCard = ({ drink, drinkThumb }) => (
-    <li>
-      <img src={drinkThumb} alt="drink" height={400} />
-      <div className={cssMainPage.card_text_wrapper}>
-        <p className={cssMainPage.card_name}>{drink}</p>
-        <Link className={cssMainPage.card_link} to="/recipe">
-          <p className={cssMainPage.ingredients_text}>ingredients</p>
-        </Link>
-      </div>
-    </li>
-  );
-
+  
   return (
     <>
       <form className={css.drinkRequestForm}>
-        <div className={css.inputContainer}>
+        <label className={css.inputContainer}>
           <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" />
-          <SearchSvg className={css.searchSvg} />
-        </div>
+          {window.innerWidth > 768 && <SearchSvg className={css.searchSvg} />}
+        </label>
 
         <Select
           placeholder="All categories"
@@ -130,28 +133,23 @@ export const DrinksSearch = () => {
           onChange={handleChangeSelectIngredient}
         />
       </form>
-      {isLoading ? (
-        <div styles={{ minWidth: '100vw', minHeight: '100vh' }}>
-          <Dots className={css.loading} />
-        </div>
-      ) : (
-        <div className={css.responseContainer}>
-          {entities.data && !isLoading && (
-            <ul className={css.mainPageList}>
-              {entities.data.map(({ _id, drink, drinkThumb }) => (
-                <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
-              ))}
-            </ul>
-          )}
+      <div className={css.responseContainer}>
+        {entities.data && (
+          <ul className={css.drinkCardContainer}>
+            {entities.data.map(({ _id, drink, drinkThumb }) => (
+              <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} id={_id} />
+            ))}
+          </ul>
+        )}
 
-          {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
+        {isLoading && <Dots className={css.loading} />}
+        {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
 
-          {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
-          {entities?.count?.totalPages > 1 && (
-            <Paginator pages={{ page: entities.count.page, totalPages: entities.count.totalPages }} onChangePage={changePage} />
-          )}
-        </div>
-      )}
+        {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
+        {entities?.count?.totalPages > 1 && (
+          <Paginator pages={{ page: entities.count.page, totalPages: entities.count.totalPages }} onChangePage={changePage} />
+        )}
+      </div>
     </>
   );
 };
