@@ -55,7 +55,11 @@ a {
 	flex-wrap: nowrap;
 	gap: 20px;
 
-	margin-bottom: 80px;
+	margin-bottom: 40px;
+
+	@media screen and (min-width: 1440px) {
+		margin-bottom: 80px;
+	}
 }
 
 .drinks_section {
@@ -168,12 +172,3 @@ a {
 
 	transform: translate(-50%);
 }
-
-/* .mainPageList>li {
-	width: calc(30% - 40px);
-	height: calc(30% - 40px);
-	;
-
-	max-width: 1240px;
-	max-height: 522px;
-} */
