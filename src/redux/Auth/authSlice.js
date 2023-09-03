@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { register, login, logOut, refreshUser, updateUser } from './authOperation';
+import { register, login, logOut, refreshUser, updateUser, startLoadingMainPage, mainPageLoaded } from './authOperation';
 import INITIAL_STATE from './InitialState';
 
 const handleRejected = (state, { error, payload }) => {
@@ -60,6 +60,16 @@ const authSlice = createSlice({
         const newUserObject = {...state.user, ...payload};
         state.user = newUserObject;
         state.isRefreshing = false;
+      })
+      // Need load main page
+      .addCase(startLoadingMainPage.fulfilled, (state, _) => {
+        state.isRefreshing = true;
+        state.error = null;
+      })
+      .addCase(mainPageLoaded.fulfilled, (state, {payload})=>{
+        console.log(payload)
+       state.isRefreshing = false
+        
       })
 
       .addMatcher(({ type }) => type.endsWith('/rejected'), handleRejected);

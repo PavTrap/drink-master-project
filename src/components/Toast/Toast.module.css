@@ -1,29 +1,37 @@
 .tost {
-    position: fixed;
-    width: 300px;
-    top: 160px;
-    left: 50%;
-    height: 150px;
-    background-color: #fff;
-    border-radius: 10px;
-    text-align: center;
-    transform: translateX(-50%);
-    overflow: hidden;
-    z-index: 99999;
-  }
-  .title {
-    display: block;
-    padding: 10px 0;
-    background-color: teal;
-    color: white;
-    margin: 0;
-  
-  }
-  .text {
-    text-transform: capitalize;
-    width: 80%;
-    margin: 0 auto;
-    line-height: 1.6rem;
-    padding-top: 10px;
-    color: black;
-  }
+  position: fixed;
+  width: 400px;
+  top: 100px;
+  left: 50%;
+  border-radius: 56px;
+  background: #161f37;
+  text-align: center;
+  transform: translateX(-50%) translateY(-100%);
+  overflow: hidden;
+  z-index: 9999;
+  padding: 18px 44px;
+  opacity: 0;
+  transition: all 500ms ease;
+  border: 1px solid rgba(243, 243, 243, 0.5);
+}
+.active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0)
+}
+/* .title {
+  display: block;
+  padding: 10px 0;
+  background-color: teal;
+  color: white;
+  margin: 0;
+} */
+.text {
+  text-transform: capitalize;
+  color: #da1414;
+  font-family: Manrope, sans-serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+}

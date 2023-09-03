@@ -6,7 +6,7 @@ import Private from './Routes/Privat';
 import OnlyGuest from './Routes/OnlyGuest';
 import useAuth from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/Auth/authOperation';
+import { refreshUser} from 'redux/Auth/authOperation';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import {useNavigate} from 'react-router-dom';
@@ -46,7 +46,7 @@ const location = useLocation();
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
   useEffect(() => {
-    dispatch(refreshUser());
+    dispatch(refreshUser()) 
   }, [dispatch]);
 
   return isRefreshing ? (

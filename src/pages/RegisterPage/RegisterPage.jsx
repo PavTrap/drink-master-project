@@ -4,12 +4,13 @@ import BackgroundEffect from '../../components/BackgroundEffect/BackgroundEffect
 import { useEffect, useState } from 'react';
 import Tost from 'components/Toast/Toast';
 import useAuth from 'hooks/useAuth';
+import useMountTransition from 'hooks/useMountTransition';
 
 export default function RegisterPage() {
 const { BackEndError } = useAuth();
 const[backError, setBackError] = useState(null)
+const isMounted = useMountTransition(Boolean(backError), 3000)
   
-  console.log(BackEndError);
 
   useEffect(() => {
     if (BackEndError !== "Not authorized") setBackError(BackEndError);
@@ -19,7 +20,7 @@ const[backError, setBackError] = useState(null)
   const { section, mainContainer } = css;
   return (
     <>
-    <Tost message={backError}/>
+   { backError && <Tost message={backError} active={isMounted} style={{top: '20px'}}/>}
       <BackgroundEffect />
       <div className={section}>
         <div className={mainContainer}>
