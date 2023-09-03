@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import NavBar from '../NavBar/NavBar';
 import useMountTransition from 'hooks/useMountTransition';
+import styles from './BurgerMenu.module.css';
 
 const BurgerMenu = ({ burgerMenuActive }) => {
-  const isMonted = useMountTransition(burgerMenuActive, 1000);
+  const isMonted = useMountTransition(burgerMenuActive);
 
   useEffect(() => {
     if (burgerMenuActive) {
@@ -17,25 +18,12 @@ const BurgerMenu = ({ burgerMenuActive }) => {
     };
   }, [burgerMenuActive]);
 
-  // #BCE6D2 40%
-  // 4070CD 50%
-
   const burgerMenuStyles = {
-    position: 'fixed',
-    top: '90px',
     right: isMonted ? '0' : '-100%',
-    width: '100%',
-    height: '100%',
-    background: '#0b0d17',
-
-    zIndex: '1000',
-    transition: 'right 1s ease',
-
-    // Анімація виїзду
   };
 
   return (
-    <div style={burgerMenuStyles}>
+    <div style={burgerMenuStyles} className={styles.burgerMenu}>
       <NavBar />
     </div>
   );

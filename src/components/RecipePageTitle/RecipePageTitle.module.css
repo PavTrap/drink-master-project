@@ -1,5 +1,9 @@
 .title {
+    margin-bottom: 28px;
+
     font-size: 64px;
     font-weight: 600;
     line-height: calc(68 / 64);
+
+    color: #F3F3F3;
 }

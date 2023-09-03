@@ -9,9 +9,6 @@ const NavBarFooter = () => {
       <NavLink to="/add" style={linksStyles}>
         Add recipe
       </NavLink>
-      <NavLink to="/recipe" style={linksStyles}>
-        Recipe
-      </NavLink>
       <NavLink to="/my" style={linksStyles}>
         My recipes
       </NavLink>

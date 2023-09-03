@@ -1,0 +1,33 @@
+.subscribeBlock {
+    width: 309px;
+    height: 226px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .subscribeBlockText{
+    text-align: justify;
+    margin-bottom: 24px;
+    font-size: 18px;
+  }
+  
+  .subscribeBlockInput {
+    width: 309px;
+    height: 56px;
+    border-radius: 200px;
+    margin-bottom: 18px;
+    border: 1px solid White;
+    background-color: inherit;
+    color: #F3F3F3;
+    padding: 14px 24px;
+  }
+ .subscribeBlockButton {
+    width: 309px;
+    height: 56px;
+    border-radius: 200px;
+    border: 1px solid White;
+    background-color: inherit;
+    color: #F3F3F3;
+  }
+  

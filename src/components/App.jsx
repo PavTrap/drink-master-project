@@ -1,5 +1,5 @@
 import { lazy, useEffect } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Spinner } from './Spinner/Spinner';
 import Private from './Routes/Privat';
@@ -7,32 +7,38 @@ import OnlyGuest from './Routes/OnlyGuest';
 import useAuth from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/Auth/authOperation';
-import NotFoundPage from '../pages/NotFoundPage';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 import {useNavigate} from 'react-router-dom';
 
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-
+const NotFoundPage= lazy(()=> import('../pages/NotFoundPage/NotFoundPage'))
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
+
+
 export const App = () => {
 
 
-const navigate = useNavigate()
+const navigate = useNavigate();
+const location = useLocation();
 
-useEffect(() => {
-          navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
-          window.onbeforeunload = () => {
-              window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
-          }
-          return () => window.sessionStorage.setItem('lastRoute', "");
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+  useEffect(() => {
+    navigate(location.pathname,{ relative: "path" });
+  }, [location.pathname, navigate]);
+
+// useEffect(() => {
+//           navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
+//           window.onbeforeunload = () => {
+//               window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
+//           }
+//           return () => window.sessionStorage.setItem('lastRoute', "");
+//       // eslint-disable-next-line react-hooks/exhaustive-deps
+//       }, [])
 
 
 
@@ -43,12 +49,10 @@ useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-
   return isRefreshing ? (
     <Spinner />
   ) : (
     <Routes>
-
       <Route path="/" element={<OnlyGuest component={<SharedLayout />} />}>
         <Route index element={<OnlyGuest component={<WelcomePage />} />} />
         <Route path="signin" element={<OnlyGuest component={<LoginPage />} />} />
@@ -59,13 +63,12 @@ useEffect(() => {
         <Route path="drinks" element={<Private component={<DrinksPage />} />} />
         <Route path="drinks/:categoryName" element={<Private component={<DrinksPage />} />} />
         <Route path="add" element={<Private component={<AddRecipePage />} />} />
-        <Route path="recipe" element={<Private component={<RecipePage />} />} />
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />
         <Route path="favorite" element={<Private component={<FavoritePage />} />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
 
-      <Route path="*" element={<NotFoundPage />} />
       <Route path="spinner" element={<Spinner />} />
     </Routes>
   );

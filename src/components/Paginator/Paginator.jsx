@@ -4,7 +4,7 @@ import css from './Paginator.module.css';
 import usePagination from 'hooks/usePagination';
 import useWindowSize from 'hooks/useWindowSize';
 
-export const Paginator = ({ pages: { page, totalPages }, onChangePage }) => {
+export const Paginator = ({ pages: { page, totalPages }, onChangePage}) => {
   const dispatch = useDispatch();
   const { width } = useWindowSize();
   const startPage = 1;
@@ -40,9 +40,11 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage }) => {
           </button>
         </li>
       </ul>
-      {!isEnd && ( <button onClick={() => dispatch(onChangePage(page + 1))} disabled={isEnd} className={css.button}>
-        <RiArrowRightSLine className={css.buttonIcon} />
-      </button>)}
+      {!isEnd && (
+        <button onClick={() => dispatch(onChangePage(page + 1))} disabled={isEnd} className={css.button}>
+          <RiArrowRightSLine className={css.buttonIcon} />
+        </button>
+      )}
     </div>
   );
 };

@@ -1,14 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import {
-  persistStore,
-  persistReducer,
-  FLUSH,
-  REHYDRATE,
-  PAUSE,
-  PERSIST,
-  PURGE,
-  REGISTER,
-} from 'redux-persist';
+import { persistStore, persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './Auth/authSlice';
 import { myRecipesReducer } from './MyRecipe/MyRecipeSlice';
@@ -32,9 +23,9 @@ const favoritesPersistConfig = {
 };
 
 const drinksPersistConfig = {
-  key: "drinks",
+  key: 'drinks',
   storage,
-}
+};
 
 export const store = configureStore({
   reducer: {
