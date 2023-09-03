@@ -27,7 +27,7 @@ import css from './SharedLayout.module.css';
 export const SharedLayout = () => {
   const location = useLocation();
   const { isLoggedIn } = useAuth();
-  
+
   const [modalAuthActive, setModalauthActive] = useState(false);
   const [modalActive, setModalActive] = useState(false);
   const [policyModal, setPolicyModal] = useState(false);
@@ -41,7 +41,7 @@ export const SharedLayout = () => {
   }, [location]);
 
   // useEffect(()=>{
-    
+
   // })
 
   //слідкує за шириною екрану і її зміни
@@ -78,7 +78,19 @@ export const SharedLayout = () => {
           <ModalTermsCard onMount={termsModal} />
         </Modal>
       )}
-      {isDesctop ? (
+      <Header>
+        <Logo />
+        {isDesctop && <NavBar />}
+        <UserBar toggleModal={setModalauthActive} />
+        {!isDesctop && (
+          <>
+            <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
+            <BurgerMenu burgerMenuActive={burgerMenuActive} />
+          </>
+        )}
+      </Header>
+
+      {/* {isDesctop ? (
         <Header>
           <Logo />
           <NavBar />
@@ -89,9 +101,9 @@ export const SharedLayout = () => {
           <Logo />
           <UserBar toggleModal={setModalauthActive} />
           <BurgerMenuIcon onClick={() => setBurgerMenuActive(!burgerMenuActive)} active={burgerMenuActive} />
-          {burgerMenuActive && <BurgerMenu burgerMenuActive={burgerMenuActive} />}
+          <BurgerMenu burgerMenuActive={burgerMenuActive} />
         </Header>
-      )}
+      )} */}
       <main className={css.mainFrame}>
         <Suspense fallback={<LayoutSpiner />}>
           <Outlet />
@@ -174,4 +186,35 @@ export const SharedLayout = () => {
 //               <Link style={links} onClick={() => setTermsModal(true)}>
 //                 Terms of Service
 //               </Link>
-//             </div>*/
+
+//             </div>
+
+            <Socials />
+          </div>
+          <NavBarFooter />
+          <SubscribeForm />
+        </div>
+        <div className={css.footerBottomContainer}>
+          <Link className={css.links}>©2023 Drink Master. All rights reserved.</Link>
+          <div className={css.rightSide}>
+            <Link className={css.links} onClick={() => setPolicyModal(true)}>
+              Privacy Policy
+            </Link>
+            <Link className={css.links} onClick={() => setTermsModal(true)}>
+              Terms of Service
+            </Link>
+          </div>
+        </div>
+      </Footer>
+    </MainContainer>
+  ) : (
+      <main style={{ width: '100%' }}>
+
+    <main className={css.mainStyles}>
+      <Suspense fallback={<LayoutSpiner />}>
+        <Outlet />
+      </Suspense>
+    </main>
+  );
+};
+*/

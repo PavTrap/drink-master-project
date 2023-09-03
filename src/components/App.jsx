@@ -7,7 +7,7 @@ import Private from './Routes/Privat';
 import OnlyGuest from './Routes/OnlyGuest';
 import useAuth from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
-import { refreshUser } from 'redux/Auth/authOperation';
+import { refreshUser} from 'redux/Auth/authOperation';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
@@ -46,6 +46,7 @@ export const App = () => {
 //           return () => window.sessionStorage.setItem('lastRoute', "");
 //       // eslint-disable-next-line react-hooks/exhaustive-deps
 //       }, [])
+
 
 
 
