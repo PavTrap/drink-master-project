@@ -12,6 +12,9 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage}) => {
   const { numbers, DOTS, shouldRenderLeftDots, shouldRenderRightDots } = usePagination(totalPages, page, width);
   const isEnd = page === lastPage ? true : false;
   const isStart = page === startPage ? true : false;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+
   return (
     <div className={css.paginatorContainer}>
       {!isStart && (
@@ -21,14 +24,14 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage}) => {
       )}
       <ul className={css.pagesList}>
         <li key={startPage}>
-          <button onClick={() => dispatch(onChangePage(startPage))} className={`${css.pageButton} ${css.active}`}>
+          <button onClick={() => dispatch(onChangePage(startPage))} className={`${css.pageButton} ${page === 1 && css.active}`}>
             {startPage}
           </button>
         </li>
         {shouldRenderLeftDots && <li key="leftDots">{DOTS}</li>}
         {numbers.map(number => (
           <li key={number}>
-            <button onClick={() => dispatch(onChangePage(number))} className={css.pageButton}>
+            <button onClick={() => dispatch(onChangePage(number))} className={`${css.pageButton} ${number === page && css.active}`}>
               {number}
             </button>
           </li>

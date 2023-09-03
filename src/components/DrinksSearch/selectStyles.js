@@ -1,6 +1,5 @@
 // styles for select-react
 export const selectStylesCoktails = {
-
   singleValue: styles => ({
     //Init value
     ...styles,
@@ -12,24 +11,28 @@ export const selectStylesCoktails = {
     display: 'flex',
     color: isSelected ? '#F3F3F3' : 'rgba(243, 243, 243, 0.40)',
     backgroundColor: '#161f37',
-    width: window.innerWidth <= 768 ? '100%' : '199px', // Изменяем ширину в зависимости от ширины окна
+    width: '100%',
 
-    // width: '200px',
     outline: 'none',
-
     borderWidth: '1px',
     borderRadius: '60px',
 
-    paddingTop: '14px',
-    paddingBottom: '15px',
     paddingLeft: '24px',
     paddingRight: '24px',
     fontSize: '17px',
     fontWeight: '400',
-    // lineHeight: '26.52', /* 26.52px */
+    height: "54px",
 
     border: 'none', // Убираем border
     boxShadow: 'none', // Убираем boxShadow, если есть
+
+    '@media only screen and (min-width: 768px)': {
+      ...styles['@media only screen and (min-width: 768px)'],
+      width: '199px',
+      height: '56px',
+
+    },
+
   }),
   option: (styles, { isFocused }) => ({
     ...styles,
@@ -42,7 +45,6 @@ export const selectStylesCoktails = {
   }),
   menu: styles => ({
     ...styles,
-
     paddingBottom: '14px',
     paddingLeft: '23px',
     paddingRight: '8px',
@@ -57,7 +59,6 @@ export const selectStylesCoktails = {
     '&::-webkit-scrollbar': {
       display: "none",
     },
- 
     boxSizing: 'content-box',
 
   }),
@@ -84,24 +85,29 @@ export const selectStylesIngredients = {
     display: 'flex',
     color: isSelected ? '#F3F3F3' : 'rgba(243, 243, 243, 0.40)',
     backgroundColor: '#161f37',
-    width: window.innerWidth <= 768 ? '100%' : '199px', // Изменяем ширину в зависимости от ширины окна
+    width: '100%',
 
-    // width: '200px',
     outline: 'none',
-
     borderWidth: '1px',
     borderRadius: '60px',
 
-    paddingTop: '14px',
-    paddingBottom: '15px',
     paddingLeft: '24px',
     paddingRight: '24px',
     fontSize: '17px',
     fontWeight: '400',
-    // lineHeight: '26.52', /* 26.52px */
+    height: "54px",
 
     border: 'none', // Убираем border
     boxShadow: 'none', // Убираем boxShadow, если есть
+
+    '@media only screen and (min-width: 768px)': {
+      ...styles['@media only screen and (min-width: 768px)'],
+      width: '199px',
+      height: '56px',
+
+    },
+
+
   }),
   option: (styles, { isFocused }) => ({
     ...styles,
