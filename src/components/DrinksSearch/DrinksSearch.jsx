@@ -4,27 +4,24 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
 import Select from 'react-select';
 import debounce from 'lodash.debounce';
-import { selectStyles } from './selectStyles';
+import { selectStylesCoktails, selectStylesIngredients } from './selectStyles';
 import { useNavigate } from 'react-router-dom';
 import Dots from 'components/Spinner/Dots';
 import { Paginator } from 'components/Paginator/Paginator';
 import { useParams } from 'react-router-dom/dist';
 import { SearchSvg, DrinkCard } from './additionalComponents';
-// import { setIn } from 'formik/dist';
-
-
 
 export const DrinksSearch = () => {
   const dispatch = useDispatch();
   const drinksDispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { categoryList, entities, ingredientList, isLoading } = useSelector(state => state.drinks);
   const { categoryName } = useParams();
   const [category, setCategory] = useState(categoryName);
-  const [ingredient, setIngredient] = useState('')
-  const [q, setQ] = useState('')
-  const [lastRequest, setLastRequest] = useState(category)
-  
+  const [ingredient, setIngredient] = useState('');
+  const [q, setQ] = useState('');
+  const [lastRequest, setLastRequest] = useState(category);
+
   // делает запрос за категориями и ингридиентами
   useEffect(() => {
     if (categoryList.length === 0) {
@@ -47,33 +44,29 @@ export const DrinksSearch = () => {
   // делает fetch по категории
   useEffect(() => {
     if (category !== undefined) {
-      setLastRequest({ category })
-      drinksDispatch(fetchDrinks({category}))
+      setLastRequest({ category });
+      drinksDispatch(fetchDrinks({ category }));
     }
-  }, [category, drinksDispatch])
-  
+  }, [category, drinksDispatch]);
+
   // делает fetch по ингридиенту
   useEffect(() => {
     if (ingredient !== '') {
-      setLastRequest({ ingredient })
-      drinksDispatch(fetchDrinks({ingredient}))
+      setLastRequest({ ingredient });
+      drinksDispatch(fetchDrinks({ ingredient }));
     }
-  }, [ingredient, drinksDispatch])
-  
+  }, [ingredient, drinksDispatch]);
+
   // делает fetch по q
   useEffect(() => {
     if (q !== '') {
-      setLastRequest({ q })
-      drinksDispatch(fetchDrinks({q}))
+      setLastRequest({ q });
+      drinksDispatch(fetchDrinks({ q }));
     }
-  }, [q, drinksDispatch ])
-
-  
-
-  
+  }, [q, drinksDispatch]);
 
   const debouncedHandleChange = debounce(payload => {
-    setQ(payload)
+    setQ(payload);
   }, 1000);
 
   const handleChange = event => {
@@ -85,12 +78,12 @@ export const DrinksSearch = () => {
   };
 
   const handleChangeSelectCategory = selectedoption => {
-    setCategory(selectedoption.label)
+    setCategory(selectedoption.label);
   };
 
   const handleChangeSelectIngredient = selectedoption => {
-    navigate(`/drinks`)
-    setIngredient(selectedoption.label)
+    navigate(`/drinks`);
+    setIngredient(selectedoption.label);
   };
 
   const changePage = page => {
@@ -111,7 +104,6 @@ export const DrinksSearch = () => {
     return arr;
   };
 
-  
   return (
     <>
       <form className={css.drinkRequestForm}>
@@ -123,13 +115,14 @@ export const DrinksSearch = () => {
         <Select
           placeholder="All categories"
           options={selectListWithSelectReact(categoryList)}
-          styles={selectStyles}
+          styles={selectStylesCoktails}
           onChange={handleChangeSelectCategory}
+          maxMenuHeight={405}
         />
         <Select
           placeholder="Ingredients"
           options={selectListWithSelectReact(ingredientList)}
-          styles={selectStyles}
+          styles={selectStylesIngredients}
           onChange={handleChangeSelectIngredient}
         />
       </form>
