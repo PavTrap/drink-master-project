@@ -30,12 +30,24 @@ li {
 }
 
 .container {
-  box-sizing: border-box;
-  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 100px;
+  min-width: 375px;
+  padding: 0 20px;
+}
 
-  margin: 132px auto 140px auto;
-  max-width: 1240px;
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 768px;  
+    padding: 0 32px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    /* Чомусь не спрацьовує */
+    /* min-width: 1440;  
+    padding: 0 100px; */
+    padding: 0;
+  }
 }

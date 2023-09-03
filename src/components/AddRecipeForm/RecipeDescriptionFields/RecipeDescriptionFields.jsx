@@ -92,6 +92,7 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ab
   return (
     <div className={s.recipeDescriptionSection}>
       <label className={s.recipeDescription_labelImg}>
+
         {addImage  ? (
           <div className={s.recipeDescription_showImgContainerActive}>
             <img className={s.recipeDescription_showImg} src={drinkThumb} alt="Cocktail" />

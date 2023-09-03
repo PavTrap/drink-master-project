@@ -1,20 +1,21 @@
 .title {
-  margin-bottom: 60px;
+  margin-top: 80px;
+  margin-bottom: 40px;
 
-  font-size: 40px;
+  font-size: 28px;
   font-weight: 600;
-  line-height: calc(44 / 40);
+  line-height: calc(32 / 28);
 
   color: #F3F3F3;
 }
 
 .recipeContainer {
   display: flex;
-  gap: 60px;
+  flex-direction: column-reverse;
 }
 
 .imgDrink {
-  min-width: 631px;
+  min-width: 335px;
   height: 430px;
   border-radius: 8px;
   
@@ -25,14 +26,15 @@
 .description {
   margin-bottom: 60px;
   
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: calc(22 / 16);
+  line-height: calc(18 / 14);
 
   color: #F3F3F3;
 }
 
 .instructionList {
+  margin-bottom: 40px;
   max-height: 280px;
   overflow: auto;
 }
@@ -44,9 +46,9 @@
 .instructionText {
   margin-bottom: 14px;
   
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 400;
-  line-height: calc(22 / 16);
+  line-height: calc(18 / 14);
 
   color: #F3F3F3;
 }
@@ -63,4 +65,40 @@
   height: 1px;
 
   background-color: rgba(243, 243, 243, 0.2);
+}
+
+@media screen and (min-width: 768px) {
+  .title {  
+    font-size: 40px;
+    line-height: calc(44 / 40);
+  }
+  
+  .imgDrink {
+    min-width: 704px;
+  }
+  
+  .description {
+    font-size: 16px;
+    line-height: calc(22 / 16);
+  }
+  
+  .instructionText {
+    font-size: 16px;
+    line-height: calc(22 / 16);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .recipeContainer {
+    flex-direction: row;
+    gap: 60px;
+  }
+
+  .title {  
+    margin-bottom: 60px;
+  }
+  
+  .imgDrink {
+    min-width: 631px;
+  }
 }
