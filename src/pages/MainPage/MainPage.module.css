@@ -11,6 +11,8 @@ h1 {
 	font-size: 32px;
 	font-weight: 600;
 
+	max-width: 279px;
+
 	@media screen and (min-width: 768px) {
 		font-size: 56px;
 
@@ -19,6 +21,8 @@ h1 {
 
 	@media screen and (min-width: 1440px) {
 		font-size: 64px;
+
+		max-width: 715px;
 	}
 }
 
@@ -65,7 +69,6 @@ a {
 
 .hero_section {
 	padding: 128px 0px 358px;
-	/* margin-bottom: 300px; */
 	min-width: 335px;
 
 	background-repeat: no-repeat;
@@ -90,7 +93,6 @@ a {
 
 	@media screen and (min-width: 1440px) {
 		padding: 160px 0px 316px;
-		/* margin-bottom: 300px; */
 		background-position: top -150px right -100px;
 
 		background-image: url("../MainPage/img/main-page-glass-desktop-1x.png");
@@ -126,10 +128,18 @@ a {
 	margin-bottom: 32px;
 	font-size: 14px;
 
+	max-width: 266px;
+
 	@media screen and (min-width: 768px) {
 		margin-bottom: 58px;
 		font-size: 18px;
+
+		max-width: 449px;
 	}
+
+		@media screen and (min-width: 1440px) {
+			max-width: 500px;
+		}
 }
 
 .hero_title {

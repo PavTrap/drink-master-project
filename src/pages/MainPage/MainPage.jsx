@@ -65,8 +65,8 @@ const MainPage = () => {
 				<section className={css.hero_section}>
 					<h1 className={css.hero_title}>Craft Your Perfect<br /> Drink with Drink Master	</h1>
 					<p className={css.main_p}>
-						Unlock your inner mixologist with Drink Master, your one-<br />stop
-						destination for exploring, crafting, and mastering the<br /> world's finest
+						Unlock your inner mixologist with Drink Master, your one-stop
+						destination for exploring, crafting, and mastering the world's finest
 						beverages.
 					</p>
 					<Link className={css.button} to={"/add"}>Add recipe</Link>
