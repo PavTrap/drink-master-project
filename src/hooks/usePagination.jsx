@@ -2,7 +2,7 @@ const usePagination = (totalPages, page, width) => {
   function calculateVisibleNumbers(windowWidth) {
     let count = 3;
     if (windowWidth >= 768 && width < 1440) count = 5;
-    else if (windowWidth > 1440) count = 7;
+    else if (windowWidth >= 1440) count = 7;
     return count;
   }
 
@@ -49,9 +49,9 @@ const usePagination = (totalPages, page, width) => {
       shouldRenderRightDots = last < total - Math.floor(max / 2) ? true : false;
     }
     if (max === 7) {
-        shouldRenderLeftDots = start >= Math.floor(max / 2) ? true : false;
-        shouldRenderRightDots = last <= total - Math.floor(max / 2) ? true : false;
-      }
+      shouldRenderLeftDots = start >= Math.floor(max / 2) ? true : false;
+      shouldRenderRightDots = last <= total - Math.floor(max / 2) ? true : false;
+    }
     return { shouldRenderLeftDots, shouldRenderRightDots };
   }
 

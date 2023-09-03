@@ -108,7 +108,7 @@ export const RecipeDescriptionFields = ({ drinkThumb, cocktailImg, itemTitle, ca
         <label className={s.recipeDescription_labelImg}>
 
           {addImage ?
-            <div className={s.recipeDescription_showImgContainerActive} > <img className={s.recipeDescription_showImg} src={drinkThumb} alt="Cocktail photo" /></div>
+            <div className={s.recipeDescription_showImgContainerActive} > <img className={s.recipeDescription_showImg} src={drinkThumb} alt="Cocktail_Photo" /></div>
             :<div><BsFillPlusSquareFill className={s.recipeDescription_addImgIcon} /> <p className={s.recipeDescription_addImgDescr}>Add image</p> </div>
           }
                 <input type="file" className={s.recipeDescription_inputImg} id="cocktailImg" name="cocktailImg"  accept=".jpg, .jpeg, .png" multiple  onChange={cocktailImg}/>

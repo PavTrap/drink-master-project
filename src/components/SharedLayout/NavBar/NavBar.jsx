@@ -17,17 +17,34 @@ const NavBar = () => {
       <NavLink to="/add" className={`${styles.links} ${isActive('/add')}`}>
         Add recipe
       </NavLink>
-      <NavLink to="/recipe" className={`${styles.links} ${isActive('/recipe')}`}>
-        Recipe
-      </NavLink>
-      <NavLink to="/my" className={`${styles.links} ${isActive('/my')}`}>
+
+      <NavLink to="/my" className={styles.links}>
         My recipes
       </NavLink>
+
       {/* <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
         Spinner
       </NavLink> */}
       <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}>
+
+      {*/<NavLink to="/favorite" className={styles.links}>*/}
+
+      {/* <NavLink to="/recipe" className={`${styles.links} ${isActive('/recipe')}`}>
+         Recipe
+       </NavLink>
+       <NavLink to="/my" className={`${styles.links} ${isActive('/my')}`}>
+         My recipes
+       </NavLink>
+       <NavLink to="/spinner" className={`${styles.links} ${isActive('/spinner')}`}>
+         Spinner
+       </NavLink>
+      <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}> */}
+
+
         Favorites
+      </NavLink>
+      <NavLink to="/spinner" className={styles.links}>
+        Spinner
       </NavLink>
     </nav>
   );
