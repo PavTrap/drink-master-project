@@ -5,19 +5,12 @@
 .drinkCardContainer {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-
+  column-gap: 20px;
+  row-gap: 28px;
   list-style: none;
-
   margin-bottom: 40px;
 }
 
-
-.drinkImg {
-  width: 100%; 
-  height: auto; 
-  
-}
 
 @media screen and (min-width: 320px) {
   .inputDrinks {
@@ -68,7 +61,7 @@
     position: absolute;
     left: 8px;
   }
-  
+
   .drinkRequestForm {
     display: flex;
     flex-direction: column;
@@ -77,11 +70,9 @@
     margin-bottom: 40px;
   }
 
-  .drinkCard{
-    width: 100%
+  .drinkCard {
+    width: 100%;
   }
-
-  
 
   .mainPageList {
     list-style: none;
@@ -99,11 +90,9 @@
 @media screen and (min-width: 768px) {
 
   .drinkCardContainer {
-    margin-right: -20px;
+    row-gap: 40px;
     margin-bottom: 80px;
   }
-  
-  
 
   .title {
     margin-bottom: 60px;
@@ -137,24 +126,26 @@
     top: 18px;
     right: 24px;
   }
-  .drinkCard{
+
+  .drinkCard {
     width: calc((100% / 2) - 20px);
   }
 }
 
 @media screen and (min-width: 1440px) {
- 
+  .drinkCardContainer{
+    column-gap: 20px;
+    row-gap: 80px;
+  }
   .title {
     margin-bottom: 80px;
   }
 
-  .drinkCard{
-    width: calc((100% / 3) - 40px);
+  .drinkCard {
+    width: calc((100% / 3) - 15px);
   }
 
   .drinkCardContainer {
     margin-right: -80px;
   }
-
-  
 }

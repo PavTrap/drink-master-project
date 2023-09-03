@@ -4,45 +4,21 @@ h1,
 h2 {
   font-family: Manrope;
   font-style: normal;
-	margin: 0;
-	padding: 0;
-	color: #f3f3f3;
+  margin: 0;
+  padding: 0;
+  color: #f3f3f3;
 }
 
 h1 {
-	font-size: 32px;
-	font-weight: 600;
-
-	max-width: 279px;
-
-	@media screen and (min-width: 768px) {
-		font-size: 56px;
-
-		max-width: 483px;
-	}
-
-	@media screen and (min-width: 1440px) {
-		font-size: 64px;
-
-		max-width: 715px;
-	}
+  font-size: 32px;
+  font-weight: 600;
+  max-width: 279px;
 }
 
 h2 {
-	margin-bottom: 24px;
-
-	font-size: 32px;
-	font-weight: 600;
-
-	@media screen and (min-width: 768px) and (max-width: 1200px) {
-		font-size: 40px;
-		margin-bottom: 40px;
-	}
-
-	@media screen and (min-width: 1201px) {
-		font-size: 44px;
-		margin-bottom: 40px;
-	}
+  margin-bottom: 24px;
+  font-size: 32px;
+  font-weight: 600;
 }
 
 a {
@@ -64,11 +40,12 @@ ul {
   margin-bottom: 80px;
 }
 
-.mainPageList > li > a > img {
+.image{
   width: 100%;
   height: 100%;
   border-radius: 8px;
 }
+
 
 .mainPageList_item:not(:first-child) {
   display: none;
@@ -76,10 +53,14 @@ ul {
   pointer-events: none;
 }
 
-.mainPageList > li {
+.card {
   width: 100%;
   height: 100%;
+  transition: transform 200ms ease;
+} 
+.card:hover{ transform: scale(1.02)
 }
+
 .hero_title {
   z-index: 9;
   font-size: 32px;
@@ -183,6 +164,10 @@ ul {
 }
 
 @media screen and (min-width: 768px) {
+  h1 {
+    font-size: 56px;
+    max-width: 483px;
+  }
   .mainPageList_item:not(:first-child) {
     display: block;
     visibility: visible;
@@ -192,7 +177,7 @@ ul {
     display: none;
     pointer-events: none;
   }
-  .mainPageList > li {
+ .card {
     width: calc(100% / 2 - 10px);
     height: calc(100% / 2 - 10px);
   }
@@ -227,13 +212,17 @@ ul {
 }
 
 @media screen and (min-width: 1440px) {
+  h1 {
+    font-size: 64px;
+    max-width: 715px;;
+  }
   .mainPageList_item:nth-child(3) {
     display: block;
     visibility: visible;
     pointer-events: all;
   }
 
-  .mainPageList > li {
+ .card {
     width: calc(100% / 3 - 10px);
     height: calc(100% / 3 - 10px);
   }
@@ -269,3 +258,16 @@ ul {
   }
 }
 
+
+@media screen and (min-width: 768px) and (max-width: 1200px){
+  h2 {
+    font-size: 40px;
+    margin-bottom: 40px;
+  }
+}
+@media screen and (min-width: 1201px) {
+  h2{
+    font-size: 44px;
+    margin-bottom: 40px;
+  }
+}

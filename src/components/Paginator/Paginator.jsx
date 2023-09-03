@@ -15,13 +15,13 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage}) => {
   return (
     <div className={css.paginatorContainer}>
       {!isStart && (
-        <button onClick={() => dispatch(onChangePage(page - 1))} className={css.button}>
+        <button onClick={() => dispatch(onChangePage(page - 1))} className={css.button} >
           <RiArrowLeftSLine className={css.buttonIcon} />
         </button>
       )}
       <ul className={css.pagesList}>
         <li key={startPage}>
-          <button onClick={() => dispatch(onChangePage(startPage))} className={css.pageButton}>
+          <button onClick={() => dispatch(onChangePage(startPage))} className={`${css.pageButton} ${css.active}`}>
             {startPage}
           </button>
         </li>

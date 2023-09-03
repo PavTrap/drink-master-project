@@ -12,7 +12,7 @@ const PreviewDrinks = ({ children }) => <>{children}</>;
 
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
-  const [isLoading, setIsLoading] = useState(true)
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (!readFromLocalStore('main-page')) {
@@ -20,10 +20,10 @@ const MainPage = () => {
         const data = await fetchDrinks();
         data && writeToLoaclStore('main-page', data);
         data && setAllDrinks(data);
-        setIsLoading(false)
+        setIsLoading(false);
       })();
     } else {
-      setIsLoading(false)
+      setIsLoading(false);
       const data = readFromLocalStore('main-page');
       data && setAllDrinks(data);
     }
@@ -32,23 +32,28 @@ const MainPage = () => {
   return (
     <div className={css.main}>
       <MainHero />
-      {isLoading ? (<div style={{margin:"-200px 0", width:"100vw"}}><Dots/></div>) :(
-      <PreviewDrinks>
-        <section className={css.drinks_section}>
-          <ul>
-            {allDrinks &&
-              allDrinks.map(item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />)}
-          </ul>
+      {isLoading ? (
+        <div style={{ margin: '-200px 0', width: '100vw' }}>
+          <Dots />
+        </div>
+      ) : (
+        <PreviewDrinks>
+          <section className={css.drinks_section}>
+            <ul>
+              {allDrinks &&
+                allDrinks.map(
+                  item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />
+                )}
+            </ul>
 
-          {allDrinks && (
-            <Link className={`${css.button} ${css.other_drinks_btn}`} to={"/drinks"}>
-              Other drinks
-            </Link>
-          )}
-        </section>
-      </PreviewDrinks> 
+            {allDrinks && (
+              <Link className={`${css.button} ${css.other_drinks_btn}`} to={'/drinks'}>
+                Other drinks
+              </Link>
+            )}
+          </section>
+        </PreviewDrinks>
       )}
-
     </div>
   );
 };
@@ -92,8 +97,7 @@ export default MainPage;
 
 //   const getedDrinks = separateDrinks(allDrinks);
 
-
-  /* <ul>
+/* <ul>
             {allDrinks && (
               <>
                 <Link to={'/drinks/ordinary-drink'}>
@@ -155,4 +159,3 @@ export default MainPage;
               </>
             )}
           </ul> */
-

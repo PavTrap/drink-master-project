@@ -9,7 +9,11 @@ import { useNavigate } from 'react-router-dom';
 import Dots from 'components/Spinner/Dots';
 import { Paginator } from 'components/Paginator/Paginator';
 import { useParams } from 'react-router-dom/dist';
-import { SearchSvg, DrinkCard } from './additionalComponents';
+import { SearchSvg} from './additionalComponents';
+
+import DrinkItemCard from './DrinkItemCard/DrinkItemCard';
+
+
 
 export const DrinksSearch = () => {
   const dispatch = useDispatch();
@@ -129,8 +133,8 @@ export const DrinksSearch = () => {
       <div className={css.responseContainer}>
         {entities.data && (
           <ul className={css.drinkCardContainer}>
-            {entities.data.map(({ _id, drink, drinkThumb }) => (
-              <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} id={_id} />
+            {entities.data.map(({ _id, drink, drinkThumb, ingredients }) => (
+              <DrinkItemCard key={_id} drink={drink} drinkThumb={drinkThumb} id={_id} popup={ingredients}/>
             ))}
           </ul>
         )}
@@ -138,7 +142,7 @@ export const DrinksSearch = () => {
         {isLoading && <Dots className={css.loading} />}
         {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
 
-        {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
+
         {entities?.count?.totalPages > 1 && (
           <Paginator pages={{ page: entities.count.page, totalPages: entities.count.totalPages }} onChangePage={changePage} />
         )}

@@ -7,8 +7,8 @@ import useAuth from 'hooks/useAuth';
 import { nanoid } from '@reduxjs/toolkit';
 
 import RecipePageHero from 'components/RecipePageHero/RecipePageHero';
-import RecipeIngredientsList from 'components/RecipeIngredientsList/RecipeIngredientsList';
-import RecipeIngredientsItem from 'components/RecipeIngredientsItem/RecipeIngredientsItem';
+import RecipeIngredientsList from 'unused/RecipeIngredientsList/RecipeIngredientsList';
+import RecipeIngredientsItem from 'unused/RecipeIngredientsItem/RecipeIngredientsItem';
 import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
 import { getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import { addFavorites, deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
