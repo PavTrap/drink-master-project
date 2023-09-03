@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { register } from '../../redux/Auth/authOperation';
 import { useFormik } from 'formik';
@@ -6,18 +6,22 @@ import css from './RegisterForm.module.css';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
 import { useNavigate } from 'react-router-dom';
 
+
 import { RegisterSchema } from './ValidationSchema';
 
 import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
-
 import useAuth from 'hooks/useAuth';
+
+
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
   const [passwordError, setPasswordError] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
+  const { BackEndError } = useAuth();
+
   const {
     registerForm,
     registerTitle,
@@ -33,12 +37,8 @@ const RegisterForm = () => {
     validBorder,
   } = css;
   const navigate = useNavigate();
-  const { BackEndError } = useAuth();
 
-  useEffect(() => {
-    if (BackEndError) setPasswordError(BackEndError);
-    setTimeout(() => setPasswordError(null), 3000);
-  }, [BackEndError]);
+
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword);
@@ -59,10 +59,6 @@ const RegisterForm = () => {
       };
       if (passwordError) {
         return;
-      }
-      if (BackEndError) {
-        setPasswordError(`${BackEndError}`);
-        setTimeout(() => setPasswordError(null), 2000);
       }
 
       if (user.name !== '' || user.email !== '') {
@@ -169,7 +165,6 @@ const RegisterForm = () => {
             />
           </div>
           <div onClick={togglePasswordVisibility}>
-            {' '}
             {showPassword ? <AiOutlineEye className={passwordToggleIcon} /> : <AiOutlineEyeInvisible className={passwordToggleIcon} />}
           </div>
           {formik.touched.password && ( // Перевірка, чи інпут був доторкнутий

@@ -10,28 +10,30 @@
   margin-top: 80px;
   margin-bottom: 80px;
   padding: 0 20px;
-  @media screen and (min-width: 768px) {
-    margin-top: 140px;
-    margin-bottom: 140px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    margin-top: 160px;
-  }
 }
 
+.addRecipePage_title {
+  margin-bottom: 40px;
+}
+
+
 @media screen and (min-width: 768px) {
-  .addRecipeForm_section {
+  .addRecipePage_section {
     margin-top: 140px;
     margin-bottom: 140px;
+  }
+  .addRecipePage_title {
+    margin-bottom: 60px;
   }
 }
 
 @media screen and (min-width: 1440px) {
+  .addRecipePage_section {
+    margin-top: 160px;
+  }
   .addRecipeForm_container {
     margin-top: 160px;
     width: 100%;
-    padding: 0 100px;
   }
   .addRecipePage {
     margin-top: 60px;
@@ -39,13 +41,5 @@
     justify-content: flex-start;
     gap: 90px;
     width: 100%;
-  }
-}
-
-.addRecipePage_title {
-  margin-bottom: 40px;
-
-  @media screen and (min-width: 768px) {
-    margin-bottom: 60px;
   }
 }

@@ -1,9 +1,10 @@
-import css from './SharedLayout.module.css';
-const { Link } = require('react-router-dom');
+import { Link } from 'react-router-dom';
+import css from './Social.module.css';
+
 
 const Socials = () => {
   return (
-    <div style={{ display: 'flex', gap: '16px', marginTop: '50px' }}>
+    <div className={css.social_box}>
       <Link className={css.icons}>
         <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28" fill="none">
           <path
@@ -41,4 +42,5 @@ const Socials = () => {
     </div>
   );
 };
+
 export default Socials;

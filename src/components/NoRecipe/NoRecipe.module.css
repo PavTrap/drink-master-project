@@ -4,6 +4,7 @@
   top: 28px;
   left: 50%;
   transform: translateX(-50%);
+  mix-blend-mode: lighten
 }
 .noRecipeTitle {
   max-width: 205px;
@@ -21,3 +22,4 @@
     line-height: calc(22 / 16);
   }
 }
+

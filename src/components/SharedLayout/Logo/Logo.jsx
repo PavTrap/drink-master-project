@@ -12,6 +12,7 @@ const Logo = () => (
     <p className={css.logoTextStyles}>Drink Master</p>
   </Link>
 );
+
 export default Logo;
 
 
