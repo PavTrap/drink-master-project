@@ -11,10 +11,9 @@
   display: block;
   border: 1px solid rgba(243, 243, 243, 0.2);
   padding: 8px;
-display: inline-flex;
-align-items: center;
-justify-content: center;
- 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .icons > svg {
   transition: all 200ms ease-out;
@@ -25,17 +24,15 @@ justify-content: center;
   scale: 1.2;
 }
 
-
 @media screen and (min-width: 768px) {
   .social_box {
-    
     display: flex;
     gap: 16px;
     margin-top: 50px;
   }
   .icons > svg {
     width: 28px;
-    height: 28px
+    height: 28px;
   }
 }
 
@@ -44,5 +41,3 @@ justify-content: center;
     margin-top: 50px;
   }
 }
-
-
