@@ -74,7 +74,7 @@ export const SharedLayout = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-  console.log(isDesctop);
+
   return isLoggedIn ? (
     <MainContainer>
       {modalAuthActive && <ModalAuth active={modalAuthActive} setActive={setModalauthActive} />}
