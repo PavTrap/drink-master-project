@@ -10,11 +10,17 @@
   cursor: pointer;
   text-decoration: none;
   gap: 14px;
-  margin-left: auto;
-  margin-right: 24px;
+  /* margin-left: auto; */
+  /* margin-right: 24px; */
+}
+@media (max-width: 1440px) {
+  .littleStyles {
+    margin-left: auto;
+    margin-right: 24px;
+  }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 768px) {
   .littleStyles {
     margin-right: 14px;
   }
@@ -45,4 +51,3 @@
   width: 100px;
   white-space: nowrap;
 }
-
