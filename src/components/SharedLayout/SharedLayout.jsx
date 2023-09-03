@@ -74,7 +74,6 @@ export const SharedLayout = () => {
   }, []);
 
 
-  const { isLoggedIn } = useAuth();
 
 
   return isLoggedIn ? (
