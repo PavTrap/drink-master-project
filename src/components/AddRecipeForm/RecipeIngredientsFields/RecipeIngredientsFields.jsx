@@ -1,33 +1,28 @@
 // import logic;
-import Select from 'react-select';
-import { useState, useEffect, useRef } from 'react';
-import { nanoid } from 'nanoid';
+import { useState, useEffect } from 'react';
 //styles
 import css from './RecipeIngredientsFields.module.css';
-import { ingredientStyles, measureStyles } from './inputStyles';
 //icons
-import { MdOutlineClose } from 'react-icons/md';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import IngrediendsLittleForm from './IngrediendsLittleForm';
+import * as API from '../../../fetchAPI/fetchAPI';
 // data
-import { fetchIngredients } from '../../../fetchAPI/fetchAPI';
-import measure from 'data/measure';
 
-export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
+export const RecipeIngredientsFields = ({ setIngredients}) => {
   const [countIngredients, setCountIngredients] = useState(1);
   const [isBtnDisabled, setIsBtnDisabled] = useState(false);
-  const [allIngredients, setIngredients] = useState([]);
-
-  const InselectRef = useRef(null);
-  const selectRef = useRef(null);
+  const [ingrediensName, setIngrediensName] = useState([]);
+  const [allIngredientsList, setAllIngrediensList] = useState([]);
 
   useEffect(() => {
     (async () => {
       try {
-        const response = await fetchIngredients();
-        const ingredients = response.map(({ title }) => {
+        const response = await API.fetchIngredients();
+        const ingredientsNames = response.map(({ title }) => {
           return { value: `${title}`, label: `${title}`, descr: `ingredient` };
         });
-        setIngredients(ingredients);
+        setIngrediensName(ingredientsNames);
+        setAllIngrediensList(response);
       } catch (error) {
         console.log(error);
       }
@@ -47,53 +42,41 @@ export const RecipeIngredientsFields = ({ addIngredients, addMeasure }) => {
   function clickHandlerPlus() {
     setCountIngredients(countIngredients + 1);
   }
+  let array = [];
 
-  function clickHandlerMinus() {
+  function clickHandlerMinus(id) {
+    array.splice(id - 1, 1);
     setCountIngredients(countIngredients - 1);
   }
 
-  function handlerSelect() {}
+  const getFromForm = item => {
+    if (Object.keys(item?.ingredient).length !== 0) {
+      array[item.id - 1] = item.ingredient;
+      if (array.length > 0){
+        setIngredients(array)
+        // console.log(array)
+        //поднять пропы наверх
+      }
+    }
+   
+  };
 
   function createInputFields() {
     const inputFields = [];
-    for (let i = 0; i < countIngredients; i++) {
+    let counter = 0;
+    for (let i = 0; i < countIngredients; i += 1) {
+      counter += 1;
       inputFields.push(
-        <div className={css.addIngredients_box} key={nanoid()}>
-          <Select
-            ref={InselectRef}
-            isSearchable={true}
-            components={{
-              IndicatorSeparator: () => null,
-            }}
-            name="ingredient"
-            onChange={handlerSelect}
-            options={allIngredients}
-            defaultValue={allIngredients[0]}
-            styles={ingredientStyles}
-          />
-
-          <Select
-            ref={selectRef}
-            isSearchable={true}
-            name="measure"
-            onChange={handlerSelect}
-            options={measure}
-            styles={measureStyles}
-            components={{
-              IndicatorSeparator: () => null,
-            }}
-          />
-
-          <button
-            className={css.addIngredients_btnDelete}
-            disabled={isBtnDisabled}
-            onClick={clickHandlerMinus}
-            type="button"
-            id="buttonDeleteIng"
-          >
-            <MdOutlineClose className={css.addIngredients_btnDeleteIcon} />
-          </button>
-        </div>
+        <IngrediendsLittleForm
+          key={counter}
+          clickHandlerMinus={clickHandlerMinus}
+          isBtnDisabled={isBtnDisabled}
+          id={counter} // id to array asign
+          ingrediensName={ingrediensName} // list for selector
+          allIngredientsList={allIngredientsList} // array of ingredients objects
+          getFromForm={getFromForm}
+          //function to get values
+        />
       );
     }
 

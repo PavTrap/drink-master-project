@@ -30,11 +30,24 @@ li {
 }
 
 .container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-  
-    margin: 0 auto;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-width: 375px;
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    min-width: 768px;  
+    padding: 0 32px;
   }
+}
+
+@media screen and (min-width: 1440px) {
+  .container {
+    /* Чомусь не спрацьовує */
+    /* min-width: 1440;  
+    padding: 0 100px; */
+    padding: 0;
+  }
+}

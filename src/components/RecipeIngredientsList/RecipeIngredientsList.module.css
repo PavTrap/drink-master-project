@@ -1,4 +1,31 @@
 .ingredientsList {
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 21px;
+}
+
+.title {
+  margin-bottom: 20px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: calc(20 / 16);
+
+  color: rgba(243, 243, 243, 0.5);
+}
+
+@media screen and (min-width: 768px) {
+  .ingredientsList {
+    gap: 22px;
+  }
+  
+  .title {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .ingredientsList {
     gap: 35px;
   }
+}

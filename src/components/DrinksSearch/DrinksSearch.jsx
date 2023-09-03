@@ -17,11 +17,11 @@ const SearchSvg = ({ className }) => {
       <path
         d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
         stroke="#F3F3F3"
-        stroke-width="1.8"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <path d="M17.5 17.5L13.875 13.875" stroke="#F3F3F3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      <path d="M17.5 17.5L13.875 13.875" stroke="#F3F3F3" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 };
@@ -52,7 +52,7 @@ export const DrinksSearch = () => {
       console.log('should EXIT');
       return;
     }
-    console.log('не дошдло')
+    console.log('не дошдло');
     debouncedHandleChange(payload);
   };
 
@@ -130,21 +130,28 @@ export const DrinksSearch = () => {
           onChange={handleChangeSelectIngredient}
         />
       </form>
-      <div className={css.responseContainer}>
-        {entities.data && (
-          <ul className={css.mainPageList}>
-            {entities.data.map(({ _id, drink, drinkThumb }) => (
-              <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
-            ))}
-          </ul>
-        )}
+      {isLoading ? (
+        <div styles={{ minWidth: '100vw', minHeight: '100vh' }}>
+          <Dots className={css.loading} />
+        </div>
+      ) : (
+        <div className={css.responseContainer}>
+          {entities.data && !isLoading && (
+            <ul className={css.mainPageList}>
+              {entities.data.map(({ _id, drink, drinkThumb }) => (
+                <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} />
+              ))}
+            </ul>
+          )}
 
-        {isLoading && <Dots className={css.loading} />}
-        {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
+          {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
 
-        {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
-        {entities?.count?.totalPages > 1 && <Paginator pages={{page: entities.count.page, totalPages: entities.count.totalPages}} onChangePage={changePage} />}
-      </div>
+          {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
+          {entities?.count?.totalPages > 1 && (
+            <Paginator pages={{ page: entities.count.page, totalPages: entities.count.totalPages }} onChangePage={changePage} />
+          )}
+        </div>
+      )}
     </>
   );
 };

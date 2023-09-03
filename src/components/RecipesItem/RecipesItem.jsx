@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import { FiTrash2 } from "react-icons/fi";
+import { FiTrash2 } from 'react-icons/fi';
 import css from './RecipesItem.module.css';
 import { useDispatch } from 'react-redux';
 
-export const RecipesItem = ({ image, title, description, ingredients, id, state, onDelete}) => {
+export const RecipesItem = ({ image, title, description, ingredients, id, state, onDelete }) => {
   const path = `/recipe/${id}`;
   const dispatch = useDispatch();
   return (
@@ -20,7 +20,9 @@ export const RecipesItem = ({ image, title, description, ingredients, id, state,
         <Link to={path} state={state} className={css.seeRecipeButton}>
           See recipe
         </Link>
-        <button className={css.deleteButton} type="button" onClick={()=>dispatch(onDelete(id))}><FiTrash2 className={css.trashIcon}/></button>
+        <button className={css.deleteButton} type="button" onClick={() => dispatch(onDelete(id))}>
+          <FiTrash2 className={css.trashIcon} />
+        </button>
       </div>
     </li>
   );

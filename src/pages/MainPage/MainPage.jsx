@@ -1,30 +1,11 @@
 import { useEffect, useState } from 'react';
-import css from './MainPage.module.css';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
-import setAuthHeader from 'helpers/axiosHedder';
 import useAuth from 'hooks/useAuth';
-import imgSrc from './img/plug-glass-400x400.png'
-
-export const fetchDrinks = async token => {
-	try {
-		setAuthHeader(token);
-		const { data } = await axios.get('/api/recipes/main-page');
-		// console.log(data);
-		return data;
-	} catch (e) {
-		console.log(e);
-	}
-};
-
-export const DrinkCard = ({ drink, drinkThumb }) =>
-(<li className={css.mainPageList_item}>
-	<img src={drinkThumb} alt='drink' height={400} />
-	<div className={css.card_text_wrapper}>
-		<p className={css.card_name}>{drink}</p>
-		<a className={css.card_link} href='ingredients'><p className={css.ingredients_text}>ingredients</p></a>
-	</div>
-</li>)
+import imgSrc from './img/plug-glass-desktop-1x.png';
+import { DrinkCard } from 'components/DrinkCard/DrinkCard';
+import { fetchDrinks } from 'helpers/fetchDrinks';
+import css from './MainPage.module.css';
+import { DrinkCardPlug } from 'components/DrinkCardPlug/DrinkCardPlug';
 
 export const PreviewDrinks = ({ children }) =>
 (
@@ -69,21 +50,10 @@ const MainPage = () => {
 
 		const getedDrinks = {
 			"ordinary drink": ordinaryDrinks[0].items,
-
-			// "ordinary drink": {
-			// 	"category": "ordinary drink",
-			// 	"drinks": ordinaryDrinks[0].items,
-			// },
-
 			"coctail": cocktails[0].items,
 			"shake": shakes[0].items,
 			"other/unknown": otherDrinks[0].items,
 		};
-
-		// const categoriesDrinks = Object.keys(getedDrinks);
-		// console.log(categoriesDrinks);
-
-		console.log(getedDrinks);
 		return getedDrinks;
 	};
 
@@ -95,8 +65,8 @@ const MainPage = () => {
 				<section className={css.hero_section}>
 					<h1 className={css.hero_title}>Craft Your Perfect<br /> Drink with Drink Master	</h1>
 					<p className={css.main_p}>
-						Unlock your inner mixologist with Drink Master, your one-<br />stop
-						destination for exploring, crafting, and mastering the<br /> world's finest
+						Unlock your inner mixologist with Drink Master, your one-stop
+						destination for exploring, crafting, and mastering the world's finest
 						beverages.
 					</p>
 					<Link className={css.button} to={"/add"}>Add recipe</Link>
@@ -109,7 +79,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks['ordinary drink'].length !== 0 ? getedDrinks['ordinary drink'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink" />}
 								</ul>
 							</>
 						}
@@ -119,7 +89,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks.coctail.length !== 0 ? getedDrinks.coctail.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink" />}
 								</ul>
 							</>
 						}
@@ -129,7 +99,7 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks.shake.length !== 0 ? getedDrinks.shake.map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink" />}
 								</ul>
 							</>
 						}
@@ -139,15 +109,13 @@ const MainPage = () => {
 								<ul className={css.mainPageList}>
 									{getedDrinks['other/unknown'].length !== 0 ? getedDrinks['other/unknown'].map(({ drink, drinkThumb, _id }) => (
 										<DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb}></DrinkCard>
-									)) : <DrinkCard drink="Drink" drinkThumb={imgSrc}></DrinkCard>}
+									)) : <DrinkCardPlug drinkThumb={imgSrc} drink="Some drink"/>}
 								</ul>
 							</>
 						}
 						{allDrinks && <a className={`${css.button} ${css.other_drinks_btn}`} href="drinks">Other drinks</a>}
 					</section>
-
 				</PreviewDrinks>
-
 			</div>
 		</>
 	);

@@ -41,7 +41,7 @@ const RecipePage = () => {
   }, [ReduxToken, recipeId]);
 
   // console.log(ReduxToken); 
-  // console.log(recipe); 
+  console.log(recipe); 
 
   useEffect(() => {
     dispatch(fetchFavorites(page));
