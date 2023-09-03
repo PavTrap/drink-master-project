@@ -5,7 +5,6 @@
   padding: 0;
   margin: 40px auto;
   list-style: none;
-
   @media screen and (min-width: 375px) {
     grid-template-columns: 335px;
   }
