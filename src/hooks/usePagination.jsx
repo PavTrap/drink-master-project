@@ -18,6 +18,7 @@ const usePagination = (totalPages, page, width) => {
   const startPage = countStart(page, totalPages, maxVisiblePageNumders);
 
   function countEnd(total, max, start) {
+    if (total <max) return total-1;
     if (total === max) return total - 1;
     if (start === 1) return max;
     if (start + max >= total || start === total) return total - 1;

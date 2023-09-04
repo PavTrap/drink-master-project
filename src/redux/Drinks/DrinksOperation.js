@@ -1,61 +1,45 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { allCategoriesStr } from 'components/DrinksSearch/DrinksSearch';
+import setAuthHeader from 'helpers/axiosHedder';
 
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
 
-
-export const fetchDrinks = createAsyncThunk('drinks/fetchDrinks', async (data, thunkAPI) => {
-  try {
-    const { q = '', category = '', ingredient = '', page = 1, lastRequest } = data;
-
-    let url = null;
-
-    if (category === allCategoriesStr) {
-      url = '/api/recipes/main-page';
-      const response = await axios.get(url);
-      console.log('response.data ==>> ', response.data)
-      return { url, data: response.data }
+export const fetchDrinks = createAsyncThunk(
+  'drinks/fetchDrinks',
+  async ({category = '', ingredient = '', q = '', page = 1}, { getState, rejectWithValue }) => {
+    console.log("category:", category, "ingredient:", ingredient, "q", q, "page", page);
+    const state = getState();
+    const persistedToken = state.auth.token;
+    try {
+      setAuthHeader(persistedToken);
+      const response = await axios.get(`api/search?q=${q}&category=${category}&ingredient=${ingredient}&page=${page}`);
+      return response.data;
+    } catch (error) {
+      return rejectWithValue(error.message);
     }
-
-
-    
-
-    if (lastRequest && page !== 1) {
-      const urlParamList = Object.entries(lastRequest)[0]
-      url = `api/search?${urlParamList[0]}=${urlParamList[1]}&page=${page}&limit=9`;
-    } else {
-      const params = new URLSearchParams();
-      params.append('q', q);
-      params.append('page', page); 
-      params.append('category', category);
-      params.append('ingredient', ingredient);
-      url = `/api/search?${params.toString()}`;
-    }
-
-    console.log('url', url)
-    
-    const response = await axios.get(url);
-    return { url, data: response.data };
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
   }
-});
+);
 
-export const fetchCategories = createAsyncThunk('drinks/fetchCategories', async (_, thunkAPI) => {
+export const fetchCategories = createAsyncThunk('drinks/fetchCategories', async (_, { getState, rejectWithValue }) => {
+  const state = getState();
+  const persistedToken = state.auth.token;
   try {
+    setAuthHeader(persistedToken);
     const response = await axios.get('api/recipes/category-list');
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return rejectWithValue(error.message);
   }
 });
 
-export const fetchIngredients = createAsyncThunk('drinks/fetchIngredients', async (_, thunkAPI) => {
+export const fetchIngredients = createAsyncThunk('drinks/fetchIngredients', async (_, { getState, rejectWithValue }) => {
+  const state = getState();
+  const persistedToken = state.auth.token;
   try {
+    setAuthHeader(persistedToken);
     const response = await axios.get('api/ingredients/list');
     return response.data;
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.message);
+    return rejectWithValue(error.message);
   }
 });
