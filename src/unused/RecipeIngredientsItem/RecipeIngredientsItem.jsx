@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { formatIngredientImg } from 'utils/utils';
 import css from './RecipeIngredientsItem.module.css'
 
@@ -17,14 +15,6 @@ const RecipeIngredientsItem = ({ data }) => {
       </div>
     </li>
   );
-};
-
-RecipeIngredientsItem.propTypes = {
-  data: PropTypes.shape({
-    ingredientThumb: PropTypes.string,
-    title: PropTypes.string.isRequired,
-    measure: PropTypes.string,
-  }).isRequired,
 };
 
 export default RecipeIngredientsItem;

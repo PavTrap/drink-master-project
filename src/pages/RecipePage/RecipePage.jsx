@@ -11,7 +11,7 @@ import RecipeIngredientsList from 'unused/RecipeIngredientsList/RecipeIngredient
 import RecipeIngredientsItem from 'unused/RecipeIngredientsItem/RecipeIngredientsItem';
 import RecipePreparation from 'components/RecipePreparation/RecipePreparation';
 import { getFavPage } from 'redux/FavoriteCocktails/FavoritesSelectors';
-import { addFavorites, deleteFavorites, fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
+import { fetchFavorites } from 'redux/FavoriteCocktails/FavoritesOperation';
 
 import css from './RecipePage.module.css'
 
@@ -40,9 +40,6 @@ const RecipePage = () => {
       .catch(e => console.log(e));
   }, [ReduxToken, recipeId]);
 
-  // console.log(ReduxToken); 
-  // console.log(recipe); 
-
   useEffect(() => {
     dispatch(fetchFavorites(page));
   }, [dispatch, page]);
@@ -51,7 +48,7 @@ const RecipePage = () => {
     <>
       {recipe && (
         <div className={css.container}>
-          <RecipePageHero data={recipe} onDelete={deleteFavorites} onAdd={addFavorites} />
+          <RecipePageHero data={recipe} />
           <RecipeIngredientsList data={recipe}>
             {recipe.ingredients.map(item => (
               <RecipeIngredientsItem data={item} key={nanoid()} />
