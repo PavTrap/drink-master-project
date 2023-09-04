@@ -28,7 +28,6 @@ const drinksSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(fetchDrinks.fulfilled, (state, { payload }) => {
-        state.page = payload.count.page;
         state.totalPages= payload.count.totalPages;
         state.entities = payload.data;
         state.isLoading = false;
