@@ -48,7 +48,8 @@
 
 .links:hover,
 .links:focus {
-  background-color: #161f37;
+  background-color: #f3f3f3;
+  color: #161f37;
 }
 
 .activeLink {
