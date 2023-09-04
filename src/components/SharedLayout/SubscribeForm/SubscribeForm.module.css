@@ -30,9 +30,19 @@
 }
 
 .subscribeBlockInput::placeholder {
-  color: rgb(255, 255, 255);
+  /* color: rgb(255, 255, 255); */
+  color: rgba(243, 243, 243, 0.5);
   opacity: 1;
 }
+.subscribeBlockInput:focus,
+.subscribeBlockInput:hover {
+  outline: none;
+  color: #f3f3f3;
+  border-color: rgba(243, 243, 243, 0.5);
+  background-color: transparent;
+}
+
+
 
 .subscribeBlockButton {
   width: 100%;
@@ -52,7 +62,7 @@
 
 .subscribeBlockButton:hover,
 .subscribeBlockButton:focus {
-  border: 2px solid #ffffffda;
+  border: 1px solid  rgba(243, 243, 243, 0.5);
   transform: scale(1.03);
 }
 

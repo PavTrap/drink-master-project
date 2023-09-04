@@ -28,8 +28,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 38px;
-  cursor: pointer;
+  cursor: pointer;  
+  transition: all 0.2s ease-in-out;
 }
+.editProfileLink:hover{
+  transform: scale(1.03) translateX(5px); 
+}
+
 .editProfileLink_text {
   font-size: 14px;
   color: #f3f3f3;
@@ -46,4 +51,8 @@
   background-color: #f3f3f3;
   color: #161f37;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.logoutBtn:hover, .logoutBtn:focus {
+  transform: scale(1.03); 
 }

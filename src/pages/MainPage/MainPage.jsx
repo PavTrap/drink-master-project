@@ -49,7 +49,7 @@ const MainPage = () => {
             </ul>
 
             {allDrinks && (
-              <Link className={`${css.button} ${css.other_drinks_btn}`} to={'/drinks'}>
+              <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
                 Other drinks
               </Link>
             )}

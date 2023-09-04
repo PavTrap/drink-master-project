@@ -2,10 +2,6 @@
   max-width: 375px;
   width: 100%;
   height: auto;
-
-  @media (min-width: 768px) {
-    max-width: 400px;
-  }
 }
 
 .registerTitle {
@@ -15,21 +11,11 @@
   line-height: calc(32 / 28);
   letter-spacing: -0.56px;
   margin-bottom: 28px;
-
-  @media (min-width: 768px) {
-    font-size: 40px;
-    line-height: calc(44 / 40);
-    letter-spacing: -0.8px;
-  }
 }
 
 .inputWrapper {
   width: 100%;
   position: relative;
-
-  @media (min-width: 768px) {
-    max-width: 400px;
-  }
 }
 
 .registerInput {
@@ -46,44 +32,35 @@
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
+}
 
-  &::placeholder {
-    color: rgba(243, 243, 243, 0.5);
-  }
+.registerInput::placeholder {
+  color: rgba(243, 243, 243, 0.5);
+}
 
-  @media (min-width: 768px) {
-    height: 56px;
-    padding: 14px 24px;
-    padding-right: 50px;
-    font-size: 17px;
-    line-height: calc(18 / 17);
-  }
+.registerInput:focus,
+.registerInput:hover {
+  outline: none;
+  color: #f3f3f3;
+  border-color: rgba(243, 243, 243, 0.5);
+  background-color: transparent;
+}
 
-  &:focus,
-  &:hover {
-    outline: none;
-    color: #f3f3f3;
-    border-color: rgba(243, 243, 243, 0.5);
-    background-color: transparent;
-  }
+.registerInput.validBorder {
+  border-color: green;
+  outline: none;
+  background-color: transparent;
+}
 
-
-  &.validBorder {
-    border-color: green;
-    outline: none;
-    background-color: transparent;
-  }
-
-  &.invalidBorder {
-    border-color: red;
-    outline: none;
-    background-color: transparent;
-  }
+.registerInput.invalidBorder {
+  border-color: red;
+  outline: none;
+  background-color: transparent;
 }
 
 .errorIconClass {
   position: absolute;
-  fill: #DA1414;
+  fill: #da1414;
 
   height: 1.5em;
   width: 1.5em;
@@ -94,7 +71,7 @@
 
 .validIconClass {
   position: absolute;
-  fill: #3CBC81;
+  fill: #3cbc81;
 
   height: 1.5em;
   width: 1.5em;
@@ -105,7 +82,7 @@
 
 .passwordToggleIcon {
   position: absolute;
-  fill: #F3F3F3;
+  fill: #f3f3f3;
   height: 1.5em;
   width: 1.5em;
   right: 24px;
@@ -134,18 +111,12 @@
   line-height: calc (18 / 14);
   margin-bottom: 14px;
   cursor: pointer;
-  transition: box-shadow 0.3s ease;
-
-  &:hover {
-    text-decoration: underline;
-    box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset;
-  }
-
-  @media (min-width: 768px) {
-    padding: 18px 169px;
-    font-size: 16px;
-    line-height: calc (18 / 16);
-  }
+  transition: all 0.2s ease-in-out;
+}
+.registerButton:hover {
+  /* text-decoration: underline; */
+  transform: scale(1.03);
+  /* box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
 }
 
 .wrapper {
@@ -153,12 +124,35 @@
   flex-direction: column;
   gap: 14px;
   margin-bottom: 28px;
-
-  @media (min-width: 768px) {
-    margin-bottom: 40px;
-  }
 }
 
 /* .error {
   color: #f3f3f3;
 } */
+
+@media (min-width: 768px) {
+  .registerForm {  max-width: 400px;}
+  .registerTitle {
+    font-size: 40px;
+    line-height: calc(44 / 40);
+    letter-spacing: -0.8px;
+  }
+  .inputWrapper { 
+    max-width: 400px;
+  }
+  .registerInput {
+    height: 56px;
+    padding: 14px 24px;
+    padding-right: 50px;
+    font-size: 17px;
+    line-height: calc(18 / 17);
+  }
+  .registerButton {
+    padding: 18px 169px;
+    font-size: 16px;
+    line-height: calc (18 / 16);
+  }
+  .wrapper {
+    margin-bottom: 40px;
+  }
+}
