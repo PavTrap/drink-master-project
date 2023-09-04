@@ -3,7 +3,7 @@ import { Outlet, Link, useLocation } from 'react-router-dom';
 
 // components
 import { LayoutSpiner } from '../Spinner/LayoutSpinner';
-import MainContainer from './MainContainer';
+import MainContainer from './MainContainer/MainContainer';
 import Header from 'components/SharedLayout/Header/Header';
 import Logo from './Logo/Logo';
 import NavBar from './NavBar/NavBar';

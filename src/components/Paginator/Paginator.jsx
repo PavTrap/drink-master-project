@@ -4,7 +4,7 @@ import css from './Paginator.module.css';
 import usePagination from 'hooks/usePagination';
 import useWindowSize from 'hooks/useWindowSize';
 
-export const Paginator = ({ pages: { page, totalPages }, onChangePage}) => {
+export const Paginator = ({ pages: { page, totalPages }, onChangePage }) => {
   const dispatch = useDispatch();
   const { width } = useWindowSize();
   const startPage = 1;
@@ -15,33 +15,41 @@ export const Paginator = ({ pages: { page, totalPages }, onChangePage}) => {
   return (
     <div className={css.paginatorContainer}>
       {!isStart && (
-        <button onClick={() => dispatch(onChangePage(page - 1))} className={css.button}>
+        <button type="button" onClick={() => dispatch(onChangePage(page - 1))} className={css.button}>
           <RiArrowLeftSLine className={css.buttonIcon} />
         </button>
       )}
       <ul className={css.pagesList}>
         <li key={startPage}>
-          <button onClick={() => dispatch(onChangePage(startPage))} className={css.pageButton}>
+          <button type="button" onClick={() => dispatch(onChangePage(startPage))} className={css.pageButton}>
             {startPage}
           </button>
         </li>
-        {shouldRenderLeftDots && <li key="leftDots">{DOTS}</li>}
+        {shouldRenderLeftDots && (
+          <li key="leftDots" className={css.dots}>
+            {DOTS}
+          </li>
+        )}
         {numbers.map(number => (
           <li key={number}>
-            <button onClick={() => dispatch(onChangePage(number))} className={css.pageButton}>
+            <button type="button" onClick={() => dispatch(onChangePage(number))} className={css.pageButton}>
               {number}
             </button>
           </li>
         ))}
-        {shouldRenderRightDots && <li key="rightDOTS">{DOTS}</li>}
+        {shouldRenderRightDots && (
+          <li key="rightDOTS" className={css.dots}>
+            {DOTS}
+          </li>
+        )}
         <li key={lastPage}>
-          <button onClick={() => dispatch(onChangePage(lastPage))} className={css.pageButton}>
+          <button type="button" onClick={() => dispatch(onChangePage(lastPage))} className={css.pageButton}>
             {lastPage}
           </button>
         </li>
       </ul>
       {!isEnd && (
-        <button onClick={() => dispatch(onChangePage(page + 1))} disabled={isEnd} className={css.button}>
+        <button type="button" onClick={() => dispatch(onChangePage(page + 1))} disabled={isEnd} className={css.button}>
           <RiArrowRightSLine className={css.buttonIcon} />
         </button>
       )}

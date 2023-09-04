@@ -1,11 +1,17 @@
 .paginatorContainer {
-  max-width: 295px;
+  max-width: 335px;
   display: flex;
   justify-content: center;
-  padding: 4px 32px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  @media screen and (min-width: 768px) {
+  margin-top: 80px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .paginatorContainer {
     max-width: 436px;
   }
 }
@@ -14,8 +20,8 @@
   list-style: none;
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
-  margin: 0 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .button {
@@ -23,13 +29,15 @@
   height: 55px;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: #0a0a11;
   border-color: transparent;
   cursor: pointer;
 }
 
-.button:hover, 
-.button:active {
+.button:hover {
+  background-color: rgba(64, 112, 205, 0.5);
+}
+.isActive {
   background-color: rgba(64, 112, 205, 0.5);
 }
 
@@ -52,7 +60,11 @@
   cursor: pointer;
 }
 
-.pageButton:hover,
-.pageButton:active {
+.pageButton:hover {
   background-color: rgba(64, 112, 205, 0.5);
+}
+
+.dots {
+  font-size: 12px;
+  align-self: center;
 }
