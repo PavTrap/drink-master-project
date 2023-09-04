@@ -46,7 +46,6 @@ export const AddRecipeForm = () => {
 
   const handleSubmit = async e => {
     // submit
-
     e.preventDefault();
     const formData = new FormData();
     formData.append('recipeImg', file);
@@ -57,10 +56,12 @@ export const AddRecipeForm = () => {
     formData.append('ingredients', [JSON.stringify(ingredients)]);
 
     const res = await addCocktail(formData);
+       console.log("FORM DATA RES", res)
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (res?.status === 201) {
-      toast.success(res.response.data.message);
+  
+      toast.success("You add your recipe");
       navigate('/my');
     }
     if (res?.status !== 201) toast.error(res.response.data.message);
