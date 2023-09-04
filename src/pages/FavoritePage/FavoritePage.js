@@ -19,7 +19,6 @@ export default function FavoritePage() {
     dispatch(fetchFavorites(page));
   }, [dispatch, page]);
 
-  console.log("favorites", favorites)
   return (
     <section className={css.favoritesContainer}>
       <MainTitle title="Favorites" />

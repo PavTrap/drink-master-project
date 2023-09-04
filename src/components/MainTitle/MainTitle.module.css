@@ -1,21 +1,22 @@
-.mainTittle {
-  position: relative;
-  margin-top: 80px;
+.mainTitle {
   margin-bottom: 40px;
+  margin-top: 0;
   font-size: 32px;
   line-height: calc(38 / 32);
   font-weight: 600;
   color: #f3f3f3;
-  z-index: 11;
-  @media screen and (min-width: 375px) {
-    margin-top: 140px;
+  text-align: left;
+}
+
+@media screen and (min-width: 376px) {
+  .mainTitle {
     margin-bottom: 60px;
     font-size: 56px;
     line-height: calc(60 / 56);
   }
-  
-  @media screen and (min-width: 768px) {
-    margin-top: 244px;
+}
+@media screen and (min-width: 769px) {
+  .mainTitle {
     font-size: 64px;
     line-height: calc(68 / 54);
   }
