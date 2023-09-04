@@ -14,6 +14,8 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  cursor: pointer;
 }
 .icons > svg {
   transition: all 200ms ease-out;
