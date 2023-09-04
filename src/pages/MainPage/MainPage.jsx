@@ -32,22 +32,17 @@ const MainPage = () => {
   return (
     <div className={css.main}>
       <MainHero />
- 
- 
- 
- 
- 
-
       <PreviewDrinks>
         <section className={css.drinks_section}>
           <ul>
-            <Suspense fallBack={<Dots />}>
+            <Suspense fallBack={<Dots />} >
               {allDrinks &&
 
                 allDrinks.sort((a, b) => b.items.length - a.items.length).slice(0,4).map(
                   item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />
                 )}
-            </ul>
+            </Suspense>
+          </ul>
 
             {allDrinks && (
               <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
@@ -56,14 +51,12 @@ const MainPage = () => {
             )}
           </section>
         </PreviewDrinks>
-      )}
-      
     </div>
   );
 };
 
 export default MainPage;
-
+ 
 //   const separateDrinks = drinks => {
 //     if (!allDrinks) return;
 
@@ -162,4 +155,4 @@ export default MainPage;
                 </ul>
               </>
             )}
-          </ul> */
+          </ul> */ 
