@@ -31,14 +31,12 @@ const favoritesSlice = createSlice({
         state.isLoading = false;
       })
       // ADD
-      .addCase(addFavorites.fulfilled, (state, action) => {
-        
-        // state.entities.data.push(action.payload);
+      .addCase(addFavorites.fulfilled, (state, _) => {
         state.isLoading = false;
       })
       // DELETE
       .addCase(deleteFavorites.fulfilled, (state, action) => {
-        const index = state.entities.data.findIndex(item => item.id === action.payload.cocktailId);
+        const index = state.entities.data.findIndex(item => item._id === action.meta.arg);
         state.entities.data.splice(index, 1);
         state.isLoading = false;
       })

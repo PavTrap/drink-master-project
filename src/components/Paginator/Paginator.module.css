@@ -4,20 +4,13 @@
   justify-content: center;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
-  /* @media screen and (min-width: 768px) { */
-
-  /* margin-top: 80px;
-  margin-bottom: 0;
-  margin-left: auto;
-  margin-right: auto; */
-  /* } */
+  margin: 40px auto 0 auto;
 }
 
 @media screen and (min-width: 768px) {
   .paginatorContainer {
-
     max-width: 436px;
+    margin: 80px auto 0 auto;
   }
 }
 
@@ -32,8 +25,6 @@
 }
 
 .button {
-  /* width: 15px;
-  height: 55px; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,20 +39,17 @@
   border-radius: 50%;
 }
 .button > svg {
-  transform: scale(2)
+  transform: scale(2);
 }
 
-
- .button:hover,.button:active   {
-
-  background-color: rgba(64, 112, 205, 0.5);
-}
-.isActive {
-
+.button:hover {
   background-color: rgba(64, 112, 205, 0.5);
 }
 
-
+.button:disabled {
+  opacity: 0;
+  pointer-events: none;
+}
 
 .buttonIcon {
   width: 20px;
@@ -83,16 +71,14 @@
   cursor: pointer;
   justify-content: center;
   align-items: center;
-
-
 }
 
-.pageButton:hover {
+.pageButton:hover,
+.pageButton:active {
   background-color: rgba(64, 112, 205, 0.5);
 }
 
-
-.active{
+.active {
   background-color: rgba(64, 112, 205, 0.5) !important;
 }
 
@@ -100,4 +86,3 @@
   font-size: 12px;
   align-self: center;
 }
-

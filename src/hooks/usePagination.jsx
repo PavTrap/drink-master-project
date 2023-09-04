@@ -10,7 +10,7 @@ const usePagination = (totalPages, page, width) => {
 
   function countStart(currentPage, total, max) {
     if (currentPage === 1 || total < max || currentPage <= Math.floor(max / 2)) return 1;
-    if (currentPage === total) return total - max - 1;
+    if (currentPage === total) return total - max;
     if (currentPage > total - max) return total - max;
     return currentPage - Math.floor(max / 2);
   }
@@ -19,7 +19,7 @@ const usePagination = (totalPages, page, width) => {
 
   function countEnd(total, max, start) {
     if (total === max) return total - 1;
-    if (start === 1) return max + 1;
+    if (start === 1) return max;
     if (start + max >= total || start === total) return total - 1;
     return start + max;
   }
@@ -49,7 +49,7 @@ const usePagination = (totalPages, page, width) => {
       shouldRenderRightDots = last < total - Math.floor(max / 2) ? true : false;
     }
     if (max === 7) {
-      shouldRenderLeftDots = start >= Math.floor(max / 2) ? true : false;
+      shouldRenderLeftDots = start >= Math.floor(max / 2)-1 ? true : false;
       shouldRenderRightDots = last <= total - Math.floor(max / 2) ? true : false;
     }
     return { shouldRenderLeftDots, shouldRenderRightDots };
