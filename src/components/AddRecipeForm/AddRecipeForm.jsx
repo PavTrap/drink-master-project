@@ -60,16 +60,17 @@ export const AddRecipeForm = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (res?.status === 201) {
-  
       toast.success("You add your recipe");
       navigate('/my');
     }
-    if (res?.status !== 201) toast.error(res.response.data.message);
+    if (res?.status !== 201) {
+      toast.error(res.response.data.message);
+    }
   };
 
   return (
     <div>
-      <ToastContainer icon={false}  theme={"dark"} toastClassName={"toast"} position={'top-center'}/>
+      <ToastContainer icon={false} theme={"dark"} toastClassName={"toast"} position={'top-center'} />
       <form onSubmit={handleSubmit}>
         <RecipeDescriptionFields
           drinkThumb={drinkThumb}

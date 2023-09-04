@@ -38,6 +38,7 @@
   font-weight: 500;
   line-height: 22.4px;
   color: #f3f3f3;
+  transition: 0.2s;
 }
 @media (max-width: 768px) {
   .links {
