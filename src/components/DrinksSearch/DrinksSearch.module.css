@@ -26,15 +26,12 @@
   border: 1px solid #f3f3f3;;
 }
 
-.title {
-  margin-bottom: 40px;
-}
-.selsctDrinks {
-  border-radius: 200px;
-  position: relative;
-  padding: 18px 24px;
-  background-color: #161f37;
-  color: #f3f3f3;
+
+@media screen and (min-width: 320px) {
+  .inputDrinks {
+    padding: 18px 24px;
+    width: 100%;
+  }
 }
 
 .selsctDrinks:focus {
@@ -48,10 +45,6 @@
   border-radius: 20px;
 
   border: none;
-}
-
-.selsctDrinks option:checked {
-  color: #f3f3f3;
 }
 
 .selsctDrinks::before {
@@ -81,6 +74,11 @@
 }
 
 @media screen and (min-width: 768px) {
+  .container{
+    margin-top: 60px;
+  }
+
+
   .drinkCardContainer {
     row-gap: 40px;
     margin-bottom: 80px;
@@ -88,6 +86,7 @@
 
   .title {
     margin-bottom: 60px;
+    min-width: 678px;
   }
   .inputDrinks {
     width: 264px;
@@ -125,12 +124,15 @@
 }
 
 @media screen and (min-width: 1440px) {
+
   .drinkCardContainer {
     column-gap: 20px;
     row-gap: 80px;
   }
+  
   .title {
     margin-bottom: 80px;
+    min-width: 1240px;
   }
 
   .drinkCard {

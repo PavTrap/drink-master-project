@@ -92,8 +92,9 @@ export const SharedLayout = () => {
           <BurgerMenu burgerMenuActive={burgerMenuActive} />
         </Header>
       )} 
+
       <main className={css.mainFrame}>
-        <Suspense fallback={<LayoutSpiner />}>
+        <Suspense fallback={<LayoutSpiner/>}>
           <Outlet />
         </Suspense>
       </main>
