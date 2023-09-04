@@ -1,9 +1,11 @@
 import { RecipesItem } from 'components/RecipesItem/RecipesItem';
 import css from './RecipesList.module.css';
+import { Suspense } from 'react';
 
 export const RecipesList = ({ recipes, state, onDelete }) => {
   return (
     <ul className={css.recipeList}>
+      <Suspense>
       {recipes.map(({ _id, drinkThumb, drink, instructions, ingredients }) => {
         const recipeIngredients = ingredients.map(ingredient => ingredient.title).join(', ');
         return (
@@ -19,6 +21,7 @@ export const RecipesList = ({ recipes, state, onDelete }) => {
           />
         );
       })}
+      </Suspense>
     </ul>
   );
 };

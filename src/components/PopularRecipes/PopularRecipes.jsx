@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, } from 'react';
 import PolularRecipeCard from './PolularRecipeCard';
 import useAuth from 'hooks/useAuth';
 import css from './PolularRecipe.module.css';
