@@ -53,7 +53,7 @@ console.log(message);
 
       // res && setEmail('');
 
-      console.log(res.status);
+      // console.log(res.status);
 
       if (res.status === 200) {
         setMessage('Subscription email has been sent, please check your email');
