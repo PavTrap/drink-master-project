@@ -8,7 +8,7 @@ import BackgroundEffect from '../../components/BackgroundEffect/BackgroundEffect
 export default function WelcomePage() {
   // const [modalActive, setModalActive] = useState(false);
   // const [modalActiveLogout, setModalActiveLogout] = useState(false);
-  const { section, mainContainer, mainContainer__title, mainContainer__text, linkContainer, linkContainer__singup, linkContainer__singin } =
+  const { section, mainContainer, mainContainer__title, mainContainer__text, linkContainer, linkContainer__signup, linkContainer__signin } =
     css;
   return (
     <>
@@ -28,11 +28,11 @@ export default function WelcomePage() {
             save and retrieve your own recipes at any time.
           </p>
           <div className={linkContainer}>
-            <NavLink className={linkContainer__singup} to={`/signup`}>
+            <NavLink className={linkContainer__signup} to={`/signup`}>
               Registration
             </NavLink>
-            <NavLink className={linkContainer__singin} to={`/signin`}>
-              Sing In
+            <NavLink className={linkContainer__signin} to={`/signin`}>
+              Sign In
             </NavLink>
           </div>
         </div>
