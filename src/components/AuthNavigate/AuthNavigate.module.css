@@ -8,29 +8,34 @@
   display: block;
   width: fit-content;
   margin: 0 auto;
+  transition: all 0.2s ease  ;
 
   position: relative;
+}
+.link:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: '';
+  display: block;
+  height: 1px;
+  left: 50%;
+  position: absolute;
 
-  &:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: '';
-    display: block;
-    height: 1px;
-    left: 50%;
-    position: absolute;
 
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-  }
+  width: 0;
+}
 
-  &:hover:after {
-    width: 100%;
-    left: 0;
-  }
+.link :hover:after {
+  width: 100%;
+  left: 0;
+}
 
-  @media screen and (min-width: 768px) {
+@media screen and (min-width: 768px) {
+  .link {
     font-size: 14px;
     line-height: calc(18 / 14);
+  }
+  .link:hover{
+    transform: scale(1.09)
   }
 }

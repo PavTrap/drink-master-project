@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { login, startLoadingMainPage } from '../../redux/Auth/authOperation';
+import { login} from '../../redux/Auth/authOperation';
 import { useFormik } from 'formik';
 import css from './LoginForm.module.css';
 import { AuthNavigate } from 'components/AuthNavigate/AuthNavigate';
@@ -65,9 +65,7 @@ const LoginForm = () => {
       if (user.email !== '' && user.password !== '') {
         dispatch(login(user));
         if (!BackEndError) {
-
           navigate('/');
-          dispatch(startLoadingMainPage())
           resetForm();
         }
       } else {
