@@ -22,9 +22,10 @@
 @media screen and (min-width: 1440px) {
   .addRecipeForm_container {
     margin-top: 160px;
+    align-items: space-between;
   }
   .addRecipeForm_container {
-    width: 100%;
+    width: 100vw;
   }
   .addRecipePage {
     display: flex;
