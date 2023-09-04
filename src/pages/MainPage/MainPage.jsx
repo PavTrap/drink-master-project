@@ -43,22 +43,21 @@ const MainPage = () => {
           <ul>
             <Suspense fallBack={<Dots />}>
               {allDrinks &&
-                allDrinks
-                  .sort((a, b) => b.items.length - a.items.length)
-                  .slice(0, 4)
-                  .map(item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />)}
-            </Suspense>
-          </ul>
 
-          {allDrinks && (
-            <Link className={`${css.button} ${css.other_drinks_btn}`} to={'/drinks'}>
-              Other drinks
-            </Link>
-          )}
-        </section>
-      </PreviewDrinks>
+                allDrinks.sort((a, b) => b.items.length - a.items.length).slice(0,4).map(
+                  item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />
+                )}
+            </ul>
 
- 
+            {allDrinks && (
+              <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
+                Other drinks
+              </Link>
+            )}
+          </section>
+        </PreviewDrinks>
+      )}
+      
     </div>
   );
 };

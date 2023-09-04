@@ -5,45 +5,42 @@
   background-size: contain;
   justify-content: center;
   align-items: center;
-  background-color: #0A0A11;
+  background-color: #0a0a11;
 
-  background-image: url("./img/mob_x1.png");
+  background-image: url('./img/mob_x1.png');
   background-position: right;
   background-repeat: no-repeat;
 
-
   @media (-webkit-min-device-pixel-ratio: 2) {
-    background-image: url("./img/mob_x2.png");
+    background-image: url('./img/mob_x2.png');
   }
 
-  @media screen and (min-width: 768px) {
-    background-image: url("./img/tab_x1.png");
+  /* @media screen and (min-width: 768px) {
+    background-image: url('./img/tab_x1.png');
     justify-content: left;
     padding-left: 64px;
 
     @media (-webkit-min-device-pixel-ratio: 2) {
-      background-image: url("./img/tab_x2.png");
+      background-image: url('./img/tab_x2.png');
     }
-  }
-
+  } */
+  /* 
   @media screen and (min-width: 1440px) {
-
-    background-image: url("./img/desktop_x1.png");
+    background-image: url('./img/desktop_x1.png');
     background-color: #07070b;
     justify-content: left;
     padding-left: 100px;
 
     @media (-webkit-min-device-pixel-ratio: 2) {
-      background-image: url("./img/desktop_x2.png");
+      background-image: url('./img/desktop_x2.png');
     }
-  }
-
+  } */
 }
 
 .buttonModal {
   position: absolute;
   top: 0;
-  left: o
+  left: o;
 }
 
 .mainContainer {
@@ -54,19 +51,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @media screen and (min-width: 768px) {
-    width: 470px;
-    height: 248px;
-    padding: 0;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  @media screen and (min-width: 1440px) {
-    width: 488px;
-    height: 248px;
-  }
 }
 
 .mainContainer__title {
@@ -77,13 +61,6 @@
   line-height: 1.14;
   letter-spacing: -0.56px;
   padding-bottom: 14px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 40px;
-    line-height: 1.1;
-    letter-spacing: -0.8px;
-    text-align: left;
-  }
 }
 
 .mainContainer__text {
@@ -94,12 +71,6 @@
   line-height: 1.28;
   letter-spacing: -0.28px;
   padding-bottom: 40px;
-
-  @media screen and (min-width: 768px) {
-    font-size: 18px;
-    line-height: 1.33;
-    letter-spacing: -0.28px;
-  }
 }
 
 .linkContainer {
@@ -114,39 +85,90 @@
   padding: 14px 40px;
   border-radius: 42px;
   border: 1px solid rgba(243, 243, 243, 0.2);
-  background: #F3F3F3;
-  color: #161F37;
+  background: #f3f3f3;
+  color: #161f37;
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 1.13;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-
-
-
-  @media screen and (min-width: 768px) {
-    font-size: 16px;
-    line-height: 1.28;
-    padding: 18px 44px;
-  }
+  transition: all 0.3s ease-in-out;
 }
 
 .linkContainer__singin {
   display: block;
   padding: 14px 40px;
   border-radius: 42px;
-  color: #F3F3F3;
+  color: #f3f3f3;
   border: 1px solid rgba(243, 243, 243, 0.2);
   font-size: 14px;
   font-style: normal;
   font-weight: 600;
   line-height: 1.28;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
 
+@media screen and (min-width: 768px) {
+  .section {
+    background-image: url('./img/tab_x1.png');
+    justify-content: left;
+    padding-left: 64px;
 
-  @media screen and (min-width: 768px) {
+    @media (-webkit-min-device-pixel-ratio: 2) {
+      background-image: url('./img/tab_x2.png');
+    }
+  }
+  .mainContainer {
+    width: 470px;
+    height: 248px;
+    padding: 0;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .mainContainer__text {
+    font-size: 18px;
+    line-height: 1.33;
+    letter-spacing: -0.28px;
+  }
+
+  .linkContainer__singup {
     font-size: 16px;
     line-height: 1.28;
     padding: 18px 44px;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .linkContainer__singin {
+    font-size: 16px;
+    line-height: 1.28;
+    padding: 18px 44px;
+    transition: all 0.2s ease-in-out;
+  }
+  .linkContainer__singin:hover,
+  .linkContainer__singin:focus,
+  .linkContainer__singup:hover,
+  .linkContainer__singup:focus {
+    transform: scale(1.03);
+    border: 1px solid #ffffff5f;
   }
 }
+
+@media screen and (min-width: 1440px) {
+  .section {
+    background-image: url('./img/desktop_x1.png');
+    background-color: #07070b;
+    justify-content: left;
+    padding-left: 100px;
+
+    @media (-webkit-min-device-pixel-ratio: 2) {
+      background-image: url('./img/desktop_x2.png');
+    }
+  }
+
+  .mainContainer {
+    width: 488px;
+    height: 248px;
+  }
+}
+
+

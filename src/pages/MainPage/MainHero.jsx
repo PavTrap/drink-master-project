@@ -36,7 +36,7 @@ const MainHero = () => {
      { isMobile ? ( <img className={css.hero_image} src={glassImageMobile} alt="Hero Nice Glass" />) : ( <img className={css.hero_image} src={glassImage} alt="Hero Nice Glass" />)}
 
      
-      <Link className={css.button} to={'/add'}>
+      <Link className={css.hero_button} to={'/add'}>
         Add recipe
       </Link>
     </section>
