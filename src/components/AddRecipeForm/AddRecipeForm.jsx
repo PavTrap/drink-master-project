@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'; // react
 import { addCocktail } from '../../fetchAPI/fetchAPI'; //api
 import { useNavigate } from 'react-router-dom'; // router dom
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from 'react-toastify'; //toasts
+import 'react-toastify/dist/ReactToastify.css'; // toast styles
 
 
 import s from './AddRecipeForm.module.css';
@@ -56,7 +56,7 @@ export const AddRecipeForm = () => {
     formData.append('ingredients', [JSON.stringify(ingredients)]);
 
     const res = await addCocktail(formData);
-       console.log("FORM DATA RES", res)
+      //  console.log("FORM DATA RES", res)
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (res?.status === 201) {

@@ -11,10 +11,10 @@ import 'react-toastify/dist/ReactToastify.css';
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
   const [isSubmiting, setIsSubmiting] = useState(false);
-  // const [backendError, setBackendError] = useState(null);
+ 
 
-  const [message, setMessage] = useState(null); //Добавил один useState, в котором будет сообщения для  Toast
-console.log(message);
+ 
+ 
   useEffect(() => {
     if (isSubmiting) {
       sendForm(email);
@@ -23,9 +23,8 @@ console.log(message);
     // eslint-disable-next-line
   }, [email, isSubmiting]);
 
-  // useEffect(() => {   // showing Toast
-  //     toast.success(message);
-  // }, [message]);
+
+
 
 
   function onSubmit(e) {
@@ -33,45 +32,46 @@ console.log(message);
     setIsSubmiting(true);
   }
 
-  // Старая функция
-  // async function sendForm() {
-  //   try {
-  //     const baseURL = 'https://drink-master-back-end.onrender.com';
+  
+ 
+ 
+ 
 
-  //     const res = await axios.post(`${baseURL}/subscribe`, { email: email });
+  
 
-  //     res && setEmail('');
-  //   } catch (error) {
-  //     console.log('error send email');
-  //   }
-  // }
+ 
+ 
+ 
+ 
+ 
 
   async function sendForm() {
     try {
       const baseURL = 'https://drink-master-back-end.onrender.com';
       const res = await axios.post(`${baseURL}/subscribe`, { email: email });
 
-      // res && setEmail('');
+     
 
-      // console.log(res.status);
+     
 
       if (res.status === 200) {
-        setMessage('Subscription email has been sent, please check your email');
+       const message = "Subscription email has been sent, please check your email"
         setEmail('');
-        const message = 'ok';
+        // const message = 'ok';
         toast.success(message);
       }
 
     } catch (error) {
       if (error.response) {
         //Если есть HTTP-ответ
-        setMessage(error.response.data.message);
+        // setMessage(error.response.data.message);
         setEmail('');
-        const message = 'not ok';
-        toast.warn(message);
+        // const message = 'not ok';
+        toast.warn(error.response.data.message);
       } else {
+        toast.warn('error send email');
         // В противном случае, обработка ошибки без HTTP-ответа
-        setMessage('error send email');
+        // setMessage('error send email');
         setEmail('');
       }
     }
@@ -79,7 +79,7 @@ console.log(message);
 
   return (
   <>
-  <ToastContainer />
+    <ToastContainer icon={false} theme={"dark"} toastClassName={"toast"} position={'top-center'} />
     <form className={css.subscribeBlock} onSubmit={onSubmit}>
       <p className={css.subscribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
       <input
