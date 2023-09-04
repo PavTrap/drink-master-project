@@ -29,6 +29,8 @@ const MainPage = () => {
     }
   }, []);
 
+
+
   return (
     <div className={css.main}>
       <MainHero />
@@ -41,7 +43,7 @@ const MainPage = () => {
           <section className={css.drinks_section}>
             <ul>
               {allDrinks &&
-                allDrinks.map(
+                allDrinks.sort((a, b) => b.items.length - a.items.length).slice(0,4).map(
                   item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />
                 )}
             </ul>
