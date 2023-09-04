@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import css from './MainPage.module.css';
 
 import MainHero from './MainHero';
@@ -12,7 +12,7 @@ const PreviewDrinks = ({ children }) => <>{children}</>;
 
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+ 
 
   useEffect(() => {
     if (!readFromLocalStore('main-page')) {
@@ -20,48 +20,43 @@ const MainPage = () => {
         const data = await fetchDrinks();
         data && writeToLoaclStore('main-page', data);
         data && setAllDrinks(data);
-        setIsLoading(false);
+ 
       })();
     } else {
-      setIsLoading(false);
+ 
       const data = readFromLocalStore('main-page');
       data && setAllDrinks(data);
     }
   }, []);
 
-
-
   return (
     <div className={css.main}>
       <MainHero />
-      {isLoading ? (
-        <div style={{ margin: '-200px 0', width: '100vw' }}>
-          <Dots />
-        </div>
-      ) : (
-        <PreviewDrinks>
-          <section className={css.drinks_section}>
-            <ul>
+      <PreviewDrinks>
+        <section className={css.drinks_section}>
+          <ul>
+            <Suspense fallBack={<Dots />} >
               {allDrinks &&
+
                 allDrinks.sort((a, b) => b.items.length - a.items.length).slice(0,4).map(
                   item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />
                 )}
-            </ul>
+            </Suspense>
+          </ul>
 
             {allDrinks && (
-              <Link className={`${css.button} ${css.other_drinks_btn}`} to={'/drinks'}>
+              <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
                 Other drinks
               </Link>
             )}
           </section>
         </PreviewDrinks>
-      )}
     </div>
   );
 };
 
 export default MainPage;
-
+ 
 //   const separateDrinks = drinks => {
 //     if (!allDrinks) return;
 
@@ -160,4 +155,4 @@ export default MainPage;
                 </ul>
               </>
             )}
-          </ul> */
+          </ul> */ 

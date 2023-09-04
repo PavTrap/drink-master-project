@@ -40,12 +40,11 @@ ul {
   margin-bottom: 80px;
 }
 
-.image{
+.image {
   width: 100%;
   height: 100%;
   border-radius: 8px;
 }
-
 
 .mainPageList_item:not(:first-child) {
   display: none;
@@ -57,8 +56,9 @@ ul {
   width: 100%;
   height: 100%;
   transition: transform 200ms ease;
-} 
-.card:hover{ transform: scale(1.02)
+}
+.card:hover {
+  transform: scale(1.02);
 }
 
 .hero_title {
@@ -97,6 +97,7 @@ ul {
 
   position: relative;
 }
+
 .hero_section > img {
   mix-blend-mode: lighten;
   filter: contrast(1.2);
@@ -106,9 +107,12 @@ ul {
   top: 44px;
 }
 
-.button {
+.hero_button {
   z-index: 9;
+  display:inline-block;
+  font-family: inherit;
   font-size: 14px;
+  font-style: normal;
   border-radius: 42px;
   color: #161f37;
   background-color: #f3f3f3;
@@ -116,14 +120,19 @@ ul {
   line-height: 18px;
   font-weight: 600;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
-
+.hero_button:hover,
+.hero_button:focus {
+  transform: scale(1.02); 
+}
 .other_drinks_btn {
   z-index: 9;
   color: #161f37;
+  border-radius: 42px;
   background-color: #f3f3f3;
   font-size: 14px;
-  font-style: normal;
+
   font-weight: 600;
   line-height: 18px;
 
@@ -133,7 +142,13 @@ ul {
   left: 50%;
   padding: 14px 40px;
   transform: translateX(-50%);
+  transition: scale 0.2s ease;
 }
+.other_drinks_btn:hover,
+.other_drinks_btn:focus {
+  scale: 1.02;
+}
+
 .category_title {
   font-size: 28px;
   font-style: normal;
@@ -177,14 +192,14 @@ ul {
     display: none;
     pointer-events: none;
   }
- .card {
+  .card {
     width: calc(100% / 2 - 10px);
     height: calc(100% / 2 - 10px);
   }
   .other_drinks_btn {
     font-size: 16px;
   }
-  .button {
+  .hero_button  {
     font-size: 16px;
   }
   .main_p {
@@ -214,7 +229,7 @@ ul {
 @media screen and (min-width: 1440px) {
   h1 {
     font-size: 64px;
-    max-width: 715px;;
+    max-width: 715px;
   }
   .mainPageList_item:nth-child(3) {
     display: block;
@@ -222,7 +237,7 @@ ul {
     pointer-events: all;
   }
 
- .card {
+  .card {
     width: calc(100% / 3 - 10px);
     height: calc(100% / 3 - 10px);
   }
@@ -258,15 +273,14 @@ ul {
   }
 }
 
-
-@media screen and (min-width: 768px) and (max-width: 1200px){
+@media screen and (min-width: 768px) and (max-width: 1200px) {
   h2 {
     font-size: 40px;
     margin-bottom: 40px;
   }
 }
 @media screen and (min-width: 1201px) {
-  h2{
+  h2 {
     font-size: 44px;
     margin-bottom: 40px;
   }

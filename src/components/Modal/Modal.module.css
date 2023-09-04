@@ -130,6 +130,7 @@
 	height: 20px;
 }
 .input{
+	display:block;
 	height: 56px;
 	width: 400px;
 	border: 1px solid rgba(243, 243, 243, 0.5);
@@ -139,13 +140,34 @@
 	margin-bottom: 25px;
 	box-sizing: border-box;
 	padding: 14px 24px;
+	transition: all 0.2s ease;
 }
+.input::placeholder {
+	color: rgba(243, 243, 243, 0.5);
+  }
+.input:focus,
+.input:hover {
+  outline: none;
+  color: #f3f3f3;
+  border-color: rgba(243, 243, 243, 0.5);
+  background-color: transparent;
+}
+
+
+
 .loginBtn{
+	z-index:10;
 	height: 56px;
 	width: 400px;
 	border: 1px solid rgba(243, 243, 243, 0.5);
 	background-color: rgba(243, 243, 243, 1);
 	border-radius: 200px;
 	color: black;
-	cursor: pointer
+	cursor: pointer;
+	transition: all 0.2s ease-in-out;
 }
+.loginButton:hover {
+
+	transform: scale(1.03); 
+
+  }

@@ -11,8 +11,7 @@
 }
 
 .section_transpatent{
-  width: 100vw;
-  height: 100vh;
+  padding:184px 0;
   display: flex;
   justify-content: center;
   align-items: center;
