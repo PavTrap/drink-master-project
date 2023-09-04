@@ -7,7 +7,7 @@ export default function MainPage() {
 const littleStyles = {
   height: '70vh',
   fontSize: "40px",
-  // border: '1px solid blue',
+
   width: '100%',
   textAlign: 'center',
   display: 'flex',

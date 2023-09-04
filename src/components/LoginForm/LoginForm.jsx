@@ -80,7 +80,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <ToastContainer />
+      <ToastContainer icon={false} theme={"dark"} toastClassName={"toast"} position={'top-center'} />
 
       <form className={loginForm} onSubmit={formik.handleSubmit}>
         <h1 className={loginTitle}> Sign In </h1>

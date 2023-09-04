@@ -66,10 +66,11 @@ const RegisterForm = () => {
       }
 
       if (user.name !== '' && user.email !== '' && user.password !== '') {
+        //логика просмотра ответа с бека
         dispatch(register(user));
         if (!BackEndError) {
           resetForm();
-          navigate('/signin');
+          navigate('/');
         }
       } else {
         setPasswordError('Values required');
