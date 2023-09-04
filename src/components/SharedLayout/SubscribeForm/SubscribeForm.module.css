@@ -45,6 +45,15 @@
   color: #f3f3f3;
   padding: 18px 24px;
   font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.subscribeBlockButton:hover,
+.subscribeBlockButton:focus {
+  border: 2px solid #ffffffda;
+  transform: scale(1.03);
 }
 
 @media screen and (min-width: 375px) {
@@ -91,4 +100,3 @@
     padding: 14px 24px;
   }
 }
-
