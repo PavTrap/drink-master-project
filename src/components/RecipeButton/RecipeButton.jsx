@@ -5,7 +5,9 @@ import { addFavorites, deleteFavorites } from '../../redux/FavoriteCocktails/Fav
 import { getFavoriteRecipes } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import css from './RecipeButton.module.css';
 
-const RecipeButton = () => {
+const RecipeButton = ({ favorites }) => {
+    console.log(favorites);
+
     const { recipeId } = useParams();
     const [isAddToFavorite, setIsAddToFavorite] = useState(false);
     const favoriteRecipe = useSelector(getFavoriteRecipes);
@@ -14,6 +16,9 @@ const RecipeButton = () => {
     useEffect(() => {
         const isFavorite = favoriteRecipe.data.some((recipe) => recipe._id === recipeId);
         setIsAddToFavorite(isFavorite);
+
+        console.log('Favorite status updated:', isFavorite);
+
       }, [favoriteRecipe, recipeId]);
 
   return (
