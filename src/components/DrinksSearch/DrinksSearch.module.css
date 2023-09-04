@@ -20,6 +20,7 @@
 }
 
 @media screen and (min-width: 320px) {
+  
   .inputDrinks {
     padding: 18px 24px;
     width: 100%;
@@ -37,6 +38,7 @@
     margin-bottom: 40px;
   }
   .selsctDrinks {
+    cursor: pointer;
     border-radius: 200px;
 
     position: relative;
@@ -97,6 +99,9 @@
 }
 
 @media screen and (min-width: 768px) {
+  .container{
+    margin-top: 60px;
+  }
 
   .drinkCardContainer {
     margin-right: -20px;
@@ -107,6 +112,7 @@
 
   .title {
     margin-bottom: 60px;
+    min-width: 678px;
   }
   .inputDrinks {
     width: 264px;
@@ -143,9 +149,13 @@
 }
 
 @media screen and (min-width: 1440px) {
+  .container{
+    margin-top: 80px;
+  }
  
   .title {
     margin-bottom: 80px;
+    min-width: 1240px;
   }
 
   .drinkCard{

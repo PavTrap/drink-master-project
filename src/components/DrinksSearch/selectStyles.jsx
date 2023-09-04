@@ -18,20 +18,35 @@ export const selectStyles = {
 
     fontSize: '17px',
     fontWeight: '400',
-    // lineHeight: '26.52', /* 26.52px */
 
-    border: 'none', // Убираем border
-    boxShadow: 'none', // Убираем boxShadow, если есть
+    border: 'none', 
+    boxShadow: 'none', 
+
+    cursor: isDisabled ? 'not-allowed' : 'pointer', // Добавляем cursor: pointer при наведении
+    transition: 'background-color 0.3s, box-shadow 0.3s', // Добавляем анимацию при ховере
+    '&:hover': {
+      boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)', 
+    },
+    '&:focus': {
+      outline: 'none', 
+      boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)', 
+    },
   }),
   option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-    // console.log('option', data, isDisabled, isFocused, isSelected);
     return {
       ...styles,
       backgroundColor: '#161f37',
       color: isSelected ? '#F3F3F3' : 'rgba(243, 243, 243, 0.40)',
 
-      cursor: isDisabled ? 'not-allowed' : 'default',
-      // borderRadius: "20px"
+      cursor: isDisabled ? 'not-allowed' : 'pointer', 
+      transition: 'background-color 0.3s, box-shadow 0.3s', 
+      '&:hover': {
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)', 
+      },
+      '&:focus': {
+        outline: 'none', 
+        boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)', 
+      },
     };
   },
 

@@ -1,5 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { allCategoriesStr } from 'components/DrinksSearch/DrinksSearch';
 
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
 
@@ -8,8 +9,17 @@ export const fetchDrinks = createAsyncThunk('drinks/fetchDrinks', async (data, t
   try {
     const { q = '', category = '', ingredient = '', page = 1, lastRequest } = data;
 
-
     let url = null;
+
+    if (category === allCategoriesStr) {
+      url = '/api/recipes/main-page';
+      const response = await axios.get(url);
+      console.log('response.data ==>> ', response.data)
+      return { url, data: response.data }
+    }
+
+
+    
 
     if (lastRequest && page !== 1) {
       const urlParamList = Object.entries(lastRequest)[0]

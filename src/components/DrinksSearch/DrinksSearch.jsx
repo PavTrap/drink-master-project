@@ -12,19 +12,20 @@ import { useParams } from 'react-router-dom/dist';
 import { SearchSvg, DrinkCard } from './additionalComponents';
 // import { setIn } from 'formik/dist';
 
-
+export const allCategoriesStr = 'All categories';
+export const ingredientsStr = 'Ingredients';
 
 export const DrinksSearch = () => {
   const dispatch = useDispatch();
   const drinksDispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { categoryList, entities, ingredientList, isLoading } = useSelector(state => state.drinks);
   const { categoryName } = useParams();
   const [category, setCategory] = useState(categoryName);
-  const [ingredient, setIngredient] = useState('')
-  const [q, setQ] = useState('')
-  const [lastRequest, setLastRequest] = useState(category)
-  
+  const [ingredient, setIngredient] = useState('');
+  const [q, setQ] = useState('');
+  const [lastRequest, setLastRequest] = useState(category);
+
   // делает запрос за категориями и ингридиентами
   useEffect(() => {
     if (categoryList.length === 0) {
@@ -46,34 +47,36 @@ export const DrinksSearch = () => {
 
   // делает fetch по категории
   useEffect(() => {
-    if (category !== undefined) {
-      setLastRequest({ category })
-      drinksDispatch(fetchDrinks({category}))
+    if (category !== undefined && category !== null) {
+      setLastRequest({ category });
+      drinksDispatch(fetchDrinks({ category }));
+      setIngredient(null);
+      resetInput()
     }
-  }, [category, drinksDispatch])
-  
+  }, [category, drinksDispatch]);
+
   // делает fetch по ингридиенту
   useEffect(() => {
-    if (ingredient !== '') {
-      setLastRequest({ ingredient })
-      drinksDispatch(fetchDrinks({ingredient}))
+    if (ingredient !== '' && ingredient !== null) {
+      setLastRequest({ ingredient });
+      drinksDispatch(fetchDrinks({ ingredient }));
+      setCategory(null);
+      resetInput()
     }
-  }, [ingredient, drinksDispatch])
-  
+  }, [ingredient, drinksDispatch]);
+
   // делает fetch по q
   useEffect(() => {
-    if (q !== '') {
-      setLastRequest({ q })
-      drinksDispatch(fetchDrinks({q}))
+    if (q !== '' && q !== null) {
+      setLastRequest({ q });
+      drinksDispatch(fetchDrinks({ q }));
+      setIngredient(null);
+      setCategory(null);
     }
-  }, [q, drinksDispatch ])
-
-  
-
-  
+  }, [q, drinksDispatch]);
 
   const debouncedHandleChange = debounce(payload => {
-    setQ(payload)
+    setQ(payload);
   }, 1000);
 
   const handleChange = event => {
@@ -85,12 +88,12 @@ export const DrinksSearch = () => {
   };
 
   const handleChangeSelectCategory = selectedoption => {
-    setCategory(selectedoption.label)
+    setCategory(selectedoption.label);
   };
 
   const handleChangeSelectIngredient = selectedoption => {
-    navigate(`/drinks`)
-    setIngredient(selectedoption.label)
+    navigate(`/drinks`);
+    setIngredient(selectedoption.label);
   };
 
   const changePage = page => {
@@ -100,34 +103,52 @@ export const DrinksSearch = () => {
   const selectListWithSelectReact = data => {
     const arr = [];
     let el = null;
+    // let check = 0;
     data.forEach(elem => {
       if (elem?.name) {
+        // categories
+        // check = 1;
         el = elem.name;
       } else {
         el = elem.title;
       }
       arr.push({ value: el, label: el });
     });
+    // if (check === 1) {
+    //   arr.unshift({ value: allCategoriesStr, label: allCategoriesStr });
+    // } else {
+    //   arr.unshift({ value: ingredientsStr, label: ingredientsStr });
+    // }
+
     return arr;
   };
 
-  
+  const resetInput = () => {
+    const inputElement = document.getElementById("inputSearch");
+    if (inputElement) {
+      setQ("")
+      inputElement.value = ''; 
+    }
+  }
+
   return (
     <>
       <form className={css.drinkRequestForm}>
         <label className={css.inputContainer}>
-          <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" />
+          <input id="inputSearch" onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text"/>
           {window.innerWidth > 768 && <SearchSvg className={css.searchSvg} />}
         </label>
 
         <Select
-          placeholder="All categories"
+          value={category}
+          placeholder={category ? category : 'All categories'}
           options={selectListWithSelectReact(categoryList)}
           styles={selectStyles}
           onChange={handleChangeSelectCategory}
         />
         <Select
-          placeholder="Ingredients"
+          value={ingredient}
+          placeholder={ingredient ? ingredient : 'Ingredients'}
           options={selectListWithSelectReact(ingredientList)}
           styles={selectStyles}
           onChange={handleChangeSelectIngredient}
@@ -145,7 +166,6 @@ export const DrinksSearch = () => {
         {isLoading && <Dots className={css.loading} />}
         {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
 
-        {/* <Paginator pages={pages } onChangePage={ changePage} /> */}
         {entities?.count?.totalPages > 1 && (
           <Paginator pages={{ page: entities.count.page, totalPages: entities.count.totalPages }} onChangePage={changePage} />
         )}
