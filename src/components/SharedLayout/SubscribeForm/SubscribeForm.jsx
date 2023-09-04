@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 import css from './SubscribeForm.module.css';
 // import Toast from '../../Toast/Toast';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+
 
 const SubscribeForm = () => {
   const [email, setEmail] = useState('');
@@ -47,8 +49,10 @@ console.log(message);
   async function sendForm() {
     try {
       const baseURL = 'https://drink-master-back-end.onrender.com';
-
       const res = await axios.post(`${baseURL}/subscribe`, { email: email });
+
+      // res && setEmail('');
+
       console.log(res.status);
 
       if (res.status === 200) {
@@ -57,6 +61,7 @@ console.log(message);
         const message = 'ok';
         toast.success(message);
       }
+
     } catch (error) {
       if (error.response) {
         //Если есть HTTP-ответ

@@ -64,7 +64,7 @@ export const ingredientStyles = {
     fontWeight: '400',
     cursor: 'pointer',
     lineHeight: '18px',
-    transition: 'transform 200ms ease',
+    transition: 'all 200ms ease',
     '&:hover': {
       backgroundColor: 'transparent',
       boxShadow: 'none',
@@ -96,6 +96,7 @@ export const ingredientStyles = {
       ...styles['@media only screen and (min-width: 1440px)'],
       width: '295px',
     },
+    
   }),
   menu: styles => ({
     // menu container

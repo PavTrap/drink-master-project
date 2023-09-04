@@ -12,3 +12,25 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.toast {
+  --toastify-toast-width: 400px;
+  --toastify-color-dark: #333b50;;
+  --toastify-toast-min-height: 64px;
+  --toastify-font-family: Manrope sans-serif;
+
+  --toastify-text-color-info: #fff;
+  --toastify-text-color-success: #3cbc81;
+  --toastify-text-color-error: #d1292997;
+  text-transform: capitalize;
+  max-height: 300px;
+  border-radius: 15px;
+
+  padding: 20px 20px;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 156%;
+}
+/* .toast::-webkit-scrollbar{
+  display: none;
+} */

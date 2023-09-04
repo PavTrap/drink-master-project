@@ -1,9 +1,19 @@
-/* .myRecipeContainer {
+.myRecipeContainer {
+  position: relative;
+  min-width: 335px;
+  min-height: 743px;
   padding: 80px 0;
-  @media screen and (min-width: 768px) {
+}
+@media screen and (min-width: 768px) {
+  .myRecipeContainer {
+    min-width: 704px;
+    min-height: 863px;
     padding: 140px 0;
   }
-  @media screen and (min-width: 1440px) {
-    padding-top: 158px;
+}
+@media screen and (min-width: 1440px) {
+  .myRecipeContainer {
+    min-width: 1240px;
+    padding-top: 160px;
   }
-} */
+}

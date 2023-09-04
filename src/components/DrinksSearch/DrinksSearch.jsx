@@ -4,13 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchCategories, fetchDrinks, fetchIngredients } from 'redux/Drinks/DrinksOperation';
 import Select from 'react-select';
 import debounce from 'lodash.debounce';
-import { selectStyles } from './selectStyles';
+import { selectStylesCoktails, selectStylesIngredients } from './selectStyles';
 import { useNavigate } from 'react-router-dom';
 import Dots from 'components/Spinner/Dots';
 import { Paginator } from 'components/Paginator/Paginator';
 import { useParams } from 'react-router-dom/dist';
-import { SearchSvg, DrinkCard } from './additionalComponents';
-// import { setIn } from 'formik/dist';
+import { SearchSvg} from './additionalComponents';
+
+import DrinkItemCard from './DrinkItemCard/DrinkItemCard';
 
 export const allCategoriesStr = 'All categories';
 export const ingredientsStr = 'Ingredients';
@@ -47,11 +48,13 @@ export const DrinksSearch = () => {
 
   // делает fetch по категории
   useEffect(() => {
+
     if (category !== undefined && category !== null) {
       setLastRequest({ category });
       drinksDispatch(fetchDrinks({ category }));
       setIngredient(null);
       resetInput()
+
     }
   }, [category, drinksDispatch]);
 
@@ -62,16 +65,19 @@ export const DrinksSearch = () => {
       drinksDispatch(fetchDrinks({ ingredient }));
       setCategory(null);
       resetInput()
+
     }
   }, [ingredient, drinksDispatch]);
 
   // делает fetch по q
   useEffect(() => {
+
     if (q !== '' && q !== null) {
       setLastRequest({ q });
       drinksDispatch(fetchDrinks({ q }));
       setIngredient(null);
       setCategory(null);
+
     }
   }, [q, drinksDispatch]);
 
@@ -123,6 +129,7 @@ export const DrinksSearch = () => {
     return arr;
   };
 
+
   const resetInput = () => {
     const inputElement = document.getElementById("inputSearch");
     if (inputElement) {
@@ -130,6 +137,7 @@ export const DrinksSearch = () => {
       inputElement.value = ''; 
     }
   }
+
 
   return (
     <>
@@ -143,28 +151,30 @@ export const DrinksSearch = () => {
           value={category}
           placeholder={category ? category : 'All categories'}
           options={selectListWithSelectReact(categoryList)}
-          styles={selectStyles}
+          styles={selectStylesCoktails}
           onChange={handleChangeSelectCategory}
+          maxMenuHeight={405}
         />
         <Select
           value={ingredient}
           placeholder={ingredient ? ingredient : 'Ingredients'}
           options={selectListWithSelectReact(ingredientList)}
-          styles={selectStyles}
+          styles={selectStylesIngredients}
           onChange={handleChangeSelectIngredient}
         />
       </form>
       <div className={css.responseContainer}>
         {entities.data && (
           <ul className={css.drinkCardContainer}>
-            {entities.data.map(({ _id, drink, drinkThumb }) => (
-              <DrinkCard key={_id} drink={drink} drinkThumb={drinkThumb} id={_id} />
+            {entities.data.map(({ _id, drink, drinkThumb, ingredients }) => (
+              <DrinkItemCard key={_id} drink={drink} drinkThumb={drinkThumb} id={_id} popup={ingredients}/>
             ))}
           </ul>
         )}
 
         {isLoading && <Dots className={css.loading} />}
         {entities?.data?.length === 0 && isLoading === false && <h3>No result</h3>}
+
 
         {entities?.count?.totalPages > 1 && (
           <Paginator pages={{ page: entities.count.page, totalPages: entities.count.totalPages }} onChangePage={changePage} />

@@ -1,11 +1,22 @@
 .paginatorContainer {
-  max-width: 295px;
+  max-width: 335px;
   display: flex;
   justify-content: center;
-  padding: 4px 32px;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  @media screen and (min-width: 768px) {
+  margin: 0 auto;
+  /* @media screen and (min-width: 768px) { */
+
+  /* margin-top: 80px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto; */
+  /* } */
+}
+
+@media screen and (min-width: 768px) {
+  .paginatorContainer {
+
     max-width: 436px;
   }
 }
@@ -14,24 +25,43 @@
   list-style: none;
   display: flex;
   gap: 12px;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin: 0 16px;
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .button {
-  width: 15px;
-  height: 55px;
+  /* width: 15px;
+  height: 55px; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 27px;
+  height: 27px;
+
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: #0a0a11;
   border-color: transparent;
   cursor: pointer;
+  border-radius: 50%;
+}
+.button > svg {
+  transform: scale(2)
 }
 
-.button:hover, 
-.button:active {
+
+ .button:hover,.button:active   {
+
   background-color: rgba(64, 112, 205, 0.5);
 }
+.isActive {
+
+  background-color: rgba(64, 112, 205, 0.5);
+}
+
+
 
 .buttonIcon {
   width: 20px;
@@ -40,8 +70,8 @@
 }
 
 .pageButton {
-  width: 27px;
-  height: 27px;
+  width: 28px;
+  height: 28px;
   font-size: 12px;
   line-height: calc(16 / 12);
   font-weight: 500;
@@ -49,10 +79,25 @@
   background-color: transparent;
   border-color: transparent;
   border-radius: 50%;
+  display: flex;
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+
+
 }
 
-.pageButton:hover,
-.pageButton:active {
+.pageButton:hover {
   background-color: rgba(64, 112, 205, 0.5);
 }
+
+
+.active{
+  background-color: rgba(64, 112, 205, 0.5) !important;
+}
+
+.dots {
+  font-size: 12px;
+  align-self: center;
+}
+
