@@ -13,7 +13,8 @@ import { SearchSvg} from './additionalComponents';
 
 import DrinkItemCard from './DrinkItemCard/DrinkItemCard';
 
-
+export const allCategoriesStr = 'All categories';
+export const ingredientsStr = 'Ingredients';
 
 export const DrinksSearch = () => {
   const dispatch = useDispatch();
@@ -47,25 +48,36 @@ export const DrinksSearch = () => {
 
   // делает fetch по категории
   useEffect(() => {
-    if (category !== undefined) {
+
+    if (category !== undefined && category !== null) {
       setLastRequest({ category });
       drinksDispatch(fetchDrinks({ category }));
+      setIngredient(null);
+      resetInput()
+
     }
   }, [category, drinksDispatch]);
 
   // делает fetch по ингридиенту
   useEffect(() => {
-    if (ingredient !== '') {
+    if (ingredient !== '' && ingredient !== null) {
       setLastRequest({ ingredient });
       drinksDispatch(fetchDrinks({ ingredient }));
+      setCategory(null);
+      resetInput()
+
     }
   }, [ingredient, drinksDispatch]);
 
   // делает fetch по q
   useEffect(() => {
-    if (q !== '') {
+
+    if (q !== '' && q !== null) {
       setLastRequest({ q });
       drinksDispatch(fetchDrinks({ q }));
+      setIngredient(null);
+      setCategory(null);
+
     }
   }, [q, drinksDispatch]);
 
@@ -97,34 +109,55 @@ export const DrinksSearch = () => {
   const selectListWithSelectReact = data => {
     const arr = [];
     let el = null;
+    // let check = 0;
     data.forEach(elem => {
       if (elem?.name) {
+        // categories
+        // check = 1;
         el = elem.name;
       } else {
         el = elem.title;
       }
       arr.push({ value: el, label: el });
     });
+    // if (check === 1) {
+    //   arr.unshift({ value: allCategoriesStr, label: allCategoriesStr });
+    // } else {
+    //   arr.unshift({ value: ingredientsStr, label: ingredientsStr });
+    // }
+
     return arr;
   };
+
+
+  const resetInput = () => {
+    const inputElement = document.getElementById("inputSearch");
+    if (inputElement) {
+      setQ("")
+      inputElement.value = ''; 
+    }
+  }
+
 
   return (
     <>
       <form className={css.drinkRequestForm}>
         <label className={css.inputContainer}>
-          <input onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text" />
+          <input id="inputSearch" onChange={handleChange} className={css.inputDrinks} placeholder="Enter the text"/>
           {window.innerWidth > 768 && <SearchSvg className={css.searchSvg} />}
         </label>
 
         <Select
-          placeholder="All categories"
+          value={category}
+          placeholder={category ? category : 'All categories'}
           options={selectListWithSelectReact(categoryList)}
           styles={selectStylesCoktails}
           onChange={handleChangeSelectCategory}
           maxMenuHeight={405}
         />
         <Select
-          placeholder="Ingredients"
+          value={ingredient}
+          placeholder={ingredient ? ingredient : 'Ingredients'}
           options={selectListWithSelectReact(ingredientList)}
           styles={selectStylesIngredients}
           onChange={handleChangeSelectIngredient}

@@ -240,4 +240,24 @@
   text-decoration: none;
   justify-content: space-between;
   gap: 20px;
+
 }
+
+@media screen and (min-width: 1440px) {
+  .mainFrame {
+    /* padding-top: 160px; */
+    max-width: 1240px;
+  }
+}
+/* gradient blending fix */
+.gradient,
+.gradient1,
+.gradient2,
+.gradient3,
+.gradient4,
+.gradient5,
+.gradient6 {
+  mix-blend-mode: screen;
+}
+
+
