@@ -2,14 +2,14 @@
 
 .burgerMenu {
   position: fixed;
-  top: 85px;
+  top: 100%;
   right: 0;
   width: 100%;
   height: 100%;
   background: #0b0d17;
 
-  background-size: cover;
+  margin-top: 85px;
 
-  z-index: 1000;
-  transition: right 1s ease;
+  z-index: -1;
+  transition: top 0.5s ease, opacity 0.5s ease;
 }
