@@ -22,7 +22,7 @@ export const ingredientStyles = {
     borderRadius: '60px',
 
 
-
+    transition: "0.2s",
     backgroundColor: 'transparent',
     color: '#F3F3F3',
     height: '50px',
@@ -113,7 +113,7 @@ export const ingredientStyles = {
       ...styles['@media only screen and (min-width: 1440px)'],
       width: '295px',
     },
-    bachgroundColor: 'transparent',
+    backgroundColor: 'transparent',
   }),
 };
 
@@ -133,7 +133,7 @@ export const measureStyles = {
     borderRadius: '60px',
     borderWidth: '1px',
 
-
+    transition: "0.2s",
     paddingLeft: '8px',
     backgroundColor: 'transparent',
     color: '#F3F3F3',
