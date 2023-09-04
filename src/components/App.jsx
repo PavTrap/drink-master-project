@@ -67,7 +67,7 @@ export const App = () => {
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />
         <Route path="favorite" element={<Private component={<FavoritePage />} />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<Private component={<NotFoundPage />} />}/>
       </Route>
 
 

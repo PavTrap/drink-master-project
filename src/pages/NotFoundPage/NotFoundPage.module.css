@@ -1,27 +1,45 @@
 .notFoundContainer {
-  position: relative;
-  text-align: center;
-  max-width: 375px;
-  margin: 0 auto;
-  padding: 80px 20px;
+  min-width: 335px;
+  min-height: 693px;
 }
-  @media screen and (min-width: 768px) {
-    .notFoundContainer { max-width: 768px;
-    padding: 140px 32px;}
+@media screen and (min-width: 768px) {
+  .notFoundContainer {
+    min-width: 704px;
+    min-height: 740px;
   }
-  @media screen and (min-width: 1440px) {
-    .notFoundContainer {  max-width: 1440px;
-    padding-top: 158px;
-    padding-left: 100px;
-    padding-right: 100px;
+}
+@media screen and (min-width: 1440px) {
+  .notFoundContainer {
+    min-width: 1240px;
   }
 }
 .textContainer {
-  gap: 150px;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 120px;
+}
+@media screen and (min-width: 768px) {
+  .textContainer {
+    top: 25%;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .textContainer {
+    top: 21%;
+  }
 }
 .span {
   font-size: 120px;
-  line-height: calc(123 / 120);
+  line-height: calc(120 / 123);
   font-weight: 600;
   color: rgba(243, 243, 243, 0.1);
+}
+@media screen and (min-width: 768px) {
+  .span {
+    font-size: 150px;
+    line-height: calc(150 / 123);
+  }
 }

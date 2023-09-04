@@ -6,6 +6,16 @@
   transform: translateX(-50%);
   mix-blend-mode: lighten;
 }
+@media screen and (min-width: 768px){
+  .noRecipeContainer {
+    top: 191px
+  }
+}
+@media screen and (min-width: 1440px){
+  .noRecipeContainer {
+    top: 133px
+  }
+}
 .noRecipeTitle {
   max-width: 205px;
   margin-top: 14px;
