@@ -1,7 +1,7 @@
-import css from './MainPage.module.css';
+import css from './DrinkItemCard.module.css'
 import { Link } from 'react-router-dom';
 
-const DrinkCard = ({ drink, drinkThumb, id, popup }) => {
+const DrinkItemCard = ({ drink, drinkThumb, id, popup }) => {
 
   const title = getIngredientsList(popup);
   return (
@@ -18,7 +18,7 @@ const DrinkCard = ({ drink, drinkThumb, id, popup }) => {
     </li>
   );
 };
-export default DrinkCard;
+export default DrinkItemCard;
 
 function getIngredientsList(ingredientList) {
   const array = ingredientList.map(item => (item?.title ? item.title : ''));

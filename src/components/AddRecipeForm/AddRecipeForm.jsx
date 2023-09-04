@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'; // react
 import { addCocktail } from '../../fetchAPI/fetchAPI'; //api
 import { useNavigate } from 'react-router-dom'; // router dom
-import Tost from 'components/Toast/Toast'; // toast
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import s from './AddRecipeForm.module.css';
 
@@ -20,19 +22,15 @@ export const AddRecipeForm = () => {
   const [category, setCategory] = useState('');
   const [glass, setGlass] = useState('');
   const [instructions, setInstructions] = useState('');
-  const [backendError, setBackendError] = useState(null);
+
 
   useEffect(() => {
     if (tempImageUrl) setDrinkThumb(tempImageUrl);
   }, [drinkThumb, tempImageUrl]); // reseting url
 
-  useEffect(() => {   // showing Toast
-    setTimeout(() => {
-      setBackendError(null);
-    }, 5000);
-  }, [backendError]);
 
-  const onPhotoChange = event => {  // handele photo change
+  const onPhotoChange = event => {
+    // handele photo change
     const file = event.target.files[0];
     if (file) {
       setTempImageUrl(URL.createObjectURL(file));
@@ -41,11 +39,13 @@ export const AddRecipeForm = () => {
     }
   };
 
-  const setIngredients = data => {  // catch ingredients object
+  const setIngredients = data => {
+    // catch ingredients object
     ingredients = data;
   };
 
-  const handleSubmit = async e => { // submit
+  const handleSubmit = async e => {
+    // submit
 
     e.preventDefault();
     const formData = new FormData();
@@ -59,13 +59,16 @@ export const AddRecipeForm = () => {
     const res = await addCocktail(formData);
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    if (res?.status === 201) navigate('/my');
-    if (res?.status !== 201) setBackendError(res.response.data.message);
+    if (res?.status === 201) {
+      toast.success(res.response.data.message);
+      navigate('/my');
+    }
+    if (res?.status !== 201) toast.error(res.response.data.message);
   };
 
   return (
     <div>
-      {backendError && <Tost message={backendError} />} 
+      <ToastContainer icon={false}  theme={"dark"} toastClassName={"toast"} position={'top-center'}/>
       <form onSubmit={handleSubmit}>
         <RecipeDescriptionFields
           drinkThumb={drinkThumb}
