@@ -13,6 +13,8 @@ const handleRejected = (state, { payload }) => {
 const drinksSlice = createSlice({
   name: 'drinks',
   initialState: {
+    page: 1,
+    totalPages: 0,
     entities: [],
     isLoading: false,
     error: null,
@@ -20,13 +22,13 @@ const drinksSlice = createSlice({
     ingredientList: [],
   },
   reducers: {
-    changeFilter: (state, action) => {
-      state.filter = action.payload;
-    },
-  },
+    changeDrinksPage(state, action) {
+      state.page = action.payload;
+    },},
   extraReducers: builder => {
     builder
       .addCase(fetchDrinks.fulfilled, (state, { payload }) => {
+        state.totalPages= payload.count.totalPages;
         state.entities = payload.data;
         state.isLoading = false;
       })
@@ -58,4 +60,4 @@ const drinksSlice = createSlice({
 });
 
 export const drinksReducer = drinksSlice.reducer;
-export const { changeFilter } = drinksSlice.actions;
+export const { changeDrinksPage } = drinksSlice.actions;

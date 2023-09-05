@@ -1,6 +1,8 @@
-.responseContainer {
-  min-height: 400px;
-  min-width: 100%;
+.noDrinksContainer{
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .drinkCardContainer {

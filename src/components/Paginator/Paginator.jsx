@@ -4,7 +4,7 @@ import css from './Paginator.module.css';
 import usePagination from 'hooks/usePagination';
 import useWindowSize from 'hooks/useWindowSize';
 
-export const Paginator = ({ pages: { page, totalPages }, onChangePage }) => {
+export const Paginator = ({  page, totalPages, onChangePage }) => {
   const dispatch = useDispatch();
   const { width } = useWindowSize();
   const startPage = 1;
