@@ -80,6 +80,7 @@ export const AddRecipeForm = () => {
       closeOnClick
       pauseOnHover
       position={'top-center'}
+      className={'toast'}
     />
       <form onSubmit={handleSubmit}>
         <RecipeDescriptionFields
