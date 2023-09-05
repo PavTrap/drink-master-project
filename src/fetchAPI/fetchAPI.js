@@ -19,7 +19,7 @@ export const fetchCategory = async () => {
 export const fetchGlasses = async () => {
 	try {
 		const { data } = await axios.get('/api/glasses');
-		console.log(data)
+ 
 		return data;
 	} catch (e) {
 		console.log(e);

@@ -1,4 +1,4 @@
-/* @import-normalize; bring in normalize.css styles */
+@import '/node_modules/modern-normalize/modern-normalize.css';
 
 body {
   margin: 0;
@@ -6,6 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body::-webkit-scrollbar {
+  display: none;
 }
 
 code {
