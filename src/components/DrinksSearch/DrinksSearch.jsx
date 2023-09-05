@@ -41,8 +41,8 @@ export const DrinksSearch = () => {
 
   // делает запрос за категориями и ингридиентами
   useEffect(() => {
-    if (categoryList.length===0) dispatch(fetchCategories());
-    if (ingredientList.length===0) dispatch(fetchIngredients());
+    if (categoryList.length === 0) dispatch(fetchCategories());
+    if (ingredientList.length === 0) dispatch(fetchIngredients());
   }, [dispatch, ingredientList, categoryList]);
 
   useEffect(() => {
@@ -61,17 +61,22 @@ export const DrinksSearch = () => {
     setIngredient(e.value);
     dispatch(changeDrinksPage(1));
   };
-  const handleInputChange = e => {
-    setQ(e.target.value);
-    setSearchParams({ q: e.target.value });
-    dispatch(changeDrinksPage(1));
-  };
 
   return (
     <div>
       <form className={css.drinkRequestForm}>
         <label className={css.inputContainer}>
-          <input value={q} id="inputSearch" onChange={e => handleInputChange(e)} className={css.inputDrinks} placeholder="Enter the text" />
+          <input
+            value={q}
+            id="inputSearch"
+            onChange={e => {
+              setQ(e.target.value);
+              setSearchParams({ q: e.target.value });
+              dispatch(changeDrinksPage(1));
+            }}
+            className={css.inputDrinks}
+            placeholder="Enter the text"
+          />
           {width >= 768 && <SearchSvg className={css.searchSvg} />}
         </label>
         <Select
@@ -98,7 +103,11 @@ export const DrinksSearch = () => {
         </ul>
       )}
       {isLoading && <Dots className={css.loading} />}
-      {entities?.length === 0 && isLoading === false && <NoRecipe className={css.noDrinksContainer} title={'No results'} />}
+      {entities?.length === 0 && isLoading === false && (
+        <div className={css.noDrinksContainer}>
+          <NoRecipe title={'No results'} />
+        </div>
+      )}
       {totalPages > 1 && <Paginator page={currentPage} totalPages={totalPages} onChangePage={changeDrinksPage} />}
     </div>
   );

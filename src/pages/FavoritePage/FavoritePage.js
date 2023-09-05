@@ -13,12 +13,13 @@ import css from './FavoritePage.module.css';
 export default function FavoritePage() {
   const favorites = useSelector(getFavoriteRecipes);
   const page = useSelector(getFavPage);
-  const totalPages=useSelector(getTotalPages)
+  const totalPages = useSelector(getTotalPages);
   const location = useLocation();
   const dispatch = useDispatch();
+  
   useEffect(() => {
-    if (favorites.length === 0) dispatch(fetchFavorites(page));
-  }, [dispatch, page, favorites]);
+    dispatch(fetchFavorites(page));
+  }, [dispatch, page]);
 
   return (
     <section className={css.favoritesContainer}>

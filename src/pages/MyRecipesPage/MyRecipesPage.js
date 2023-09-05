@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { getMyRecipes, getPage } from 'redux/MyRecipe/MyRecipeSelector';
+import { getMyRecipes, getPage, getTotalPages } from 'redux/MyRecipe/MyRecipeSelector';
 import { MainTitle } from '../../components/MainTitle/MainTitle';
 import { RecipesList } from 'components/RecipesList/RecipesList';
 import { useLocation } from 'react-router-dom';
@@ -14,17 +14,18 @@ export default function MyRecipesPage() {
   const dispatch = useDispatch();
   const recipes = useSelector(getMyRecipes);
   const page = useSelector(getPage);
+  const totalPages = useSelector(getTotalPages);
   const location = useLocation();
   useEffect(() => {
-    if (recipes.length === 0) dispatch(fetchMyRecipes(page));
-  }, [dispatch, page, recipes]);
+   dispatch(fetchMyRecipes(page));
+  }, [dispatch, page]);
   return (
     <section className={css.myRecipeContainer}>
       <MainTitle title="My recipes" />
-      {recipes?.data?.length > 0 ? (
+      {recipes?.length > 0 ? (
         <>
-          <RecipesList recipes={recipes.data} state={{ from: location }} onDelete={deleteMyRecipes} />
-          {recipes.count.totalPages > 1 && <Paginator pages={recipes.count} onChangePage={changePage} />}
+          <RecipesList recipes={recipes} state={{ from: location }} onDelete={deleteMyRecipes} />
+          {totalPages > 1 && <Paginator page={page} totalPages={totalPages} onChangePage={changePage} />}
         </>
       ) : (
         <NoRecipe title="You haven't added any own cocktails yet" />
