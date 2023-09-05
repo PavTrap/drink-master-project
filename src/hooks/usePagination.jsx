@@ -9,7 +9,8 @@ const usePagination = (totalPages, page, width) => {
   const maxVisiblePageNumders = calculateVisibleNumbers(width);
 
   function countStart(currentPage, total, max) {
-    if (currentPage === 1 || total < max || currentPage <= Math.floor(max / 2)) return 1;
+    if (currentPage === 1 || currentPage <= Math.floor(max / 2)) return 1;
+    if (total <= max) return 1;
     if (currentPage === total) return total - max;
     if (currentPage > total - max) return total - max;
     return currentPage - Math.floor(max / 2);

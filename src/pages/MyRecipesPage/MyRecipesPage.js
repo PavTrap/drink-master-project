@@ -16,8 +16,8 @@ export default function MyRecipesPage() {
   const page = useSelector(getPage);
   const location = useLocation();
   useEffect(() => {
-    dispatch(fetchMyRecipes(page));
-  }, [dispatch, page]);
+    if (recipes.length === 0) dispatch(fetchMyRecipes(page));
+  }, [dispatch, page, recipes]);
   return (
     <section className={css.myRecipeContainer}>
       <MainTitle title="My recipes" />

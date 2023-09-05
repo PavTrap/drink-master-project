@@ -14,6 +14,7 @@ const favoritesSlice = createSlice({
   name: 'favorites',
   initialState: {
     page: 1,
+    totalPages: 0,
     entities: [],
     isLoading: false,
     error: null,
@@ -26,7 +27,8 @@ const favoritesSlice = createSlice({
     builder
       // FETCH
       .addCase(fetchFavorites.fulfilled, (state, { payload }) => {
-        state.entities = payload;
+        state.totalPages= payload.count.totalPages;
+        state.entities = payload.data;
         state.error = null;
         state.isLoading = false;
       })
@@ -36,8 +38,8 @@ const favoritesSlice = createSlice({
       })
       // DELETE
       .addCase(deleteFavorites.fulfilled, (state, action) => {
-        const index = state.entities.data.findIndex(item => item._id === action.meta.arg);
-        state.entities.data.splice(index, 1);
+        const index = state.entities.findIndex(item => item._id === action.meta.arg);
+        state.entities.splice(index, 1);
         state.isLoading = false;
       })
 

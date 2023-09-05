@@ -7,7 +7,6 @@ axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
 export const fetchDrinks = createAsyncThunk(
   'drinks/fetchDrinks',
   async ({category = '', ingredient = '', q = '', page = 1}, { getState, rejectWithValue }) => {
-    console.log("category:", category, "ingredient:", ingredient, "q", q, "page", page);
     const state = getState();
     const persistedToken = state.auth.token;
     try {
