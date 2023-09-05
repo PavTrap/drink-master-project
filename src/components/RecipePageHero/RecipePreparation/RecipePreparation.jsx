@@ -11,7 +11,7 @@ const RecipePreparation = ({ data }) => {
     <section>
       <h3 className={css.title}>Recipe Preparation</h3>
       <div className={css.recipeContainer}>
-        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink}/>
+        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink} title={drink}/>
         <div>
           {/* Рендерити опис  або щось інше */}
           <p className={css.description}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reiciendis cum aliquam dignissimos nisi quaerat numquam, odio temporibus ab rerum voluptatibus doloribus! Voluptatem sit architecto magni corporis nisi expedita veritatis perspiciatis.</p>

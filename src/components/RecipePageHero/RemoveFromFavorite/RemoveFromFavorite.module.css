@@ -10,14 +10,15 @@
     background-color: #f3f3f3;
     border-radius: 42px;
     border-color: transparent;
-
+    cursor: pointer;
     transition: all 250ms ease;
 }
 
 .button:focus,
 .button:hover {
-    color: #F3F3F3;
-    background-color: #161F37;
+    /* color: #F3F3F3;
+    background-color: #161F37; */
+    transform:scale(1.03)
 }
 
 .button:disabled {

@@ -3,9 +3,9 @@ import { useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import PropTypes from 'prop-types';
 
-import RecipePageTitle from 'components/RecipePageTitle/RecipePageTitle';
-import AddToFavorite from 'components/AddToFavorite/AddToFavorite';
-import RemoveFromFavorite from 'components/RemoveFromFavorite/RemoveFromFavorite';
+import RecipePageTitle from 'components/RecipePageHero/RecipePageTitle/RecipePageTitle';
+import AddToFavorite from 'components/RecipePageHero/AddToFavorite/AddToFavorite';
+import RemoveFromFavorite from 'components/RecipePageHero/RemoveFromFavorite/RemoveFromFavorite';
 import { getFavoriteRecipes } from 'redux/FavoriteCocktails/FavoritesSelectors';
 import { formatIngredientImg } from 'utils/utils';
 
@@ -18,7 +18,7 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
   const { recipeId } = useParams();
 
   useEffect(() => {
-    const isFavorite = favoriteRecipe.data.some((recipe) => recipe._id === recipeId);
+    const isFavorite = favoriteRecipe?.data.some((recipe) => recipe._id === recipeId);
     setIsAddToFavorite(isFavorite);
   }, [favoriteRecipe, recipeId]);
 
@@ -36,7 +36,7 @@ const RecipePageHero = ({ data, onAdd, onDelete }) => {
                 <RemoveFromFavorite id={_id} onDelete={onDelete} />
               )}
         </div>
-        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink} />
+        <img className={css.imgDrink} src={formatIngredientImg(drinkThumb)} alt={drink} title={drink}/>
     </section>
   )
 };

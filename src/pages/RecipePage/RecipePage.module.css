@@ -32,22 +32,22 @@ li {
 .container {
   display: flex;
   flex-direction: column;
-  min-width: 375px;
-  padding: 0 20px;
+ 
+  padding: 58px 0 80px 0;
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    min-width: 768px;  
-    padding: 0 32px;
+ 
+ 
+    padding: 112px 0 140px 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
-    /* Чомусь не спрацьовує */
-    /* min-width: 1440;  
-    padding: 0 100px; */
-    padding: 0;
+ 
+    padding: 132px 0 140px 0;
+
   }
 }
