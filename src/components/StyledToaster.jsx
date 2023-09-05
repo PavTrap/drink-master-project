@@ -12,6 +12,8 @@ export default function StyledToaster() {
       position={'top-center'}
       hideProgressBar={true}
       transition={Flip}
+      closeOnClick
+      draggable={false}
     />
   );
 }

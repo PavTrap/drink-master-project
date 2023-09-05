@@ -6,7 +6,7 @@ export const RecipesList = ({ recipes, state, onDelete }) => {
   return (
     <ul className={css.recipeList}>
       <Suspense>
-      {recipes.map(({ _id, drinkThumb, drink, instructions, ingredients }) => {
+      {recipes?.map(({ _id, drinkThumb, drink, instructions, ingredients }) => {
         const recipeIngredients = ingredients.map(ingredient => ingredient.title).join(', ');
         return (
           <RecipesItem
