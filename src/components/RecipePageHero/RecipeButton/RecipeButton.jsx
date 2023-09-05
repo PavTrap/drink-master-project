@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { addFavorites, deleteFavorites } from '../../redux/FavoriteCocktails/FavoritesOperation';
+import { addFavorites, deleteFavorites } from '../../../redux/FavoriteCocktails/FavoritesOperation';
 import { getFavoriteRecipes } from 'redux/FavoriteCocktails/FavoritesSelectors';
 // import useAuth from 'hooks/useAuth';
 // import { selectUserId } from 'redux/Auth/authSelectors';

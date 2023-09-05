@@ -1,22 +1,17 @@
 .container {
   display: flex;
   flex-direction: column;
- 
   padding: 58px 0 80px 0;
 }
 
 @media screen and (min-width: 768px) {
   .container {
- 
- 
     padding: 112px 0 140px 0;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .container {
- 
     padding: 132px 0 140px 0;
-
   }
 }

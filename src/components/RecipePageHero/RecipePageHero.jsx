@@ -1,5 +1,5 @@
 import RecipePageTitle from './RecipePageTitle/RecipePageTitle';
-import RecipeButton from 'components/RecipeButton/RecipeButton';
+import RecipeButton from 'components/RecipePageHero/RecipeButton/RecipeButton';
 
 import css from './RecipePageHero.module.css'
 

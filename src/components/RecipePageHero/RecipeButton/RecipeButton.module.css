@@ -10,14 +10,13 @@
     background-color: #f3f3f3;
     border-radius: 42px;
     border-color: transparent;
-
-    transition: all 250ms ease;
+    cursor:pointer;
+    transition: all 0.2s ease-in-out;
 }
 
 .button:focus,
 .button:hover {
-    color: #F3F3F3;
-    background-color: #161F37;
+    transform:scale(1.02)
 }
 
 .button:disabled {
