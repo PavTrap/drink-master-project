@@ -1,4 +1,4 @@
-import RecipePageTitle from 'components/RecipePageTitle/RecipePageTitle';
+import RecipePageTitle from './RecipePageTitle/RecipePageTitle';
 import RecipeButton from 'components/RecipeButton/RecipeButton';
 
 import css from './RecipePageHero.module.css'
@@ -16,7 +16,7 @@ const RecipePageHero = ({ data }) => {
             Consectetur esse molestias odio accusamus pariatur voluptatibus dicta quidem. Deserunt, enim quis consequuntur minus velit sit reiciendis suscipit quo ad voluptate ipsam culpa neque aspernatur autem porro doloremque quam cum?</p>
             <RecipeButton favorites={favs} />
         </div>
-        <img className={css.imgDrink} src={drinkThumb} alt={drink} />
+        <img className={css.imgDrink} src={drinkThumb} alt={drink} title={drink}/>
     </section>
   )
 };
