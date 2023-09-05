@@ -33,12 +33,15 @@
   line-height: calc(18 / 14);
 
   color: #F3F3F3;
+  text-align: justify;
 }
 
 .instructionList {
   margin-bottom: 40px;
   max-height: 280px;
   overflow: auto;
+  list-style: none;
+  padding: 0;
 }
 
 .instructionList::-webkit-scrollbar {

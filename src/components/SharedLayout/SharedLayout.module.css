@@ -107,10 +107,12 @@
   .leftSideBar,
   .footerBottomContainer {
     width: 335px;
+
   }
 
   .footerBottomContainer {
     justify-content: center;
+    gap: 8px;
   }
 }
 

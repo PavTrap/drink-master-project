@@ -2,6 +2,8 @@
   display: flex;
   flex-wrap: wrap;
   gap: 21px;
+  list-style: none;
+  padding: 0;
 }
 
 .title {

@@ -6,6 +6,8 @@
     line-height: calc(38 / 32);
 
     color: #F3F3F3;
+    width: 335px;
+    text-align: justify;
 }
 
 @media screen and (min-width: 768px) {
@@ -14,6 +16,8 @@
  
         font-size: 56px;
         line-height: calc(60 / 56);
+        width: 593px;
+        text-align: justify;
     }    
   }
   
@@ -21,6 +25,9 @@
     .title {
         font-size: 64px;
         line-height: calc(68 / 64);
+        width: 700px;
+        margin-top: 8px;
+        text-align: left;
     }    
   }
   

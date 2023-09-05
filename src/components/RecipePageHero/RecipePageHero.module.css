@@ -22,11 +22,13 @@
   line-height: calc(18 / 14);
 
   color: #F3F3F3;
+  width: 335px;
+  text-align: justify;
 }
 
 .imgDrink {
   display:block;
-  min-width: 335px;
+  width: 335px;
   /* height: 400px; */
   height: auto;
   margin-bottom: 40px;
@@ -43,7 +45,7 @@
   }
   
   .textDescript {
-    /* max-width: 593px; */
+    width: 593px;
   
     font-size: 16px;
     line-height: calc(22 / 16);
@@ -62,8 +64,11 @@
 @media screen and (min-width: 1440px) {
   .sectionContainer {
     flex-direction: row;
-
+    justify-content: space-between;
+    margin: 0;
+    /* margin-bottom: 100px; */
   }
+  
   
   .heroContainer {
     margin-right: auto;
