@@ -79,7 +79,17 @@ const SubscribeForm = () => {
 
   return (
   <>
-    <ToastContainer icon={false} theme={"dark"} toastClassName={"toast"} position={'top-center'} />
+    <ToastContainer
+      style={{ fontFamily: "inherit" }}
+      icon={true}
+      closeButton={false}
+      theme={"dark"}
+      autoClose={3000}
+      hideProgressBar={true}
+      closeOnClick
+      pauseOnHover
+      position={'top-center'}
+    />
     <form className={css.subscribeBlock} onSubmit={onSubmit}>
       <p className={css.subscribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
       <input

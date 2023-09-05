@@ -70,7 +70,17 @@ export const AddRecipeForm = () => {
 
   return (
     <div>
-      <ToastContainer icon={false} theme={"dark"} toastClassName={"toast"} position={'top-center'} />
+      <ToastContainer
+      style={{ fontFamily: "inherit" }}
+      icon={true}
+      closeButton={false}
+      theme={"dark"}
+      autoClose={3000}
+      hideProgressBar={true}
+      closeOnClick
+      pauseOnHover
+      position={'top-center'}
+    />
       <form onSubmit={handleSubmit}>
         <RecipeDescriptionFields
           drinkThumb={drinkThumb}
