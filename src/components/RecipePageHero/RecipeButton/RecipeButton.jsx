@@ -27,7 +27,7 @@ const RecipeButton = ({ id }) => {
         if (addRes?.status === 201) {
           setIsAddedeToFavorite(true);
           setPendings(false);
-          addRes?.data?.message && toast.info(addRes?.data?.message);
+          addRes?.data?.message && toast.info("Added to Favorites");
         }
         break;
       case 'delete':
@@ -35,7 +35,7 @@ const RecipeButton = ({ id }) => {
         if (delRes?.status === 200) {
           setIsAddedeToFavorite(false);
           setPendings(false);
-          delRes?.data?.message && toast.info(delRes?.data?.message);
+          delRes?.data?.message && toast.info("Removed from Favorites");
         }
         break;
       default:

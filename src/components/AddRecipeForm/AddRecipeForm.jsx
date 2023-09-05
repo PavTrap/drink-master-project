@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'; // react
 import { addCocktail } from '../../fetchAPI/fetchAPI'; //api
 import { useNavigate } from 'react-router-dom'; // router dom
-import { ToastContainer, toast } from 'react-toastify'; //toasts
+import {  toast } from 'react-toastify'; //toasts
 import 'react-toastify/dist/ReactToastify.css'; // toast styles
 
 
@@ -70,18 +70,6 @@ export const AddRecipeForm = () => {
 
   return (
     <div>
-      <ToastContainer
-      style={{ fontFamily: "inherit" }}
-      icon={true}
-      closeButton={false}
-      theme={"dark"}
-      autoClose={3000}
-      hideProgressBar={true}
-      closeOnClick
-      pauseOnHover
-      position={'top-center'}
-      className={'toast'}
-    />
       <form onSubmit={handleSubmit}>
         <RecipeDescriptionFields
           drinkThumb={drinkThumb}

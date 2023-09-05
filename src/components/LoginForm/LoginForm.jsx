@@ -12,7 +12,7 @@ import { IoIosCheckmarkCircleOutline } from 'react-icons/io';
 import { RiErrorWarningLine } from 'react-icons/ri';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import useAuth from 'hooks/useAuth';
@@ -78,7 +78,7 @@ const LoginForm = () => {
 
   return (
     <>
-      <ToastContainer icon={false} theme={"dark"} toastClassName={"toast"} position={'top-center'} />
+   
 
       <form className={loginForm} onSubmit={formik.handleSubmit}>
         <h1 className={loginTitle}> Sign In </h1>

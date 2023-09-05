@@ -15,6 +15,10 @@
   gap: 8px;
   color: #f3f3f3;
   text-decoration: none;
+  transition: transform 0.1s ease;
+}
+.logoBar:hover{
+  transform: scale(1.03);
 }
 
 @media screen and (min-width: 768px) {

@@ -17,23 +17,34 @@ code {
 }
 .toast {
   --toastify-toast-width: 400px;
-  --toastify-color-dark: #333b50;;
+  --toastify-color-dark: #333b50c0;;
   --toastify-toast-min-height: 64px;
-  --toastify-font-family: Manrope sans-serif;
+  --toastify-font-family: inherit;
 
   --toastify-text-color-info: #fff;
   --toastify-text-color-success: #3cbc81;
   --toastify-text-color-error: #d1292997;
+
+  cursor: pointer;
   text-transform: capitalize;
   max-height: 300px;
   border-radius: 15px;
+  text-align: center;
+  border: 1px solid #f3f3f333;
 
-  padding: 20px 20px;
+  padding: 10px 20px;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: 156%;
 }
-/* .toast::-webkit-scrollbar{
-  display: none;
-} */
+.Toastify__toast-container--top-center{
+  top: 8px;
+}
+@media screen and (min-width: 1440px) {
+  .Toastify__toast-container--top-center{
+    top: 82px;
+    left: auto;
+    right: 25px;
+  }
+}
