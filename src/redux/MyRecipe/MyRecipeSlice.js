@@ -14,6 +14,7 @@ const myRecipesSlice = createSlice({
   name: 'myRecipes',
   initialState: {
     page: 1,
+    totalPages: 0,
     recipes: [],
     isLoading: false,
     error: null,
@@ -27,19 +28,19 @@ const myRecipesSlice = createSlice({
     builder
       // FETCH
       .addCase(fetchMyRecipes.fulfilled, (state, { payload }) => {
-        state.recipes = payload;
+        state.totalPages= payload.count.totalPages;
+        state.recipes = payload.data;
         state.error = null;
         state.isLoading = false;
       })
       // ADD
       .addCase(addMyRecipes.fulfilled, (state, action) => {
-        state.recipes.push(action.payload);
         state.isLoading = false;
       })
       // DELETE
       .addCase(deleteMyRecipes.fulfilled, (state, action) => {
         const index = state.recipes.data.findIndex(recipe => recipe.id === action.payload.cocktailId);
-        state.recipes.data.splice(index, 1);
+        state.recipes.splice(index, 1);
         state.isLoading = false;
       })
       // PENDING
