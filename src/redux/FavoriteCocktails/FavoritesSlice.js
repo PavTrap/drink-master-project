@@ -19,10 +19,7 @@ const favoritesSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {
-    changeFavPage(state, action) {
-      state.page = action.payload;
-    },},
+  reducers: {},
   extraReducers: builder => {
     builder
       // FETCH

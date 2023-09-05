@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import css from './RecipePageTitle.module.css'
 
 const RecipePageTitle = ({title}) => {
@@ -8,8 +6,5 @@ const RecipePageTitle = ({title}) => {
   )
 };
 
-RecipePageTitle.propTypes = {
-  title: PropTypes.string.isRequired,
-};
 
 export default RecipePageTitle;

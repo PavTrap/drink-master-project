@@ -18,9 +18,11 @@
   min-width: 335px;
   height: 430px;
   border-radius: 8px;
-  
+
   transform: scaleX(-1);
   object-fit: cover;
+  object-position: top center;
+  box-shadow: 0px 0px 40px #ffffff18;
 }
 
 .description {
@@ -92,6 +94,7 @@
   .recipeContainer {
     flex-direction: row;
     gap: 60px;
+
   }
 
   .title {  

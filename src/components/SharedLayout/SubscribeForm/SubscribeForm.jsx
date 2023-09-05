@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import css from './SubscribeForm.module.css';
 // import Toast from '../../Toast/Toast';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -79,17 +79,6 @@ const SubscribeForm = () => {
 
   return (
   <>
-    <ToastContainer
-      style={{ fontFamily: "inherit" }}
-      icon={true}
-      closeButton={false}
-      theme={"dark"}
-      autoClose={3000}
-      hideProgressBar={true}
-      closeOnClick
-      pauseOnHover
-      position={'top-center'}
-    />
     <form className={css.subscribeBlock} onSubmit={onSubmit}>
       <p className={css.subscribeBlockText}>Subscribe up to our newsletter. Be in touch with latest news and special offers, etc.</p>
       <input

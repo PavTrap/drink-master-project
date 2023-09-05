@@ -1,0 +1,42 @@
+.button {
+  margin-bottom: 80px;
+  padding: 14px 40px;
+
+  font-weight: 600;
+  font-size: 14px;
+  line-height: calc(18 / 14);
+
+  color: #161f37;
+  background-color: #f3f3f3;
+  border-radius: 42px;
+  border-color: transparent;
+  cursor: pointer;
+  transition: all 250ms ease;
+}
+
+.button:focus,
+.button:hover {
+  transform: scale(1.03);
+  /* color: #F3F3F3; */
+  /* background-color: #161F37; */
+}
+
+.button:disabled {
+  color: rgba(243, 243, 243, 0.2);
+  background-color: #434d67;
+}
+
+@media screen and (min-width: 768px) {
+  .button {
+    padding: 18px 44px;
+
+    font-size: 16px;
+    line-height: calc(18 / 16);
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .button {
+    margin-bottom: 0;
+  }
+}

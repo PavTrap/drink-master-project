@@ -7,16 +7,18 @@ import { PersistGate } from 'redux-persist/integration/react';
 import ScrollToTop from 'components/Routes/ScrollToTop';
 import { App } from 'components/App';
 import './index.css';
+import  StyledToaster  from 'components/StyledToaster';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <BrowserRouter basename="drink-master-project" >
-          <ScrollToTop/>
+        <BrowserRouter basename="drink-master-project">
+          <StyledToaster />
+          <ScrollToTop />
           <App />
         </BrowserRouter>
       </PersistGate>
     </Provider>
-	</React.StrictMode>
+  </React.StrictMode>
 );
