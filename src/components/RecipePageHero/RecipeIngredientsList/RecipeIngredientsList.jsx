@@ -1,4 +1,3 @@
-import React from 'react';
 import css from './RecipeIngredientsList.module.css'
 
 const RecipeIngredientsList = ({ children }) => {
