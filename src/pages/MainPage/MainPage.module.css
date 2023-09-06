@@ -125,6 +125,7 @@ ul {
 .hero_button:hover,
 .hero_button:focus {
   transform: scale(1.02); 
+  border: 2px rgba(64, 112, 205, 0.5);
 }
 .other_drinks_btn {
   z-index: 9;
@@ -147,6 +148,7 @@ ul {
 .other_drinks_btn:hover,
 .other_drinks_btn:focus {
   scale: 1.02;
+  border: 2px rgba(64, 112, 205, 0.5);
 }
 
 .category_title {
