@@ -27,6 +27,17 @@
 .inputDrinks:not(:placeholder-shown){
   border: 1px solid #f3f3f3;;
 }
+.inputDrinks::placeholder {
+  color: rgba(243, 243, 243, 0.5);
+}
+
+.inputDrinks:focus,
+.inputDrinks:hover {
+  outline: none;
+  color: #f3f3f3;
+  border-color: rgba(243, 243, 243, 0.5);
+  background-color: transparent;
+}
 
 .container{
   margin-top: 80px;
