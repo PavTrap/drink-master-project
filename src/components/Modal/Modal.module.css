@@ -36,7 +36,7 @@
 	padding: 50px 25px 50px 25px;
 	border-radius: 12px;
 	background-color: #161F37;
-	height: 345px;
+	/* height: 345px; */
 	width: 335px;
 	position: relative;
 	overflow: hidden;
@@ -47,7 +47,7 @@
 	padding: 50px 25px 50px 25px;
 	border-radius: 12px;
 	background-color: #161F37;
-	height: 345px;
+	/* height: 345px; */
 	width: 335px;
 	position: relative;
 	overflow: hidden;
@@ -229,7 +229,7 @@
 		padding: 50px 50px 50px 50px;
 		border-radius: 12px;
 		background-color: #161F37;
-		height: 426px; 
+		/* height: 426px;  */
 		width: 500px;
 		position: relative;
 		overflow: hidden;
@@ -240,7 +240,7 @@
 		padding: 50px 50px 50px 50px;
 		border-radius: 12px;
 		background-color: #161F37;
-		height: 426px;
+		/* height: 426px; */
 		width: 500px;
 		position: relative;
 		overflow: hidden;

@@ -160,7 +160,7 @@
     width: calc((100% / 3) - 15px);
   }
 
-  .drinkCardContainer {
+  /* .drinkCardContainer {
     margin-right: -80px;
-  }
+  } */
 }

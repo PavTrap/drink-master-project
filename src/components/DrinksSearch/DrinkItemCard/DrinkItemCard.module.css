@@ -62,5 +62,7 @@ ul {
   .card {
     width: calc(100% / 3 - 15px);
     height: calc(100% / 3 - 15px);
+    /* width: 400px;
+    height: 400px; */
   }
 }
