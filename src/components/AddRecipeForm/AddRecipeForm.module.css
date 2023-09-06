@@ -16,6 +16,9 @@
   background-color: #f3f3f3;
   color: #161f37;
   margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   transition: all 0.3s ease-out;
 }
