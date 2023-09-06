@@ -1,4 +1,4 @@
-.noDrinksContainer{
+.noDrinksContainer {
   position: absolute;
   top: 220px;
   left: 50%;
@@ -25,8 +25,8 @@
   outline: none;
   transition: all 0.2s ease;
 }
-.inputDrinks:not(:placeholder-shown){
-  border: 1px solid #f3f3f3;;
+.inputDrinks:not(:placeholder-shown) {
+  border: 1px solid #f3f3f3;
 }
 .inputDrinks::placeholder {
   color: rgba(243, 243, 243, 0.5);
@@ -42,14 +42,13 @@
 
 .inputDrinks:focus,
 .inputDrinks:hover,
-.inputDrinks:active{
+.inputDrinks:active {
   border-color: rgba(243, 243, 243, 0.5);
 }
 
-.container{
+.container {
   margin-top: 80px;
 }
-
 
 @media screen and (min-width: 320px) {
   .inputDrinks {
@@ -98,10 +97,9 @@
 }
 
 @media screen and (min-width: 768px) {
-  .container{
+  .container {
     margin-top: 140px;
   }
-
 
   .drinkCardContainer {
     row-gap: 40px;
@@ -145,11 +143,13 @@
   .drinkCard {
     width: calc((100% / 2) - 20px);
   }
+  .noDrinksContainer{
+    top: 130px;
+  }
 }
 
 @media screen and (min-width: 1440px) {
-
-  .container{
+  .container {
     margin-top: 160px;
   }
 
@@ -157,7 +157,7 @@
     column-gap: 20px;
     row-gap: 80px;
   }
-  
+
   .title {
     margin-bottom: 80px;
     min-width: 1240px;
@@ -166,7 +166,9 @@
   .drinkCard {
     width: calc((100% / 3) - 15px);
   }
-
+  .noDrinksContainer{
+    top: 250px;
+  }
   /* .drinkCardContainer {
     margin-right: -80px;
   } */
