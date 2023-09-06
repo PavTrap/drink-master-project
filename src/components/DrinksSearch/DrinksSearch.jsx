@@ -102,7 +102,7 @@ export const DrinksSearch = () => {
           ))}
         </ul>
       )}
-      {isLoading && <Dots className={css.loading} />}
+      {isLoading && <Dots className={css.loading}/>}
       {entities?.length === 0 && isLoading === false && (
         <div className={css.noDrinksContainer}>
           <NoRecipe title={'No results'} />

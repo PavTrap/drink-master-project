@@ -19,12 +19,16 @@ const favoritesSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {},
+  reducers: {
+    changeFavPage(state, action) {
+      state.page = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       // FETCH
       .addCase(fetchFavorites.fulfilled, (state, { payload }) => {
-        state.totalPages= payload.count.totalPages;
+        state.totalPages = payload.count.totalPages;
         state.entities = payload.data;
         state.error = null;
         state.isLoading = false;

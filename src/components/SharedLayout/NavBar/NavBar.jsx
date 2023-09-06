@@ -22,29 +22,9 @@ const NavBar = () => {
         My recipes
       </NavLink>
 
- 
- 
- 
       <NavLink to="/favorite" className={`${styles.links} ${isActive('/favorite')}`}>
-
-       
-
-       
-         
-       
-       
-          
-        
-        
-       
-       
-
-
         Favorites
       </NavLink>
-       
-        
-   
     </nav>
   );
 };
