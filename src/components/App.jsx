@@ -39,15 +39,15 @@ export const App = () => {
 
 
 
-useEffect(() => {
-          navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
-          window.onbeforeunload = () => {
-              window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
-          }
-          return () => window.sessionStorage.setItem('lastRoute', "");
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
 
+      useEffect(() => {
+        navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'))
+        window.onbeforeunload = () => {
+            window.sessionStorage.setItem('lastRoute', JSON.stringify(window.location.pathname))
+        }
+        return () => window.sessionStorage.setItem('lastRoute', "");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
 
