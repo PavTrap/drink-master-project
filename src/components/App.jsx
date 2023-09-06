@@ -33,9 +33,9 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  useEffect(() => {
-    navigate(location.pathname, { relative: 'path' });
-  }, [location.pathname, navigate]);
+  // useEffect(() => {
+  //   navigate(location.pathname, { relative: 'path' });
+  // }, [location.pathname, navigate]);
 
 
 // useEffect(() => {
@@ -47,6 +47,13 @@ export const App = () => {
 //       // eslint-disable-next-line react-hooks/exhaustive-deps
 //       }, [])
 
+useEffect(() => {
+  navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'));
+  window.onbeforeunload = () => {
+    window.sessionStorage.setItem('lastRoute', JSON.stringify(location.pathname));
+  };
+  return () => window.sessionStorage.setItem('lastRoute', '');
+}, [navigate, location.pathname]);
 
 
 
