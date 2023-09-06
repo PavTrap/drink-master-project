@@ -60,7 +60,9 @@
   font-weight: 600;
   line-height: 1.14;
   letter-spacing: -0.56px;
-  padding-bottom: 14px;
+  /* padding-bottom: 14px; */
+  margin: 0;
+  margin-bottom: 14px;
 }
 
 .mainContainer__text {
@@ -70,7 +72,8 @@
   font-weight: 400;
   line-height: 1.28;
   letter-spacing: -0.28px;
-  padding-bottom: 40px;
+  margin-top: 0;
+  margin-bottom: 40px;
 }
 
 .linkContainer {

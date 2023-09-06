@@ -63,7 +63,7 @@ const ModalCard = ({ closePopup }) => {
       <div className={css.modal__content__colorEffect2}></div>
       <div className={css.loginContainer} >
         <div className={css.avatar}>
-          <div style={UserIconContainer}>{loadingURL ? <LoadingCircle /> : <img style={Avatar} src={userPhoto} alt="User Avatar" />}</div>
+          <div className={css.UserIconContainer}>{loadingURL ? <LoadingCircle /> : <img className={css.Avatar} src={userPhoto} alt="User Avatar" />}</div>
           <button className={css.addAvatar} onClick={onClick}>
             <MdAdd className={css.addAvatarIcon} />
           </button>
@@ -90,19 +90,19 @@ const ModalCard = ({ closePopup }) => {
 
 export default ModalCard;
 
-const Avatar = {
-  display: 'block',
-  height: '100%',
-  width: '100%',
-};
+// const Avatar = {
+//   display: 'block',
+//   height: '100%',
+//   width: '100%',
+// };
 
-const UserIconContainer = {
-  width: '100px',
-  height: '100px',
-  overflow: 'hidden',
-  borderRadius: '50%',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  background: 'transparent',
-};
+// const UserIconContainer = {
+//   width: '80px',
+//   height: '80px',
+//   overflow: 'hidden',
+//   borderRadius: '50%',
+//   display: 'flex',
+//   alignItems: 'center',
+//   justifyContent: 'center',
+//   background: 'transparent',
+// };
