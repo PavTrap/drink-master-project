@@ -98,7 +98,7 @@
 }
 @media screen and (min-width: 1440px) {
   .recipeDescription {
-    height: 96px;
+    height: 92px;
   }
 }
 
@@ -121,6 +121,7 @@
   color: rgba(243, 243, 243, 1);
   background-color: rgba(22, 31, 55, 1);
   cursor: pointer;
+  transition: all 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {
@@ -152,6 +153,7 @@
   background-color: rgba(22, 31, 55, 1);
   border-color: transparent;
   cursor: pointer;
+  transition: all 0.3s ease-out;
 }
 
 @media screen and (min-width: 768px) {
@@ -167,6 +169,6 @@
 }
 
 .deleteButton:hover .trashIcon,
-.deleteButton:active .trashIcon{
+.deleteButton:active .trashIcon {
   color: rgba(22, 31, 55, 1);
 }

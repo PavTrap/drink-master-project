@@ -1,20 +1,20 @@
 .drinksContainer{
     position: relative;
     min-width: 335px;
-    min-height: 743px;
+    min-height: 900px;
     padding: 80px 0;
   }
   
   @media screen and (min-width: 768px) {
     .drinksContainer {
       min-width: 704px;
-      min-height: 863px;
+      min-height: 900px;
       padding: 140px 0;
     }
   }
   @media screen and (min-width: 1440px) {
     .drinksContainer {
-      min-width: 704px;
+      min-height: 1000px;
       min-width: 1240px;
       padding-top: 160px;
     }

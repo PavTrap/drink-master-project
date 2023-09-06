@@ -8,20 +8,18 @@ import Private from './Routes/Privat';
 import OnlyGuest from './Routes/OnlyGuest';
 import useAuth from 'hooks/useAuth';
 import { useDispatch } from 'react-redux';
-import { refreshUser} from 'redux/Auth/authOperation';
+import { refreshUser } from 'redux/Auth/authOperation';
 import LoginPage from '../pages/LogInPage/LoginPage';
 import RegisterPage from '../pages/RegisterPage/RegisterPage';
 
-
 const WelcomePage = lazy(() => import('../pages/WelcomePage/WelcomePage'));
-const NotFoundPage= lazy(()=> import('../pages/NotFoundPage/NotFoundPage'))
+const NotFoundPage = lazy(() => import('../pages/NotFoundPage/NotFoundPage'));
 const MainPage = lazy(() => import('../pages/MainPage/MainPage'));
 const DrinksPage = lazy(() => import('../pages/DrinksPage/DrinksPage'));
 const AddRecipePage = lazy(() => import('../pages/AddRecipePage/AddRecipePage'));
 const RecipePage = lazy(() => import('../pages/RecipePage/RecipePage'));
 const MyRecipesPage = lazy(() => import('../pages/MyRecipesPage/MyRecipesPage'));
 const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
-
 
 export const App = () => {
   const navigate = useNavigate();
@@ -74,14 +72,9 @@ useEffect(() => {
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />
         <Route path="favorite" element={<Private component={<FavoritePage />} />} />
-        <Route path="*" element={<Private component={<NotFoundPage />} />}/>
+        <Route path="*" element={<Private component={<NotFoundPage />} />} />
       </Route>
-
-
       <Route path="*" element={<NotFoundPage />} />
- 
-
-
     </Routes>
   );
 };
