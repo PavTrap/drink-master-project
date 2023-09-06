@@ -27,6 +27,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: calc(18 / 14);
+  transition: all 0.2s ease;
 }
 
 .subscribeBlockInput::placeholder {
@@ -35,7 +36,8 @@
   opacity: 1;
 }
 .subscribeBlockInput:focus,
-.subscribeBlockInput:hover {
+.subscribeBlockInput:hover,
+.subscribeBlockInput:active  {
   outline: none;
   color: #f3f3f3;
   border-color: rgba(243, 243, 243, 0.5);

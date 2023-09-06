@@ -92,6 +92,7 @@
   height: 41px;
   margin-bottom: 40px;
   outline-style: none;
+  transition: all 0.2s ease-in-out;
 }
 
 .recipeDescriptionFields_input::placeholder {

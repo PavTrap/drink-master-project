@@ -37,12 +37,15 @@
   border-color: transparent;
   cursor: pointer;
   border-radius: 50%;
+  transition: all 0.2s ease;
 }
 .button > svg {
   transform: scale(2);
 }
 
-.button:hover {
+.button:hover,
+.button:focus,
+.button:active {
   background-color: rgba(64, 112, 205, 0.5);
 }
 
@@ -56,6 +59,8 @@
   height: 28px;
   color: rgba(243, 243, 243, 0.3);
 }
+
+
 
 .pageButton {
   width: 28px;
@@ -71,9 +76,11 @@
   cursor: pointer;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s ease;
 }
 
 .pageButton:hover,
+.pageButton:focus,
 .pageButton:active {
   background-color: rgba(64, 112, 205, 0.5);
 }

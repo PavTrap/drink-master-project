@@ -38,7 +38,7 @@
   font-weight: 500;
   line-height: 22.4px;
   color: #f3f3f3;
-  transition: 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 @media (max-width: 768px) {
   .links {
@@ -47,7 +47,8 @@
 }
 
 .links:hover,
-.links:focus {
+.links:focus,
+.links:active {
   background-color: #f3f3f3;
   color: #161f37;
 }

@@ -2,7 +2,6 @@
   max-width: 375px;
   width: 100%;
   height: auto;
-
 }
 
 .loginTitle {
@@ -33,7 +32,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .loginInput::placeholder {
@@ -41,7 +40,8 @@ transition: all 0.2s ease;
 }
 
 .loginInput:focus,
-.loginInput:hover {
+.loginInput:hover,
+.loginInput:active {
   outline: none;
   color: #f3f3f3;
   border-color: rgba(243, 243, 243, 0.5);
@@ -113,12 +113,12 @@ transition: all 0.2s ease;
   line-height: calc (18 / 14);
   margin-bottom: 14px;
   cursor: pointer;
-  transition: scale 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .loginButton:hover {
   /* text-decoration: underline; */
-  transform: scale(1.03); 
+  transform: scale(1.03);
   /* box-shadow: 1px 0px 3px 4px rgba(35, 93, 171, 0.4) inset; */
 }
 
@@ -127,7 +127,6 @@ transition: all 0.2s ease;
   flex-direction: column;
   gap: 14px;
   margin-bottom: 28px;
-  
 }
 
 .error {

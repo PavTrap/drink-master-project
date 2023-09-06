@@ -87,13 +87,26 @@
   border-radius: 42px;
   color: #161f37;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.logoutBtn:hover,
+.logoutBtn:focus {
+  transform: scale(1.03);
+  border: 1px solid #ffffff5f;
 }
 .cancelBtn {
   background-color: #434d67;
+  border-color: #434d67;
   width: 100%;
   height: 100%;
   border: none;
   border-radius: 42px;
   color: #f3f3f3;
   cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+.cancelBtn:hover,
+.cancelBtn:focus,
+.cancelBtn:active {
+  transform: scale(1.03);
 }

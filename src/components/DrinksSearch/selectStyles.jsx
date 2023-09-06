@@ -7,9 +7,9 @@ export const selectStyles = {
     display: 'flex',
     color: isSelected ? '#F3F3F3' : 'rgba(243, 243, 243, 0.40)',
     backgroundColor: '#161f37',
-    width: window.innerWidth <= 768 ? '100%' : '199px', // Изменяем ширину в зависимости от ширины окна
+    width: window.innerWidth <= 768 ? '100%' : '199px', 
 
-    // width: '200px',
+   
     borderRadius: '200px',
     paddingTop: '14px',
     paddingBottom: '15px',
@@ -22,8 +22,8 @@ export const selectStyles = {
     border: 'none', 
     boxShadow: 'none', 
 
-    cursor: isDisabled ? 'not-allowed' : 'pointer', // Добавляем cursor: pointer при наведении
-    transition: 'background-color 0.3s, box-shadow 0.3s', // Добавляем анимацию при ховере
+    cursor: isDisabled ? 'not-allowed' : 'pointer', 
+    transition: 'background-color 0.3s, box-shadow 0.3s', 
     '&:hover': {
       boxShadow: '0 0 5px rgba(0, 0, 0, 0.3)', 
     },
