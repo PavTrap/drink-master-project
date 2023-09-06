@@ -28,7 +28,7 @@ const myRecipesSlice = createSlice({
     builder
       // FETCH
       .addCase(fetchMyRecipes.fulfilled, (state, { payload }) => {
-        state.totalPages= payload.count.totalPages;
+        state.totalPages = payload.count.totalPages;
         state.recipes = payload.data;
         state.error = null;
         state.isLoading = false;
@@ -39,7 +39,7 @@ const myRecipesSlice = createSlice({
       })
       // DELETE
       .addCase(deleteMyRecipes.fulfilled, (state, action) => {
-        const index = state.recipes.data.findIndex(recipe => recipe.id === action.payload.cocktailId);
+        const index = state.recipes.findIndex(recipe => recipe.id === action.meta.arg);
         state.recipes.splice(index, 1);
         state.isLoading = false;
       })
