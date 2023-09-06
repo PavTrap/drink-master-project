@@ -151,8 +151,11 @@
 
   .linkContainer__signin:hover,
   .linkContainer__signin:focus,
+  .linkContainer__signin:active,
   .linkContainer__signup:hover,
-  .linkContainer__signup:focus {
+  .linkContainer__signup:focus,
+  .linkContainer__signup:active
+  {
     transform: scale(1.03);
     border: 1px solid #ffffff5f;
   }

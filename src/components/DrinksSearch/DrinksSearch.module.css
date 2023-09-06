@@ -23,6 +23,7 @@
   border: 1px solid rgba(243, 243, 243, 0.2);
   opacity: 0.8;
   outline: none;
+  transition: all 0.2s ease;
 }
 .inputDrinks:not(:placeholder-shown){
   border: 1px solid #f3f3f3;;
@@ -37,6 +38,12 @@
   color: #f3f3f3;
   border-color: rgba(243, 243, 243, 0.5);
   background-color: transparent;
+}
+
+.inputDrinks:focus,
+.inputDrinks:hover,
+.inputDrinks:active{
+  border-color: rgba(243, 243, 243, 0.5);
 }
 
 .container{

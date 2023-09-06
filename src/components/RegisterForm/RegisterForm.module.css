@@ -32,6 +32,7 @@
   font-size: 14px;
   font-weight: 400;
   line-height: calc(18 / 14);
+  transition: all 0.2s ease;
 }
 
 .registerInput::placeholder {
@@ -39,7 +40,8 @@
 }
 
 .registerInput:focus,
-.registerInput:hover {
+.registerInput:hover,
+.registerInput:active {
   outline: none;
   color: #f3f3f3;
   border-color: rgba(243, 243, 243, 0.5);
