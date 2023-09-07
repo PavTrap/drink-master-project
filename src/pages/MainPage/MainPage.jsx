@@ -44,7 +44,7 @@ const dispatch=useDispatch()
           </ul>
 
           {allDrinks && (
-            <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'} onClick={()=>dispatch(changeDrinksPage(1))}>
+            <Link className={css.other_drinks_btn} to={'/drinks'} onClick={()=>dispatch(changeDrinksPage(1))}>
               Other drinks
             </Link>
           )}

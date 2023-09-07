@@ -6,14 +6,14 @@ import { changeDrinksPage } from 'redux/Drinks/DrinksSlice';
 
 const NavBar = () => {
   const location = useLocation();
-const dispatch=useDispatch()
+  const dispatch = useDispatch();
   const isActive = path => {
     return location.pathname === path ? styles.activeLink : '';
   };
 
   return (
     <nav className={styles.navBar}>
-      <NavLink to="/drinks" className={`${styles.links} ${isActive('/drinks')}`} onClick={()=>dispatch(changeDrinksPage(1))}>
+      <NavLink to="/drinks" className={`${styles.links} ${isActive('/drinks')}`} onClick={() => dispatch(changeDrinksPage(1))}>
         Drinks
       </NavLink>
       <NavLink to="/add" className={`${styles.links} ${isActive('/add')}`}>
