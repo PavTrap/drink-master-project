@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import { useParams } from 'react-router-dom/dist';
+import { Suspense } from 'react';
 import Select from 'react-select';
 // components
 import Dots from 'components/Spinner/Dots';
@@ -27,7 +28,7 @@ export const DrinksSearch = () => {
   const [category, setCategory] = useState(categoryName || searchParams.get('category') || '');
   const [ingredient, setIngredient] = useState(searchParams.get('ingredient') || '');
   const [q, setQ] = useState(searchParams.get('q') || '');
-  const [page, setPage] = useState(searchParams.get('page') || 1);
+  const [page, setPage] = useState(currentPage || 1);
   const { width } = useWindowSize();
 
   const categorySelectOptions = categoryList.map(({ name }) => {
@@ -46,9 +47,13 @@ export const DrinksSearch = () => {
   }, [dispatch, ingredientList, categoryList]);
 
   useEffect(() => {
-    setPage(currentPage);
     dispatch(fetchDrinks({ category, page, q, ingredient }));
-  }, [dispatch, category, page, q, ingredient, currentPage]);
+  }, [dispatch, category, page, q, ingredient]);
+
+  useEffect(() => {
+    setPage(currentPage);
+    return () => setPage(1);
+  }, [currentPage]);
 
   // hanglers for inputs
   const handleCategoryChange = e => {
@@ -97,12 +102,14 @@ export const DrinksSearch = () => {
       </form>
       {entities?.length > 0 && (
         <ul className={css.drinkCardContainer}>
-          {entities.map(({ _id, drink, drinkThumb, ingredients }) => (
-            <DrinkItemCard key={_id} drink={drink} drinkThumb={drinkThumb} id={_id} popup={ingredients} />
-          ))}
+          <Suspense>
+            {entities.map(({ _id, drink, drinkThumb, ingredients }) => (
+              <DrinkItemCard key={_id} drink={drink} drinkThumb={drinkThumb} id={_id} popup={ingredients} />
+            ))}
+          </Suspense>
         </ul>
       )}
-      {isLoading && <Dots className={css.loading}/>}
+      {isLoading && <Dots className={css.loading} />}
       {entities?.length === 0 && isLoading === false && (
         <div className={css.noDrinksContainer}>
           <NoRecipe title={'No results'} />

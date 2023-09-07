@@ -7,12 +7,14 @@ import { fetchDrinks } from './featchApi';
 import { writeToLoaclStore, readFromLocalStore } from 'helpers/localStorageApi';
 import { Link } from 'react-router-dom';
 import Dots from 'components/Spinner/Dots';
+import { useDispatch } from 'react-redux';
+import { changeDrinksPage } from 'redux/Drinks/DrinksSlice';
 
 const PreviewDrinks = ({ children }) => <>{children}</>;
 
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
-
+const dispatch=useDispatch()
   useEffect(() => {
     if (!readFromLocalStore('main-page')) {
       (async () => {
@@ -42,7 +44,7 @@ const MainPage = () => {
           </ul>
 
           {allDrinks && (
-            <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
+            <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'} onClick={()=>dispatch(changeDrinksPage(1))}>
               Other drinks
             </Link>
           )}
