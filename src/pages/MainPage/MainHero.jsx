@@ -2,25 +2,10 @@ import css from './MainPage.module.css';
 import { Link } from 'react-router-dom';
 import glassImage from './HeroGlassImage.png';
 import glassImageMobile from './mobileHeroImage.png';
-import { useEffect, useState } from 'react';
+import useWindowSize from 'hooks/useWindowSize';
 
 const MainHero = () => {
-
-  const [isMobile, setIsMobile]=useState(false)
-
-  useEffect(() => {
-    const handleWindowResize = () => {
-      setIsMobile(window.innerWidth <= 767);
-    };
-    handleWindowResize();
-    window.addEventListener('resize', handleWindowResize);
-    return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    };
-  }, []);
-
-
-
+  const { width } = useWindowSize();
   return (
     <section className={css.hero_section}>
       <h1 className={css.hero_title}>
@@ -33,9 +18,12 @@ const MainHero = () => {
         stop destination for exploring, crafting, and mastering the
         <br /> world's finest beverages.
       </p>
-     { isMobile ? ( <img className={css.hero_image} src={glassImageMobile} alt="Hero Nice Glass" />) : ( <img className={css.hero_image} src={glassImage} alt="Hero Nice Glass" />)}
+      {width <= 767 ? (
+        <img className={css.hero_image} src={glassImageMobile} alt="Hero Nice Glass" />
+      ) : (
+        <img className={css.hero_image} src={glassImage} alt="Hero Nice Glass" />
+      )}
 
-     
       <Link className={css.hero_button} to={'/add'}>
         Add recipe
       </Link>

@@ -5,7 +5,6 @@ import css from './RecipePageHero.module.css';
 
 const RecipePageHero = ({ data }) => {
   const { glass, drinkThumb, drink, _id } = data;
-console.log(data);
   return (
     <section className={css.sectionContainer}>
       <div className={css.heroContainer}>

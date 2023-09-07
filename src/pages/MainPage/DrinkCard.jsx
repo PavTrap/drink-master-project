@@ -12,7 +12,7 @@ const DrinkCard = ({ drink, drinkThumb, id, popup }) => {
         <div className={css.card_text_wrapper}>
           <p className={css.card_name}>{drink}</p>
 
-          <p className={css.ingredients_text}>ingredients </p>
+          <p className={css.ingredients_text}>Ingredients </p>
         </div>
       </Link>
     </li>

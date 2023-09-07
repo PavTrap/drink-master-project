@@ -12,7 +12,6 @@ const PreviewDrinks = ({ children }) => <>{children}</>;
 
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
- 
 
   useEffect(() => {
     if (!readFromLocalStore('main-page')) {
@@ -20,10 +19,8 @@ const MainPage = () => {
         const data = await fetchDrinks();
         data && writeToLoaclStore('main-page', data);
         data && setAllDrinks(data);
- 
       })();
     } else {
- 
       const data = readFromLocalStore('main-page');
       data && setAllDrinks(data);
     }
@@ -34,29 +31,29 @@ const MainPage = () => {
       <MainHero />
       <PreviewDrinks>
         <section className={css.drinks_section}>
-          <ul>
-            <Suspense fallBack={<Dots />} >
+          <ul className={css.drinks_categoriesList}>
+            <Suspense fallBack={<Dots />}>
               {allDrinks &&
-
-                allDrinks.sort((a, b) => b.items.length - a.items.length).slice(0,4).map(
-                  item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />
-                )}
+                allDrinks
+                  .sort((a, b) => b.items.length - a.items.length)
+                  .slice(0, 4)
+                  .map(item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />)}
             </Suspense>
           </ul>
 
-            {allDrinks && (
-              <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
-                Other drinks
-              </Link>
-            )}
-          </section>
-        </PreviewDrinks>
+          {allDrinks && (
+            <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
+              Other drinks
+            </Link>
+          )}
+        </section>
+      </PreviewDrinks>
     </div>
   );
 };
 
 export default MainPage;
- 
+
 //   const separateDrinks = drinks => {
 //     if (!allDrinks) return;
 
@@ -155,4 +152,4 @@ export default MainPage;
                 </ul>
               </>
             )}
-          </ul> */ 
+          </ul> */
