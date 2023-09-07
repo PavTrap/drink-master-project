@@ -20,7 +20,8 @@ h2 {
   font-size: 32px;
   font-weight: 600;
 }
-
+a { text-decoration: none;
+color: inherit;}
 ul {
   list-style: none;
 }
