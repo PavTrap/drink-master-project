@@ -1,3 +1,10 @@
+.recipeCard {
+  transition: transform 200ms ease;
+}
+.recipeCard:hover,
+.recipeCard:active {
+  transform: scale(1.02);
+}
 .imageContainer {
   position: relative;
   width: 100%;
