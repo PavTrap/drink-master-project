@@ -46,9 +46,9 @@
   }
 }
 
-.links:hover,
-.links:focus,
-.links:active {
+.links:hover
+/* .links:focus */
+/* .links:active */ {
   background-color: #f3f3f3;
   color: #161f37;
 }

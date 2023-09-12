@@ -11,6 +11,9 @@ const NavBar = () => {
 
   return (
     <nav className={styles.navBar}>
+      <NavLink to="/" className={`${styles.links} ${isActive('/main')}`}>
+        Home
+      </NavLink>
       <NavLink to="/drinks" className={`${styles.links} ${isActive('/drinks')}`}>
         Drinks
       </NavLink>
@@ -18,7 +21,7 @@ const NavBar = () => {
         Add recipe
       </NavLink>
 
-      <NavLink to="/my" className={styles.links}>
+      <NavLink to="/my" className={`${styles.links} ${isActive('/my')}`}>
         My recipes
       </NavLink>
 
