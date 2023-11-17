@@ -5,13 +5,12 @@ const DrinkCard = ({ drink, drinkThumb, id, popup }) => {
 
   const title = getIngredientsList(popup);
   return (
-    <li className={`${css.mainPageList_item} ${css.card}`} title={title}>
+    <li className={`${css.mainPageList_item} ${css.card}  skeleton `} title={title} >
       <Link to={`/recipe/${id}`}>
         
-        <img src={drinkThumb} alt="drink" height={400} className={css.image}/>
+        <img src={drinkThumb} alt="drink" height={400} className={`${css.image} animate`} loading='lazy'/>
         <div className={css.card_text_wrapper}>
           <p className={css.card_name}>{drink}</p>
-
           <p className={css.ingredients_text}>ingredients </p>
         </div>
       </Link>

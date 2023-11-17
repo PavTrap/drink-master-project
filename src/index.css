@@ -2,22 +2,21 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Manrope',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Manrope', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 body::-webkit-scrollbar {
   display: none;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 .toast {
   --toastify-toast-width: 400px;
-  --toastify-color-dark: #333b50c0;;
+  --toastify-color-dark: #333b50c0;
   --toastify-toast-min-height: 64px;
   --toastify-font-family: inherit;
 
@@ -38,13 +37,48 @@ code {
   font-weight: 400;
   line-height: 156%;
 }
-.Toastify__toast-container--top-center{
+.Toastify__toast-container--top-center {
   top: 8px;
 }
 @media screen and (min-width: 1440px) {
-  .Toastify__toast-container--top-center{
+  .Toastify__toast-container--top-center {
     top: 82px;
     left: auto;
     right: 25px;
+  }
+}
+
+.cardBlock > img {
+  position: relative;
+  z-index: 2;
+}
+
+.skeleton::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  aspect-ratio: 1/1;
+  transform: translateX(-100%);
+  animation: skeleton 2s infinite;
+  background: linear-gradient(90deg, #111921c6, #132331d0, #141e29be);
+  z-index: 1;
+}
+
+.animate {
+  animation: animate 2s;
+}
+
+@keyframes skeleton {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes animate {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

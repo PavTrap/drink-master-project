@@ -18,7 +18,7 @@ const RecipePageHero = ({ data }) => {
             Consectetur esse molestias odio accusamus pariatur voluptatibus dicta quidem. Deserunt, enim quis consequuntur minus velit sit reiciendis suscipit quo ad voluptate ipsam culpa neque aspernatur autem porro doloremque quam cum?</p>
             <RecipeButton id={_id}/>
         </div>
-        <img className={css.imgDrink} src={drinkThumb} alt={drink} title={drink}/>
+        <img className={`${css.imgDrink} animate`} src={drinkThumb} alt={drink} title={drink}/>
     </section>
   )
 };

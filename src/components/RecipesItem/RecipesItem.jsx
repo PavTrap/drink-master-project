@@ -8,8 +8,8 @@ export const RecipesItem = ({ image, title, description, ingredients, id, state,
   const dispatch = useDispatch();
   return (
     <li className={css.recipeCard}>
-      <div className={css.imageContainer}>
-        <img src={image} alt={title} title={title} className={css.recipeImage} />
+      <div className={`${css.imageContainer} cardBlock skeleton `}>
+        <img src={image} alt={title} title={title} className={`${css.recipeImage} animate`} loading='lazy'/>
       </div>
       <p className={css.recipeTitle}>{title}</p>
       <p title={ingredients} className={css.recipeIngredients}>

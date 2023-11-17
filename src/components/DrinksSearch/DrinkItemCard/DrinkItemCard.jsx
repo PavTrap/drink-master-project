@@ -8,7 +8,7 @@ const DrinkItemCard = ({ drink, drinkThumb, id, popup }) => {
     <li className={`${css.mainPageList_item} ${css.card}`} title={title}>
       <Link to={`/recipe/${id}`}>
         
-        <img src={drinkThumb} alt="drink" height={400} className={css.image}/>
+        <img src={drinkThumb} alt="drink" height={400} className={css.image} loading='lazy'/>
         <div className={css.card_text_wrapper}>
           <p className={css.card_name}>{drink}</p>
 

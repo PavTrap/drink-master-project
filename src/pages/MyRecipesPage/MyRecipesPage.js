@@ -28,7 +28,10 @@ export default function MyRecipesPage() {
 
   return (
     <section className={css.myRecipeContainer}>
-      <MainTitle title="My recipes" />
+      <>
+      <MainTitle title="My recipes" isLoading={isLoading}/>
+      </>
+
       {recipes?.length > 0 ? (
         <>
           <RecipesList recipes={recipes} state={{ from: location }} onDelete={deleteMyRecipes} />
@@ -37,7 +40,7 @@ export default function MyRecipesPage() {
       ) : (
         <NoRecipe title="You haven't added any own cocktails yet" />
       )}
-      {isLoading && <Dots />}
+      {/* {isLoading && <Dots />} */}
     </section>
   );
 }

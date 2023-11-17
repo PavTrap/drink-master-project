@@ -11,14 +11,20 @@ h2 {
 
 .image {
   width: 100%;
-  height: 100%;
+  height: calc( 100% - 40px);
+
   border-radius: 8px;
+  animation: animate 2s
 
 }
 .card {
   width: 100%;
-  height: 100%;
+  height: 400px;
+  border-radius: 8px;
+  will-change: transform;
   transition: transform 200ms ease;
+  position: relative;
+  overflow: hidden;
 
 }
 .card:hover {
@@ -54,15 +60,46 @@ ul {
 @media screen and (min-width: 768px) {
   .card {
     width: calc(100% / 2 - 10px);
-    height: calc(100% / 2 - 10px);
+    height: 400px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .card {
     width: calc(100% / 3 - 15px);
-    height: calc(100% / 3 - 15px);
-    /* width: 400px;
-    height: 400px; */
+    height: 436px;
+
+  }
+}
+
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  height: 90%;
+  transform: translateX(-100%);
+  animation: skeleton 2s infinite;
+  background: linear-gradient( 90deg,#111921c6,#132331d0,#141e29be );
+
+
+  z-index: -1;
+  
+  color: #f3f3f380;
+}
+
+@keyframes skeleton {
+  to {
+      transform: translateX(100%)
+  }
+}
+
+@keyframes animate {
+  from {
+      opacity: 0
+  }
+
+  to {
+      opacity: 1
   }
 }

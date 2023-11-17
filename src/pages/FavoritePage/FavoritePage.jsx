@@ -28,7 +28,7 @@ export default function FavoritePage() {
 
   return (
     <section className={css.favoritesContainer}>
-      <MainTitle title="Favorites" />
+      <MainTitle title="Favorites" isLoading={isLoading} />
       {favorites?.length === 0 ? (
         <NoRecipe title="You haven't added any favorite cocktails yet" />
       ) : (
@@ -37,7 +37,6 @@ export default function FavoritePage() {
           {totalPages > 1 && <Paginator page={page} totalPages={totalPages} onChangePage={changeFavPage} />}
         </>
       )}
-      {isLoading && <Dots />}
     </section>
   );
 }

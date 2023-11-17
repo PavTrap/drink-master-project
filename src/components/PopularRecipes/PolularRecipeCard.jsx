@@ -8,7 +8,7 @@ const PolularRecipeCard = ({ item}) => {
     <li >
       <Link to={`/recipe/${_id}`}className={css.listItem}>
         <div className={css.listItem_image_container}>
-          <img src={image} alt={title} className={css.listItem_image} />
+          <img src={image} alt={title} className={`${css.listItem_image} animate`} loading="lazy"/>
         </div>
         <div className={css.textContainer}>
           <p className={css.listItem_title}>{title}</p>

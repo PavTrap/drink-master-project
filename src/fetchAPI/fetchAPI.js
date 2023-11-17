@@ -54,3 +54,15 @@ export const addCocktail = async (data) => {
 		return(e)
 	}
 };
+
+
+
+export const fetchDrinks = async ()=> {
+    try {
+      const { data } = await axios.get(`/api/recipes/main-page`);  
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  

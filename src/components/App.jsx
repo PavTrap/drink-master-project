@@ -1,6 +1,7 @@
-import { lazy, useEffect } from 'react';
+import { lazy, useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import { useLocation } from 'react-router-dom';
+import { MouseSmooth } from 'react-mouse-smooth';
 
 import { SharedLayout } from './SharedLayout/SharedLayout';
 import { Spinner } from './Spinner/Spinner';
@@ -23,7 +24,13 @@ const FavoritePage = lazy(() => import('../pages/FavoritePage/FavoritePage'));
 
 export const App = () => {
   const navigate = useNavigate();
-  const location = useLocation();
+  const {pathname, search} = useLocation();
+  const [data, setData] = useState(search)
+  const handleData = (data)=>{
+    setData(data)
+  }
+
+  MouseSmooth({ time: 1000, size: 100 });
 
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
@@ -48,10 +55,10 @@ export const App = () => {
 useEffect(() => {
   navigate(JSON.parse(window.sessionStorage.getItem('lastRoute') || '{}'));
   window.onbeforeunload = () => {
-    window.sessionStorage.setItem('lastRoute', JSON.stringify(location.pathname));
+    window.sessionStorage.setItem('lastRoute', JSON.stringify(pathname));
   };
   return () => window.sessionStorage.setItem('lastRoute', '');
-}, [navigate, location.pathname]);
+}, [navigate, pathname]);
 
 
 
@@ -66,8 +73,8 @@ useEffect(() => {
       </Route>
       <Route path="/" element={<Private component={<SharedLayout />} />}>
         <Route path="main" element={<Private component={<MainPage />} />} />
-        <Route path="drinks" element={<Private component={<DrinksPage />} />} />
-        <Route path="drinks/:categoryName" element={<Private component={<DrinksPage />} />} />
+        <Route path="drinks" element={<Private component={<DrinksPage param={data} updateState={handleData}/>} />} />
+        {/* <Route path="drinks/:categoryName" element={<Private component={<DrinksPage />} />} /> */}
         <Route path="add" element={<Private component={<AddRecipePage />} />} />
         <Route path="recipe/:recipeId" element={<Private component={<RecipePage />} />} />
         <Route path="my" element={<Private component={<MyRecipesPage />} />} />

@@ -6,7 +6,7 @@ import DrinkCard from './DrinkCard';
 const CategoryList = ({  collection, title }) => {
   return (
     <li>
-      <Link to={`/drinks/${title}`}>
+      <Link to={`/drinks`} state={{"category": title}}>
         <h2 className={css.category_title}>{title}</h2>
       </Link>
       <ul className={css.mainPageList}>
