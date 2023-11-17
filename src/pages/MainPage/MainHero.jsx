@@ -5,8 +5,7 @@ import glassImageMobile from './mobileHeroImage.png';
 import { useEffect, useState } from 'react';
 
 const MainHero = () => {
-
-  const [isMobile, setIsMobile]=useState(false)
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     const handleWindowResize = () => {
@@ -18,8 +17,6 @@ const MainHero = () => {
       window.removeEventListener('resize', handleWindowResize);
     };
   }, []);
-
-
 
   return (
     <section className={css.hero_section}>
@@ -33,9 +30,12 @@ const MainHero = () => {
         stop destination for exploring, crafting, and mastering the
         <br /> world's finest beverages.
       </p>
-     { isMobile ? ( <img className={css.hero_image} src={glassImageMobile} alt="Hero Nice Glass" />) : ( <img className={css.hero_image} src={glassImage} alt="Hero Nice Glass" />)}
+      {isMobile ? (
+        <img className={css.hero_image} src={glassImageMobile} alt="Hero Nice Glass" />
+      ) : (
+        <img className={css.hero_image} src={glassImage} alt="Hero Nice Glass" />
+      )}
 
-     
       <Link className={css.hero_button} to={'/add'}>
         Add recipe
       </Link>
