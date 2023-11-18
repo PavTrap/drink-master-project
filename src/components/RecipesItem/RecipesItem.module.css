@@ -25,7 +25,7 @@
   }
 }
 
-.imageContainer::after {
+/* .imageContainer::after {
   content: '';
   position: absolute;
   top: 0;
@@ -34,7 +34,7 @@
   height: 100%;
   z-index: -1;
   background-image: linear-gradient(rgba(10, 10, 17, 0.02), rgba(10, 10, 17, 0.77));
-}
+} */
 
 .recipeImage {
   width: 100%;

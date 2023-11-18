@@ -1,6 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import axios from 'axios';
 import setAuthHeader from 'helpers/axiosHedder';
+
 
 axios.defaults.baseURL = 'https://drink-master-back-end.onrender.com/';
 

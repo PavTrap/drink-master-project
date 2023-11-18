@@ -11,7 +11,7 @@ const NavBar = () => {
 
   return (
     <nav className={styles.navBar}>
-      <NavLink to="/" className={`${styles.links} ${isActive('/main')}`}>
+      <NavLink to="/main" className={`${styles.links} ${isActive('/main')}`}>
         Home
       </NavLink>
       <NavLink to="/drinks" className={`${styles.links} ${isActive('/drinks')}`}>

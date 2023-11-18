@@ -7,6 +7,7 @@
     width: 157px;
     height: 157px;
     margin-bottom: 8px;
+    overflow: hidden;
 
     border-radius: 8px;
     background-color: rgba(22, 31, 55, 0.5);

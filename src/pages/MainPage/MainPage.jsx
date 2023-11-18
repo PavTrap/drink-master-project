@@ -1,18 +1,20 @@
-import { Suspense, useEffect, useState } from 'react';
+import { Suspense, useEffect, useRef, useState } from 'react';
 import css from './MainPage.module.css';
 
 import MainHero from './MainHero';
 import CategoryList from './CategoryList';
-import { fetchDrinks } from './featchApi';
+
+import { fetchDrinks, fetchIngredients } from 'fetchAPI/fetchAPI';
 import { writeToLoaclStore, readFromLocalStore } from 'helpers/localStorageApi';
 import { Link } from 'react-router-dom';
 import Dots from 'components/Spinner/Dots';
+
 
 const PreviewDrinks = ({ children }) => <>{children}</>;
 
 const MainPage = () => {
   const [allDrinks, setAllDrinks] = useState(null);
- 
+
 
   useEffect(() => {
     if (!readFromLocalStore('main-page')) {
@@ -20,12 +22,16 @@ const MainPage = () => {
         const data = await fetchDrinks();
         data && writeToLoaclStore('main-page', data);
         data && setAllDrinks(data);
- 
       })();
     } else {
- 
       const data = readFromLocalStore('main-page');
       data && setAllDrinks(data);
+    }
+    if (!readFromLocalStore('ingredients-names') && !readFromLocalStore('ingredients-list')) {
+      (async () => {
+        const response = await fetchIngredients();
+        writeToLoaclStore('ingredients-list', response);
+      })();
     }
   }, []);
 
@@ -35,28 +41,30 @@ const MainPage = () => {
       <PreviewDrinks>
         <section className={css.drinks_section}>
           <ul>
-            <Suspense fallBack={<Dots />} >
+            <Suspense fallBack={<Dots />}>
               {allDrinks &&
-
-                allDrinks.sort((a, b) => b.items.length - a.items.length).slice(0,4).map(
-                  item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id} />
-                )}
+                allDrinks
+                  .sort((a, b) => b.items.length - a.items.length)
+                  .slice(0, 4)
+                  .map(
+                    item => item.items.length > 0 && <CategoryList title={item.category} collection={item.items} key={item._id}/>
+                  )}
             </Suspense>
           </ul>
 
-            {allDrinks && (
-              <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
-                Other drinks
-              </Link>
-            )}
-          </section>
-        </PreviewDrinks>
+          {allDrinks && (
+            <Link className={`${css.other_drinks_btn} ${css.other_drinks_btn}`} to={'/drinks'}>
+              Other drinks
+            </Link>
+          )}
+        </section>
+      </PreviewDrinks>
     </div>
   );
 };
 
 export default MainPage;
- 
+
 //   const separateDrinks = drinks => {
 //     if (!allDrinks) return;
 
@@ -155,4 +163,4 @@ export default MainPage;
                 </ul>
               </>
             )}
-          </ul> */ 
+          </ul> */

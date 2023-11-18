@@ -2,14 +2,18 @@ import { Link } from 'react-router-dom';
 import { FiTrash2 } from 'react-icons/fi';
 import css from './RecipesItem.module.css';
 import { useDispatch } from 'react-redux';
+import { useRef } from 'react';
+import useAnimationOnStart from 'hooks/useAnimationOnStart';
 
 export const RecipesItem = ({ image, title, description, ingredients, id, state, onDelete }) => {
+  const ref = useRef(null);
+  useAnimationOnStart(ref);
   const path = `/recipe/${id}`;
   const dispatch = useDispatch();
   return (
-    <li className={css.recipeCard}>
-      <div className={css.imageContainer}>
-        <img src={image} alt={title} title={title} className={css.recipeImage} />
+    <li className={css.recipeCard} ref={ref} data-item>
+      <div className={`${css.imageContainer} cardBlock skeleton `}>
+        <img src={image} alt={title} title={title} className={`${css.recipeImage} animate`} loading='lazy'/>
       </div>
       <p className={css.recipeTitle}>{title}</p>
       <p title={ingredients} className={css.recipeIngredients}>

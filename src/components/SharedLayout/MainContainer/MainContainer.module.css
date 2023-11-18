@@ -9,9 +9,12 @@
   background-color: #0a0a11;
   color: #f3f3f3;
   overflow: hidden;
+ 
+
 }
 .gradient1 {
   position: absolute;
+  will-change: transform;
   top: 84px;
   left: 42px;
   width: 257px;
@@ -20,10 +23,12 @@
   border-radius: 187px;
   background: rgba(188, 230, 210, 0.4);
   filter: blur(120px);
+
   animation: 3s pulse ease-out alternate running infinite;
   animation-delay: 0;
   pointer-events: none;
   z-index: 1;
+
 }
 @media screen and (min-width: 768px) {
   .gradient1 {
@@ -43,6 +48,7 @@
 
 .gradient2 {
   position: absolute;
+  will-change: transform;
   left: -499px;
   top: 20px;
   width: 598px;
@@ -73,6 +79,7 @@
 
 .gradient3 {
   position: absolute;
+  will-change: transform;
   display: block;
   bottom: -470px;
   left: 238px;
@@ -98,6 +105,7 @@
 
 .gradient4 {
   position: absolute;
+  will-change: transform;
   display: block;
   bottom: 80px;
   left: -689px;
@@ -128,6 +136,7 @@
 }
 .gradient5 {
   position: absolute;
+  will-change: transform;
   display: block;
   bottom: 100px;
   right: -200px;
@@ -144,6 +153,7 @@
 }
 .gradient6 {
   position: absolute;
+  will-change: transform;
   display: block;
   bottom: -690px;
   right: -200px;
