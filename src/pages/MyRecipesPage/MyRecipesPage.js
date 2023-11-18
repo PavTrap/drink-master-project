@@ -7,7 +7,7 @@ import { MainTitle } from '../../components/MainTitle/MainTitle';
 import { Paginator } from 'components/Paginator/Paginator';
 import { changePage } from 'redux/MyRecipe/MyRecipeSlice';
 import { NoRecipe } from 'components/NoRecipe/NoRecipe';
-import Dots from 'components/Spinner/Dots';
+
 // redux
 import { fetchMyRecipes, deleteMyRecipes } from 'redux/MyRecipe/MyRecipeOperation';
 import { getIsLoading, getMyRecipes, getPage, getTotalPages } from 'redux/MyRecipe/MyRecipeSelector';

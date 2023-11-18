@@ -1,11 +1,15 @@
+import { useRef } from 'react';
 import css from './DrinkItemCard.module.css'
 import { Link } from 'react-router-dom';
+import useAnimationOnStart from 'hooks/useAnimationOnStart';
 
 const DrinkItemCard = ({ drink, drinkThumb, id, popup }) => {
+  const ref = useRef(null);
+  useAnimationOnStart(ref);
 
   const title = getIngredientsList(popup);
   return (
-    <li className={`${css.mainPageList_item} ${css.card}`} title={title}>
+    <li className={`${css.mainPageList_item} ${css.card}`} title={title} data-item ref={ref}>
       <Link to={`/recipe/${id}`}>
         
         <img src={drinkThumb} alt="drink" height={400} className={css.image} loading='lazy'/>

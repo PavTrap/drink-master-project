@@ -27,6 +27,7 @@ export const DrinksSearch = ({ search, updateState }) => {
   const isMounted = useRef(false);
   const isHasBeenPrevParams = useRef(false);
 
+
   const { categoryList, ingredientList, isLoading, entities, totalPages, currentPage } = useDrinks();
   const [searchParams, setSearchParams] = useSearchParams();
   const [prevParams, setPrevParams] = useState(search ? string2Params(search?.replace('+', ' ')) : null);
